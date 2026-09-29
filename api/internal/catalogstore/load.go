@@ -94,7 +94,54 @@ func Load(ctx context.Context, q *db.Queries) (engine.Catalog, error) {
 	}
 	sum := sha256.Sum256(canon)
 	cat.ContentSHA256 = hex.EncodeToString(sum[:])
+	n, sha, err := LoadNorms(ctx, q)
+	if err != nil {
+		return engine.Catalog{}, err
+	}
+	cat.Norms = n
+	cat.NormsSHA256 = sha
 	return cat, nil
+}
+
+// LoadNorms reads the admin defaults. An empty row is DefaultNorms.
+func LoadNorms(ctx context.Context, q *db.Queries) (econ.Norms, string, error) {
+	n := econ.DefaultNorms()
+	row, err := q.GetCalcNorms(ctx)
+	if err != nil {
+		if errors.Is(err, pgx.ErrNoRows) {
+			return n, HashNorms(n), nil
+		}
+		return econ.Norms{}, "", fmt.Errorf("catalog.norms: %w", err)
+	}
+	if len(row.Values) > 0 && string(row.Values) != "null" && string(row.Values) != "{}" {
+		if err := json.Unmarshal(row.Values, &n); err != nil {
+			return econ.Norms{}, "", fmt.Errorf("catalog.norms.parse: %w", err)
+		}
+	}
+	return n, HashNorms(n), nil
+}
+
+// HashNorms names the numbers a calculation used, the same way ContentSHA256 names the catalog.
+func HashNorms(n econ.Norms) string {
+	b, err := json.Marshal(n)
+	if err != nil {
+		return ""
+	}
+	sum := sha256.Sum256(b)
+	return hex.EncodeToString(sum[:])
+}
+
+// SaveNorms writes the admin defaults.
+func SaveNorms(ctx context.Context, q *db.Queries, n econ.Norms, by *uuid.UUID) error {
+	raw, err := json.Marshal(n)
+	if err != nil {
+		return fmt.Errorf("catalog.norms.save: %w", err)
+	}
+	_, err = q.UpsertCalcNorms(ctx, db.UpsertCalcNormsParams{Values: raw, UpdatedBy: by})
+	if err != nil {
+		return fmt.Errorf("catalog.norms.save: %w", err)
+	}
+	return nil
 }
 
 // RobotsFor reads only the robots the ids name, for a run or a map check that needs its own fleet and not the

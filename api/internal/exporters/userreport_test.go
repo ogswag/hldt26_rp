@@ -132,7 +132,7 @@ func TestFinancialReportSlice(t *testing.T) {
 			t.Errorf("%s pays back in %v, faster than the best %v", sc.Variant, *sc.Payback, *view.Best.Payback)
 		}
 	}
-	if view.Best.Fleet != "AMR H1500, 4 шт.; Штабелёр S20, 2 шт." {
+	if view.Best.Fleet != "AMR H1500, 4 шт.; Штабелёр S20, 2 шт.; Зарядных станций: 2" {
 		t.Errorf("fleet %q", view.Best.Fleet)
 	}
 	if len(view.Details) == 0 {

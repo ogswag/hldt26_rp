@@ -216,7 +216,7 @@ func (s *Server) catalogBundle(w http.ResponseWriter, r *http.Request) {
 		s.internal(w, r, "catalog.bundle", err, "Не удалось собрать каталог. Повторите запрос.")
 		return
 	}
-	etag := `"` + engine.CatalogFormat + "-" + cat.ContentSHA256 + `"`
+	etag := `"` + engine.CatalogFormat + "-" + cat.ContentSHA256 + "-" + cat.NormsSHA256 + `"`
 	w.Header().Set("ETag", etag)
 	w.Header().Set("Cache-Control", "no-cache")
 	if r.Header.Get("If-None-Match") == etag {

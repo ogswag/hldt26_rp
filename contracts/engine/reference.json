@@ -5,6 +5,35 @@
   "request": {
    "catalog": {
     "content_sha256": "reference",
+    "norms": {
+     "availability": 0,
+     "utilization": 0,
+     "reserve": 0,
+     "robots_per_charger": 0,
+     "infra_frac": 0,
+     "software_frac": 0,
+     "integration_yes_frac": 0,
+     "integration_no_frac": 0,
+     "commissioning_frac": 0,
+     "training_frac": 0,
+     "contingency_frac": 0,
+     "delivery_frac": 0,
+     "energy_kw": 0,
+     "energy_rub_per_kwh": 0,
+     "license_rub_per_robot": 0,
+     "consumable_rub_per_robot": 0,
+     "comm_rub_per_robot_year": 0,
+     "robots_per_technician": 0,
+     "technician_wage_month_rub": 0,
+     "default_service_frac": 0,
+     "default_lifetime_years": 0,
+     "battery_frac": 0,
+     "battery_years": 0,
+     "raas_monthly_frac": 0,
+     "raas_mix_fixed_share": 0,
+     "vat_rate": 0,
+     "discount_rate": 0
+    },
     "candidates": [
      {
       "ID": "5760e938-9a43-45a7-b8e8-f4f2e6383930",
@@ -708,6 +737,35 @@
   "request": {
    "catalog": {
     "content_sha256": "reference",
+    "norms": {
+     "availability": 0,
+     "utilization": 0,
+     "reserve": 0,
+     "robots_per_charger": 0,
+     "infra_frac": 0,
+     "software_frac": 0,
+     "integration_yes_frac": 0,
+     "integration_no_frac": 0,
+     "commissioning_frac": 0,
+     "training_frac": 0,
+     "contingency_frac": 0,
+     "delivery_frac": 0,
+     "energy_kw": 0,
+     "energy_rub_per_kwh": 0,
+     "license_rub_per_robot": 0,
+     "consumable_rub_per_robot": 0,
+     "comm_rub_per_robot_year": 0,
+     "robots_per_technician": 0,
+     "technician_wage_month_rub": 0,
+     "default_service_frac": 0,
+     "default_lifetime_years": 0,
+     "battery_frac": 0,
+     "battery_years": 0,
+     "raas_monthly_frac": 0,
+     "raas_mix_fixed_share": 0,
+     "vat_rate": 0,
+     "discount_rate": 0
+    },
     "candidates": [
      {
       "ID": "5760e938-9a43-45a7-b8e8-f4f2e6383930",
@@ -906,55 +964,54 @@
      "kind": "buy",
      "solution_id": "5760e938-9a43-45a7-b8e8-f4f2e6383930",
      "fleet_size": 170,
-     "capex_rub": 828971000,
-     "opex_year_rub": 139402300,
-     "annual_effect_rub": 16837700,
+     "capex_rub": 846362000,
+     "opex_year_rub": 189251740,
+     "annual_effect_rub": -33011740,
      "payback_years": null,
      "payback_band": "none",
-     "roi_pct": -99.38,
-     "tco_rub": 1605032500,
-     "accounting_effect_rub": -88562300,
+     "roi_pct": -128.84,
+     "tco_rub": 1871670700,
+     "accounting_effect_rub": -140670311,
      "labor_cash_saved_rub": 93744000,
      "price_source": "catalog",
-     "npv_rub": -817725512,
-     "irr_pct": -72.3,
+     "npv_rub": -1002219567,
      "cash_flow": [
       {
        "year": 0,
        "effect_rub": 0,
-       "net_rub": -828971000,
-       "cumulative_rub": -828971000
+       "net_rub": -846362000,
+       "cumulative_rub": -846362000
       },
       {
        "year": 1,
-       "effect_rub": 16837700,
-       "net_rub": 16837700,
-       "cumulative_rub": -812133300
+       "effect_rub": -33011740,
+       "net_rub": -33011740,
+       "cumulative_rub": -879373740
       },
       {
        "year": 2,
-       "effect_rub": 16837700,
-       "net_rub": 16837700,
-       "cumulative_rub": -795295600
+       "effect_rub": -33011740,
+       "net_rub": -33011740,
+       "cumulative_rub": -912385480
       },
       {
        "year": 3,
-       "effect_rub": 16837700,
-       "net_rub": 16837700,
-       "cumulative_rub": -778457900
+       "effect_rub": -33011740,
+       "net_rub": -33011740,
+       "cumulative_rub": -945397220
       },
       {
        "year": 4,
-       "effect_rub": 16837700,
+       "effect_rub": -33011740,
        "battery_rub": 79050000,
-       "net_rub": -62212300,
-       "cumulative_rub": -840670200
+       "net_rub": -112061740,
+       "cumulative_rub": -1057458960
       },
       {
        "year": 5,
-       "effect_rub": 16837700,
-       "net_rub": 16837700,
-       "cumulative_rub": -823832500
+       "effect_rub": -33011740,
+       "net_rub": -33011740,
+       "cumulative_rub": -1090470700
       }
      ]
     },
@@ -963,17 +1020,17 @@
      "solution_id": "5760e938-9a43-45a7-b8e8-f4f2e6383930",
      "fleet_size": 170,
      "capex_rub": 249271000,
-     "opex_year_rub": 241742300,
-     "annual_effect_rub": -85502300,
+     "opex_year_rub": 291591740,
+     "annual_effect_rub": -135351740,
      "payback_years": null,
      "payback_band": "none",
-     "roi_pct": -271.5,
-     "tco_rub": 1457982500,
-     "accounting_effect_rub": -115616586,
+     "roi_pct": -371.5,
+     "tco_rub": 1707229700,
+     "accounting_effect_rub": -165466026,
      "labor_cash_saved_rub": 93744000,
      "tariff": "fixed",
      "price_source": "catalog",
-     "npv_rub": -535887971,
+     "npv_rub": -702991025,
      "cash_flow": [
       {
        "year": 0,
@@ -983,33 +1040,33 @@
       },
       {
        "year": 1,
-       "effect_rub": -85502300,
-       "net_rub": -85502300,
-       "cumulative_rub": -334773300
+       "effect_rub": -135351740,
+       "net_rub": -135351740,
+       "cumulative_rub": -384622740
       },
       {
        "year": 2,
-       "effect_rub": -85502300,
-       "net_rub": -85502300,
-       "cumulative_rub": -420275600
+       "effect_rub": -135351740,
+       "net_rub": -135351740,
+       "cumulative_rub": -519974480
       },
       {
        "year": 3,
-       "effect_rub": -85502300,
-       "net_rub": -85502300,
-       "cumulative_rub": -505777900
+       "effect_rub": -135351740,
+       "net_rub": -135351740,
+       "cumulative_rub": -655326220
       },
       {
        "year": 4,
-       "effect_rub": -85502300,
-       "net_rub": -85502300,
-       "cumulative_rub": -591280200
+       "effect_rub": -135351740,
+       "net_rub": -135351740,
+       "cumulative_rub": -790677960
       },
       {
        "year": 5,
-       "effect_rub": -85502300,
-       "net_rub": -85502300,
-       "cumulative_rub": -676782500
+       "effect_rub": -135351740,
+       "net_rub": -135351740,
+       "cumulative_rub": -926029700
       }
      ]
     }
@@ -1274,7 +1331,7 @@
       "forced": false,
       "estimate": {
        "fleet_size": 170,
-       "capex_rub": 828971000,
+       "capex_rub": 846362000,
        "payback_years": null
       }
      },
@@ -1529,7 +1586,7 @@
       "forced": false,
       "estimate": {
        "fleet_size": 199,
-       "capex_rub": 1502529600,
+       "capex_rub": 1534051200,
        "payback_years": null
       }
      }
@@ -1560,17 +1617,21 @@
     "Главная метрика: простая окупаемость, момент, когда накопленный денежный поток достигает нуля. NPV, IRR и дисконтированная окупаемость даны справочно, ставка дисконтирования 15% в год из набора допущений.",
     "Налог на прибыль и амортизационный налоговый щит не моделируются. Амортизация показана для бухгалтерского эффекта и не входит в денежный поток.",
     "Срок расчёта равен горизонту: 5 лет. Робот, чей срок службы кончается внутри горизонта, покупается снова. Остаточная стоимость оборудования на конец горизонта не учитывается: затраты за горизонт, NPV и ROI консервативны, особенно если робота пришлось купить снова незадолго до конца горизонта.",
-    "Замена батареи: 15% цены робота в годы 4, 8 и далее внутри срока службы, разовым платежом в своём году.",
-    "RaaS: по умолчанию 2,5% цены в месяц, переменный тариф растёт с годовым объёмом, смешанный берёт половину от каждого. Срок контракта равен горизонту. Оборудование, батареи и замена роботов входят в плату. Ставки заданы командой, не договором.",
-    "Доступность 90%, загрузка 80% (середина диапазона AMR 70-85% из легенды датасета), резерв 15%. Зарядка учтена в доступности.",
+    "Замена батареи: 15% цены робота каждые 4 года внутри срока службы, разовым платежом в своём году.",
+    "RaaS: по умолчанию 2,5% цены в месяц, переменный тариф растёт с годовым объёмом, смешанный берёт половину от каждого. Срок контракта равен горизонту. Оборудование, доставка, батареи и замена роботов входят в плату. Ставки заданы командой, не договором.",
+    "Доступность 90%, загрузка 80%, резерв 15%. Зарядка учтена в доступности. По нормативу загрузка 80% взята из середины диапазона AMR 70-85% легенды датасета.",
     "Денежная экономия труда задаётся долей высвобождённого ФОТ.",
     "Начисления на ФОТ заданы параметром объекта, взносы выше предельной базы 2 979 000 ₽ на человека в год считаются по ставке 15,1%.",
-    "Энергия: 2 кВт на робота, 6,5 ₽/кВт·ч. Лицензии 80 000 ₽ и расходники 20 000 ₽ на робота в год. Это суммы с НДС.",
+    "Энергия: 2 кВт на робота, 6,5 ₽/кВт·ч. Лицензии 80 000 ₽, расходники 20 000 ₽ и связь 12 000 ₽ на робота в год. Это суммы с НДС.",
+    "Сервис и ремонт: доля стоимости оборудования в год, отдельной статьи на ремонт нет. Доставка 3% оборудования входит в CAPEX покупки.",
+    "Персонал эксплуатации: один техник на 10 роботов в каждую смену, зарплата 90 000 ₽ в месяц, начисления как у остальных ролей. Зарплата НДС не облагается.",
+    "Число зарядных станций считается по времени работы и зарядки роботов из ТТХ. Для робота без этих данных принята одна станция на 4 робота. Стоимость станций входит в инфраструктуру, отдельной статьи на них нет.",
     "Нет прочих текущих затрат процесса в параметрах, кроме ФОТ целевых ролей.",
     "Общая инфраструктура, ПО, интеграция, ПНР и обучение считаются один раз на вариант, не на каждую позицию флота.",
     "НДС 22% входит в цены и не принимается к вычету: в денежный расчёт идёт цена с НДС.",
     "Ни один робот не прошёл все проверки, взят лучший из требующих проверки. Что уточнить, сказано на вкладке Роботы.",
-    "Процесс расчёта: штучный отбор (строки комплектации)."
+    "Процесс расчёта: штучный отбор (строки комплектации).",
+    "В чувствительности сдвиг объёма меняет и флот: число роботов считается от нового пика. База ФОТ не меняется."
    ],
    "verification_flag": false,
    "formulas": [
@@ -1581,28 +1642,46 @@
      "mathml": "\u003cmath display=\"block\"\u003e\u003cmrow\u003e\u003cmtext\u003eФлот\u003c/mtext\u003e\u003cmspace width=\"0.2778em\"/\u003e\u003cmo lspace=\"0\" rspace=\"0\"\u003e=\u003c/mo\u003e\u003cmspace width=\"0.2778em\"/\u003e\u003cmrow\u003e\u003cmrow\u003e\u003cmo fence=\"true\"\u003e⌈\u003c/mo\u003e\u003cmrow\u003e\u003cmo fence=\"true\"\u003e⌈\u003c/mo\u003e\u003cmfrac\u003e\u003cmtext\u003eПик\u003c/mtext\u003e\u003cmrow\u003e\u003cmtext\u003eПроизводительность\u003c/mtext\u003e\u003cmspace width=\"0.2222em\"/\u003e\u003cmo lspace=\"0\" rspace=\"0\"\u003e×\u003c/mo\u003e\u003cmspace width=\"0.2222em\"/\u003e\u003cmn\u003e0,90\u003c/mn\u003e\u003cmspace width=\"0.2222em\"/\u003e\u003cmo lspace=\"0\" rspace=\"0\"\u003e×\u003c/mo\u003e\u003cmspace width=\"0.2222em\"/\u003e\u003cmn\u003e0,80\u003c/mn\u003e\u003c/mrow\u003e\u003c/mfrac\u003e\u003cmo fence=\"true\"\u003e⌉\u003c/mo\u003e\u003c/mrow\u003e\u003cmspace width=\"0.2222em\"/\u003e\u003cmo lspace=\"0\" rspace=\"0\"\u003e×\u003c/mo\u003e\u003cmspace width=\"0.2222em\"/\u003e\u003cmn\u003e1,15\u003c/mn\u003e\u003cmo fence=\"true\"\u003e⌉\u003c/mo\u003e\u003c/mrow\u003e\u003c/mrow\u003e\u003c/mrow\u003e\u003c/math\u003e"
     },
     {
+     "id": "chargers",
+     "text": "зарядные станции = для позиции с ТТХ вверх до целого от количества x время зарядки / (время работы + время зарядки), без ТТХ вверх до целого от количества / 4, у флота не меньше одной",
+     "unit": "шт",
+     "mathml": "\u003cmath display=\"block\"\u003e\u003cmrow\u003e\u003cmtext\u003eЗарядные станции\u003c/mtext\u003e\u003cmspace width=\"0.2778em\"/\u003e\u003cmo lspace=\"0\" rspace=\"0\"\u003e=\u003c/mo\u003e\u003cmspace width=\"0.2778em\"/\u003e\u003cmrow\u003e\u003cmtext\u003eс ТТХ: \u003c/mtext\u003e\u003cmrow\u003e\u003cmo fence=\"true\"\u003e⌈\u003c/mo\u003e\u003cmrow\u003e\u003cmtext\u003eКоличество\u003c/mtext\u003e\u003cmspace width=\"0.2222em\"/\u003e\u003cmo lspace=\"0\" rspace=\"0\"\u003e×\u003c/mo\u003e\u003cmspace width=\"0.2222em\"/\u003e\u003cmfrac\u003e\u003cmtext\u003eВремя зарядки\u003c/mtext\u003e\u003cmrow\u003e\u003cmtext\u003eВремя работы\u003c/mtext\u003e\u003cmspace width=\"0.2222em\"/\u003e\u003cmo lspace=\"0\" rspace=\"0\"\u003e+\u003c/mo\u003e\u003cmspace width=\"0.2222em\"/\u003e\u003cmtext\u003eВремя зарядки\u003c/mtext\u003e\u003c/mrow\u003e\u003c/mfrac\u003e\u003c/mrow\u003e\u003cmo fence=\"true\"\u003e⌉\u003c/mo\u003e\u003c/mrow\u003e\u003cmtext\u003e; без ТТХ: \u003c/mtext\u003e\u003cmrow\u003e\u003cmo fence=\"true\"\u003e⌈\u003c/mo\u003e\u003cmfrac\u003e\u003cmtext\u003eКоличество\u003c/mtext\u003e\u003cmn\u003e4\u003c/mn\u003e\u003c/mfrac\u003e\u003cmo fence=\"true\"\u003e⌉\u003c/mo\u003e\u003c/mrow\u003e\u003c/mrow\u003e\u003c/mrow\u003e\u003c/math\u003e"
+    },
+    {
      "id": "capex_buy",
-     "text": "CAPEX покупка = (оборудование + инфраструктура + ПО + интеграция + ПНР + обучение) x 1,10",
+     "text": "CAPEX покупка = (оборудование + доставка + инфраструктура + ПО + интеграция + ПНР + обучение) x 1,10",
      "unit": "₽",
-     "mathml": "\u003cmath display=\"block\"\u003e\u003cmrow\u003e\u003cmtext\u003eCAPEX покупки\u003c/mtext\u003e\u003cmspace width=\"0.2778em\"/\u003e\u003cmo lspace=\"0\" rspace=\"0\"\u003e=\u003c/mo\u003e\u003cmspace width=\"0.2778em\"/\u003e\u003cmrow\u003e\u003cmrow\u003e\u003cmo fence=\"true\"\u003e(\u003c/mo\u003e\u003cmrow\u003e\u003cmtext\u003eОборудование\u003c/mtext\u003e\u003cmspace width=\"0.2222em\"/\u003e\u003cmo lspace=\"0\" rspace=\"0\"\u003e+\u003c/mo\u003e\u003cmspace width=\"0.2222em\"/\u003e\u003cmtext\u003eИнфраструктура\u003c/mtext\u003e\u003cmspace width=\"0.2222em\"/\u003e\u003cmo lspace=\"0\" rspace=\"0\"\u003e+\u003c/mo\u003e\u003cmspace width=\"0.2222em\"/\u003e\u003cmtext\u003eПО\u003c/mtext\u003e\u003cmspace width=\"0.2222em\"/\u003e\u003cmo lspace=\"0\" rspace=\"0\"\u003e+\u003c/mo\u003e\u003cmspace width=\"0.2222em\"/\u003e\u003cmtext\u003eИнтеграция\u003c/mtext\u003e\u003cmspace width=\"0.2222em\"/\u003e\u003cmo lspace=\"0\" rspace=\"0\"\u003e+\u003c/mo\u003e\u003cmspace width=\"0.2222em\"/\u003e\u003cmtext\u003eПНР\u003c/mtext\u003e\u003cmspace width=\"0.2222em\"/\u003e\u003cmo lspace=\"0\" rspace=\"0\"\u003e+\u003c/mo\u003e\u003cmspace width=\"0.2222em\"/\u003e\u003cmtext\u003eОбучение\u003c/mtext\u003e\u003c/mrow\u003e\u003cmo fence=\"true\"\u003e)\u003c/mo\u003e\u003c/mrow\u003e\u003cmspace width=\"0.2222em\"/\u003e\u003cmo lspace=\"0\" rspace=\"0\"\u003e×\u003c/mo\u003e\u003cmspace width=\"0.2222em\"/\u003e\u003cmn\u003e1,10\u003c/mn\u003e\u003c/mrow\u003e\u003c/mrow\u003e\u003c/math\u003e"
+     "mathml": "\u003cmath display=\"block\"\u003e\u003cmrow\u003e\u003cmtext\u003eCAPEX покупки\u003c/mtext\u003e\u003cmspace width=\"0.2778em\"/\u003e\u003cmo lspace=\"0\" rspace=\"0\"\u003e=\u003c/mo\u003e\u003cmspace width=\"0.2778em\"/\u003e\u003cmrow\u003e\u003cmrow\u003e\u003cmo fence=\"true\"\u003e(\u003c/mo\u003e\u003cmrow\u003e\u003cmtext\u003eОборудование\u003c/mtext\u003e\u003cmspace width=\"0.2222em\"/\u003e\u003cmo lspace=\"0\" rspace=\"0\"\u003e+\u003c/mo\u003e\u003cmspace width=\"0.2222em\"/\u003e\u003cmtext\u003eДоставка\u003c/mtext\u003e\u003cmspace width=\"0.2222em\"/\u003e\u003cmo lspace=\"0\" rspace=\"0\"\u003e+\u003c/mo\u003e\u003cmspace width=\"0.2222em\"/\u003e\u003cmtext\u003eИнфраструктура\u003c/mtext\u003e\u003cmspace width=\"0.2222em\"/\u003e\u003cmo lspace=\"0\" rspace=\"0\"\u003e+\u003c/mo\u003e\u003cmspace width=\"0.2222em\"/\u003e\u003cmtext\u003eПО\u003c/mtext\u003e\u003cmspace width=\"0.2222em\"/\u003e\u003cmo lspace=\"0\" rspace=\"0\"\u003e+\u003c/mo\u003e\u003cmspace width=\"0.2222em\"/\u003e\u003cmtext\u003eИнтеграция\u003c/mtext\u003e\u003cmspace width=\"0.2222em\"/\u003e\u003cmo lspace=\"0\" rspace=\"0\"\u003e+\u003c/mo\u003e\u003cmspace width=\"0.2222em\"/\u003e\u003cmtext\u003eПНР\u003c/mtext\u003e\u003cmspace width=\"0.2222em\"/\u003e\u003cmo lspace=\"0\" rspace=\"0\"\u003e+\u003c/mo\u003e\u003cmspace width=\"0.2222em\"/\u003e\u003cmtext\u003eОбучение\u003c/mtext\u003e\u003c/mrow\u003e\u003cmo fence=\"true\"\u003e)\u003c/mo\u003e\u003c/mrow\u003e\u003cmspace width=\"0.2222em\"/\u003e\u003cmo lspace=\"0\" rspace=\"0\"\u003e×\u003c/mo\u003e\u003cmspace width=\"0.2222em\"/\u003e\u003cmn\u003e1,10\u003c/mn\u003e\u003c/mrow\u003e\u003c/mrow\u003e\u003c/math\u003e"
     },
     {
      "id": "capex_raas",
-     "text": "CAPEX RaaS = (инфраструктура + ПО + интеграция + ПНР + обучение) x 1,10, без оборудования",
+     "text": "CAPEX RaaS = (инфраструктура + ПО + интеграция + ПНР + обучение) x 1,10, без оборудования и доставки",
      "unit": "₽",
      "mathml": "\u003cmath display=\"block\"\u003e\u003cmrow\u003e\u003cmtext\u003eCAPEX RaaS\u003c/mtext\u003e\u003cmspace width=\"0.2778em\"/\u003e\u003cmo lspace=\"0\" rspace=\"0\"\u003e=\u003c/mo\u003e\u003cmspace width=\"0.2778em\"/\u003e\u003cmrow\u003e\u003cmrow\u003e\u003cmo fence=\"true\"\u003e(\u003c/mo\u003e\u003cmrow\u003e\u003cmtext\u003eИнфраструктура\u003c/mtext\u003e\u003cmspace width=\"0.2222em\"/\u003e\u003cmo lspace=\"0\" rspace=\"0\"\u003e+\u003c/mo\u003e\u003cmspace width=\"0.2222em\"/\u003e\u003cmtext\u003eПО\u003c/mtext\u003e\u003cmspace width=\"0.2222em\"/\u003e\u003cmo lspace=\"0\" rspace=\"0\"\u003e+\u003c/mo\u003e\u003cmspace width=\"0.2222em\"/\u003e\u003cmtext\u003eИнтеграция\u003c/mtext\u003e\u003cmspace width=\"0.2222em\"/\u003e\u003cmo lspace=\"0\" rspace=\"0\"\u003e+\u003c/mo\u003e\u003cmspace width=\"0.2222em\"/\u003e\u003cmtext\u003eПНР\u003c/mtext\u003e\u003cmspace width=\"0.2222em\"/\u003e\u003cmo lspace=\"0\" rspace=\"0\"\u003e+\u003c/mo\u003e\u003cmspace width=\"0.2222em\"/\u003e\u003cmtext\u003eОбучение\u003c/mtext\u003e\u003c/mrow\u003e\u003cmo fence=\"true\"\u003e)\u003c/mo\u003e\u003c/mrow\u003e\u003cmspace width=\"0.2222em\"/\u003e\u003cmo lspace=\"0\" rspace=\"0\"\u003e×\u003c/mo\u003e\u003cmspace width=\"0.2222em\"/\u003e\u003cmn\u003e1,10\u003c/mn\u003e\u003c/mrow\u003e\u003c/mrow\u003e\u003c/math\u003e"
     },
     {
+     "id": "delivery",
+     "text": "доставка = 3% оборудования, только в CAPEX покупки",
+     "unit": "₽",
+     "mathml": "\u003cmath display=\"block\"\u003e\u003cmrow\u003e\u003cmtext\u003eДоставка\u003c/mtext\u003e\u003cmspace width=\"0.2778em\"/\u003e\u003cmo lspace=\"0\" rspace=\"0\"\u003e=\u003c/mo\u003e\u003cmspace width=\"0.2778em\"/\u003e\u003cmrow\u003e\u003cmrow\u003e\u003cmn\u003e3%\u003c/mn\u003e\u003cmspace width=\"0.2222em\"/\u003e\u003cmo lspace=\"0\" rspace=\"0\"\u003e×\u003c/mo\u003e\u003cmspace width=\"0.2222em\"/\u003e\u003cmtext\u003eОборудование\u003c/mtext\u003e\u003c/mrow\u003e\u003cmtext\u003e, только в CAPEX покупки\u003c/mtext\u003e\u003c/mrow\u003e\u003c/mrow\u003e\u003c/math\u003e"
+    },
+    {
      "id": "opex_buy",
-     "text": "OPEX покупка = ФОТ остатка + сервис + лицензии + энергия + расходники, без разовых замен",
+     "text": "OPEX покупка = ФОТ остатка + сервис и ремонт + лицензии + энергия + расходники + связь + персонал эксплуатации, без разовых замен",
      "unit": "₽/год",
-     "mathml": "\u003cmath display=\"block\"\u003e\u003cmrow\u003e\u003cmtext\u003eOPEX покупки\u003c/mtext\u003e\u003cmspace width=\"0.2778em\"/\u003e\u003cmo lspace=\"0\" rspace=\"0\"\u003e=\u003c/mo\u003e\u003cmspace width=\"0.2778em\"/\u003e\u003cmrow\u003e\u003cmrow\u003e\u003cmtext\u003eФОТ остатка\u003c/mtext\u003e\u003cmspace width=\"0.2222em\"/\u003e\u003cmo lspace=\"0\" rspace=\"0\"\u003e+\u003c/mo\u003e\u003cmspace width=\"0.2222em\"/\u003e\u003cmtext\u003eСервис\u003c/mtext\u003e\u003cmspace width=\"0.2222em\"/\u003e\u003cmo lspace=\"0\" rspace=\"0\"\u003e+\u003c/mo\u003e\u003cmspace width=\"0.2222em\"/\u003e\u003cmtext\u003eЛицензии\u003c/mtext\u003e\u003cmspace width=\"0.2222em\"/\u003e\u003cmo lspace=\"0\" rspace=\"0\"\u003e+\u003c/mo\u003e\u003cmspace width=\"0.2222em\"/\u003e\u003cmtext\u003eЭнергия\u003c/mtext\u003e\u003cmspace width=\"0.2222em\"/\u003e\u003cmo lspace=\"0\" rspace=\"0\"\u003e+\u003c/mo\u003e\u003cmspace width=\"0.2222em\"/\u003e\u003cmtext\u003eРасходники\u003c/mtext\u003e\u003c/mrow\u003e\u003c/mrow\u003e\u003c/mrow\u003e\u003c/math\u003e"
+     "mathml": "\u003cmath display=\"block\"\u003e\u003cmrow\u003e\u003cmtext\u003eOPEX покупки\u003c/mtext\u003e\u003cmspace width=\"0.2778em\"/\u003e\u003cmo lspace=\"0\" rspace=\"0\"\u003e=\u003c/mo\u003e\u003cmspace width=\"0.2778em\"/\u003e\u003cmrow\u003e\u003cmrow\u003e\u003cmtext\u003eФОТ остатка\u003c/mtext\u003e\u003cmspace width=\"0.2222em\"/\u003e\u003cmo lspace=\"0\" rspace=\"0\"\u003e+\u003c/mo\u003e\u003cmspace width=\"0.2222em\"/\u003e\u003cmtext\u003eСервис и ремонт\u003c/mtext\u003e\u003cmspace width=\"0.2222em\"/\u003e\u003cmo lspace=\"0\" rspace=\"0\"\u003e+\u003c/mo\u003e\u003cmspace width=\"0.2222em\"/\u003e\u003cmtext\u003eЛицензии\u003c/mtext\u003e\u003cmspace width=\"0.2222em\"/\u003e\u003cmo lspace=\"0\" rspace=\"0\"\u003e+\u003c/mo\u003e\u003cmspace width=\"0.2222em\"/\u003e\u003cmtext\u003eЭнергия\u003c/mtext\u003e\u003cmspace width=\"0.2222em\"/\u003e\u003cmo lspace=\"0\" rspace=\"0\"\u003e+\u003c/mo\u003e\u003cmspace width=\"0.2222em\"/\u003e\u003cmtext\u003eРасходники\u003c/mtext\u003e\u003cmspace width=\"0.2222em\"/\u003e\u003cmo lspace=\"0\" rspace=\"0\"\u003e+\u003c/mo\u003e\u003cmspace width=\"0.2222em\"/\u003e\u003cmtext\u003eСвязь\u003c/mtext\u003e\u003cmspace width=\"0.2222em\"/\u003e\u003cmo lspace=\"0\" rspace=\"0\"\u003e+\u003c/mo\u003e\u003cmspace width=\"0.2222em\"/\u003e\u003cmtext\u003eПерсонал эксплуатации\u003c/mtext\u003e\u003c/mrow\u003e\u003c/mrow\u003e\u003c/mrow\u003e\u003c/math\u003e"
     },
     {
      "id": "opex_raas",
-     "text": "OPEX RaaS = ФОТ остатка + плата тарифа + энергия + расходники",
+     "text": "OPEX RaaS = ФОТ остатка + плата тарифа + энергия + расходники + связь + персонал эксплуатации",
      "unit": "₽/год",
-     "mathml": "\u003cmath display=\"block\"\u003e\u003cmrow\u003e\u003cmtext\u003eOPEX RaaS\u003c/mtext\u003e\u003cmspace width=\"0.2778em\"/\u003e\u003cmo lspace=\"0\" rspace=\"0\"\u003e=\u003c/mo\u003e\u003cmspace width=\"0.2778em\"/\u003e\u003cmrow\u003e\u003cmrow\u003e\u003cmtext\u003eФОТ остатка\u003c/mtext\u003e\u003cmspace width=\"0.2222em\"/\u003e\u003cmo lspace=\"0\" rspace=\"0\"\u003e+\u003c/mo\u003e\u003cmspace width=\"0.2222em\"/\u003e\u003cmtext\u003eПлата по тарифу\u003c/mtext\u003e\u003cmspace width=\"0.2222em\"/\u003e\u003cmo lspace=\"0\" rspace=\"0\"\u003e+\u003c/mo\u003e\u003cmspace width=\"0.2222em\"/\u003e\u003cmtext\u003eЭнергия\u003c/mtext\u003e\u003cmspace width=\"0.2222em\"/\u003e\u003cmo lspace=\"0\" rspace=\"0\"\u003e+\u003c/mo\u003e\u003cmspace width=\"0.2222em\"/\u003e\u003cmtext\u003eРасходники\u003c/mtext\u003e\u003c/mrow\u003e\u003c/mrow\u003e\u003c/mrow\u003e\u003c/math\u003e"
+     "mathml": "\u003cmath display=\"block\"\u003e\u003cmrow\u003e\u003cmtext\u003eOPEX RaaS\u003c/mtext\u003e\u003cmspace width=\"0.2778em\"/\u003e\u003cmo lspace=\"0\" rspace=\"0\"\u003e=\u003c/mo\u003e\u003cmspace width=\"0.2778em\"/\u003e\u003cmrow\u003e\u003cmrow\u003e\u003cmtext\u003eФОТ остатка\u003c/mtext\u003e\u003cmspace width=\"0.2222em\"/\u003e\u003cmo lspace=\"0\" rspace=\"0\"\u003e+\u003c/mo\u003e\u003cmspace width=\"0.2222em\"/\u003e\u003cmtext\u003eПлата по тарифу\u003c/mtext\u003e\u003cmspace width=\"0.2222em\"/\u003e\u003cmo lspace=\"0\" rspace=\"0\"\u003e+\u003c/mo\u003e\u003cmspace width=\"0.2222em\"/\u003e\u003cmtext\u003eЭнергия\u003c/mtext\u003e\u003cmspace width=\"0.2222em\"/\u003e\u003cmo lspace=\"0\" rspace=\"0\"\u003e+\u003c/mo\u003e\u003cmspace width=\"0.2222em\"/\u003e\u003cmtext\u003eРасходники\u003c/mtext\u003e\u003cmspace width=\"0.2222em\"/\u003e\u003cmo lspace=\"0\" rspace=\"0\"\u003e+\u003c/mo\u003e\u003cmspace width=\"0.2222em\"/\u003e\u003cmtext\u003eСвязь\u003c/mtext\u003e\u003cmspace width=\"0.2222em\"/\u003e\u003cmo lspace=\"0\" rspace=\"0\"\u003e+\u003c/mo\u003e\u003cmspace width=\"0.2222em\"/\u003e\u003cmtext\u003eПерсонал эксплуатации\u003c/mtext\u003e\u003c/mrow\u003e\u003c/mrow\u003e\u003c/mrow\u003e\u003c/math\u003e"
+    },
+    {
+     "id": "technicians",
+     "text": "персонал эксплуатации = вверх до целого от флота / 10, x число смен x зарплата x 12 x (1 + начисления)",
+     "unit": "₽/год",
+     "mathml": "\u003cmath display=\"block\"\u003e\u003cmrow\u003e\u003cmtext\u003eПерсонал эксплуатации\u003c/mtext\u003e\u003cmspace width=\"0.2778em\"/\u003e\u003cmo lspace=\"0\" rspace=\"0\"\u003e=\u003c/mo\u003e\u003cmspace width=\"0.2778em\"/\u003e\u003cmrow\u003e\u003cmrow\u003e\u003cmo fence=\"true\"\u003e⌈\u003c/mo\u003e\u003cmfrac\u003e\u003cmtext\u003eФлот\u003c/mtext\u003e\u003cmn\u003e10\u003c/mn\u003e\u003c/mfrac\u003e\u003cmo fence=\"true\"\u003e⌉\u003c/mo\u003e\u003c/mrow\u003e\u003cmspace width=\"0.2222em\"/\u003e\u003cmo lspace=\"0\" rspace=\"0\"\u003e×\u003c/mo\u003e\u003cmspace width=\"0.2222em\"/\u003e\u003cmrow\u003e\u003cmtext\u003eСмены\u003c/mtext\u003e\u003cmspace width=\"0.2222em\"/\u003e\u003cmo lspace=\"0\" rspace=\"0\"\u003e×\u003c/mo\u003e\u003cmspace width=\"0.2222em\"/\u003e\u003cmtext\u003eОклад\u003c/mtext\u003e\u003c/mrow\u003e\u003cmspace width=\"0.2222em\"/\u003e\u003cmo lspace=\"0\" rspace=\"0\"\u003e×\u003c/mo\u003e\u003cmspace width=\"0.2222em\"/\u003e\u003cmn\u003e12\u003c/mn\u003e\u003cmspace width=\"0.2222em\"/\u003e\u003cmo lspace=\"0\" rspace=\"0\"\u003e×\u003c/mo\u003e\u003cmspace width=\"0.2222em\"/\u003e\u003cmrow\u003e\u003cmo fence=\"true\"\u003e(\u003c/mo\u003e\u003cmrow\u003e\u003cmn\u003e1\u003c/mn\u003e\u003cmspace width=\"0.2222em\"/\u003e\u003cmo lspace=\"0\" rspace=\"0\"\u003e+\u003c/mo\u003e\u003cmspace width=\"0.2222em\"/\u003e\u003cmtext\u003eНачисления\u003c/mtext\u003e\u003c/mrow\u003e\u003cmo fence=\"true\"\u003e)\u003c/mo\u003e\u003c/mrow\u003e\u003c/mrow\u003e\u003c/mrow\u003e\u003c/math\u003e"
     },
     {
      "id": "baseline_opex",
@@ -1630,9 +1709,9 @@
     },
     {
      "id": "battery",
-     "text": "замена батареи = 15% цены робота в годы 4, 8 и далее, пока они внутри срока службы и горизонта",
+     "text": "замена батареи = 15% цены робота каждые 4 года, пока это внутри срока службы и горизонта",
      "unit": "₽",
-     "mathml": "\u003cmath display=\"block\"\u003e\u003cmrow\u003e\u003cmtext\u003eЗамена батареи\u003c/mtext\u003e\u003cmspace width=\"0.2778em\"/\u003e\u003cmo lspace=\"0\" rspace=\"0\"\u003e=\u003c/mo\u003e\u003cmspace width=\"0.2778em\"/\u003e\u003cmrow\u003e\u003cmrow\u003e\u003cmn\u003e15%\u003c/mn\u003e\u003cmspace width=\"0.2222em\"/\u003e\u003cmo lspace=\"0\" rspace=\"0\"\u003e×\u003c/mo\u003e\u003cmspace width=\"0.2222em\"/\u003e\u003cmtext\u003eЦена робота\u003c/mtext\u003e\u003c/mrow\u003e\u003cmtext\u003e, в годы 4, 8 и далее внутри срока службы\u003c/mtext\u003e\u003c/mrow\u003e\u003c/mrow\u003e\u003c/math\u003e"
+     "mathml": "\u003cmath display=\"block\"\u003e\u003cmrow\u003e\u003cmtext\u003eЗамена батареи\u003c/mtext\u003e\u003cmspace width=\"0.2778em\"/\u003e\u003cmo lspace=\"0\" rspace=\"0\"\u003e=\u003c/mo\u003e\u003cmspace width=\"0.2778em\"/\u003e\u003cmrow\u003e\u003cmrow\u003e\u003cmn\u003e15%\u003c/mn\u003e\u003cmspace width=\"0.2222em\"/\u003e\u003cmo lspace=\"0\" rspace=\"0\"\u003e×\u003c/mo\u003e\u003cmspace width=\"0.2222em\"/\u003e\u003cmtext\u003eЦена робота\u003c/mtext\u003e\u003c/mrow\u003e\u003cmtext\u003e, каждые 4 года внутри срока службы\u003c/mtext\u003e\u003c/mrow\u003e\u003c/mrow\u003e\u003c/math\u003e"
     },
     {
      "id": "replacement",
@@ -1684,7 +1763,7 @@
     },
     {
      "id": "depreciation",
-     "text": "амортизация линейная: робот = цена / его срок службы, инфраструктура, ПО, интеграция и ПНР = стоимость / 7 лет. Обучение и резерв не амортизируются",
+     "text": "амортизация линейная: робот = цена / его срок службы, доставка, инфраструктура, ПО, интеграция и ПНР = стоимость / 7 лет. Обучение и резерв не амортизируются",
      "unit": "₽/год",
      "mathml": "\u003cmath display=\"block\"\u003e\u003cmrow\u003e\u003cmtext\u003eАмортизация\u003c/mtext\u003e\u003cmspace width=\"0.2778em\"/\u003e\u003cmo lspace=\"0\" rspace=\"0\"\u003e=\u003c/mo\u003e\u003cmspace width=\"0.2778em\"/\u003e\u003cmrow\u003e\u003cmfrac\u003e\u003cmtext\u003eСтоимость актива\u003c/mtext\u003e\u003cmtext\u003eСрок службы\u003c/mtext\u003e\u003c/mfrac\u003e\u003cmtext\u003e, обучение и резерв не амортизируются\u003c/mtext\u003e\u003c/mrow\u003e\u003c/mrow\u003e\u003c/math\u003e"
     },
@@ -1738,8 +1817,9 @@
     "Цена изделия: каталог роботов, с НДС.",
     "ФОТ, режим, объёмы, горизонт: параметры объекта (демо-колонка датасета).",
     "Начисления на ФОТ: параметр объекта «Начисления на ФОТ», по умолчанию 1,302. Предельная база взносов 2 979 000 ₽ на человека в год и ставка 15,1% выше неё: правила 2026 года.",
-    "Доступность и загрузка: легенда датасета (AMR 70-85%), принята середина 80% и доступность 90%.",
-    "Статьи CAPEX сверх изделия: допущение команды, доли зафиксированы в модели расчёта.",
+    "Доступность и загрузка: набор допущений, а по нормативу легенда датасета (AMR 70-85%): середина 80% и доступность 90%.",
+    "Статьи CAPEX сверх изделия и доставка: допущение команды, значения по нормативам модели.",
+    "Связь, персонал эксплуатации, число зарядных станций без ТТХ: допущение команды, значения по нормативам модели.",
     "Ставка RaaS: допущение команды. Фиксированный 2,5% в месяц, переменный от объёма, смешанный 50/50.",
     "НДС: ставка и вычет задаются набором допущений. Цена из каталога с НДС, при вычете в денежный расчёт идёт цена без НДС.",
     "Ставка дисконтирования: набор допущений, по умолчанию 15% в год, постоянные цены.",
@@ -1760,6 +1840,14 @@
      "id": "equipment",
      "label": "Оборудование (цена x флот)",
      "rub": 527000000
+    },
+    {
+     "scenario": "buy",
+     "bucket": "capex",
+     "id": "delivery",
+     "label": "Доставка 3% оборудования",
+     "rub": 15810000,
+     "note": "не вносите доставку ещё раз общей статьёй"
     },
     {
      "scenario": "buy",
@@ -1802,7 +1890,7 @@
      "bucket": "capex",
      "id": "contingency",
      "label": "Резерв 10% суммы статей",
-     "rub": 75361000
+     "rub": 76942000
     },
     {
      "scenario": "buy",
@@ -1816,7 +1904,7 @@
      "scenario": "buy",
      "bucket": "opex",
      "id": "service",
-     "label": "Сервис",
+     "label": "Сервис и ремонт",
      "rub": 42160000
     },
     {
@@ -1842,11 +1930,27 @@
     },
     {
      "scenario": "buy",
+     "bucket": "opex",
+     "id": "communications",
+     "label": "Связь",
+     "rub": 2040000,
+     "note": "12 000 ₽ в год на робота"
+    },
+    {
+     "scenario": "buy",
+     "bucket": "opex",
+     "id": "technicians",
+     "label": "Персонал эксплуатации",
+     "rub": 47809440,
+     "note": "34 чел, по одному на 10 роботов в смену"
+    },
+    {
+     "scenario": "buy",
      "bucket": "replacement",
      "id": "battery",
      "label": "Замена батарей за горизонт",
      "rub": 79050000,
-     "note": "15% цены робота в годы 4, 8 и далее внутри срока службы"
+     "note": "15% цены робота каждые 4 года внутри срока службы"
     },
     {
      "scenario": "raas",
@@ -1918,6 +2022,22 @@
      "id": "consumables",
      "label": "Расходники",
      "rub": 3400000
+    },
+    {
+     "scenario": "raas",
+     "bucket": "opex",
+     "id": "communications",
+     "label": "Связь",
+     "rub": 2040000,
+     "note": "12 000 ₽ в год на робота"
+    },
+    {
+     "scenario": "raas",
+     "bucket": "opex",
+     "id": "technicians",
+     "label": "Персонал эксплуатации",
+     "rub": 47809440,
+     "note": "34 чел, по одному на 10 роботов в смену"
     }
    ],
    "sensitivity": [
@@ -1928,55 +2048,54 @@
       "kind": "buy",
       "solution_id": "5760e938-9a43-45a7-b8e8-f4f2e6383930",
       "fleet_size": 170,
-      "capex_rub": 663176800,
-      "opex_year_rub": 130970300,
-      "annual_effect_rub": 25269700,
+      "capex_rub": 677089600,
+      "opex_year_rub": 180819740,
+      "annual_effect_rub": -24579740,
       "payback_years": null,
       "payback_band": "none",
-      "roi_pct": -90.48,
-      "tco_rub": 1381268300,
-      "accounting_effect_rub": -59050300,
+      "roi_pct": -127.49,
+      "tco_rub": 1644428300,
+      "accounting_effect_rub": -110706597,
       "labor_cash_saved_rub": 93744000,
       "price_source": "project_override",
-      "npv_rub": -614626522,
-      "irr_pct": -51.94,
+      "npv_rub": -795642376,
       "cash_flow": [
        {
         "year": 0,
         "effect_rub": 0,
-        "net_rub": -663176800,
-        "cumulative_rub": -663176800
+        "net_rub": -677089600,
+        "cumulative_rub": -677089600
        },
        {
         "year": 1,
-        "effect_rub": 25269700,
-        "net_rub": 25269700,
-        "cumulative_rub": -637907100
+        "effect_rub": -24579740,
+        "net_rub": -24579740,
+        "cumulative_rub": -701669340
        },
        {
         "year": 2,
-        "effect_rub": 25269700,
-        "net_rub": 25269700,
-        "cumulative_rub": -612637400
+        "effect_rub": -24579740,
+        "net_rub": -24579740,
+        "cumulative_rub": -726249080
        },
        {
         "year": 3,
-        "effect_rub": 25269700,
-        "net_rub": 25269700,
-        "cumulative_rub": -587367700
+        "effect_rub": -24579740,
+        "net_rub": -24579740,
+        "cumulative_rub": -750828820
        },
        {
         "year": 4,
-        "effect_rub": 25269700,
+        "effect_rub": -24579740,
         "battery_rub": 63240000,
-        "net_rub": -37970300,
-        "cumulative_rub": -625338000
+        "net_rub": -87819740,
+        "cumulative_rub": -838648560
        },
        {
         "year": 5,
-        "effect_rub": 25269700,
-        "net_rub": 25269700,
-        "cumulative_rub": -600068300
+        "effect_rub": -24579740,
+        "net_rub": -24579740,
+        "cumulative_rub": -863228300
        }
       ]
      },
@@ -1985,17 +2104,17 @@
       "solution_id": "5760e938-9a43-45a7-b8e8-f4f2e6383930",
       "fleet_size": 170,
       "capex_rub": 199416800,
-      "opex_year_rub": 210122300,
-      "annual_effect_rub": -53882300,
+      "opex_year_rub": 259971740,
+      "annual_effect_rub": -103731740,
       "payback_years": null,
       "payback_band": "none",
-      "roi_pct": -235.1,
-      "tco_rub": 1250028300,
-      "accounting_effect_rub": -77973729,
+      "roi_pct": -360.09,
+      "tco_rub": 1499275500,
+      "accounting_effect_rub": -127823169,
       "labor_cash_saved_rub": 93744000,
       "tariff": "fixed",
       "price_source": "project_override",
-      "npv_rub": -380038627,
+      "npv_rub": -547141681,
       "cash_flow": [
        {
         "year": 0,
@@ -2005,33 +2124,33 @@
        },
        {
         "year": 1,
-        "effect_rub": -53882300,
-        "net_rub": -53882300,
-        "cumulative_rub": -253299100
+        "effect_rub": -103731740,
+        "net_rub": -103731740,
+        "cumulative_rub": -303148540
        },
        {
         "year": 2,
-        "effect_rub": -53882300,
-        "net_rub": -53882300,
-        "cumulative_rub": -307181400
+        "effect_rub": -103731740,
+        "net_rub": -103731740,
+        "cumulative_rub": -406880280
        },
        {
         "year": 3,
-        "effect_rub": -53882300,
-        "net_rub": -53882300,
-        "cumulative_rub": -361063700
+        "effect_rub": -103731740,
+        "net_rub": -103731740,
+        "cumulative_rub": -510612020
        },
        {
         "year": 4,
-        "effect_rub": -53882300,
-        "net_rub": -53882300,
-        "cumulative_rub": -414946000
+        "effect_rub": -103731740,
+        "net_rub": -103731740,
+        "cumulative_rub": -614343760
        },
        {
         "year": 5,
-        "effect_rub": -53882300,
-        "net_rub": -53882300,
-        "cumulative_rub": -468828300
+        "effect_rub": -103731740,
+        "net_rub": -103731740,
+        "cumulative_rub": -718075500
        }
       ]
      }
@@ -2043,54 +2162,54 @@
       "kind": "buy",
       "solution_id": "5760e938-9a43-45a7-b8e8-f4f2e6383930",
       "fleet_size": 170,
-      "capex_rub": 994765200,
-      "opex_year_rub": 147834300,
-      "annual_effect_rub": 8405700,
+      "capex_rub": 1015634400,
+      "opex_year_rub": 197683740,
+      "annual_effect_rub": -41443740,
       "payback_years": null,
       "payback_band": "none",
-      "roi_pct": -105.31,
-      "tco_rub": 1828796700,
-      "accounting_effect_rub": -118074300,
+      "roi_pct": -129.74,
+      "tco_rub": 2098913100,
+      "accounting_effect_rub": -170634026,
       "labor_cash_saved_rub": 93744000,
       "price_source": "project_override",
-      "npv_rub": -1020824503,
+      "npv_rub": -1208796757,
       "cash_flow": [
        {
         "year": 0,
         "effect_rub": 0,
-        "net_rub": -994765200,
-        "cumulative_rub": -994765200
+        "net_rub": -1015634400,
+        "cumulative_rub": -1015634400
        },
        {
         "year": 1,
-        "effect_rub": 8405700,
-        "net_rub": 8405700,
-        "cumulative_rub": -986359500
+        "effect_rub": -41443740,
+        "net_rub": -41443740,
+        "cumulative_rub": -1057078140
        },
        {
         "year": 2,
-        "effect_rub": 8405700,
-        "net_rub": 8405700,
-        "cumulative_rub": -977953800
+        "effect_rub": -41443740,
+        "net_rub": -41443740,
+        "cumulative_rub": -1098521880
        },
        {
         "year": 3,
-        "effect_rub": 8405700,
-        "net_rub": 8405700,
-        "cumulative_rub": -969548100
+        "effect_rub": -41443740,
+        "net_rub": -41443740,
+        "cumulative_rub": -1139965620
        },
        {
         "year": 4,
-        "effect_rub": 8405700,
+        "effect_rub": -41443740,
         "battery_rub": 94860000,
-        "net_rub": -86454300,
-        "cumulative_rub": -1056002400
+        "net_rub": -136303740,
+        "cumulative_rub": -1276269360
        },
        {
         "year": 5,
-        "effect_rub": 8405700,
-        "net_rub": 8405700,
-        "cumulative_rub": -1047596700
+        "effect_rub": -41443740,
+        "net_rub": -41443740,
+        "cumulative_rub": -1317713100
        }
       ]
      },
@@ -2099,17 +2218,17 @@
       "solution_id": "5760e938-9a43-45a7-b8e8-f4f2e6383930",
       "fleet_size": 170,
       "capex_rub": 299125200,
-      "opex_year_rub": 273362300,
-      "annual_effect_rub": -117122300,
+      "opex_year_rub": 323211740,
+      "annual_effect_rub": -166971740,
       "payback_years": null,
       "payback_band": "none",
-      "roi_pct": -295.77,
-      "tco_rub": 1665936700,
-      "accounting_effect_rub": -153259443,
+      "roi_pct": -379.1,
+      "tco_rub": 1915183900,
+      "accounting_effect_rub": -203108883,
       "labor_cash_saved_rub": 93744000,
       "tariff": "fixed",
       "price_source": "project_override",
-      "npv_rub": -691737315,
+      "npv_rub": -858840369,
       "cash_flow": [
        {
         "year": 0,
@@ -2119,33 +2238,33 @@
        },
        {
         "year": 1,
-        "effect_rub": -117122300,
-        "net_rub": -117122300,
-        "cumulative_rub": -416247500
+        "effect_rub": -166971740,
+        "net_rub": -166971740,
+        "cumulative_rub": -466096940
        },
        {
         "year": 2,
-        "effect_rub": -117122300,
-        "net_rub": -117122300,
-        "cumulative_rub": -533369800
+        "effect_rub": -166971740,
+        "net_rub": -166971740,
+        "cumulative_rub": -633068680
        },
        {
         "year": 3,
-        "effect_rub": -117122300,
-        "net_rub": -117122300,
-        "cumulative_rub": -650492100
+        "effect_rub": -166971740,
+        "net_rub": -166971740,
+        "cumulative_rub": -800040420
        },
        {
         "year": 4,
-        "effect_rub": -117122300,
-        "net_rub": -117122300,
-        "cumulative_rub": -767614400
+        "effect_rub": -166971740,
+        "net_rub": -166971740,
+        "cumulative_rub": -967012160
        },
        {
         "year": 5,
-        "effect_rub": -117122300,
-        "net_rub": -117122300,
-        "cumulative_rub": -884736700
+        "effect_rub": -166971740,
+        "net_rub": -166971740,
+        "cumulative_rub": -1133983900
        }
       ]
      }
@@ -2157,55 +2276,54 @@
       "kind": "buy",
       "solution_id": "5760e938-9a43-45a7-b8e8-f4f2e6383930",
       "fleet_size": 136,
-      "capex_rub": 663176800,
-      "opex_year_rub": 124021040,
-      "annual_effect_rub": 32218960,
+      "capex_rub": 677089600,
+      "opex_year_rub": 165025520,
+      "annual_effect_rub": -8785520,
       "payback_years": null,
       "payback_band": "none",
-      "roi_pct": -85.24,
-      "tco_rub": 1346522000,
-      "accounting_effect_rub": -52101040,
+      "roi_pct": -115.83,
+      "tco_rub": 1565457200,
+      "accounting_effect_rub": -94912377,
       "labor_cash_saved_rub": 93744000,
       "price_source": "catalog",
-      "npv_rub": -591331524,
-      "irr_pct": -45.07,
+      "npv_rub": -742697701,
       "cash_flow": [
        {
         "year": 0,
         "effect_rub": 0,
-        "net_rub": -663176800,
-        "cumulative_rub": -663176800
+        "net_rub": -677089600,
+        "cumulative_rub": -677089600
        },
        {
         "year": 1,
-        "effect_rub": 32218960,
-        "net_rub": 32218960,
-        "cumulative_rub": -630957840
+        "effect_rub": -8785520,
+        "net_rub": -8785520,
+        "cumulative_rub": -685875120
        },
        {
         "year": 2,
-        "effect_rub": 32218960,
-        "net_rub": 32218960,
-        "cumulative_rub": -598738880
+        "effect_rub": -8785520,
+        "net_rub": -8785520,
+        "cumulative_rub": -694660640
        },
        {
         "year": 3,
-        "effect_rub": 32218960,
-        "net_rub": 32218960,
-        "cumulative_rub": -566519920
+        "effect_rub": -8785520,
+        "net_rub": -8785520,
+        "cumulative_rub": -703446160
        },
        {
         "year": 4,
-        "effect_rub": 32218960,
+        "effect_rub": -8785520,
         "battery_rub": 63240000,
-        "net_rub": -31021040,
-        "cumulative_rub": -597540960
+        "net_rub": -72025520,
+        "cumulative_rub": -775471680
        },
        {
         "year": 5,
-        "effect_rub": 32218960,
-        "net_rub": 32218960,
-        "cumulative_rub": -565322000
+        "effect_rub": -8785520,
+        "net_rub": -8785520,
+        "cumulative_rub": -784257200
        }
       ]
      },
@@ -2214,17 +2332,17 @@
       "solution_id": "5760e938-9a43-45a7-b8e8-f4f2e6383930",
       "fleet_size": 136,
       "capex_rub": 199416800,
-      "opex_year_rub": 205893040,
-      "annual_effect_rub": -49653040,
+      "opex_year_rub": 246897520,
+      "annual_effect_rub": -90657520,
       "payback_years": null,
       "payback_band": "none",
-      "roi_pct": -224.5,
-      "tco_rub": 1228882000,
-      "accounting_effect_rub": -73744469,
+      "roi_pct": -327.31,
+      "tco_rub": 1433904400,
+      "accounting_effect_rub": -114748949,
       "labor_cash_saved_rub": 93744000,
       "tariff": "fixed",
       "price_source": "catalog",
-      "npv_rub": -365861491,
+      "npv_rub": -503314868,
       "cash_flow": [
        {
         "year": 0,
@@ -2234,33 +2352,33 @@
        },
        {
         "year": 1,
-        "effect_rub": -49653040,
-        "net_rub": -49653040,
-        "cumulative_rub": -249069840
+        "effect_rub": -90657520,
+        "net_rub": -90657520,
+        "cumulative_rub": -290074320
        },
        {
         "year": 2,
-        "effect_rub": -49653040,
-        "net_rub": -49653040,
-        "cumulative_rub": -298722880
+        "effect_rub": -90657520,
+        "net_rub": -90657520,
+        "cumulative_rub": -380731840
        },
        {
         "year": 3,
-        "effect_rub": -49653040,
-        "net_rub": -49653040,
-        "cumulative_rub": -348375920
+        "effect_rub": -90657520,
+        "net_rub": -90657520,
+        "cumulative_rub": -471389360
        },
        {
         "year": 4,
-        "effect_rub": -49653040,
-        "net_rub": -49653040,
-        "cumulative_rub": -398028960
+        "effect_rub": -90657520,
+        "net_rub": -90657520,
+        "cumulative_rub": -562046880
        },
        {
         "year": 5,
-        "effect_rub": -49653040,
-        "net_rub": -49653040,
-        "cumulative_rub": -447682000
+        "effect_rub": -90657520,
+        "net_rub": -90657520,
+        "cumulative_rub": -652704400
        }
       ]
      }
@@ -2272,54 +2390,54 @@
       "kind": "buy",
       "solution_id": "5760e938-9a43-45a7-b8e8-f4f2e6383930",
       "fleet_size": 203,
-      "capex_rub": 989888900,
-      "opex_year_rub": 154331170,
-      "annual_effect_rub": 1908830,
+      "capex_rub": 1010655800,
+      "opex_year_rub": 215825890,
+      "annual_effect_rub": -59585890,
       "payback_years": null,
       "payback_band": "none",
-      "roi_pct": -108.57,
-      "tco_rub": 1855939750,
-      "accounting_effect_rub": -123951170,
+      "roi_pct": -138.82,
+      "tco_rub": 2184180250,
+      "accounting_effect_rub": -188142890,
       "labor_cash_saved_rub": 93744000,
       "price_source": "catalog",
-      "npv_rub": -1037460853,
+      "npv_rub": -1264367593,
       "cash_flow": [
        {
         "year": 0,
         "effect_rub": 0,
-        "net_rub": -989888900,
-        "cumulative_rub": -989888900
+        "net_rub": -1010655800,
+        "cumulative_rub": -1010655800
        },
        {
         "year": 1,
-        "effect_rub": 1908830,
-        "net_rub": 1908830,
-        "cumulative_rub": -987980070
+        "effect_rub": -59585890,
+        "net_rub": -59585890,
+        "cumulative_rub": -1070241690
        },
        {
         "year": 2,
-        "effect_rub": 1908830,
-        "net_rub": 1908830,
-        "cumulative_rub": -986071240
+        "effect_rub": -59585890,
+        "net_rub": -59585890,
+        "cumulative_rub": -1129827580
        },
        {
         "year": 3,
-        "effect_rub": 1908830,
-        "net_rub": 1908830,
-        "cumulative_rub": -984162410
+        "effect_rub": -59585890,
+        "net_rub": -59585890,
+        "cumulative_rub": -1189413470
        },
        {
         "year": 4,
-        "effect_rub": 1908830,
+        "effect_rub": -59585890,
         "battery_rub": 94395000,
-        "net_rub": -92486170,
-        "cumulative_rub": -1076648580
+        "net_rub": -153980890,
+        "cumulative_rub": -1343394360
        },
        {
         "year": 5,
-        "effect_rub": 1908830,
-        "net_rub": 1908830,
-        "cumulative_rub": -1074739750
+        "effect_rub": -59585890,
+        "net_rub": -59585890,
+        "cumulative_rub": -1402980250
        }
       ]
      },
@@ -2328,17 +2446,17 @@
       "solution_id": "5760e938-9a43-45a7-b8e8-f4f2e6383930",
       "fleet_size": 203,
       "capex_rub": 297658900,
-      "opex_year_rub": 276537170,
-      "annual_effect_rub": -120297170,
+      "opex_year_rub": 338031890,
+      "annual_effect_rub": -181791890,
       "payback_years": null,
       "payback_band": "none",
-      "roi_pct": -302.07,
-      "tco_rub": 1680344750,
-      "accounting_effect_rub": -156257170,
+      "roi_pct": -405.37,
+      "tco_rub": 1987818350,
+      "accounting_effect_rub": -217751890,
       "labor_cash_saved_rub": 93744000,
       "tariff": "fixed",
       "price_source": "catalog",
-      "npv_rub": -700913672,
+      "npv_rub": -907053511,
       "cash_flow": [
        {
         "year": 0,
@@ -2348,33 +2466,33 @@
        },
        {
         "year": 1,
-        "effect_rub": -120297170,
-        "net_rub": -120297170,
-        "cumulative_rub": -417956070
+        "effect_rub": -181791890,
+        "net_rub": -181791890,
+        "cumulative_rub": -479450790
        },
        {
         "year": 2,
-        "effect_rub": -120297170,
-        "net_rub": -120297170,
-        "cumulative_rub": -538253240
+        "effect_rub": -181791890,
+        "net_rub": -181791890,
+        "cumulative_rub": -661242680
        },
        {
         "year": 3,
-        "effect_rub": -120297170,
-        "net_rub": -120297170,
-        "cumulative_rub": -658550410
+        "effect_rub": -181791890,
+        "net_rub": -181791890,
+        "cumulative_rub": -843034570
        },
        {
         "year": 4,
-        "effect_rub": -120297170,
-        "net_rub": -120297170,
-        "cumulative_rub": -778847580
+        "effect_rub": -181791890,
+        "net_rub": -181791890,
+        "cumulative_rub": -1024826460
        },
        {
         "year": 5,
-        "effect_rub": -120297170,
-        "net_rub": -120297170,
-        "cumulative_rub": -899144750
+        "effect_rub": -181791890,
+        "net_rub": -181791890,
+        "cumulative_rub": -1206618350
        }
       ]
      }
@@ -2386,54 +2504,54 @@
       "kind": "buy",
       "solution_id": "5760e938-9a43-45a7-b8e8-f4f2e6383930",
       "fleet_size": 170,
-      "capex_rub": 828971000,
-      "opex_year_rub": 126903100,
-      "annual_effect_rub": -1911100,
+      "capex_rub": 846362000,
+      "opex_year_rub": 167190652,
+      "annual_effect_rub": -42198652,
       "payback_years": null,
       "payback_band": "none",
-      "roi_pct": -110.69,
-      "tco_rub": 1542536500,
-      "accounting_effect_rub": -107311100,
+      "roi_pct": -134.27,
+      "tco_rub": 1761365260,
+      "accounting_effect_rub": -149857223,
       "labor_cash_saved_rub": 74995200,
       "price_source": "catalog",
-      "npv_rub": -880574398,
+      "npv_rub": -1033015520,
       "cash_flow": [
        {
         "year": 0,
         "effect_rub": 0,
-        "net_rub": -828971000,
-        "cumulative_rub": -828971000
+        "net_rub": -846362000,
+        "cumulative_rub": -846362000
        },
        {
         "year": 1,
-        "effect_rub": -1911100,
-        "net_rub": -1911100,
-        "cumulative_rub": -830882100
+        "effect_rub": -42198652,
+        "net_rub": -42198652,
+        "cumulative_rub": -888560652
        },
        {
         "year": 2,
-        "effect_rub": -1911100,
-        "net_rub": -1911100,
-        "cumulative_rub": -832793200
+        "effect_rub": -42198652,
+        "net_rub": -42198652,
+        "cumulative_rub": -930759304
        },
        {
         "year": 3,
-        "effect_rub": -1911100,
-        "net_rub": -1911100,
-        "cumulative_rub": -834704300
+        "effect_rub": -42198652,
+        "net_rub": -42198652,
+        "cumulative_rub": -972957956
        },
        {
         "year": 4,
-        "effect_rub": -1911100,
+        "effect_rub": -42198652,
         "battery_rub": 79050000,
-        "net_rub": -80961100,
-        "cumulative_rub": -915665400
+        "net_rub": -121248652,
+        "cumulative_rub": -1094206608
        },
        {
         "year": 5,
-        "effect_rub": -1911100,
-        "net_rub": -1911100,
-        "cumulative_rub": -917576500
+        "effect_rub": -42198652,
+        "net_rub": -42198652,
+        "cumulative_rub": -1136405260
        }
       ]
      },
@@ -2442,17 +2560,17 @@
       "solution_id": "5760e938-9a43-45a7-b8e8-f4f2e6383930",
       "fleet_size": 170,
       "capex_rub": 249271000,
-      "opex_year_rub": 229243100,
-      "annual_effect_rub": -104251100,
+      "opex_year_rub": 269530652,
+      "annual_effect_rub": -144538652,
       "payback_years": null,
       "payback_band": "none",
-      "roi_pct": -309.11,
-      "tco_rub": 1395486500,
-      "accounting_effect_rub": -134365386,
+      "roi_pct": -389.92,
+      "tco_rub": 1596924260,
+      "accounting_effect_rub": -174652938,
       "labor_cash_saved_rub": 74995200,
       "tariff": "fixed",
       "price_source": "catalog",
-      "npv_rub": -598736856,
+      "npv_rub": -733786979,
       "cash_flow": [
        {
         "year": 0,
@@ -2462,33 +2580,33 @@
        },
        {
         "year": 1,
-        "effect_rub": -104251100,
-        "net_rub": -104251100,
-        "cumulative_rub": -353522100
+        "effect_rub": -144538652,
+        "net_rub": -144538652,
+        "cumulative_rub": -393809652
        },
        {
         "year": 2,
-        "effect_rub": -104251100,
-        "net_rub": -104251100,
-        "cumulative_rub": -457773200
+        "effect_rub": -144538652,
+        "net_rub": -144538652,
+        "cumulative_rub": -538348304
        },
        {
         "year": 3,
-        "effect_rub": -104251100,
-        "net_rub": -104251100,
-        "cumulative_rub": -562024300
+        "effect_rub": -144538652,
+        "net_rub": -144538652,
+        "cumulative_rub": -682886956
        },
        {
         "year": 4,
-        "effect_rub": -104251100,
-        "net_rub": -104251100,
-        "cumulative_rub": -666275400
+        "effect_rub": -144538652,
+        "net_rub": -144538652,
+        "cumulative_rub": -827425608
        },
        {
         "year": 5,
-        "effect_rub": -104251100,
-        "net_rub": -104251100,
-        "cumulative_rub": -770526500
+        "effect_rub": -144538652,
+        "net_rub": -144538652,
+        "cumulative_rub": -971964260
        }
       ]
      }
@@ -2500,55 +2618,54 @@
       "kind": "buy",
       "solution_id": "5760e938-9a43-45a7-b8e8-f4f2e6383930",
       "fleet_size": 170,
-      "capex_rub": 828971000,
-      "opex_year_rub": 151901500,
-      "annual_effect_rub": 35586500,
+      "capex_rub": 846362000,
+      "opex_year_rub": 211312828,
+      "annual_effect_rub": -23824828,
       "payback_years": null,
       "payback_band": "none",
-      "roi_pct": -88.07,
-      "tco_rub": 1667528500,
-      "accounting_effect_rub": -69813500,
+      "roi_pct": -123.41,
+      "tco_rub": 1981976140,
+      "accounting_effect_rub": -131483399,
       "labor_cash_saved_rub": 112492800,
       "price_source": "catalog",
-      "npv_rub": -754876627,
-      "irr_pct": -48.51,
+      "npv_rub": -971423613,
       "cash_flow": [
        {
         "year": 0,
         "effect_rub": 0,
-        "net_rub": -828971000,
-        "cumulative_rub": -828971000
+        "net_rub": -846362000,
+        "cumulative_rub": -846362000
        },
        {
         "year": 1,
-        "effect_rub": 35586500,
-        "net_rub": 35586500,
-        "cumulative_rub": -793384500
+        "effect_rub": -23824828,
+        "net_rub": -23824828,
+        "cumulative_rub": -870186828
        },
        {
         "year": 2,
-        "effect_rub": 35586500,
-        "net_rub": 35586500,
-        "cumulative_rub": -757798000
+        "effect_rub": -23824828,
+        "net_rub": -23824828,
+        "cumulative_rub": -894011656
        },
        {
         "year": 3,
-        "effect_rub": 35586500,
-        "net_rub": 35586500,
-        "cumulative_rub": -722211500
+        "effect_rub": -23824828,
+        "net_rub": -23824828,
+        "cumulative_rub": -917836484
        },
        {
         "year": 4,
-        "effect_rub": 35586500,
+        "effect_rub": -23824828,
         "battery_rub": 79050000,
-        "net_rub": -43463500,
-        "cumulative_rub": -765675000
+        "net_rub": -102874828,
+        "cumulative_rub": -1020711312
        },
        {
         "year": 5,
-        "effect_rub": 35586500,
-        "net_rub": 35586500,
-        "cumulative_rub": -730088500
+        "effect_rub": -23824828,
+        "net_rub": -23824828,
+        "cumulative_rub": -1044536140
        }
       ]
      },
@@ -2557,17 +2674,17 @@
       "solution_id": "5760e938-9a43-45a7-b8e8-f4f2e6383930",
       "fleet_size": 170,
       "capex_rub": 249271000,
-      "opex_year_rub": 254241500,
-      "annual_effect_rub": -66753500,
+      "opex_year_rub": 313652828,
+      "annual_effect_rub": -126164828,
       "payback_years": null,
       "payback_band": "none",
-      "roi_pct": -233.9,
-      "tco_rub": 1520478500,
-      "accounting_effect_rub": -96867786,
+      "roi_pct": -353.07,
+      "tco_rub": 1817535140,
+      "accounting_effect_rub": -156279114,
       "labor_cash_saved_rub": 112492800,
       "tariff": "fixed",
       "price_source": "catalog",
-      "npv_rub": -473039085,
+      "npv_rub": -672195071,
       "cash_flow": [
        {
         "year": 0,
@@ -2577,33 +2694,33 @@
        },
        {
         "year": 1,
-        "effect_rub": -66753500,
-        "net_rub": -66753500,
-        "cumulative_rub": -316024500
+        "effect_rub": -126164828,
+        "net_rub": -126164828,
+        "cumulative_rub": -375435828
        },
        {
         "year": 2,
-        "effect_rub": -66753500,
-        "net_rub": -66753500,
-        "cumulative_rub": -382778000
+        "effect_rub": -126164828,
+        "net_rub": -126164828,
+        "cumulative_rub": -501600656
        },
        {
         "year": 3,
-        "effect_rub": -66753500,
-        "net_rub": -66753500,
-        "cumulative_rub": -449531500
+        "effect_rub": -126164828,
+        "net_rub": -126164828,
+        "cumulative_rub": -627765484
        },
        {
         "year": 4,
-        "effect_rub": -66753500,
-        "net_rub": -66753500,
-        "cumulative_rub": -516285000
+        "effect_rub": -126164828,
+        "net_rub": -126164828,
+        "cumulative_rub": -753930312
        },
        {
         "year": 5,
-        "effect_rub": -66753500,
-        "net_rub": -66753500,
-        "cumulative_rub": -583038500
+        "effect_rub": -126164828,
+        "net_rub": -126164828,
+        "cumulative_rub": -880095140
        }
       ]
      }
@@ -2611,6 +2728,7 @@
    ],
    "shared": {
     "fleet_size": 170,
+    "chargers": 19,
     "throughput": 64.6154,
     "peak_ops": 6818.1818,
     "unit": "строк/ч",
@@ -2627,7 +2745,7 @@
     {
      "id": "vat_price",
      "level": "info",
-     "text": "Цена из каталога с НДС. Доставка и глубокая ИТ-интеграция не входят в цену изделия, они добавлены отдельными статьями CAPEX."
+     "text": "Цена из каталога с НДС. Доставка 3% оборудования и остальные статьи CAPEX сверх изделия (инфраструктура, ПО, интеграция, пусконаладка, обучение) добавлены отдельными статьями."
     },
     {
      "id": "remaining_staff",
@@ -2637,7 +2755,7 @@
     {
      "id": "raas_fee",
      "level": "warning",
-     "text": "Ставка RaaS 2,5% цены изделия в месяц задана командой, не договором. Выкуп не моделируется. Сервис, лицензии и батарея считаются входящими в ставку."
+     "text": "Ставка RaaS 2,5% цены изделия в месяц задана командой, не договором. Выкуп не моделируется. Доставка, сервис и ремонт, лицензии и батарея считаются входящими в ставку."
     },
     {
      "id": "not_recommended",
@@ -2648,12 +2766,17 @@
      "id": "missing_ttx",
      "level": "warning",
      "text": "По роботу не хватает ТТХ или статуса «подходит». Срок службы и доля сервиса при пробелах приняты допущением модели."
+    },
+    {
+     "id": "no_effect",
+     "level": "high",
+     "text": "Годовой эффект покупки не положительный, срока окупаемости нет."
     }
    ],
    "interpretation": [
     "Расчёт для H1500, флот 170 шт, горизонт 5 лет.",
-    "Покупка: CAPEX 828 971 000 ₽, не окупается за 30 лет с учётом замен. Затраты за горизонт 1 605 032 500 ₽.",
-    "RaaS: CAPEX 249 271 000 ₽, денежный эффект не положительный, срока окупаемости нет. Затраты за горизонт 1 457 982 500 ₽.",
+    "Покупка: CAPEX 846 362 000 ₽, денежный эффект не положительный, срока окупаемости нет. Затраты за горизонт 1 871 670 700 ₽.",
+    "RaaS: CAPEX 249 271 000 ₽, денежный эффект не положительный, срока окупаемости нет. Затраты за горизонт 1 707 229 700 ₽.",
     "Это предварительная оценка, не решение go/no-go. Главная метрика: окупаемость простая, без дисконта. NPV и IRR даны справочно. Перед внедрением нужно обследование площадки."
    ],
    "origins": [
@@ -2723,7 +2846,35 @@
     "prices_include_vat": true,
     "vat_recoverable": false,
     "labor_cash_share": 1,
-    "discount_rate": 0.15
+    "discount_rate": 0.15,
+    "utilization": {
+     "value": 0.8,
+     "set": false
+    },
+    "availability": {
+     "value": 0.9,
+     "set": false
+    },
+    "reserve": {
+     "value": 0.15,
+     "set": false
+    },
+    "service_share": {
+     "value": 0.08,
+     "set": false
+    },
+    "delivery_share": {
+     "value": 0.03,
+     "set": false
+    },
+    "comm_rub_per_robot_year": {
+     "value": 12000,
+     "set": false
+    },
+    "technician_wage_month_rub": {
+     "value": 90000,
+     "set": false
+    }
    }
   }
  },
@@ -2733,6 +2884,35 @@
   "request": {
    "catalog": {
     "content_sha256": "reference",
+    "norms": {
+     "availability": 0,
+     "utilization": 0,
+     "reserve": 0,
+     "robots_per_charger": 0,
+     "infra_frac": 0,
+     "software_frac": 0,
+     "integration_yes_frac": 0,
+     "integration_no_frac": 0,
+     "commissioning_frac": 0,
+     "training_frac": 0,
+     "contingency_frac": 0,
+     "delivery_frac": 0,
+     "energy_kw": 0,
+     "energy_rub_per_kwh": 0,
+     "license_rub_per_robot": 0,
+     "consumable_rub_per_robot": 0,
+     "comm_rub_per_robot_year": 0,
+     "robots_per_technician": 0,
+     "technician_wage_month_rub": 0,
+     "default_service_frac": 0,
+     "default_lifetime_years": 0,
+     "battery_frac": 0,
+     "battery_years": 0,
+     "raas_monthly_frac": 0,
+     "raas_mix_fixed_share": 0,
+     "vat_rate": 0,
+     "discount_rate": 0
+    },
     "candidates": [
      {
       "ID": "5760e938-9a43-45a7-b8e8-f4f2e6383930",
@@ -3140,6 +3320,35 @@
   "request": {
    "catalog": {
     "content_sha256": "reference",
+    "norms": {
+     "availability": 0,
+     "utilization": 0,
+     "reserve": 0,
+     "robots_per_charger": 0,
+     "infra_frac": 0,
+     "software_frac": 0,
+     "integration_yes_frac": 0,
+     "integration_no_frac": 0,
+     "commissioning_frac": 0,
+     "training_frac": 0,
+     "contingency_frac": 0,
+     "delivery_frac": 0,
+     "energy_kw": 0,
+     "energy_rub_per_kwh": 0,
+     "license_rub_per_robot": 0,
+     "consumable_rub_per_robot": 0,
+     "comm_rub_per_robot_year": 0,
+     "robots_per_technician": 0,
+     "technician_wage_month_rub": 0,
+     "default_service_frac": 0,
+     "default_lifetime_years": 0,
+     "battery_frac": 0,
+     "battery_years": 0,
+     "raas_monthly_frac": 0,
+     "raas_mix_fixed_share": 0,
+     "vat_rate": 0,
+     "discount_rate": 0
+    },
     "candidates": [
      {
       "ID": "5760e938-9a43-45a7-b8e8-f4f2e6383930",
@@ -3586,12 +3795,15 @@
     "Главная метрика: простая окупаемость, момент, когда накопленный денежный поток достигает нуля. NPV, IRR и дисконтированная окупаемость даны справочно, ставка дисконтирования 15% в год из набора допущений.",
     "Налог на прибыль и амортизационный налоговый щит не моделируются. Амортизация показана для бухгалтерского эффекта и не входит в денежный поток.",
     "Срок расчёта равен горизонту: 7 лет. Робот, чей срок службы кончается внутри горизонта, покупается снова. Остаточная стоимость оборудования на конец горизонта не учитывается: затраты за горизонт, NPV и ROI консервативны, особенно если робота пришлось купить снова незадолго до конца горизонта.",
-    "Замена батареи: 15% цены робота в годы 4, 8 и далее внутри срока службы, разовым платежом в своём году.",
-    "RaaS: по умолчанию 2,5% цены в месяц, переменный тариф растёт с годовым объёмом, смешанный берёт половину от каждого. Срок контракта равен горизонту. Оборудование, батареи и замена роботов входят в плату. Ставки заданы командой, не договором.",
-    "Доступность 90%, загрузка 80% (середина диапазона AMR 70-85% из легенды датасета), резерв 15%. Зарядка учтена в доступности.",
+    "Замена батареи: 15% цены робота каждые 4 года внутри срока службы, разовым платежом в своём году.",
+    "RaaS: по умолчанию 2,5% цены в месяц, переменный тариф растёт с годовым объёмом, смешанный берёт половину от каждого. Срок контракта равен горизонту. Оборудование, доставка, батареи и замена роботов входят в плату. Ставки заданы командой, не договором.",
+    "Доступность 90%, загрузка 80%, резерв 15%. Зарядка учтена в доступности. По нормативу загрузка 80% взята из середины диапазона AMR 70-85% легенды датасета.",
     "Денежная экономия труда задаётся долей высвобождённого ФОТ.",
     "Начисления на ФОТ заданы параметром объекта, взносы выше предельной базы 2 979 000 ₽ на человека в год считаются по ставке 15,1%.",
-    "Энергия: 2 кВт на робота, 6,5 ₽/кВт·ч. Лицензии 80 000 ₽ и расходники 20 000 ₽ на робота в год. Это суммы с НДС.",
+    "Энергия: 2 кВт на робота, 6,5 ₽/кВт·ч. Лицензии 80 000 ₽, расходники 20 000 ₽ и связь 12 000 ₽ на робота в год. Это суммы с НДС.",
+    "Сервис и ремонт: доля стоимости оборудования в год, отдельной статьи на ремонт нет. Доставка 3% оборудования входит в CAPEX покупки.",
+    "Персонал эксплуатации: один техник на 10 роботов в каждую смену, зарплата 90 000 ₽ в месяц, начисления как у остальных ролей. Зарплата НДС не облагается.",
+    "Число зарядных станций считается по времени работы и зарядки роботов из ТТХ. Для робота без этих данных принята одна станция на 4 робота. Стоимость станций входит в инфраструктуру, отдельной статьи на них нет.",
     "Нет прочих текущих затрат процесса в параметрах, кроме ФОТ целевых ролей.",
     "Общая инфраструктура, ПО, интеграция, ПНР и обучение считаются один раз на вариант, не на каждую позицию флота.",
     "НДС 22% входит в цены и не принимается к вычету: в денежный расчёт идёт цена с НДС.",
@@ -3607,28 +3819,46 @@
      "mathml": "\u003cmath display=\"block\"\u003e\u003cmrow\u003e\u003cmtext\u003eФлот\u003c/mtext\u003e\u003cmspace width=\"0.2778em\"/\u003e\u003cmo lspace=\"0\" rspace=\"0\"\u003e=\u003c/mo\u003e\u003cmspace width=\"0.2778em\"/\u003e\u003cmrow\u003e\u003cmrow\u003e\u003cmo fence=\"true\"\u003e⌈\u003c/mo\u003e\u003cmrow\u003e\u003cmo fence=\"true\"\u003e⌈\u003c/mo\u003e\u003cmfrac\u003e\u003cmtext\u003eПик\u003c/mtext\u003e\u003cmrow\u003e\u003cmtext\u003eПроизводительность\u003c/mtext\u003e\u003cmspace width=\"0.2222em\"/\u003e\u003cmo lspace=\"0\" rspace=\"0\"\u003e×\u003c/mo\u003e\u003cmspace width=\"0.2222em\"/\u003e\u003cmn\u003e0,90\u003c/mn\u003e\u003cmspace width=\"0.2222em\"/\u003e\u003cmo lspace=\"0\" rspace=\"0\"\u003e×\u003c/mo\u003e\u003cmspace width=\"0.2222em\"/\u003e\u003cmn\u003e0,80\u003c/mn\u003e\u003c/mrow\u003e\u003c/mfrac\u003e\u003cmo fence=\"true\"\u003e⌉\u003c/mo\u003e\u003c/mrow\u003e\u003cmspace width=\"0.2222em\"/\u003e\u003cmo lspace=\"0\" rspace=\"0\"\u003e×\u003c/mo\u003e\u003cmspace width=\"0.2222em\"/\u003e\u003cmn\u003e1,15\u003c/mn\u003e\u003cmo fence=\"true\"\u003e⌉\u003c/mo\u003e\u003c/mrow\u003e\u003c/mrow\u003e\u003c/mrow\u003e\u003c/math\u003e"
     },
     {
+     "id": "chargers",
+     "text": "зарядные станции = для позиции с ТТХ вверх до целого от количества x время зарядки / (время работы + время зарядки), без ТТХ вверх до целого от количества / 4, у флота не меньше одной",
+     "unit": "шт",
+     "mathml": "\u003cmath display=\"block\"\u003e\u003cmrow\u003e\u003cmtext\u003eЗарядные станции\u003c/mtext\u003e\u003cmspace width=\"0.2778em\"/\u003e\u003cmo lspace=\"0\" rspace=\"0\"\u003e=\u003c/mo\u003e\u003cmspace width=\"0.2778em\"/\u003e\u003cmrow\u003e\u003cmtext\u003eс ТТХ: \u003c/mtext\u003e\u003cmrow\u003e\u003cmo fence=\"true\"\u003e⌈\u003c/mo\u003e\u003cmrow\u003e\u003cmtext\u003eКоличество\u003c/mtext\u003e\u003cmspace width=\"0.2222em\"/\u003e\u003cmo lspace=\"0\" rspace=\"0\"\u003e×\u003c/mo\u003e\u003cmspace width=\"0.2222em\"/\u003e\u003cmfrac\u003e\u003cmtext\u003eВремя зарядки\u003c/mtext\u003e\u003cmrow\u003e\u003cmtext\u003eВремя работы\u003c/mtext\u003e\u003cmspace width=\"0.2222em\"/\u003e\u003cmo lspace=\"0\" rspace=\"0\"\u003e+\u003c/mo\u003e\u003cmspace width=\"0.2222em\"/\u003e\u003cmtext\u003eВремя зарядки\u003c/mtext\u003e\u003c/mrow\u003e\u003c/mfrac\u003e\u003c/mrow\u003e\u003cmo fence=\"true\"\u003e⌉\u003c/mo\u003e\u003c/mrow\u003e\u003cmtext\u003e; без ТТХ: \u003c/mtext\u003e\u003cmrow\u003e\u003cmo fence=\"true\"\u003e⌈\u003c/mo\u003e\u003cmfrac\u003e\u003cmtext\u003eКоличество\u003c/mtext\u003e\u003cmn\u003e4\u003c/mn\u003e\u003c/mfrac\u003e\u003cmo fence=\"true\"\u003e⌉\u003c/mo\u003e\u003c/mrow\u003e\u003c/mrow\u003e\u003c/mrow\u003e\u003c/math\u003e"
+    },
+    {
      "id": "capex_buy",
-     "text": "CAPEX покупка = (оборудование + инфраструктура + ПО + интеграция + ПНР + обучение) x 1,10",
+     "text": "CAPEX покупка = (оборудование + доставка + инфраструктура + ПО + интеграция + ПНР + обучение) x 1,10",
      "unit": "₽",
-     "mathml": "\u003cmath display=\"block\"\u003e\u003cmrow\u003e\u003cmtext\u003eCAPEX покупки\u003c/mtext\u003e\u003cmspace width=\"0.2778em\"/\u003e\u003cmo lspace=\"0\" rspace=\"0\"\u003e=\u003c/mo\u003e\u003cmspace width=\"0.2778em\"/\u003e\u003cmrow\u003e\u003cmrow\u003e\u003cmo fence=\"true\"\u003e(\u003c/mo\u003e\u003cmrow\u003e\u003cmtext\u003eОборудование\u003c/mtext\u003e\u003cmspace width=\"0.2222em\"/\u003e\u003cmo lspace=\"0\" rspace=\"0\"\u003e+\u003c/mo\u003e\u003cmspace width=\"0.2222em\"/\u003e\u003cmtext\u003eИнфраструктура\u003c/mtext\u003e\u003cmspace width=\"0.2222em\"/\u003e\u003cmo lspace=\"0\" rspace=\"0\"\u003e+\u003c/mo\u003e\u003cmspace width=\"0.2222em\"/\u003e\u003cmtext\u003eПО\u003c/mtext\u003e\u003cmspace width=\"0.2222em\"/\u003e\u003cmo lspace=\"0\" rspace=\"0\"\u003e+\u003c/mo\u003e\u003cmspace width=\"0.2222em\"/\u003e\u003cmtext\u003eИнтеграция\u003c/mtext\u003e\u003cmspace width=\"0.2222em\"/\u003e\u003cmo lspace=\"0\" rspace=\"0\"\u003e+\u003c/mo\u003e\u003cmspace width=\"0.2222em\"/\u003e\u003cmtext\u003eПНР\u003c/mtext\u003e\u003cmspace width=\"0.2222em\"/\u003e\u003cmo lspace=\"0\" rspace=\"0\"\u003e+\u003c/mo\u003e\u003cmspace width=\"0.2222em\"/\u003e\u003cmtext\u003eОбучение\u003c/mtext\u003e\u003c/mrow\u003e\u003cmo fence=\"true\"\u003e)\u003c/mo\u003e\u003c/mrow\u003e\u003cmspace width=\"0.2222em\"/\u003e\u003cmo lspace=\"0\" rspace=\"0\"\u003e×\u003c/mo\u003e\u003cmspace width=\"0.2222em\"/\u003e\u003cmn\u003e1,10\u003c/mn\u003e\u003c/mrow\u003e\u003c/mrow\u003e\u003c/math\u003e"
+     "mathml": "\u003cmath display=\"block\"\u003e\u003cmrow\u003e\u003cmtext\u003eCAPEX покупки\u003c/mtext\u003e\u003cmspace width=\"0.2778em\"/\u003e\u003cmo lspace=\"0\" rspace=\"0\"\u003e=\u003c/mo\u003e\u003cmspace width=\"0.2778em\"/\u003e\u003cmrow\u003e\u003cmrow\u003e\u003cmo fence=\"true\"\u003e(\u003c/mo\u003e\u003cmrow\u003e\u003cmtext\u003eОборудование\u003c/mtext\u003e\u003cmspace width=\"0.2222em\"/\u003e\u003cmo lspace=\"0\" rspace=\"0\"\u003e+\u003c/mo\u003e\u003cmspace width=\"0.2222em\"/\u003e\u003cmtext\u003eДоставка\u003c/mtext\u003e\u003cmspace width=\"0.2222em\"/\u003e\u003cmo lspace=\"0\" rspace=\"0\"\u003e+\u003c/mo\u003e\u003cmspace width=\"0.2222em\"/\u003e\u003cmtext\u003eИнфраструктура\u003c/mtext\u003e\u003cmspace width=\"0.2222em\"/\u003e\u003cmo lspace=\"0\" rspace=\"0\"\u003e+\u003c/mo\u003e\u003cmspace width=\"0.2222em\"/\u003e\u003cmtext\u003eПО\u003c/mtext\u003e\u003cmspace width=\"0.2222em\"/\u003e\u003cmo lspace=\"0\" rspace=\"0\"\u003e+\u003c/mo\u003e\u003cmspace width=\"0.2222em\"/\u003e\u003cmtext\u003eИнтеграция\u003c/mtext\u003e\u003cmspace width=\"0.2222em\"/\u003e\u003cmo lspace=\"0\" rspace=\"0\"\u003e+\u003c/mo\u003e\u003cmspace width=\"0.2222em\"/\u003e\u003cmtext\u003eПНР\u003c/mtext\u003e\u003cmspace width=\"0.2222em\"/\u003e\u003cmo lspace=\"0\" rspace=\"0\"\u003e+\u003c/mo\u003e\u003cmspace width=\"0.2222em\"/\u003e\u003cmtext\u003eОбучение\u003c/mtext\u003e\u003c/mrow\u003e\u003cmo fence=\"true\"\u003e)\u003c/mo\u003e\u003c/mrow\u003e\u003cmspace width=\"0.2222em\"/\u003e\u003cmo lspace=\"0\" rspace=\"0\"\u003e×\u003c/mo\u003e\u003cmspace width=\"0.2222em\"/\u003e\u003cmn\u003e1,10\u003c/mn\u003e\u003c/mrow\u003e\u003c/mrow\u003e\u003c/math\u003e"
     },
     {
      "id": "capex_raas",
-     "text": "CAPEX RaaS = (инфраструктура + ПО + интеграция + ПНР + обучение) x 1,10, без оборудования",
+     "text": "CAPEX RaaS = (инфраструктура + ПО + интеграция + ПНР + обучение) x 1,10, без оборудования и доставки",
      "unit": "₽",
      "mathml": "\u003cmath display=\"block\"\u003e\u003cmrow\u003e\u003cmtext\u003eCAPEX RaaS\u003c/mtext\u003e\u003cmspace width=\"0.2778em\"/\u003e\u003cmo lspace=\"0\" rspace=\"0\"\u003e=\u003c/mo\u003e\u003cmspace width=\"0.2778em\"/\u003e\u003cmrow\u003e\u003cmrow\u003e\u003cmo fence=\"true\"\u003e(\u003c/mo\u003e\u003cmrow\u003e\u003cmtext\u003eИнфраструктура\u003c/mtext\u003e\u003cmspace width=\"0.2222em\"/\u003e\u003cmo lspace=\"0\" rspace=\"0\"\u003e+\u003c/mo\u003e\u003cmspace width=\"0.2222em\"/\u003e\u003cmtext\u003eПО\u003c/mtext\u003e\u003cmspace width=\"0.2222em\"/\u003e\u003cmo lspace=\"0\" rspace=\"0\"\u003e+\u003c/mo\u003e\u003cmspace width=\"0.2222em\"/\u003e\u003cmtext\u003eИнтеграция\u003c/mtext\u003e\u003cmspace width=\"0.2222em\"/\u003e\u003cmo lspace=\"0\" rspace=\"0\"\u003e+\u003c/mo\u003e\u003cmspace width=\"0.2222em\"/\u003e\u003cmtext\u003eПНР\u003c/mtext\u003e\u003cmspace width=\"0.2222em\"/\u003e\u003cmo lspace=\"0\" rspace=\"0\"\u003e+\u003c/mo\u003e\u003cmspace width=\"0.2222em\"/\u003e\u003cmtext\u003eОбучение\u003c/mtext\u003e\u003c/mrow\u003e\u003cmo fence=\"true\"\u003e)\u003c/mo\u003e\u003c/mrow\u003e\u003cmspace width=\"0.2222em\"/\u003e\u003cmo lspace=\"0\" rspace=\"0\"\u003e×\u003c/mo\u003e\u003cmspace width=\"0.2222em\"/\u003e\u003cmn\u003e1,10\u003c/mn\u003e\u003c/mrow\u003e\u003c/mrow\u003e\u003c/math\u003e"
     },
     {
+     "id": "delivery",
+     "text": "доставка = 3% оборудования, только в CAPEX покупки",
+     "unit": "₽",
+     "mathml": "\u003cmath display=\"block\"\u003e\u003cmrow\u003e\u003cmtext\u003eДоставка\u003c/mtext\u003e\u003cmspace width=\"0.2778em\"/\u003e\u003cmo lspace=\"0\" rspace=\"0\"\u003e=\u003c/mo\u003e\u003cmspace width=\"0.2778em\"/\u003e\u003cmrow\u003e\u003cmrow\u003e\u003cmn\u003e3%\u003c/mn\u003e\u003cmspace width=\"0.2222em\"/\u003e\u003cmo lspace=\"0\" rspace=\"0\"\u003e×\u003c/mo\u003e\u003cmspace width=\"0.2222em\"/\u003e\u003cmtext\u003eОборудование\u003c/mtext\u003e\u003c/mrow\u003e\u003cmtext\u003e, только в CAPEX покупки\u003c/mtext\u003e\u003c/mrow\u003e\u003c/mrow\u003e\u003c/math\u003e"
+    },
+    {
      "id": "opex_buy",
-     "text": "OPEX покупка = ФОТ остатка + сервис + лицензии + энергия + расходники, без разовых замен",
+     "text": "OPEX покупка = ФОТ остатка + сервис и ремонт + лицензии + энергия + расходники + связь + персонал эксплуатации, без разовых замен",
      "unit": "₽/год",
-     "mathml": "\u003cmath display=\"block\"\u003e\u003cmrow\u003e\u003cmtext\u003eOPEX покупки\u003c/mtext\u003e\u003cmspace width=\"0.2778em\"/\u003e\u003cmo lspace=\"0\" rspace=\"0\"\u003e=\u003c/mo\u003e\u003cmspace width=\"0.2778em\"/\u003e\u003cmrow\u003e\u003cmrow\u003e\u003cmtext\u003eФОТ остатка\u003c/mtext\u003e\u003cmspace width=\"0.2222em\"/\u003e\u003cmo lspace=\"0\" rspace=\"0\"\u003e+\u003c/mo\u003e\u003cmspace width=\"0.2222em\"/\u003e\u003cmtext\u003eСервис\u003c/mtext\u003e\u003cmspace width=\"0.2222em\"/\u003e\u003cmo lspace=\"0\" rspace=\"0\"\u003e+\u003c/mo\u003e\u003cmspace width=\"0.2222em\"/\u003e\u003cmtext\u003eЛицензии\u003c/mtext\u003e\u003cmspace width=\"0.2222em\"/\u003e\u003cmo lspace=\"0\" rspace=\"0\"\u003e+\u003c/mo\u003e\u003cmspace width=\"0.2222em\"/\u003e\u003cmtext\u003eЭнергия\u003c/mtext\u003e\u003cmspace width=\"0.2222em\"/\u003e\u003cmo lspace=\"0\" rspace=\"0\"\u003e+\u003c/mo\u003e\u003cmspace width=\"0.2222em\"/\u003e\u003cmtext\u003eРасходники\u003c/mtext\u003e\u003c/mrow\u003e\u003c/mrow\u003e\u003c/mrow\u003e\u003c/math\u003e"
+     "mathml": "\u003cmath display=\"block\"\u003e\u003cmrow\u003e\u003cmtext\u003eOPEX покупки\u003c/mtext\u003e\u003cmspace width=\"0.2778em\"/\u003e\u003cmo lspace=\"0\" rspace=\"0\"\u003e=\u003c/mo\u003e\u003cmspace width=\"0.2778em\"/\u003e\u003cmrow\u003e\u003cmrow\u003e\u003cmtext\u003eФОТ остатка\u003c/mtext\u003e\u003cmspace width=\"0.2222em\"/\u003e\u003cmo lspace=\"0\" rspace=\"0\"\u003e+\u003c/mo\u003e\u003cmspace width=\"0.2222em\"/\u003e\u003cmtext\u003eСервис и ремонт\u003c/mtext\u003e\u003cmspace width=\"0.2222em\"/\u003e\u003cmo lspace=\"0\" rspace=\"0\"\u003e+\u003c/mo\u003e\u003cmspace width=\"0.2222em\"/\u003e\u003cmtext\u003eЛицензии\u003c/mtext\u003e\u003cmspace width=\"0.2222em\"/\u003e\u003cmo lspace=\"0\" rspace=\"0\"\u003e+\u003c/mo\u003e\u003cmspace width=\"0.2222em\"/\u003e\u003cmtext\u003eЭнергия\u003c/mtext\u003e\u003cmspace width=\"0.2222em\"/\u003e\u003cmo lspace=\"0\" rspace=\"0\"\u003e+\u003c/mo\u003e\u003cmspace width=\"0.2222em\"/\u003e\u003cmtext\u003eРасходники\u003c/mtext\u003e\u003cmspace width=\"0.2222em\"/\u003e\u003cmo lspace=\"0\" rspace=\"0\"\u003e+\u003c/mo\u003e\u003cmspace width=\"0.2222em\"/\u003e\u003cmtext\u003eСвязь\u003c/mtext\u003e\u003cmspace width=\"0.2222em\"/\u003e\u003cmo lspace=\"0\" rspace=\"0\"\u003e+\u003c/mo\u003e\u003cmspace width=\"0.2222em\"/\u003e\u003cmtext\u003eПерсонал эксплуатации\u003c/mtext\u003e\u003c/mrow\u003e\u003c/mrow\u003e\u003c/mrow\u003e\u003c/math\u003e"
     },
     {
      "id": "opex_raas",
-     "text": "OPEX RaaS = ФОТ остатка + плата тарифа + энергия + расходники",
+     "text": "OPEX RaaS = ФОТ остатка + плата тарифа + энергия + расходники + связь + персонал эксплуатации",
      "unit": "₽/год",
-     "mathml": "\u003cmath display=\"block\"\u003e\u003cmrow\u003e\u003cmtext\u003eOPEX RaaS\u003c/mtext\u003e\u003cmspace width=\"0.2778em\"/\u003e\u003cmo lspace=\"0\" rspace=\"0\"\u003e=\u003c/mo\u003e\u003cmspace width=\"0.2778em\"/\u003e\u003cmrow\u003e\u003cmrow\u003e\u003cmtext\u003eФОТ остатка\u003c/mtext\u003e\u003cmspace width=\"0.2222em\"/\u003e\u003cmo lspace=\"0\" rspace=\"0\"\u003e+\u003c/mo\u003e\u003cmspace width=\"0.2222em\"/\u003e\u003cmtext\u003eПлата по тарифу\u003c/mtext\u003e\u003cmspace width=\"0.2222em\"/\u003e\u003cmo lspace=\"0\" rspace=\"0\"\u003e+\u003c/mo\u003e\u003cmspace width=\"0.2222em\"/\u003e\u003cmtext\u003eЭнергия\u003c/mtext\u003e\u003cmspace width=\"0.2222em\"/\u003e\u003cmo lspace=\"0\" rspace=\"0\"\u003e+\u003c/mo\u003e\u003cmspace width=\"0.2222em\"/\u003e\u003cmtext\u003eРасходники\u003c/mtext\u003e\u003c/mrow\u003e\u003c/mrow\u003e\u003c/mrow\u003e\u003c/math\u003e"
+     "mathml": "\u003cmath display=\"block\"\u003e\u003cmrow\u003e\u003cmtext\u003eOPEX RaaS\u003c/mtext\u003e\u003cmspace width=\"0.2778em\"/\u003e\u003cmo lspace=\"0\" rspace=\"0\"\u003e=\u003c/mo\u003e\u003cmspace width=\"0.2778em\"/\u003e\u003cmrow\u003e\u003cmrow\u003e\u003cmtext\u003eФОТ остатка\u003c/mtext\u003e\u003cmspace width=\"0.2222em\"/\u003e\u003cmo lspace=\"0\" rspace=\"0\"\u003e+\u003c/mo\u003e\u003cmspace width=\"0.2222em\"/\u003e\u003cmtext\u003eПлата по тарифу\u003c/mtext\u003e\u003cmspace width=\"0.2222em\"/\u003e\u003cmo lspace=\"0\" rspace=\"0\"\u003e+\u003c/mo\u003e\u003cmspace width=\"0.2222em\"/\u003e\u003cmtext\u003eЭнергия\u003c/mtext\u003e\u003cmspace width=\"0.2222em\"/\u003e\u003cmo lspace=\"0\" rspace=\"0\"\u003e+\u003c/mo\u003e\u003cmspace width=\"0.2222em\"/\u003e\u003cmtext\u003eРасходники\u003c/mtext\u003e\u003cmspace width=\"0.2222em\"/\u003e\u003cmo lspace=\"0\" rspace=\"0\"\u003e+\u003c/mo\u003e\u003cmspace width=\"0.2222em\"/\u003e\u003cmtext\u003eСвязь\u003c/mtext\u003e\u003cmspace width=\"0.2222em\"/\u003e\u003cmo lspace=\"0\" rspace=\"0\"\u003e+\u003c/mo\u003e\u003cmspace width=\"0.2222em\"/\u003e\u003cmtext\u003eПерсонал эксплуатации\u003c/mtext\u003e\u003c/mrow\u003e\u003c/mrow\u003e\u003c/mrow\u003e\u003c/math\u003e"
+    },
+    {
+     "id": "technicians",
+     "text": "персонал эксплуатации = вверх до целого от флота / 10, x число смен x зарплата x 12 x (1 + начисления)",
+     "unit": "₽/год",
+     "mathml": "\u003cmath display=\"block\"\u003e\u003cmrow\u003e\u003cmtext\u003eПерсонал эксплуатации\u003c/mtext\u003e\u003cmspace width=\"0.2778em\"/\u003e\u003cmo lspace=\"0\" rspace=\"0\"\u003e=\u003c/mo\u003e\u003cmspace width=\"0.2778em\"/\u003e\u003cmrow\u003e\u003cmrow\u003e\u003cmo fence=\"true\"\u003e⌈\u003c/mo\u003e\u003cmfrac\u003e\u003cmtext\u003eФлот\u003c/mtext\u003e\u003cmn\u003e10\u003c/mn\u003e\u003c/mfrac\u003e\u003cmo fence=\"true\"\u003e⌉\u003c/mo\u003e\u003c/mrow\u003e\u003cmspace width=\"0.2222em\"/\u003e\u003cmo lspace=\"0\" rspace=\"0\"\u003e×\u003c/mo\u003e\u003cmspace width=\"0.2222em\"/\u003e\u003cmrow\u003e\u003cmtext\u003eСмены\u003c/mtext\u003e\u003cmspace width=\"0.2222em\"/\u003e\u003cmo lspace=\"0\" rspace=\"0\"\u003e×\u003c/mo\u003e\u003cmspace width=\"0.2222em\"/\u003e\u003cmtext\u003eОклад\u003c/mtext\u003e\u003c/mrow\u003e\u003cmspace width=\"0.2222em\"/\u003e\u003cmo lspace=\"0\" rspace=\"0\"\u003e×\u003c/mo\u003e\u003cmspace width=\"0.2222em\"/\u003e\u003cmn\u003e12\u003c/mn\u003e\u003cmspace width=\"0.2222em\"/\u003e\u003cmo lspace=\"0\" rspace=\"0\"\u003e×\u003c/mo\u003e\u003cmspace width=\"0.2222em\"/\u003e\u003cmrow\u003e\u003cmo fence=\"true\"\u003e(\u003c/mo\u003e\u003cmrow\u003e\u003cmn\u003e1\u003c/mn\u003e\u003cmspace width=\"0.2222em\"/\u003e\u003cmo lspace=\"0\" rspace=\"0\"\u003e+\u003c/mo\u003e\u003cmspace width=\"0.2222em\"/\u003e\u003cmtext\u003eНачисления\u003c/mtext\u003e\u003c/mrow\u003e\u003cmo fence=\"true\"\u003e)\u003c/mo\u003e\u003c/mrow\u003e\u003c/mrow\u003e\u003c/mrow\u003e\u003c/math\u003e"
     },
     {
      "id": "baseline_opex",
@@ -3656,9 +3886,9 @@
     },
     {
      "id": "battery",
-     "text": "замена батареи = 15% цены робота в годы 4, 8 и далее, пока они внутри срока службы и горизонта",
+     "text": "замена батареи = 15% цены робота каждые 4 года, пока это внутри срока службы и горизонта",
      "unit": "₽",
-     "mathml": "\u003cmath display=\"block\"\u003e\u003cmrow\u003e\u003cmtext\u003eЗамена батареи\u003c/mtext\u003e\u003cmspace width=\"0.2778em\"/\u003e\u003cmo lspace=\"0\" rspace=\"0\"\u003e=\u003c/mo\u003e\u003cmspace width=\"0.2778em\"/\u003e\u003cmrow\u003e\u003cmrow\u003e\u003cmn\u003e15%\u003c/mn\u003e\u003cmspace width=\"0.2222em\"/\u003e\u003cmo lspace=\"0\" rspace=\"0\"\u003e×\u003c/mo\u003e\u003cmspace width=\"0.2222em\"/\u003e\u003cmtext\u003eЦена робота\u003c/mtext\u003e\u003c/mrow\u003e\u003cmtext\u003e, в годы 4, 8 и далее внутри срока службы\u003c/mtext\u003e\u003c/mrow\u003e\u003c/mrow\u003e\u003c/math\u003e"
+     "mathml": "\u003cmath display=\"block\"\u003e\u003cmrow\u003e\u003cmtext\u003eЗамена батареи\u003c/mtext\u003e\u003cmspace width=\"0.2778em\"/\u003e\u003cmo lspace=\"0\" rspace=\"0\"\u003e=\u003c/mo\u003e\u003cmspace width=\"0.2778em\"/\u003e\u003cmrow\u003e\u003cmrow\u003e\u003cmn\u003e15%\u003c/mn\u003e\u003cmspace width=\"0.2222em\"/\u003e\u003cmo lspace=\"0\" rspace=\"0\"\u003e×\u003c/mo\u003e\u003cmspace width=\"0.2222em\"/\u003e\u003cmtext\u003eЦена робота\u003c/mtext\u003e\u003c/mrow\u003e\u003cmtext\u003e, каждые 4 года внутри срока службы\u003c/mtext\u003e\u003c/mrow\u003e\u003c/mrow\u003e\u003c/math\u003e"
     },
     {
      "id": "replacement",
@@ -3710,7 +3940,7 @@
     },
     {
      "id": "depreciation",
-     "text": "амортизация линейная: робот = цена / его срок службы, инфраструктура, ПО, интеграция и ПНР = стоимость / 7 лет. Обучение и резерв не амортизируются",
+     "text": "амортизация линейная: робот = цена / его срок службы, доставка, инфраструктура, ПО, интеграция и ПНР = стоимость / 7 лет. Обучение и резерв не амортизируются",
      "unit": "₽/год",
      "mathml": "\u003cmath display=\"block\"\u003e\u003cmrow\u003e\u003cmtext\u003eАмортизация\u003c/mtext\u003e\u003cmspace width=\"0.2778em\"/\u003e\u003cmo lspace=\"0\" rspace=\"0\"\u003e=\u003c/mo\u003e\u003cmspace width=\"0.2778em\"/\u003e\u003cmrow\u003e\u003cmfrac\u003e\u003cmtext\u003eСтоимость актива\u003c/mtext\u003e\u003cmtext\u003eСрок службы\u003c/mtext\u003e\u003c/mfrac\u003e\u003cmtext\u003e, обучение и резерв не амортизируются\u003c/mtext\u003e\u003c/mrow\u003e\u003c/mrow\u003e\u003c/math\u003e"
     },
@@ -3764,8 +3994,9 @@
     "Цена изделия: каталог роботов, с НДС.",
     "ФОТ, режим, объёмы, горизонт: параметры объекта (демо-колонка датасета).",
     "Начисления на ФОТ: параметр объекта «Начисления на ФОТ», по умолчанию 1,302. Предельная база взносов 2 979 000 ₽ на человека в год и ставка 15,1% выше неё: правила 2026 года.",
-    "Доступность и загрузка: легенда датасета (AMR 70-85%), принята середина 80% и доступность 90%.",
-    "Статьи CAPEX сверх изделия: допущение команды, доли зафиксированы в модели расчёта.",
+    "Доступность и загрузка: набор допущений, а по нормативу легенда датасета (AMR 70-85%): середина 80% и доступность 90%.",
+    "Статьи CAPEX сверх изделия и доставка: допущение команды, значения по нормативам модели.",
+    "Связь, персонал эксплуатации, число зарядных станций без ТТХ: допущение команды, значения по нормативам модели.",
     "Ставка RaaS: допущение команды. Фиксированный 2,5% в месяц, переменный от объёма, смешанный 50/50.",
     "НДС: ставка и вычет задаются набором допущений. Цена из каталога с НДС, при вычете в денежный расчёт идёт цена без НДС.",
     "Ставка дисконтирования: набор допущений, по умолчанию 15% в год, постоянные цены.",
@@ -3865,7 +4096,35 @@
     "prices_include_vat": true,
     "vat_recoverable": false,
     "labor_cash_share": 1,
-    "discount_rate": 0.15
+    "discount_rate": 0.15,
+    "utilization": {
+     "value": 0.8,
+     "set": false
+    },
+    "availability": {
+     "value": 0.9,
+     "set": false
+    },
+    "reserve": {
+     "value": 0.15,
+     "set": false
+    },
+    "service_share": {
+     "value": 0.08,
+     "set": false
+    },
+    "delivery_share": {
+     "value": 0.03,
+     "set": false
+    },
+    "comm_rub_per_robot_year": {
+     "value": 12000,
+     "set": false
+    },
+    "technician_wage_month_rub": {
+     "value": 90000,
+     "set": false
+    }
    }
   }
  },
@@ -3875,6 +4134,35 @@
   "request": {
    "catalog": {
     "content_sha256": "reference",
+    "norms": {
+     "availability": 0,
+     "utilization": 0,
+     "reserve": 0,
+     "robots_per_charger": 0,
+     "infra_frac": 0,
+     "software_frac": 0,
+     "integration_yes_frac": 0,
+     "integration_no_frac": 0,
+     "commissioning_frac": 0,
+     "training_frac": 0,
+     "contingency_frac": 0,
+     "delivery_frac": 0,
+     "energy_kw": 0,
+     "energy_rub_per_kwh": 0,
+     "license_rub_per_robot": 0,
+     "consumable_rub_per_robot": 0,
+     "comm_rub_per_robot_year": 0,
+     "robots_per_technician": 0,
+     "technician_wage_month_rub": 0,
+     "default_service_frac": 0,
+     "default_lifetime_years": 0,
+     "battery_frac": 0,
+     "battery_years": 0,
+     "raas_monthly_frac": 0,
+     "raas_mix_fixed_share": 0,
+     "vat_rate": 0,
+     "discount_rate": 0
+    },
     "candidates": [
      {
       "ID": "5760e938-9a43-45a7-b8e8-f4f2e6383930",
@@ -4353,6 +4641,35 @@
   "request": {
    "catalog": {
     "content_sha256": "reference",
+    "norms": {
+     "availability": 0,
+     "utilization": 0,
+     "reserve": 0,
+     "robots_per_charger": 0,
+     "infra_frac": 0,
+     "software_frac": 0,
+     "integration_yes_frac": 0,
+     "integration_no_frac": 0,
+     "commissioning_frac": 0,
+     "training_frac": 0,
+     "contingency_frac": 0,
+     "delivery_frac": 0,
+     "energy_kw": 0,
+     "energy_rub_per_kwh": 0,
+     "license_rub_per_robot": 0,
+     "consumable_rub_per_robot": 0,
+     "comm_rub_per_robot_year": 0,
+     "robots_per_technician": 0,
+     "technician_wage_month_rub": 0,
+     "default_service_frac": 0,
+     "default_lifetime_years": 0,
+     "battery_frac": 0,
+     "battery_years": 0,
+     "raas_monthly_frac": 0,
+     "raas_mix_fixed_share": 0,
+     "vat_rate": 0,
+     "discount_rate": 0
+    },
     "candidates": [
      {
       "ID": "5760e938-9a43-45a7-b8e8-f4f2e6383930",
@@ -4870,12 +5187,15 @@
     "Главная метрика: простая окупаемость, момент, когда накопленный денежный поток достигает нуля. NPV, IRR и дисконтированная окупаемость даны справочно, ставка дисконтирования 15% в год из набора допущений.",
     "Налог на прибыль и амортизационный налоговый щит не моделируются. Амортизация показана для бухгалтерского эффекта и не входит в денежный поток.",
     "Срок расчёта равен горизонту: 7 лет. Робот, чей срок службы кончается внутри горизонта, покупается снова. Остаточная стоимость оборудования на конец горизонта не учитывается: затраты за горизонт, NPV и ROI консервативны, особенно если робота пришлось купить снова незадолго до конца горизонта.",
-    "Замена батареи: 15% цены робота в годы 4, 8 и далее внутри срока службы, разовым платежом в своём году.",
-    "RaaS: по умолчанию 2,5% цены в месяц, переменный тариф растёт с годовым объёмом, смешанный берёт половину от каждого. Срок контракта равен горизонту. Оборудование, батареи и замена роботов входят в плату. Ставки заданы командой, не договором.",
-    "Доступность 90%, загрузка 80% (середина диапазона AMR 70-85% из легенды датасета), резерв 15%. Зарядка учтена в доступности.",
+    "Замена батареи: 15% цены робота каждые 4 года внутри срока службы, разовым платежом в своём году.",
+    "RaaS: по умолчанию 2,5% цены в месяц, переменный тариф растёт с годовым объёмом, смешанный берёт половину от каждого. Срок контракта равен горизонту. Оборудование, доставка, батареи и замена роботов входят в плату. Ставки заданы командой, не договором.",
+    "Доступность 90%, загрузка 80%, резерв 15%. Зарядка учтена в доступности. По нормативу загрузка 80% взята из середины диапазона AMR 70-85% легенды датасета.",
     "Денежная экономия труда задаётся долей высвобождённого ФОТ.",
     "Начисления на ФОТ заданы параметром объекта, взносы выше предельной базы 2 979 000 ₽ на человека в год считаются по ставке 15,1%.",
-    "Энергия: 2 кВт на робота, 6,5 ₽/кВт·ч. Лицензии 80 000 ₽ и расходники 20 000 ₽ на робота в год. Это суммы с НДС.",
+    "Энергия: 2 кВт на робота, 6,5 ₽/кВт·ч. Лицензии 80 000 ₽, расходники 20 000 ₽ и связь 12 000 ₽ на робота в год. Это суммы с НДС.",
+    "Сервис и ремонт: доля стоимости оборудования в год, отдельной статьи на ремонт нет. Доставка 3% оборудования входит в CAPEX покупки.",
+    "Персонал эксплуатации: один техник на 10 роботов в каждую смену, зарплата 90 000 ₽ в месяц, начисления как у остальных ролей. Зарплата НДС не облагается.",
+    "Число зарядных станций считается по времени работы и зарядки роботов из ТТХ. Для робота без этих данных принята одна станция на 4 робота. Стоимость станций входит в инфраструктуру, отдельной статьи на них нет.",
     "Нет прочих текущих затрат процесса в параметрах, кроме ФОТ целевых ролей.",
     "Общая инфраструктура, ПО, интеграция, ПНР и обучение считаются один раз на вариант, не на каждую позицию флота.",
     "НДС 22% входит в цены и не принимается к вычету: в денежный расчёт идёт цена с НДС.",
@@ -4892,28 +5212,46 @@
      "mathml": "\u003cmath display=\"block\"\u003e\u003cmrow\u003e\u003cmtext\u003eФлот\u003c/mtext\u003e\u003cmspace width=\"0.2778em\"/\u003e\u003cmo lspace=\"0\" rspace=\"0\"\u003e=\u003c/mo\u003e\u003cmspace width=\"0.2778em\"/\u003e\u003cmrow\u003e\u003cmrow\u003e\u003cmo fence=\"true\"\u003e⌈\u003c/mo\u003e\u003cmrow\u003e\u003cmo fence=\"true\"\u003e⌈\u003c/mo\u003e\u003cmfrac\u003e\u003cmtext\u003eПик\u003c/mtext\u003e\u003cmrow\u003e\u003cmtext\u003eПроизводительность\u003c/mtext\u003e\u003cmspace width=\"0.2222em\"/\u003e\u003cmo lspace=\"0\" rspace=\"0\"\u003e×\u003c/mo\u003e\u003cmspace width=\"0.2222em\"/\u003e\u003cmn\u003e0,90\u003c/mn\u003e\u003cmspace width=\"0.2222em\"/\u003e\u003cmo lspace=\"0\" rspace=\"0\"\u003e×\u003c/mo\u003e\u003cmspace width=\"0.2222em\"/\u003e\u003cmn\u003e0,80\u003c/mn\u003e\u003c/mrow\u003e\u003c/mfrac\u003e\u003cmo fence=\"true\"\u003e⌉\u003c/mo\u003e\u003c/mrow\u003e\u003cmspace width=\"0.2222em\"/\u003e\u003cmo lspace=\"0\" rspace=\"0\"\u003e×\u003c/mo\u003e\u003cmspace width=\"0.2222em\"/\u003e\u003cmn\u003e1,15\u003c/mn\u003e\u003cmo fence=\"true\"\u003e⌉\u003c/mo\u003e\u003c/mrow\u003e\u003c/mrow\u003e\u003c/mrow\u003e\u003c/math\u003e"
     },
     {
+     "id": "chargers",
+     "text": "зарядные станции = для позиции с ТТХ вверх до целого от количества x время зарядки / (время работы + время зарядки), без ТТХ вверх до целого от количества / 4, у флота не меньше одной",
+     "unit": "шт",
+     "mathml": "\u003cmath display=\"block\"\u003e\u003cmrow\u003e\u003cmtext\u003eЗарядные станции\u003c/mtext\u003e\u003cmspace width=\"0.2778em\"/\u003e\u003cmo lspace=\"0\" rspace=\"0\"\u003e=\u003c/mo\u003e\u003cmspace width=\"0.2778em\"/\u003e\u003cmrow\u003e\u003cmtext\u003eс ТТХ: \u003c/mtext\u003e\u003cmrow\u003e\u003cmo fence=\"true\"\u003e⌈\u003c/mo\u003e\u003cmrow\u003e\u003cmtext\u003eКоличество\u003c/mtext\u003e\u003cmspace width=\"0.2222em\"/\u003e\u003cmo lspace=\"0\" rspace=\"0\"\u003e×\u003c/mo\u003e\u003cmspace width=\"0.2222em\"/\u003e\u003cmfrac\u003e\u003cmtext\u003eВремя зарядки\u003c/mtext\u003e\u003cmrow\u003e\u003cmtext\u003eВремя работы\u003c/mtext\u003e\u003cmspace width=\"0.2222em\"/\u003e\u003cmo lspace=\"0\" rspace=\"0\"\u003e+\u003c/mo\u003e\u003cmspace width=\"0.2222em\"/\u003e\u003cmtext\u003eВремя зарядки\u003c/mtext\u003e\u003c/mrow\u003e\u003c/mfrac\u003e\u003c/mrow\u003e\u003cmo fence=\"true\"\u003e⌉\u003c/mo\u003e\u003c/mrow\u003e\u003cmtext\u003e; без ТТХ: \u003c/mtext\u003e\u003cmrow\u003e\u003cmo fence=\"true\"\u003e⌈\u003c/mo\u003e\u003cmfrac\u003e\u003cmtext\u003eКоличество\u003c/mtext\u003e\u003cmn\u003e4\u003c/mn\u003e\u003c/mfrac\u003e\u003cmo fence=\"true\"\u003e⌉\u003c/mo\u003e\u003c/mrow\u003e\u003c/mrow\u003e\u003c/mrow\u003e\u003c/math\u003e"
+    },
+    {
      "id": "capex_buy",
-     "text": "CAPEX покупка = (оборудование + инфраструктура + ПО + интеграция + ПНР + обучение) x 1,10",
+     "text": "CAPEX покупка = (оборудование + доставка + инфраструктура + ПО + интеграция + ПНР + обучение) x 1,10",
      "unit": "₽",
-     "mathml": "\u003cmath display=\"block\"\u003e\u003cmrow\u003e\u003cmtext\u003eCAPEX покупки\u003c/mtext\u003e\u003cmspace width=\"0.2778em\"/\u003e\u003cmo lspace=\"0\" rspace=\"0\"\u003e=\u003c/mo\u003e\u003cmspace width=\"0.2778em\"/\u003e\u003cmrow\u003e\u003cmrow\u003e\u003cmo fence=\"true\"\u003e(\u003c/mo\u003e\u003cmrow\u003e\u003cmtext\u003eОборудование\u003c/mtext\u003e\u003cmspace width=\"0.2222em\"/\u003e\u003cmo lspace=\"0\" rspace=\"0\"\u003e+\u003c/mo\u003e\u003cmspace width=\"0.2222em\"/\u003e\u003cmtext\u003eИнфраструктура\u003c/mtext\u003e\u003cmspace width=\"0.2222em\"/\u003e\u003cmo lspace=\"0\" rspace=\"0\"\u003e+\u003c/mo\u003e\u003cmspace width=\"0.2222em\"/\u003e\u003cmtext\u003eПО\u003c/mtext\u003e\u003cmspace width=\"0.2222em\"/\u003e\u003cmo lspace=\"0\" rspace=\"0\"\u003e+\u003c/mo\u003e\u003cmspace width=\"0.2222em\"/\u003e\u003cmtext\u003eИнтеграция\u003c/mtext\u003e\u003cmspace width=\"0.2222em\"/\u003e\u003cmo lspace=\"0\" rspace=\"0\"\u003e+\u003c/mo\u003e\u003cmspace width=\"0.2222em\"/\u003e\u003cmtext\u003eПНР\u003c/mtext\u003e\u003cmspace width=\"0.2222em\"/\u003e\u003cmo lspace=\"0\" rspace=\"0\"\u003e+\u003c/mo\u003e\u003cmspace width=\"0.2222em\"/\u003e\u003cmtext\u003eОбучение\u003c/mtext\u003e\u003c/mrow\u003e\u003cmo fence=\"true\"\u003e)\u003c/mo\u003e\u003c/mrow\u003e\u003cmspace width=\"0.2222em\"/\u003e\u003cmo lspace=\"0\" rspace=\"0\"\u003e×\u003c/mo\u003e\u003cmspace width=\"0.2222em\"/\u003e\u003cmn\u003e1,10\u003c/mn\u003e\u003c/mrow\u003e\u003c/mrow\u003e\u003c/math\u003e"
+     "mathml": "\u003cmath display=\"block\"\u003e\u003cmrow\u003e\u003cmtext\u003eCAPEX покупки\u003c/mtext\u003e\u003cmspace width=\"0.2778em\"/\u003e\u003cmo lspace=\"0\" rspace=\"0\"\u003e=\u003c/mo\u003e\u003cmspace width=\"0.2778em\"/\u003e\u003cmrow\u003e\u003cmrow\u003e\u003cmo fence=\"true\"\u003e(\u003c/mo\u003e\u003cmrow\u003e\u003cmtext\u003eОборудование\u003c/mtext\u003e\u003cmspace width=\"0.2222em\"/\u003e\u003cmo lspace=\"0\" rspace=\"0\"\u003e+\u003c/mo\u003e\u003cmspace width=\"0.2222em\"/\u003e\u003cmtext\u003eДоставка\u003c/mtext\u003e\u003cmspace width=\"0.2222em\"/\u003e\u003cmo lspace=\"0\" rspace=\"0\"\u003e+\u003c/mo\u003e\u003cmspace width=\"0.2222em\"/\u003e\u003cmtext\u003eИнфраструктура\u003c/mtext\u003e\u003cmspace width=\"0.2222em\"/\u003e\u003cmo lspace=\"0\" rspace=\"0\"\u003e+\u003c/mo\u003e\u003cmspace width=\"0.2222em\"/\u003e\u003cmtext\u003eПО\u003c/mtext\u003e\u003cmspace width=\"0.2222em\"/\u003e\u003cmo lspace=\"0\" rspace=\"0\"\u003e+\u003c/mo\u003e\u003cmspace width=\"0.2222em\"/\u003e\u003cmtext\u003eИнтеграция\u003c/mtext\u003e\u003cmspace width=\"0.2222em\"/\u003e\u003cmo lspace=\"0\" rspace=\"0\"\u003e+\u003c/mo\u003e\u003cmspace width=\"0.2222em\"/\u003e\u003cmtext\u003eПНР\u003c/mtext\u003e\u003cmspace width=\"0.2222em\"/\u003e\u003cmo lspace=\"0\" rspace=\"0\"\u003e+\u003c/mo\u003e\u003cmspace width=\"0.2222em\"/\u003e\u003cmtext\u003eОбучение\u003c/mtext\u003e\u003c/mrow\u003e\u003cmo fence=\"true\"\u003e)\u003c/mo\u003e\u003c/mrow\u003e\u003cmspace width=\"0.2222em\"/\u003e\u003cmo lspace=\"0\" rspace=\"0\"\u003e×\u003c/mo\u003e\u003cmspace width=\"0.2222em\"/\u003e\u003cmn\u003e1,10\u003c/mn\u003e\u003c/mrow\u003e\u003c/mrow\u003e\u003c/math\u003e"
     },
     {
      "id": "capex_raas",
-     "text": "CAPEX RaaS = (инфраструктура + ПО + интеграция + ПНР + обучение) x 1,10, без оборудования",
+     "text": "CAPEX RaaS = (инфраструктура + ПО + интеграция + ПНР + обучение) x 1,10, без оборудования и доставки",
      "unit": "₽",
      "mathml": "\u003cmath display=\"block\"\u003e\u003cmrow\u003e\u003cmtext\u003eCAPEX RaaS\u003c/mtext\u003e\u003cmspace width=\"0.2778em\"/\u003e\u003cmo lspace=\"0\" rspace=\"0\"\u003e=\u003c/mo\u003e\u003cmspace width=\"0.2778em\"/\u003e\u003cmrow\u003e\u003cmrow\u003e\u003cmo fence=\"true\"\u003e(\u003c/mo\u003e\u003cmrow\u003e\u003cmtext\u003eИнфраструктура\u003c/mtext\u003e\u003cmspace width=\"0.2222em\"/\u003e\u003cmo lspace=\"0\" rspace=\"0\"\u003e+\u003c/mo\u003e\u003cmspace width=\"0.2222em\"/\u003e\u003cmtext\u003eПО\u003c/mtext\u003e\u003cmspace width=\"0.2222em\"/\u003e\u003cmo lspace=\"0\" rspace=\"0\"\u003e+\u003c/mo\u003e\u003cmspace width=\"0.2222em\"/\u003e\u003cmtext\u003eИнтеграция\u003c/mtext\u003e\u003cmspace width=\"0.2222em\"/\u003e\u003cmo lspace=\"0\" rspace=\"0\"\u003e+\u003c/mo\u003e\u003cmspace width=\"0.2222em\"/\u003e\u003cmtext\u003eПНР\u003c/mtext\u003e\u003cmspace width=\"0.2222em\"/\u003e\u003cmo lspace=\"0\" rspace=\"0\"\u003e+\u003c/mo\u003e\u003cmspace width=\"0.2222em\"/\u003e\u003cmtext\u003eОбучение\u003c/mtext\u003e\u003c/mrow\u003e\u003cmo fence=\"true\"\u003e)\u003c/mo\u003e\u003c/mrow\u003e\u003cmspace width=\"0.2222em\"/\u003e\u003cmo lspace=\"0\" rspace=\"0\"\u003e×\u003c/mo\u003e\u003cmspace width=\"0.2222em\"/\u003e\u003cmn\u003e1,10\u003c/mn\u003e\u003c/mrow\u003e\u003c/mrow\u003e\u003c/math\u003e"
     },
     {
+     "id": "delivery",
+     "text": "доставка = 3% оборудования, только в CAPEX покупки",
+     "unit": "₽",
+     "mathml": "\u003cmath display=\"block\"\u003e\u003cmrow\u003e\u003cmtext\u003eДоставка\u003c/mtext\u003e\u003cmspace width=\"0.2778em\"/\u003e\u003cmo lspace=\"0\" rspace=\"0\"\u003e=\u003c/mo\u003e\u003cmspace width=\"0.2778em\"/\u003e\u003cmrow\u003e\u003cmrow\u003e\u003cmn\u003e3%\u003c/mn\u003e\u003cmspace width=\"0.2222em\"/\u003e\u003cmo lspace=\"0\" rspace=\"0\"\u003e×\u003c/mo\u003e\u003cmspace width=\"0.2222em\"/\u003e\u003cmtext\u003eОборудование\u003c/mtext\u003e\u003c/mrow\u003e\u003cmtext\u003e, только в CAPEX покупки\u003c/mtext\u003e\u003c/mrow\u003e\u003c/mrow\u003e\u003c/math\u003e"
+    },
+    {
      "id": "opex_buy",
-     "text": "OPEX покупка = ФОТ остатка + сервис + лицензии + энергия + расходники, без разовых замен",
+     "text": "OPEX покупка = ФОТ остатка + сервис и ремонт + лицензии + энергия + расходники + связь + персонал эксплуатации, без разовых замен",
      "unit": "₽/год",
-     "mathml": "\u003cmath display=\"block\"\u003e\u003cmrow\u003e\u003cmtext\u003eOPEX покупки\u003c/mtext\u003e\u003cmspace width=\"0.2778em\"/\u003e\u003cmo lspace=\"0\" rspace=\"0\"\u003e=\u003c/mo\u003e\u003cmspace width=\"0.2778em\"/\u003e\u003cmrow\u003e\u003cmrow\u003e\u003cmtext\u003eФОТ остатка\u003c/mtext\u003e\u003cmspace width=\"0.2222em\"/\u003e\u003cmo lspace=\"0\" rspace=\"0\"\u003e+\u003c/mo\u003e\u003cmspace width=\"0.2222em\"/\u003e\u003cmtext\u003eСервис\u003c/mtext\u003e\u003cmspace width=\"0.2222em\"/\u003e\u003cmo lspace=\"0\" rspace=\"0\"\u003e+\u003c/mo\u003e\u003cmspace width=\"0.2222em\"/\u003e\u003cmtext\u003eЛицензии\u003c/mtext\u003e\u003cmspace width=\"0.2222em\"/\u003e\u003cmo lspace=\"0\" rspace=\"0\"\u003e+\u003c/mo\u003e\u003cmspace width=\"0.2222em\"/\u003e\u003cmtext\u003eЭнергия\u003c/mtext\u003e\u003cmspace width=\"0.2222em\"/\u003e\u003cmo lspace=\"0\" rspace=\"0\"\u003e+\u003c/mo\u003e\u003cmspace width=\"0.2222em\"/\u003e\u003cmtext\u003eРасходники\u003c/mtext\u003e\u003c/mrow\u003e\u003c/mrow\u003e\u003c/mrow\u003e\u003c/math\u003e"
+     "mathml": "\u003cmath display=\"block\"\u003e\u003cmrow\u003e\u003cmtext\u003eOPEX покупки\u003c/mtext\u003e\u003cmspace width=\"0.2778em\"/\u003e\u003cmo lspace=\"0\" rspace=\"0\"\u003e=\u003c/mo\u003e\u003cmspace width=\"0.2778em\"/\u003e\u003cmrow\u003e\u003cmrow\u003e\u003cmtext\u003eФОТ остатка\u003c/mtext\u003e\u003cmspace width=\"0.2222em\"/\u003e\u003cmo lspace=\"0\" rspace=\"0\"\u003e+\u003c/mo\u003e\u003cmspace width=\"0.2222em\"/\u003e\u003cmtext\u003eСервис и ремонт\u003c/mtext\u003e\u003cmspace width=\"0.2222em\"/\u003e\u003cmo lspace=\"0\" rspace=\"0\"\u003e+\u003c/mo\u003e\u003cmspace width=\"0.2222em\"/\u003e\u003cmtext\u003eЛицензии\u003c/mtext\u003e\u003cmspace width=\"0.2222em\"/\u003e\u003cmo lspace=\"0\" rspace=\"0\"\u003e+\u003c/mo\u003e\u003cmspace width=\"0.2222em\"/\u003e\u003cmtext\u003eЭнергия\u003c/mtext\u003e\u003cmspace width=\"0.2222em\"/\u003e\u003cmo lspace=\"0\" rspace=\"0\"\u003e+\u003c/mo\u003e\u003cmspace width=\"0.2222em\"/\u003e\u003cmtext\u003eРасходники\u003c/mtext\u003e\u003cmspace width=\"0.2222em\"/\u003e\u003cmo lspace=\"0\" rspace=\"0\"\u003e+\u003c/mo\u003e\u003cmspace width=\"0.2222em\"/\u003e\u003cmtext\u003eСвязь\u003c/mtext\u003e\u003cmspace width=\"0.2222em\"/\u003e\u003cmo lspace=\"0\" rspace=\"0\"\u003e+\u003c/mo\u003e\u003cmspace width=\"0.2222em\"/\u003e\u003cmtext\u003eПерсонал эксплуатации\u003c/mtext\u003e\u003c/mrow\u003e\u003c/mrow\u003e\u003c/mrow\u003e\u003c/math\u003e"
     },
     {
      "id": "opex_raas",
-     "text": "OPEX RaaS = ФОТ остатка + плата тарифа + энергия + расходники",
+     "text": "OPEX RaaS = ФОТ остатка + плата тарифа + энергия + расходники + связь + персонал эксплуатации",
      "unit": "₽/год",
-     "mathml": "\u003cmath display=\"block\"\u003e\u003cmrow\u003e\u003cmtext\u003eOPEX RaaS\u003c/mtext\u003e\u003cmspace width=\"0.2778em\"/\u003e\u003cmo lspace=\"0\" rspace=\"0\"\u003e=\u003c/mo\u003e\u003cmspace width=\"0.2778em\"/\u003e\u003cmrow\u003e\u003cmrow\u003e\u003cmtext\u003eФОТ остатка\u003c/mtext\u003e\u003cmspace width=\"0.2222em\"/\u003e\u003cmo lspace=\"0\" rspace=\"0\"\u003e+\u003c/mo\u003e\u003cmspace width=\"0.2222em\"/\u003e\u003cmtext\u003eПлата по тарифу\u003c/mtext\u003e\u003cmspace width=\"0.2222em\"/\u003e\u003cmo lspace=\"0\" rspace=\"0\"\u003e+\u003c/mo\u003e\u003cmspace width=\"0.2222em\"/\u003e\u003cmtext\u003eЭнергия\u003c/mtext\u003e\u003cmspace width=\"0.2222em\"/\u003e\u003cmo lspace=\"0\" rspace=\"0\"\u003e+\u003c/mo\u003e\u003cmspace width=\"0.2222em\"/\u003e\u003cmtext\u003eРасходники\u003c/mtext\u003e\u003c/mrow\u003e\u003c/mrow\u003e\u003c/mrow\u003e\u003c/math\u003e"
+     "mathml": "\u003cmath display=\"block\"\u003e\u003cmrow\u003e\u003cmtext\u003eOPEX RaaS\u003c/mtext\u003e\u003cmspace width=\"0.2778em\"/\u003e\u003cmo lspace=\"0\" rspace=\"0\"\u003e=\u003c/mo\u003e\u003cmspace width=\"0.2778em\"/\u003e\u003cmrow\u003e\u003cmrow\u003e\u003cmtext\u003eФОТ остатка\u003c/mtext\u003e\u003cmspace width=\"0.2222em\"/\u003e\u003cmo lspace=\"0\" rspace=\"0\"\u003e+\u003c/mo\u003e\u003cmspace width=\"0.2222em\"/\u003e\u003cmtext\u003eПлата по тарифу\u003c/mtext\u003e\u003cmspace width=\"0.2222em\"/\u003e\u003cmo lspace=\"0\" rspace=\"0\"\u003e+\u003c/mo\u003e\u003cmspace width=\"0.2222em\"/\u003e\u003cmtext\u003eЭнергия\u003c/mtext\u003e\u003cmspace width=\"0.2222em\"/\u003e\u003cmo lspace=\"0\" rspace=\"0\"\u003e+\u003c/mo\u003e\u003cmspace width=\"0.2222em\"/\u003e\u003cmtext\u003eРасходники\u003c/mtext\u003e\u003cmspace width=\"0.2222em\"/\u003e\u003cmo lspace=\"0\" rspace=\"0\"\u003e+\u003c/mo\u003e\u003cmspace width=\"0.2222em\"/\u003e\u003cmtext\u003eСвязь\u003c/mtext\u003e\u003cmspace width=\"0.2222em\"/\u003e\u003cmo lspace=\"0\" rspace=\"0\"\u003e+\u003c/mo\u003e\u003cmspace width=\"0.2222em\"/\u003e\u003cmtext\u003eПерсонал эксплуатации\u003c/mtext\u003e\u003c/mrow\u003e\u003c/mrow\u003e\u003c/mrow\u003e\u003c/math\u003e"
+    },
+    {
+     "id": "technicians",
+     "text": "персонал эксплуатации = вверх до целого от флота / 10, x число смен x зарплата x 12 x (1 + начисления)",
+     "unit": "₽/год",
+     "mathml": "\u003cmath display=\"block\"\u003e\u003cmrow\u003e\u003cmtext\u003eПерсонал эксплуатации\u003c/mtext\u003e\u003cmspace width=\"0.2778em\"/\u003e\u003cmo lspace=\"0\" rspace=\"0\"\u003e=\u003c/mo\u003e\u003cmspace width=\"0.2778em\"/\u003e\u003cmrow\u003e\u003cmrow\u003e\u003cmo fence=\"true\"\u003e⌈\u003c/mo\u003e\u003cmfrac\u003e\u003cmtext\u003eФлот\u003c/mtext\u003e\u003cmn\u003e10\u003c/mn\u003e\u003c/mfrac\u003e\u003cmo fence=\"true\"\u003e⌉\u003c/mo\u003e\u003c/mrow\u003e\u003cmspace width=\"0.2222em\"/\u003e\u003cmo lspace=\"0\" rspace=\"0\"\u003e×\u003c/mo\u003e\u003cmspace width=\"0.2222em\"/\u003e\u003cmrow\u003e\u003cmtext\u003eСмены\u003c/mtext\u003e\u003cmspace width=\"0.2222em\"/\u003e\u003cmo lspace=\"0\" rspace=\"0\"\u003e×\u003c/mo\u003e\u003cmspace width=\"0.2222em\"/\u003e\u003cmtext\u003eОклад\u003c/mtext\u003e\u003c/mrow\u003e\u003cmspace width=\"0.2222em\"/\u003e\u003cmo lspace=\"0\" rspace=\"0\"\u003e×\u003c/mo\u003e\u003cmspace width=\"0.2222em\"/\u003e\u003cmn\u003e12\u003c/mn\u003e\u003cmspace width=\"0.2222em\"/\u003e\u003cmo lspace=\"0\" rspace=\"0\"\u003e×\u003c/mo\u003e\u003cmspace width=\"0.2222em\"/\u003e\u003cmrow\u003e\u003cmo fence=\"true\"\u003e(\u003c/mo\u003e\u003cmrow\u003e\u003cmn\u003e1\u003c/mn\u003e\u003cmspace width=\"0.2222em\"/\u003e\u003cmo lspace=\"0\" rspace=\"0\"\u003e+\u003c/mo\u003e\u003cmspace width=\"0.2222em\"/\u003e\u003cmtext\u003eНачисления\u003c/mtext\u003e\u003c/mrow\u003e\u003cmo fence=\"true\"\u003e)\u003c/mo\u003e\u003c/mrow\u003e\u003c/mrow\u003e\u003c/mrow\u003e\u003c/math\u003e"
     },
     {
      "id": "baseline_opex",
@@ -4941,9 +5279,9 @@
     },
     {
      "id": "battery",
-     "text": "замена батареи = 15% цены робота в годы 4, 8 и далее, пока они внутри срока службы и горизонта",
+     "text": "замена батареи = 15% цены робота каждые 4 года, пока это внутри срока службы и горизонта",
      "unit": "₽",
-     "mathml": "\u003cmath display=\"block\"\u003e\u003cmrow\u003e\u003cmtext\u003eЗамена батареи\u003c/mtext\u003e\u003cmspace width=\"0.2778em\"/\u003e\u003cmo lspace=\"0\" rspace=\"0\"\u003e=\u003c/mo\u003e\u003cmspace width=\"0.2778em\"/\u003e\u003cmrow\u003e\u003cmrow\u003e\u003cmn\u003e15%\u003c/mn\u003e\u003cmspace width=\"0.2222em\"/\u003e\u003cmo lspace=\"0\" rspace=\"0\"\u003e×\u003c/mo\u003e\u003cmspace width=\"0.2222em\"/\u003e\u003cmtext\u003eЦена робота\u003c/mtext\u003e\u003c/mrow\u003e\u003cmtext\u003e, в годы 4, 8 и далее внутри срока службы\u003c/mtext\u003e\u003c/mrow\u003e\u003c/mrow\u003e\u003c/math\u003e"
+     "mathml": "\u003cmath display=\"block\"\u003e\u003cmrow\u003e\u003cmtext\u003eЗамена батареи\u003c/mtext\u003e\u003cmspace width=\"0.2778em\"/\u003e\u003cmo lspace=\"0\" rspace=\"0\"\u003e=\u003c/mo\u003e\u003cmspace width=\"0.2778em\"/\u003e\u003cmrow\u003e\u003cmrow\u003e\u003cmn\u003e15%\u003c/mn\u003e\u003cmspace width=\"0.2222em\"/\u003e\u003cmo lspace=\"0\" rspace=\"0\"\u003e×\u003c/mo\u003e\u003cmspace width=\"0.2222em\"/\u003e\u003cmtext\u003eЦена робота\u003c/mtext\u003e\u003c/mrow\u003e\u003cmtext\u003e, каждые 4 года внутри срока службы\u003c/mtext\u003e\u003c/mrow\u003e\u003c/mrow\u003e\u003c/math\u003e"
     },
     {
      "id": "replacement",
@@ -4995,7 +5333,7 @@
     },
     {
      "id": "depreciation",
-     "text": "амортизация линейная: робот = цена / его срок службы, инфраструктура, ПО, интеграция и ПНР = стоимость / 7 лет. Обучение и резерв не амортизируются",
+     "text": "амортизация линейная: робот = цена / его срок службы, доставка, инфраструктура, ПО, интеграция и ПНР = стоимость / 7 лет. Обучение и резерв не амортизируются",
      "unit": "₽/год",
      "mathml": "\u003cmath display=\"block\"\u003e\u003cmrow\u003e\u003cmtext\u003eАмортизация\u003c/mtext\u003e\u003cmspace width=\"0.2778em\"/\u003e\u003cmo lspace=\"0\" rspace=\"0\"\u003e=\u003c/mo\u003e\u003cmspace width=\"0.2778em\"/\u003e\u003cmrow\u003e\u003cmfrac\u003e\u003cmtext\u003eСтоимость актива\u003c/mtext\u003e\u003cmtext\u003eСрок службы\u003c/mtext\u003e\u003c/mfrac\u003e\u003cmtext\u003e, обучение и резерв не амортизируются\u003c/mtext\u003e\u003c/mrow\u003e\u003c/mrow\u003e\u003c/math\u003e"
     },
@@ -5049,8 +5387,9 @@
     "Цена изделия: каталог роботов, с НДС.",
     "ФОТ, режим, объёмы, горизонт: параметры объекта (демо-колонка датасета).",
     "Начисления на ФОТ: параметр объекта «Начисления на ФОТ», по умолчанию 1,302. Предельная база взносов 2 979 000 ₽ на человека в год и ставка 15,1% выше неё: правила 2026 года.",
-    "Доступность и загрузка: легенда датасета (AMR 70-85%), принята середина 80% и доступность 90%.",
-    "Статьи CAPEX сверх изделия: допущение команды, доли зафиксированы в модели расчёта.",
+    "Доступность и загрузка: набор допущений, а по нормативу легенда датасета (AMR 70-85%): середина 80% и доступность 90%.",
+    "Статьи CAPEX сверх изделия и доставка: допущение команды, значения по нормативам модели.",
+    "Связь, персонал эксплуатации, число зарядных станций без ТТХ: допущение команды, значения по нормативам модели.",
     "Ставка RaaS: допущение команды. Фиксированный 2,5% в месяц, переменный от объёма, смешанный 50/50.",
     "НДС: ставка и вычет задаются набором допущений. Цена из каталога с НДС, при вычете в денежный расчёт идёт цена без НДС.",
     "Ставка дисконтирования: набор допущений, по умолчанию 15% в год, постоянные цены.",
@@ -5150,7 +5489,35 @@
     "prices_include_vat": true,
     "vat_recoverable": false,
     "labor_cash_share": 1,
-    "discount_rate": 0.15
+    "discount_rate": 0.15,
+    "utilization": {
+     "value": 0.8,
+     "set": false
+    },
+    "availability": {
+     "value": 0.9,
+     "set": false
+    },
+    "reserve": {
+     "value": 0.15,
+     "set": false
+    },
+    "service_share": {
+     "value": 0.08,
+     "set": false
+    },
+    "delivery_share": {
+     "value": 0.03,
+     "set": false
+    },
+    "comm_rub_per_robot_year": {
+     "value": 12000,
+     "set": false
+    },
+    "technician_wage_month_rub": {
+     "value": 90000,
+     "set": false
+    }
    }
   }
  },
@@ -5160,6 +5527,35 @@
   "request": {
    "catalog": {
     "content_sha256": "reference",
+    "norms": {
+     "availability": 0,
+     "utilization": 0,
+     "reserve": 0,
+     "robots_per_charger": 0,
+     "infra_frac": 0,
+     "software_frac": 0,
+     "integration_yes_frac": 0,
+     "integration_no_frac": 0,
+     "commissioning_frac": 0,
+     "training_frac": 0,
+     "contingency_frac": 0,
+     "delivery_frac": 0,
+     "energy_kw": 0,
+     "energy_rub_per_kwh": 0,
+     "license_rub_per_robot": 0,
+     "consumable_rub_per_robot": 0,
+     "comm_rub_per_robot_year": 0,
+     "robots_per_technician": 0,
+     "technician_wage_month_rub": 0,
+     "default_service_frac": 0,
+     "default_lifetime_years": 0,
+     "battery_frac": 0,
+     "battery_years": 0,
+     "raas_monthly_frac": 0,
+     "raas_mix_fixed_share": 0,
+     "vat_rate": 0,
+     "discount_rate": 0
+    },
     "candidates": [
      {
       "ID": "5760e938-9a43-45a7-b8e8-f4f2e6383930",
@@ -5275,12 +5671,19 @@
    "collections": {
     "assumption_sets": {
      "5be1f870-7e0b-5acf-b645-d70c65f051d1": {
+      "availability": null,
+      "comm_rub_per_robot_year": null,
+      "delivery_share": null,
       "discount_rate": 0.15,
       "id": "5be1f870-7e0b-5acf-b645-d70c65f051d1",
       "labor_cash_share": 1,
       "name": "Базовый",
       "order": "a0",
       "prices_include_vat": true,
+      "reserve": null,
+      "service_share": null,
+      "technician_wage_month_rub": null,
+      "utilization": null,
       "vat_rate": 0.22,
       "vat_recoverable": false
      }
@@ -9086,6 +9489,35 @@
   "request": {
    "catalog": {
     "content_sha256": "reference",
+    "norms": {
+     "availability": 0,
+     "utilization": 0,
+     "reserve": 0,
+     "robots_per_charger": 0,
+     "infra_frac": 0,
+     "software_frac": 0,
+     "integration_yes_frac": 0,
+     "integration_no_frac": 0,
+     "commissioning_frac": 0,
+     "training_frac": 0,
+     "contingency_frac": 0,
+     "delivery_frac": 0,
+     "energy_kw": 0,
+     "energy_rub_per_kwh": 0,
+     "license_rub_per_robot": 0,
+     "consumable_rub_per_robot": 0,
+     "comm_rub_per_robot_year": 0,
+     "robots_per_technician": 0,
+     "technician_wage_month_rub": 0,
+     "default_service_frac": 0,
+     "default_lifetime_years": 0,
+     "battery_frac": 0,
+     "battery_years": 0,
+     "raas_monthly_frac": 0,
+     "raas_mix_fixed_share": 0,
+     "vat_rate": 0,
+     "discount_rate": 0
+    },
     "candidates": [
      {
       "ID": "5760e938-9a43-45a7-b8e8-f4f2e6383930",
@@ -9201,12 +9633,19 @@
    "collections": {
     "assumption_sets": {
      "5be1f870-7e0b-5acf-b645-d70c65f051d1": {
+      "availability": null,
+      "comm_rub_per_robot_year": null,
+      "delivery_share": null,
       "discount_rate": 0.15,
       "id": "5be1f870-7e0b-5acf-b645-d70c65f051d1",
       "labor_cash_share": 1,
       "name": "Базовый",
       "order": "a0",
       "prices_include_vat": true,
+      "reserve": null,
+      "service_share": null,
+      "technician_wage_month_rub": null,
+      "utilization": null,
       "vat_rate": 0.22,
       "vat_recoverable": false
      }
@@ -10226,6 +10665,35 @@
   "request": {
    "catalog": {
     "content_sha256": "reference",
+    "norms": {
+     "availability": 0,
+     "utilization": 0,
+     "reserve": 0,
+     "robots_per_charger": 0,
+     "infra_frac": 0,
+     "software_frac": 0,
+     "integration_yes_frac": 0,
+     "integration_no_frac": 0,
+     "commissioning_frac": 0,
+     "training_frac": 0,
+     "contingency_frac": 0,
+     "delivery_frac": 0,
+     "energy_kw": 0,
+     "energy_rub_per_kwh": 0,
+     "license_rub_per_robot": 0,
+     "consumable_rub_per_robot": 0,
+     "comm_rub_per_robot_year": 0,
+     "robots_per_technician": 0,
+     "technician_wage_month_rub": 0,
+     "default_service_frac": 0,
+     "default_lifetime_years": 0,
+     "battery_frac": 0,
+     "battery_years": 0,
+     "raas_monthly_frac": 0,
+     "raas_mix_fixed_share": 0,
+     "vat_rate": 0,
+     "discount_rate": 0
+    },
     "candidates": [
      {
       "ID": "5760e938-9a43-45a7-b8e8-f4f2e6383930",
@@ -10341,12 +10809,19 @@
    "collections": {
     "assumption_sets": {
      "5be1f870-7e0b-5acf-b645-d70c65f051d1": {
+      "availability": null,
+      "comm_rub_per_robot_year": null,
+      "delivery_share": null,
       "discount_rate": 0.15,
       "id": "5be1f870-7e0b-5acf-b645-d70c65f051d1",
       "labor_cash_share": 1,
       "name": "Базовый",
       "order": "a0",
       "prices_include_vat": true,
+      "reserve": null,
+      "service_share": null,
+      "technician_wage_month_rub": null,
+      "utilization": null,
       "vat_rate": 0.22,
       "vat_recoverable": false
      }
@@ -10595,57 +11070,57 @@
      "kind": "buy",
      "solution_id": "5760e938-9a43-45a7-b8e8-f4f2e6383930",
      "fleet_size": 2,
-     "capex_rub": 9752600,
-     "opex_year_rub": 108397900,
-     "annual_effect_rub": 92839220,
-     "payback_years": 0.105,
+     "capex_rub": 9957200,
+     "opex_year_rub": 111234220,
+     "annual_effect_rub": 90002900,
+     "payback_years": 0.1106,
      "payback_band": "up_to_3",
-     "roi_pct": 4650.18,
-     "tco_rub": 552672100,
-     "accounting_effect_rub": 91599220,
+     "roi_pct": 4410.15,
+     "tco_rub": 567058300,
+     "accounting_effect_rub": 88736329,
      "labor_cash_saved_rub": 93744000,
      "variant_id": "923afa76-c857-53de-9fdf-77f5339bdfb5",
      "variant_name": "Вариант 1",
      "price_source": "catalog",
-     "discounted_payback_years": 0.1208,
-     "npv_rub": 300927134,
+     "discounted_payback_years": 0.1272,
+     "npv_rub": 291214750,
      "cash_flow": [
       {
        "year": 0,
        "effect_rub": 0,
-       "net_rub": -9752600,
-       "cumulative_rub": -9752600
+       "net_rub": -9957200,
+       "cumulative_rub": -9957200
       },
       {
        "year": 1,
-       "effect_rub": 92839220,
-       "net_rub": 92839220,
-       "cumulative_rub": 83086620
+       "effect_rub": 90002900,
+       "net_rub": 90002900,
+       "cumulative_rub": 80045700
       },
       {
        "year": 2,
-       "effect_rub": 92839220,
-       "net_rub": 92839220,
-       "cumulative_rub": 175925840
+       "effect_rub": 90002900,
+       "net_rub": 90002900,
+       "cumulative_rub": 170048600
       },
       {
        "year": 3,
-       "effect_rub": 92839220,
-       "net_rub": 92839220,
-       "cumulative_rub": 268765060
+       "effect_rub": 90002900,
+       "net_rub": 90002900,
+       "cumulative_rub": 260051500
       },
       {
        "year": 4,
-       "effect_rub": 92839220,
+       "effect_rub": 90002900,
        "battery_rub": 930000,
-       "net_rub": 91909220,
-       "cumulative_rub": 360674280
+       "net_rub": 89072900,
+       "cumulative_rub": 349124400
       },
       {
        "year": 5,
-       "effect_rub": 92839220,
-       "net_rub": 92839220,
-       "cumulative_rub": 453513500
+       "effect_rub": 90002900,
+       "net_rub": 90002900,
+       "cumulative_rub": 439127300
       }
      ]
     },
@@ -10654,20 +11129,20 @@
      "solution_id": "5760e938-9a43-45a7-b8e8-f4f2e6383930",
      "fleet_size": 2,
      "capex_rub": 2932600,
-     "opex_year_rub": 109601900,
-     "annual_effect_rub": 91635220,
-     "payback_years": 0.032,
+     "opex_year_rub": 112438220,
+     "annual_effect_rub": 88798900,
+     "payback_years": 0.033,
      "payback_band": "up_to_3",
-     "roi_pct": 15523.55,
-     "tco_rub": 550942100,
-     "accounting_effect_rub": 91280934,
+     "roi_pct": 15039.96,
+     "tco_rub": 565123700,
+     "accounting_effect_rub": 88444614,
      "labor_cash_saved_rub": 93744000,
      "variant_id": "923afa76-c857-53de-9fdf-77f5339bdfb5",
      "variant_name": "Вариант 1",
      "tariff": "fixed",
      "price_source": "catalog",
-     "discounted_payback_years": 0.0368,
-     "npv_rub": 304242870,
+     "discounted_payback_years": 0.038,
+     "npv_rub": 294735085,
      "cash_flow": [
       {
        "year": 0,
@@ -10677,33 +11152,33 @@
       },
       {
        "year": 1,
-       "effect_rub": 91635220,
-       "net_rub": 91635220,
-       "cumulative_rub": 88702620
+       "effect_rub": 88798900,
+       "net_rub": 88798900,
+       "cumulative_rub": 85866300
       },
       {
        "year": 2,
-       "effect_rub": 91635220,
-       "net_rub": 91635220,
-       "cumulative_rub": 180337840
+       "effect_rub": 88798900,
+       "net_rub": 88798900,
+       "cumulative_rub": 174665200
       },
       {
        "year": 3,
-       "effect_rub": 91635220,
-       "net_rub": 91635220,
-       "cumulative_rub": 271973060
+       "effect_rub": 88798900,
+       "net_rub": 88798900,
+       "cumulative_rub": 263464100
       },
       {
        "year": 4,
-       "effect_rub": 91635220,
-       "net_rub": 91635220,
-       "cumulative_rub": 363608280
+       "effect_rub": 88798900,
+       "net_rub": 88798900,
+       "cumulative_rub": 352263000
       },
       {
        "year": 5,
-       "effect_rub": 91635220,
-       "net_rub": 91635220,
-       "cumulative_rub": 455243500
+       "effect_rub": 88798900,
+       "net_rub": 88798900,
+       "cumulative_rub": 441061900
       }
      ]
     }
@@ -10968,7 +11443,7 @@
       "forced": false,
       "estimate": {
        "fleet_size": 170,
-       "capex_rub": 828971000,
+       "capex_rub": 846362000,
        "payback_years": null
       }
      },
@@ -11223,7 +11698,7 @@
       "forced": false,
       "estimate": {
        "fleet_size": 199,
-       "capex_rub": 1502529600,
+       "capex_rub": 1534051200,
        "payback_years": null
       }
      }
@@ -11254,17 +11729,21 @@
     "Главная метрика: простая окупаемость, момент, когда накопленный денежный поток достигает нуля. NPV, IRR и дисконтированная окупаемость даны справочно, ставка дисконтирования 15% в год из набора допущений.",
     "Налог на прибыль и амортизационный налоговый щит не моделируются. Амортизация показана для бухгалтерского эффекта и не входит в денежный поток.",
     "Срок расчёта равен горизонту: 5 лет. Робот, чей срок службы кончается внутри горизонта, покупается снова. Остаточная стоимость оборудования на конец горизонта не учитывается: затраты за горизонт, NPV и ROI консервативны, особенно если робота пришлось купить снова незадолго до конца горизонта.",
-    "Замена батареи: 15% цены робота в годы 4, 8 и далее внутри срока службы, разовым платежом в своём году.",
-    "RaaS: по умолчанию 2,5% цены в месяц, переменный тариф растёт с годовым объёмом, смешанный берёт половину от каждого. Срок контракта равен горизонту. Оборудование, батареи и замена роботов входят в плату. Ставки заданы командой, не договором.",
-    "Доступность 90%, загрузка 80% (середина диапазона AMR 70-85% из легенды датасета), резерв 15%. Зарядка учтена в доступности.",
+    "Замена батареи: 15% цены робота каждые 4 года внутри срока службы, разовым платежом в своём году.",
+    "RaaS: по умолчанию 2,5% цены в месяц, переменный тариф растёт с годовым объёмом, смешанный берёт половину от каждого. Срок контракта равен горизонту. Оборудование, доставка, батареи и замена роботов входят в плату. Ставки заданы командой, не договором.",
+    "Доступность 90%, загрузка 80%, резерв 15%. Зарядка учтена в доступности. По нормативу загрузка 80% взята из середины диапазона AMR 70-85% легенды датасета.",
     "Денежная экономия труда задаётся долей высвобождённого ФОТ.",
     "Начисления на ФОТ заданы параметром объекта, взносы выше предельной базы 2 979 000 ₽ на человека в год считаются по ставке 15,1%.",
-    "Энергия: 2 кВт на робота, 6,5 ₽/кВт·ч. Лицензии 80 000 ₽ и расходники 20 000 ₽ на робота в год. Это суммы с НДС.",
+    "Энергия: 2 кВт на робота, 6,5 ₽/кВт·ч. Лицензии 80 000 ₽, расходники 20 000 ₽ и связь 12 000 ₽ на робота в год. Это суммы с НДС.",
+    "Сервис и ремонт: доля стоимости оборудования в год, отдельной статьи на ремонт нет. Доставка 3% оборудования входит в CAPEX покупки.",
+    "Персонал эксплуатации: один техник на 10 роботов в каждую смену, зарплата 90 000 ₽ в месяц, начисления как у остальных ролей. Зарплата НДС не облагается.",
+    "Число зарядных станций считается по времени работы и зарядки роботов из ТТХ. Для робота без этих данных принята одна станция на 4 робота. Стоимость станций входит в инфраструктуру, отдельной статьи на них нет.",
     "Нет прочих текущих затрат процесса в параметрах, кроме ФОТ целевых ролей.",
     "Общая инфраструктура, ПО, интеграция, ПНР и обучение считаются один раз на вариант, не на каждую позицию флота.",
     "НДС 22% входит в цены и не принимается к вычету: в денежный расчёт идёт цена с НДС.",
     "Вариант \"Вариант 1\": технический состав один, финансирование считается отдельно.",
-    "RaaS (фиксированный): 2,5% цены в месяц"
+    "RaaS (фиксированный): 2,5% цены в месяц",
+    "В чувствительности сдвиг объёма меняет и флот: количество каждой позиции умножается на тот же коэффициент и округляется вверх. База ФОТ не меняется."
    ],
    "verification_flag": false,
    "formulas": [
@@ -11275,28 +11754,46 @@
      "mathml": "\u003cmath display=\"block\"\u003e\u003cmrow\u003e\u003cmtext\u003eФлот\u003c/mtext\u003e\u003cmspace width=\"0.2778em\"/\u003e\u003cmo lspace=\"0\" rspace=\"0\"\u003e=\u003c/mo\u003e\u003cmspace width=\"0.2778em\"/\u003e\u003cmrow\u003e\u003cmrow\u003e\u003cmo fence=\"true\"\u003e⌈\u003c/mo\u003e\u003cmrow\u003e\u003cmo fence=\"true\"\u003e⌈\u003c/mo\u003e\u003cmfrac\u003e\u003cmtext\u003eПик\u003c/mtext\u003e\u003cmrow\u003e\u003cmtext\u003eПроизводительность\u003c/mtext\u003e\u003cmspace width=\"0.2222em\"/\u003e\u003cmo lspace=\"0\" rspace=\"0\"\u003e×\u003c/mo\u003e\u003cmspace width=\"0.2222em\"/\u003e\u003cmn\u003e0,90\u003c/mn\u003e\u003cmspace width=\"0.2222em\"/\u003e\u003cmo lspace=\"0\" rspace=\"0\"\u003e×\u003c/mo\u003e\u003cmspace width=\"0.2222em\"/\u003e\u003cmn\u003e0,80\u003c/mn\u003e\u003c/mrow\u003e\u003c/mfrac\u003e\u003cmo fence=\"true\"\u003e⌉\u003c/mo\u003e\u003c/mrow\u003e\u003cmspace width=\"0.2222em\"/\u003e\u003cmo lspace=\"0\" rspace=\"0\"\u003e×\u003c/mo\u003e\u003cmspace width=\"0.2222em\"/\u003e\u003cmn\u003e1,15\u003c/mn\u003e\u003cmo fence=\"true\"\u003e⌉\u003c/mo\u003e\u003c/mrow\u003e\u003c/mrow\u003e\u003c/mrow\u003e\u003c/math\u003e"
     },
     {
+     "id": "chargers",
+     "text": "зарядные станции = для позиции с ТТХ вверх до целого от количества x время зарядки / (время работы + время зарядки), без ТТХ вверх до целого от количества / 4, у флота не меньше одной",
+     "unit": "шт",
+     "mathml": "\u003cmath display=\"block\"\u003e\u003cmrow\u003e\u003cmtext\u003eЗарядные станции\u003c/mtext\u003e\u003cmspace width=\"0.2778em\"/\u003e\u003cmo lspace=\"0\" rspace=\"0\"\u003e=\u003c/mo\u003e\u003cmspace width=\"0.2778em\"/\u003e\u003cmrow\u003e\u003cmtext\u003eс ТТХ: \u003c/mtext\u003e\u003cmrow\u003e\u003cmo fence=\"true\"\u003e⌈\u003c/mo\u003e\u003cmrow\u003e\u003cmtext\u003eКоличество\u003c/mtext\u003e\u003cmspace width=\"0.2222em\"/\u003e\u003cmo lspace=\"0\" rspace=\"0\"\u003e×\u003c/mo\u003e\u003cmspace width=\"0.2222em\"/\u003e\u003cmfrac\u003e\u003cmtext\u003eВремя зарядки\u003c/mtext\u003e\u003cmrow\u003e\u003cmtext\u003eВремя работы\u003c/mtext\u003e\u003cmspace width=\"0.2222em\"/\u003e\u003cmo lspace=\"0\" rspace=\"0\"\u003e+\u003c/mo\u003e\u003cmspace width=\"0.2222em\"/\u003e\u003cmtext\u003eВремя зарядки\u003c/mtext\u003e\u003c/mrow\u003e\u003c/mfrac\u003e\u003c/mrow\u003e\u003cmo fence=\"true\"\u003e⌉\u003c/mo\u003e\u003c/mrow\u003e\u003cmtext\u003e; без ТТХ: \u003c/mtext\u003e\u003cmrow\u003e\u003cmo fence=\"true\"\u003e⌈\u003c/mo\u003e\u003cmfrac\u003e\u003cmtext\u003eКоличество\u003c/mtext\u003e\u003cmn\u003e4\u003c/mn\u003e\u003c/mfrac\u003e\u003cmo fence=\"true\"\u003e⌉\u003c/mo\u003e\u003c/mrow\u003e\u003c/mrow\u003e\u003c/mrow\u003e\u003c/math\u003e"
+    },
+    {
      "id": "capex_buy",
-     "text": "CAPEX покупка = (оборудование + инфраструктура + ПО + интеграция + ПНР + обучение) x 1,10",
+     "text": "CAPEX покупка = (оборудование + доставка + инфраструктура + ПО + интеграция + ПНР + обучение) x 1,10",
      "unit": "₽",
-     "mathml": "\u003cmath display=\"block\"\u003e\u003cmrow\u003e\u003cmtext\u003eCAPEX покупки\u003c/mtext\u003e\u003cmspace width=\"0.2778em\"/\u003e\u003cmo lspace=\"0\" rspace=\"0\"\u003e=\u003c/mo\u003e\u003cmspace width=\"0.2778em\"/\u003e\u003cmrow\u003e\u003cmrow\u003e\u003cmo fence=\"true\"\u003e(\u003c/mo\u003e\u003cmrow\u003e\u003cmtext\u003eОборудование\u003c/mtext\u003e\u003cmspace width=\"0.2222em\"/\u003e\u003cmo lspace=\"0\" rspace=\"0\"\u003e+\u003c/mo\u003e\u003cmspace width=\"0.2222em\"/\u003e\u003cmtext\u003eИнфраструктура\u003c/mtext\u003e\u003cmspace width=\"0.2222em\"/\u003e\u003cmo lspace=\"0\" rspace=\"0\"\u003e+\u003c/mo\u003e\u003cmspace width=\"0.2222em\"/\u003e\u003cmtext\u003eПО\u003c/mtext\u003e\u003cmspace width=\"0.2222em\"/\u003e\u003cmo lspace=\"0\" rspace=\"0\"\u003e+\u003c/mo\u003e\u003cmspace width=\"0.2222em\"/\u003e\u003cmtext\u003eИнтеграция\u003c/mtext\u003e\u003cmspace width=\"0.2222em\"/\u003e\u003cmo lspace=\"0\" rspace=\"0\"\u003e+\u003c/mo\u003e\u003cmspace width=\"0.2222em\"/\u003e\u003cmtext\u003eПНР\u003c/mtext\u003e\u003cmspace width=\"0.2222em\"/\u003e\u003cmo lspace=\"0\" rspace=\"0\"\u003e+\u003c/mo\u003e\u003cmspace width=\"0.2222em\"/\u003e\u003cmtext\u003eОбучение\u003c/mtext\u003e\u003c/mrow\u003e\u003cmo fence=\"true\"\u003e)\u003c/mo\u003e\u003c/mrow\u003e\u003cmspace width=\"0.2222em\"/\u003e\u003cmo lspace=\"0\" rspace=\"0\"\u003e×\u003c/mo\u003e\u003cmspace width=\"0.2222em\"/\u003e\u003cmn\u003e1,10\u003c/mn\u003e\u003c/mrow\u003e\u003c/mrow\u003e\u003c/math\u003e"
+     "mathml": "\u003cmath display=\"block\"\u003e\u003cmrow\u003e\u003cmtext\u003eCAPEX покупки\u003c/mtext\u003e\u003cmspace width=\"0.2778em\"/\u003e\u003cmo lspace=\"0\" rspace=\"0\"\u003e=\u003c/mo\u003e\u003cmspace width=\"0.2778em\"/\u003e\u003cmrow\u003e\u003cmrow\u003e\u003cmo fence=\"true\"\u003e(\u003c/mo\u003e\u003cmrow\u003e\u003cmtext\u003eОборудование\u003c/mtext\u003e\u003cmspace width=\"0.2222em\"/\u003e\u003cmo lspace=\"0\" rspace=\"0\"\u003e+\u003c/mo\u003e\u003cmspace width=\"0.2222em\"/\u003e\u003cmtext\u003eДоставка\u003c/mtext\u003e\u003cmspace width=\"0.2222em\"/\u003e\u003cmo lspace=\"0\" rspace=\"0\"\u003e+\u003c/mo\u003e\u003cmspace width=\"0.2222em\"/\u003e\u003cmtext\u003eИнфраструктура\u003c/mtext\u003e\u003cmspace width=\"0.2222em\"/\u003e\u003cmo lspace=\"0\" rspace=\"0\"\u003e+\u003c/mo\u003e\u003cmspace width=\"0.2222em\"/\u003e\u003cmtext\u003eПО\u003c/mtext\u003e\u003cmspace width=\"0.2222em\"/\u003e\u003cmo lspace=\"0\" rspace=\"0\"\u003e+\u003c/mo\u003e\u003cmspace width=\"0.2222em\"/\u003e\u003cmtext\u003eИнтеграция\u003c/mtext\u003e\u003cmspace width=\"0.2222em\"/\u003e\u003cmo lspace=\"0\" rspace=\"0\"\u003e+\u003c/mo\u003e\u003cmspace width=\"0.2222em\"/\u003e\u003cmtext\u003eПНР\u003c/mtext\u003e\u003cmspace width=\"0.2222em\"/\u003e\u003cmo lspace=\"0\" rspace=\"0\"\u003e+\u003c/mo\u003e\u003cmspace width=\"0.2222em\"/\u003e\u003cmtext\u003eОбучение\u003c/mtext\u003e\u003c/mrow\u003e\u003cmo fence=\"true\"\u003e)\u003c/mo\u003e\u003c/mrow\u003e\u003cmspace width=\"0.2222em\"/\u003e\u003cmo lspace=\"0\" rspace=\"0\"\u003e×\u003c/mo\u003e\u003cmspace width=\"0.2222em\"/\u003e\u003cmn\u003e1,10\u003c/mn\u003e\u003c/mrow\u003e\u003c/mrow\u003e\u003c/math\u003e"
     },
     {
      "id": "capex_raas",
-     "text": "CAPEX RaaS = (инфраструктура + ПО + интеграция + ПНР + обучение) x 1,10, без оборудования",
+     "text": "CAPEX RaaS = (инфраструктура + ПО + интеграция + ПНР + обучение) x 1,10, без оборудования и доставки",
      "unit": "₽",
      "mathml": "\u003cmath display=\"block\"\u003e\u003cmrow\u003e\u003cmtext\u003eCAPEX RaaS\u003c/mtext\u003e\u003cmspace width=\"0.2778em\"/\u003e\u003cmo lspace=\"0\" rspace=\"0\"\u003e=\u003c/mo\u003e\u003cmspace width=\"0.2778em\"/\u003e\u003cmrow\u003e\u003cmrow\u003e\u003cmo fence=\"true\"\u003e(\u003c/mo\u003e\u003cmrow\u003e\u003cmtext\u003eИнфраструктура\u003c/mtext\u003e\u003cmspace width=\"0.2222em\"/\u003e\u003cmo lspace=\"0\" rspace=\"0\"\u003e+\u003c/mo\u003e\u003cmspace width=\"0.2222em\"/\u003e\u003cmtext\u003eПО\u003c/mtext\u003e\u003cmspace width=\"0.2222em\"/\u003e\u003cmo lspace=\"0\" rspace=\"0\"\u003e+\u003c/mo\u003e\u003cmspace width=\"0.2222em\"/\u003e\u003cmtext\u003eИнтеграция\u003c/mtext\u003e\u003cmspace width=\"0.2222em\"/\u003e\u003cmo lspace=\"0\" rspace=\"0\"\u003e+\u003c/mo\u003e\u003cmspace width=\"0.2222em\"/\u003e\u003cmtext\u003eПНР\u003c/mtext\u003e\u003cmspace width=\"0.2222em\"/\u003e\u003cmo lspace=\"0\" rspace=\"0\"\u003e+\u003c/mo\u003e\u003cmspace width=\"0.2222em\"/\u003e\u003cmtext\u003eОбучение\u003c/mtext\u003e\u003c/mrow\u003e\u003cmo fence=\"true\"\u003e)\u003c/mo\u003e\u003c/mrow\u003e\u003cmspace width=\"0.2222em\"/\u003e\u003cmo lspace=\"0\" rspace=\"0\"\u003e×\u003c/mo\u003e\u003cmspace width=\"0.2222em\"/\u003e\u003cmn\u003e1,10\u003c/mn\u003e\u003c/mrow\u003e\u003c/mrow\u003e\u003c/math\u003e"
     },
     {
+     "id": "delivery",
+     "text": "доставка = 3% оборудования, только в CAPEX покупки",
+     "unit": "₽",
+     "mathml": "\u003cmath display=\"block\"\u003e\u003cmrow\u003e\u003cmtext\u003eДоставка\u003c/mtext\u003e\u003cmspace width=\"0.2778em\"/\u003e\u003cmo lspace=\"0\" rspace=\"0\"\u003e=\u003c/mo\u003e\u003cmspace width=\"0.2778em\"/\u003e\u003cmrow\u003e\u003cmrow\u003e\u003cmn\u003e3%\u003c/mn\u003e\u003cmspace width=\"0.2222em\"/\u003e\u003cmo lspace=\"0\" rspace=\"0\"\u003e×\u003c/mo\u003e\u003cmspace width=\"0.2222em\"/\u003e\u003cmtext\u003eОборудование\u003c/mtext\u003e\u003c/mrow\u003e\u003cmtext\u003e, только в CAPEX покупки\u003c/mtext\u003e\u003c/mrow\u003e\u003c/mrow\u003e\u003c/math\u003e"
+    },
+    {
      "id": "opex_buy",
-     "text": "OPEX покупка = ФОТ остатка + сервис + лицензии + энергия + расходники, без разовых замен",
+     "text": "OPEX покупка = ФОТ остатка + сервис и ремонт + лицензии + энергия + расходники + связь + персонал эксплуатации, без разовых замен",
      "unit": "₽/год",
-     "mathml": "\u003cmath display=\"block\"\u003e\u003cmrow\u003e\u003cmtext\u003eOPEX покупки\u003c/mtext\u003e\u003cmspace width=\"0.2778em\"/\u003e\u003cmo lspace=\"0\" rspace=\"0\"\u003e=\u003c/mo\u003e\u003cmspace width=\"0.2778em\"/\u003e\u003cmrow\u003e\u003cmrow\u003e\u003cmtext\u003eФОТ остатка\u003c/mtext\u003e\u003cmspace width=\"0.2222em\"/\u003e\u003cmo lspace=\"0\" rspace=\"0\"\u003e+\u003c/mo\u003e\u003cmspace width=\"0.2222em\"/\u003e\u003cmtext\u003eСервис\u003c/mtext\u003e\u003cmspace width=\"0.2222em\"/\u003e\u003cmo lspace=\"0\" rspace=\"0\"\u003e+\u003c/mo\u003e\u003cmspace width=\"0.2222em\"/\u003e\u003cmtext\u003eЛицензии\u003c/mtext\u003e\u003cmspace width=\"0.2222em\"/\u003e\u003cmo lspace=\"0\" rspace=\"0\"\u003e+\u003c/mo\u003e\u003cmspace width=\"0.2222em\"/\u003e\u003cmtext\u003eЭнергия\u003c/mtext\u003e\u003cmspace width=\"0.2222em\"/\u003e\u003cmo lspace=\"0\" rspace=\"0\"\u003e+\u003c/mo\u003e\u003cmspace width=\"0.2222em\"/\u003e\u003cmtext\u003eРасходники\u003c/mtext\u003e\u003c/mrow\u003e\u003c/mrow\u003e\u003c/mrow\u003e\u003c/math\u003e"
+     "mathml": "\u003cmath display=\"block\"\u003e\u003cmrow\u003e\u003cmtext\u003eOPEX покупки\u003c/mtext\u003e\u003cmspace width=\"0.2778em\"/\u003e\u003cmo lspace=\"0\" rspace=\"0\"\u003e=\u003c/mo\u003e\u003cmspace width=\"0.2778em\"/\u003e\u003cmrow\u003e\u003cmrow\u003e\u003cmtext\u003eФОТ остатка\u003c/mtext\u003e\u003cmspace width=\"0.2222em\"/\u003e\u003cmo lspace=\"0\" rspace=\"0\"\u003e+\u003c/mo\u003e\u003cmspace width=\"0.2222em\"/\u003e\u003cmtext\u003eСервис и ремонт\u003c/mtext\u003e\u003cmspace width=\"0.2222em\"/\u003e\u003cmo lspace=\"0\" rspace=\"0\"\u003e+\u003c/mo\u003e\u003cmspace width=\"0.2222em\"/\u003e\u003cmtext\u003eЛицензии\u003c/mtext\u003e\u003cmspace width=\"0.2222em\"/\u003e\u003cmo lspace=\"0\" rspace=\"0\"\u003e+\u003c/mo\u003e\u003cmspace width=\"0.2222em\"/\u003e\u003cmtext\u003eЭнергия\u003c/mtext\u003e\u003cmspace width=\"0.2222em\"/\u003e\u003cmo lspace=\"0\" rspace=\"0\"\u003e+\u003c/mo\u003e\u003cmspace width=\"0.2222em\"/\u003e\u003cmtext\u003eРасходники\u003c/mtext\u003e\u003cmspace width=\"0.2222em\"/\u003e\u003cmo lspace=\"0\" rspace=\"0\"\u003e+\u003c/mo\u003e\u003cmspace width=\"0.2222em\"/\u003e\u003cmtext\u003eСвязь\u003c/mtext\u003e\u003cmspace width=\"0.2222em\"/\u003e\u003cmo lspace=\"0\" rspace=\"0\"\u003e+\u003c/mo\u003e\u003cmspace width=\"0.2222em\"/\u003e\u003cmtext\u003eПерсонал эксплуатации\u003c/mtext\u003e\u003c/mrow\u003e\u003c/mrow\u003e\u003c/mrow\u003e\u003c/math\u003e"
     },
     {
      "id": "opex_raas",
-     "text": "OPEX RaaS = ФОТ остатка + плата тарифа + энергия + расходники",
+     "text": "OPEX RaaS = ФОТ остатка + плата тарифа + энергия + расходники + связь + персонал эксплуатации",
      "unit": "₽/год",
-     "mathml": "\u003cmath display=\"block\"\u003e\u003cmrow\u003e\u003cmtext\u003eOPEX RaaS\u003c/mtext\u003e\u003cmspace width=\"0.2778em\"/\u003e\u003cmo lspace=\"0\" rspace=\"0\"\u003e=\u003c/mo\u003e\u003cmspace width=\"0.2778em\"/\u003e\u003cmrow\u003e\u003cmrow\u003e\u003cmtext\u003eФОТ остатка\u003c/mtext\u003e\u003cmspace width=\"0.2222em\"/\u003e\u003cmo lspace=\"0\" rspace=\"0\"\u003e+\u003c/mo\u003e\u003cmspace width=\"0.2222em\"/\u003e\u003cmtext\u003eПлата по тарифу\u003c/mtext\u003e\u003cmspace width=\"0.2222em\"/\u003e\u003cmo lspace=\"0\" rspace=\"0\"\u003e+\u003c/mo\u003e\u003cmspace width=\"0.2222em\"/\u003e\u003cmtext\u003eЭнергия\u003c/mtext\u003e\u003cmspace width=\"0.2222em\"/\u003e\u003cmo lspace=\"0\" rspace=\"0\"\u003e+\u003c/mo\u003e\u003cmspace width=\"0.2222em\"/\u003e\u003cmtext\u003eРасходники\u003c/mtext\u003e\u003c/mrow\u003e\u003c/mrow\u003e\u003c/mrow\u003e\u003c/math\u003e"
+     "mathml": "\u003cmath display=\"block\"\u003e\u003cmrow\u003e\u003cmtext\u003eOPEX RaaS\u003c/mtext\u003e\u003cmspace width=\"0.2778em\"/\u003e\u003cmo lspace=\"0\" rspace=\"0\"\u003e=\u003c/mo\u003e\u003cmspace width=\"0.2778em\"/\u003e\u003cmrow\u003e\u003cmrow\u003e\u003cmtext\u003eФОТ остатка\u003c/mtext\u003e\u003cmspace width=\"0.2222em\"/\u003e\u003cmo lspace=\"0\" rspace=\"0\"\u003e+\u003c/mo\u003e\u003cmspace width=\"0.2222em\"/\u003e\u003cmtext\u003eПлата по тарифу\u003c/mtext\u003e\u003cmspace width=\"0.2222em\"/\u003e\u003cmo lspace=\"0\" rspace=\"0\"\u003e+\u003c/mo\u003e\u003cmspace width=\"0.2222em\"/\u003e\u003cmtext\u003eЭнергия\u003c/mtext\u003e\u003cmspace width=\"0.2222em\"/\u003e\u003cmo lspace=\"0\" rspace=\"0\"\u003e+\u003c/mo\u003e\u003cmspace width=\"0.2222em\"/\u003e\u003cmtext\u003eРасходники\u003c/mtext\u003e\u003cmspace width=\"0.2222em\"/\u003e\u003cmo lspace=\"0\" rspace=\"0\"\u003e+\u003c/mo\u003e\u003cmspace width=\"0.2222em\"/\u003e\u003cmtext\u003eСвязь\u003c/mtext\u003e\u003cmspace width=\"0.2222em\"/\u003e\u003cmo lspace=\"0\" rspace=\"0\"\u003e+\u003c/mo\u003e\u003cmspace width=\"0.2222em\"/\u003e\u003cmtext\u003eПерсонал эксплуатации\u003c/mtext\u003e\u003c/mrow\u003e\u003c/mrow\u003e\u003c/mrow\u003e\u003c/math\u003e"
+    },
+    {
+     "id": "technicians",
+     "text": "персонал эксплуатации = вверх до целого от флота / 10, x число смен x зарплата x 12 x (1 + начисления)",
+     "unit": "₽/год",
+     "mathml": "\u003cmath display=\"block\"\u003e\u003cmrow\u003e\u003cmtext\u003eПерсонал эксплуатации\u003c/mtext\u003e\u003cmspace width=\"0.2778em\"/\u003e\u003cmo lspace=\"0\" rspace=\"0\"\u003e=\u003c/mo\u003e\u003cmspace width=\"0.2778em\"/\u003e\u003cmrow\u003e\u003cmrow\u003e\u003cmo fence=\"true\"\u003e⌈\u003c/mo\u003e\u003cmfrac\u003e\u003cmtext\u003eФлот\u003c/mtext\u003e\u003cmn\u003e10\u003c/mn\u003e\u003c/mfrac\u003e\u003cmo fence=\"true\"\u003e⌉\u003c/mo\u003e\u003c/mrow\u003e\u003cmspace width=\"0.2222em\"/\u003e\u003cmo lspace=\"0\" rspace=\"0\"\u003e×\u003c/mo\u003e\u003cmspace width=\"0.2222em\"/\u003e\u003cmrow\u003e\u003cmtext\u003eСмены\u003c/mtext\u003e\u003cmspace width=\"0.2222em\"/\u003e\u003cmo lspace=\"0\" rspace=\"0\"\u003e×\u003c/mo\u003e\u003cmspace width=\"0.2222em\"/\u003e\u003cmtext\u003eОклад\u003c/mtext\u003e\u003c/mrow\u003e\u003cmspace width=\"0.2222em\"/\u003e\u003cmo lspace=\"0\" rspace=\"0\"\u003e×\u003c/mo\u003e\u003cmspace width=\"0.2222em\"/\u003e\u003cmn\u003e12\u003c/mn\u003e\u003cmspace width=\"0.2222em\"/\u003e\u003cmo lspace=\"0\" rspace=\"0\"\u003e×\u003c/mo\u003e\u003cmspace width=\"0.2222em\"/\u003e\u003cmrow\u003e\u003cmo fence=\"true\"\u003e(\u003c/mo\u003e\u003cmrow\u003e\u003cmn\u003e1\u003c/mn\u003e\u003cmspace width=\"0.2222em\"/\u003e\u003cmo lspace=\"0\" rspace=\"0\"\u003e+\u003c/mo\u003e\u003cmspace width=\"0.2222em\"/\u003e\u003cmtext\u003eНачисления\u003c/mtext\u003e\u003c/mrow\u003e\u003cmo fence=\"true\"\u003e)\u003c/mo\u003e\u003c/mrow\u003e\u003c/mrow\u003e\u003c/mrow\u003e\u003c/math\u003e"
     },
     {
      "id": "baseline_opex",
@@ -11324,9 +11821,9 @@
     },
     {
      "id": "battery",
-     "text": "замена батареи = 15% цены робота в годы 4, 8 и далее, пока они внутри срока службы и горизонта",
+     "text": "замена батареи = 15% цены робота каждые 4 года, пока это внутри срока службы и горизонта",
      "unit": "₽",
-     "mathml": "\u003cmath display=\"block\"\u003e\u003cmrow\u003e\u003cmtext\u003eЗамена батареи\u003c/mtext\u003e\u003cmspace width=\"0.2778em\"/\u003e\u003cmo lspace=\"0\" rspace=\"0\"\u003e=\u003c/mo\u003e\u003cmspace width=\"0.2778em\"/\u003e\u003cmrow\u003e\u003cmrow\u003e\u003cmn\u003e15%\u003c/mn\u003e\u003cmspace width=\"0.2222em\"/\u003e\u003cmo lspace=\"0\" rspace=\"0\"\u003e×\u003c/mo\u003e\u003cmspace width=\"0.2222em\"/\u003e\u003cmtext\u003eЦена робота\u003c/mtext\u003e\u003c/mrow\u003e\u003cmtext\u003e, в годы 4, 8 и далее внутри срока службы\u003c/mtext\u003e\u003c/mrow\u003e\u003c/mrow\u003e\u003c/math\u003e"
+     "mathml": "\u003cmath display=\"block\"\u003e\u003cmrow\u003e\u003cmtext\u003eЗамена батареи\u003c/mtext\u003e\u003cmspace width=\"0.2778em\"/\u003e\u003cmo lspace=\"0\" rspace=\"0\"\u003e=\u003c/mo\u003e\u003cmspace width=\"0.2778em\"/\u003e\u003cmrow\u003e\u003cmrow\u003e\u003cmn\u003e15%\u003c/mn\u003e\u003cmspace width=\"0.2222em\"/\u003e\u003cmo lspace=\"0\" rspace=\"0\"\u003e×\u003c/mo\u003e\u003cmspace width=\"0.2222em\"/\u003e\u003cmtext\u003eЦена робота\u003c/mtext\u003e\u003c/mrow\u003e\u003cmtext\u003e, каждые 4 года внутри срока службы\u003c/mtext\u003e\u003c/mrow\u003e\u003c/mrow\u003e\u003c/math\u003e"
     },
     {
      "id": "replacement",
@@ -11378,7 +11875,7 @@
     },
     {
      "id": "depreciation",
-     "text": "амортизация линейная: робот = цена / его срок службы, инфраструктура, ПО, интеграция и ПНР = стоимость / 7 лет. Обучение и резерв не амортизируются",
+     "text": "амортизация линейная: робот = цена / его срок службы, доставка, инфраструктура, ПО, интеграция и ПНР = стоимость / 7 лет. Обучение и резерв не амортизируются",
      "unit": "₽/год",
      "mathml": "\u003cmath display=\"block\"\u003e\u003cmrow\u003e\u003cmtext\u003eАмортизация\u003c/mtext\u003e\u003cmspace width=\"0.2778em\"/\u003e\u003cmo lspace=\"0\" rspace=\"0\"\u003e=\u003c/mo\u003e\u003cmspace width=\"0.2778em\"/\u003e\u003cmrow\u003e\u003cmfrac\u003e\u003cmtext\u003eСтоимость актива\u003c/mtext\u003e\u003cmtext\u003eСрок службы\u003c/mtext\u003e\u003c/mfrac\u003e\u003cmtext\u003e, обучение и резерв не амортизируются\u003c/mtext\u003e\u003c/mrow\u003e\u003c/mrow\u003e\u003c/math\u003e"
     },
@@ -11432,8 +11929,9 @@
     "Цена изделия: каталог роботов, с НДС.",
     "ФОТ, режим, объёмы, горизонт: параметры объекта (демо-колонка датасета).",
     "Начисления на ФОТ: параметр объекта «Начисления на ФОТ», по умолчанию 1,302. Предельная база взносов 2 979 000 ₽ на человека в год и ставка 15,1% выше неё: правила 2026 года.",
-    "Доступность и загрузка: легенда датасета (AMR 70-85%), принята середина 80% и доступность 90%.",
-    "Статьи CAPEX сверх изделия: допущение команды, доли зафиксированы в модели расчёта.",
+    "Доступность и загрузка: набор допущений, а по нормативу легенда датасета (AMR 70-85%): середина 80% и доступность 90%.",
+    "Статьи CAPEX сверх изделия и доставка: допущение команды, значения по нормативам модели.",
+    "Связь, персонал эксплуатации, число зарядных станций без ТТХ: допущение команды, значения по нормативам модели.",
     "Ставка RaaS: допущение команды. Фиксированный 2,5% в месяц, переменный от объёма, смешанный 50/50.",
     "НДС: ставка и вычет задаются набором допущений. Цена из каталога с НДС, при вычете в денежный расчёт идёт цена без НДС.",
     "Ставка дисконтирования: набор допущений, по умолчанию 15% в год, постоянные цены.",
@@ -11454,6 +11952,14 @@
      "id": "equipment",
      "label": "Оборудование смешанного флота",
      "rub": 6200000
+    },
+    {
+     "scenario": "923afa76-c857-53de-9fdf-77f5339bdfb5:buy",
+     "bucket": "capex",
+     "id": "delivery",
+     "label": "Доставка 3% оборудования",
+     "rub": 186000,
+     "note": "не вносите доставку ещё раз общей статьёй"
     },
     {
      "scenario": "923afa76-c857-53de-9fdf-77f5339bdfb5",
@@ -11496,7 +12002,7 @@
      "bucket": "capex",
      "id": "contingency",
      "label": "Резерв 10% суммы статей",
-     "rub": 886600
+     "rub": 905200
     },
     {
      "scenario": "923afa76-c857-53de-9fdf-77f5339bdfb5:buy",
@@ -11509,7 +12015,7 @@
      "scenario": "923afa76-c857-53de-9fdf-77f5339bdfb5:buy",
      "bucket": "opex",
      "id": "service",
-     "label": "Сервис",
+     "label": "Сервис и ремонт",
      "rub": 496000
     },
     {
@@ -11535,11 +12041,27 @@
     },
     {
      "scenario": "923afa76-c857-53de-9fdf-77f5339bdfb5:buy",
+     "bucket": "opex",
+     "id": "communications",
+     "label": "Связь",
+     "rub": 24000,
+     "note": "12 000 ₽ в год на робота"
+    },
+    {
+     "scenario": "923afa76-c857-53de-9fdf-77f5339bdfb5:buy",
+     "bucket": "opex",
+     "id": "technicians",
+     "label": "Персонал эксплуатации",
+     "rub": 2812320,
+     "note": "2 чел, по одному на 10 роботов в смену"
+    },
+    {
+     "scenario": "923afa76-c857-53de-9fdf-77f5339bdfb5:buy",
      "bucket": "replacement",
      "id": "battery",
      "label": "Замена батарей за горизонт",
      "rub": 930000,
-     "note": "15% цены робота в годы 4, 8 и далее внутри срока службы"
+     "note": "15% цены робота каждые 4 года внутри срока службы"
     },
     {
      "scenario": "923afa76-c857-53de-9fdf-77f5339bdfb5:raas:fixed",
@@ -11552,164 +12074,741 @@
    ],
    "sensitivity": [
     {
+     "variant_id": "923afa76-c857-53de-9fdf-77f5339bdfb5",
+     "variant_name": "Вариант 1",
      "param": "equipment_price",
      "delta_pct": -20,
      "buy": {
       "kind": "buy",
-      "solution_id": null,
-      "fleet_size": null,
-      "capex_rub": null,
-      "opex_year_rub": null,
-      "annual_effect_rub": null,
-      "payback_years": null,
-      "roi_pct": null,
-      "tco_rub": null
+      "solution_id": "5760e938-9a43-45a7-b8e8-f4f2e6383930",
+      "fleet_size": 2,
+      "capex_rub": 7965760,
+      "opex_year_rub": 111135020,
+      "annual_effect_rub": 90102100,
+      "payback_years": 0.0884,
+      "payback_band": "up_to_3",
+      "roi_pct": 5546.25,
+      "tco_rub": 564384860,
+      "accounting_effect_rub": 89088843,
+      "labor_cash_saved_rub": 93744000,
+      "variant_id": "923afa76-c857-53de-9fdf-77f5339bdfb5",
+      "variant_name": "Вариант 1",
+      "price_source": "project_override",
+      "discounted_payback_years": 0.1017,
+      "npv_rub": 293645069,
+      "cash_flow": [
+       {
+        "year": 0,
+        "effect_rub": 0,
+        "net_rub": -7965760,
+        "cumulative_rub": -7965760
+       },
+       {
+        "year": 1,
+        "effect_rub": 90102100,
+        "net_rub": 90102100,
+        "cumulative_rub": 82136340
+       },
+       {
+        "year": 2,
+        "effect_rub": 90102100,
+        "net_rub": 90102100,
+        "cumulative_rub": 172238440
+       },
+       {
+        "year": 3,
+        "effect_rub": 90102100,
+        "net_rub": 90102100,
+        "cumulative_rub": 262340540
+       },
+       {
+        "year": 4,
+        "effect_rub": 90102100,
+        "battery_rub": 744000,
+        "net_rub": 89358100,
+        "cumulative_rub": 351698640
+       },
+       {
+        "year": 5,
+        "effect_rub": 90102100,
+        "net_rub": 90102100,
+        "cumulative_rub": 441800740
+       }
+      ]
      },
      "raas": {
       "kind": "raas",
-      "solution_id": null,
-      "fleet_size": null,
-      "capex_rub": null,
-      "opex_year_rub": null,
-      "annual_effect_rub": null,
-      "payback_years": null,
-      "roi_pct": null,
-      "tco_rub": null
+      "solution_id": "5760e938-9a43-45a7-b8e8-f4f2e6383930",
+      "fleet_size": 2,
+      "capex_rub": 2346080,
+      "opex_year_rub": 112066220,
+      "annual_effect_rub": 89170900,
+      "payback_years": 0.0263,
+      "payback_band": "up_to_3",
+      "roi_pct": 18904.23,
+      "tco_rub": 562677180,
+      "accounting_effect_rub": 88887471,
+      "labor_cash_saved_rub": 93744000,
+      "variant_id": "923afa76-c857-53de-9fdf-77f5339bdfb5",
+      "variant_name": "Вариант 1",
+      "tariff": "fixed",
+      "price_source": "project_override",
+      "discounted_payback_years": 0.0303,
+      "npv_rub": 296568607,
+      "cash_flow": [
+       {
+        "year": 0,
+        "effect_rub": 0,
+        "net_rub": -2346080,
+        "cumulative_rub": -2346080
+       },
+       {
+        "year": 1,
+        "effect_rub": 89170900,
+        "net_rub": 89170900,
+        "cumulative_rub": 86824820
+       },
+       {
+        "year": 2,
+        "effect_rub": 89170900,
+        "net_rub": 89170900,
+        "cumulative_rub": 175995720
+       },
+       {
+        "year": 3,
+        "effect_rub": 89170900,
+        "net_rub": 89170900,
+        "cumulative_rub": 265166620
+       },
+       {
+        "year": 4,
+        "effect_rub": 89170900,
+        "net_rub": 89170900,
+        "cumulative_rub": 354337520
+       },
+       {
+        "year": 5,
+        "effect_rub": 89170900,
+        "net_rub": 89170900,
+        "cumulative_rub": 443508420
+       }
+      ]
      }
     },
     {
+     "variant_id": "923afa76-c857-53de-9fdf-77f5339bdfb5",
+     "variant_name": "Вариант 1",
      "param": "equipment_price",
      "delta_pct": 20,
      "buy": {
       "kind": "buy",
-      "solution_id": null,
-      "fleet_size": null,
-      "capex_rub": null,
-      "opex_year_rub": null,
-      "annual_effect_rub": null,
-      "payback_years": null,
-      "roi_pct": null,
-      "tco_rub": null
+      "solution_id": "5760e938-9a43-45a7-b8e8-f4f2e6383930",
+      "fleet_size": 2,
+      "capex_rub": 11948640,
+      "opex_year_rub": 111333420,
+      "annual_effect_rub": 89903700,
+      "payback_years": 0.1329,
+      "payback_band": "up_to_3",
+      "roi_pct": 3652.75,
+      "tco_rub": 569731740,
+      "accounting_effect_rub": 88383814,
+      "labor_cash_saved_rub": 93744000,
+      "variant_id": "923afa76-c857-53de-9fdf-77f5339bdfb5",
+      "variant_name": "Вариант 1",
+      "price_source": "project_override",
+      "discounted_payback_years": 0.1528,
+      "npv_rub": 288784430,
+      "cash_flow": [
+       {
+        "year": 0,
+        "effect_rub": 0,
+        "net_rub": -11948640,
+        "cumulative_rub": -11948640
+       },
+       {
+        "year": 1,
+        "effect_rub": 89903700,
+        "net_rub": 89903700,
+        "cumulative_rub": 77955060
+       },
+       {
+        "year": 2,
+        "effect_rub": 89903700,
+        "net_rub": 89903700,
+        "cumulative_rub": 167858760
+       },
+       {
+        "year": 3,
+        "effect_rub": 89903700,
+        "net_rub": 89903700,
+        "cumulative_rub": 257762460
+       },
+       {
+        "year": 4,
+        "effect_rub": 89903700,
+        "battery_rub": 1116000,
+        "net_rub": 88787700,
+        "cumulative_rub": 346550160
+       },
+       {
+        "year": 5,
+        "effect_rub": 89903700,
+        "net_rub": 89903700,
+        "cumulative_rub": 436453860
+       }
+      ]
      },
      "raas": {
       "kind": "raas",
-      "solution_id": null,
-      "fleet_size": null,
-      "capex_rub": null,
-      "opex_year_rub": null,
-      "annual_effect_rub": null,
-      "payback_years": null,
-      "roi_pct": null,
-      "tco_rub": null
+      "solution_id": "5760e938-9a43-45a7-b8e8-f4f2e6383930",
+      "fleet_size": 2,
+      "capex_rub": 3519120,
+      "opex_year_rub": 112810220,
+      "annual_effect_rub": 88426900,
+      "payback_years": 0.0398,
+      "payback_band": "up_to_3",
+      "roi_pct": 12463.78,
+      "tco_rub": 567570220,
+      "accounting_effect_rub": 88001757,
+      "labor_cash_saved_rub": 93744000,
+      "variant_id": "923afa76-c857-53de-9fdf-77f5339bdfb5",
+      "variant_name": "Вариант 1",
+      "tariff": "fixed",
+      "price_source": "project_override",
+      "discounted_payback_years": 0.0458,
+      "npv_rub": 292901564,
+      "cash_flow": [
+       {
+        "year": 0,
+        "effect_rub": 0,
+        "net_rub": -3519120,
+        "cumulative_rub": -3519120
+       },
+       {
+        "year": 1,
+        "effect_rub": 88426900,
+        "net_rub": 88426900,
+        "cumulative_rub": 84907780
+       },
+       {
+        "year": 2,
+        "effect_rub": 88426900,
+        "net_rub": 88426900,
+        "cumulative_rub": 173334680
+       },
+       {
+        "year": 3,
+        "effect_rub": 88426900,
+        "net_rub": 88426900,
+        "cumulative_rub": 261761580
+       },
+       {
+        "year": 4,
+        "effect_rub": 88426900,
+        "net_rub": 88426900,
+        "cumulative_rub": 350188480
+       },
+       {
+        "year": 5,
+        "effect_rub": 88426900,
+        "net_rub": 88426900,
+        "cumulative_rub": 438615380
+       }
+      ]
      }
     },
     {
+     "variant_id": "923afa76-c857-53de-9fdf-77f5339bdfb5",
+     "variant_name": "Вариант 1",
      "param": "volume",
      "delta_pct": -20,
      "buy": {
       "kind": "buy",
-      "solution_id": null,
-      "fleet_size": null,
-      "capex_rub": null,
-      "opex_year_rub": null,
-      "annual_effect_rub": null,
-      "payback_years": null,
-      "roi_pct": null,
-      "tco_rub": null
+      "solution_id": "5760e938-9a43-45a7-b8e8-f4f2e6383930",
+      "fleet_size": 2,
+      "capex_rub": 9957200,
+      "opex_year_rub": 111234220,
+      "annual_effect_rub": 90002900,
+      "payback_years": 0.1106,
+      "payback_band": "up_to_3",
+      "roi_pct": 4410.15,
+      "tco_rub": 567058300,
+      "accounting_effect_rub": 88736329,
+      "labor_cash_saved_rub": 93744000,
+      "variant_id": "923afa76-c857-53de-9fdf-77f5339bdfb5",
+      "variant_name": "Вариант 1",
+      "price_source": "catalog",
+      "discounted_payback_years": 0.1272,
+      "npv_rub": 291214750,
+      "cash_flow": [
+       {
+        "year": 0,
+        "effect_rub": 0,
+        "net_rub": -9957200,
+        "cumulative_rub": -9957200
+       },
+       {
+        "year": 1,
+        "effect_rub": 90002900,
+        "net_rub": 90002900,
+        "cumulative_rub": 80045700
+       },
+       {
+        "year": 2,
+        "effect_rub": 90002900,
+        "net_rub": 90002900,
+        "cumulative_rub": 170048600
+       },
+       {
+        "year": 3,
+        "effect_rub": 90002900,
+        "net_rub": 90002900,
+        "cumulative_rub": 260051500
+       },
+       {
+        "year": 4,
+        "effect_rub": 90002900,
+        "battery_rub": 930000,
+        "net_rub": 89072900,
+        "cumulative_rub": 349124400
+       },
+       {
+        "year": 5,
+        "effect_rub": 90002900,
+        "net_rub": 90002900,
+        "cumulative_rub": 439127300
+       }
+      ]
      },
      "raas": {
       "kind": "raas",
-      "solution_id": null,
-      "fleet_size": null,
-      "capex_rub": null,
-      "opex_year_rub": null,
-      "annual_effect_rub": null,
-      "payback_years": null,
-      "roi_pct": null,
-      "tco_rub": null
+      "solution_id": "5760e938-9a43-45a7-b8e8-f4f2e6383930",
+      "fleet_size": 2,
+      "capex_rub": 2932600,
+      "opex_year_rub": 112438220,
+      "annual_effect_rub": 88798900,
+      "payback_years": 0.033,
+      "payback_band": "up_to_3",
+      "roi_pct": 15039.96,
+      "tco_rub": 565123700,
+      "accounting_effect_rub": 88444614,
+      "labor_cash_saved_rub": 93744000,
+      "variant_id": "923afa76-c857-53de-9fdf-77f5339bdfb5",
+      "variant_name": "Вариант 1",
+      "tariff": "fixed",
+      "price_source": "catalog",
+      "discounted_payback_years": 0.038,
+      "npv_rub": 294735085,
+      "cash_flow": [
+       {
+        "year": 0,
+        "effect_rub": 0,
+        "net_rub": -2932600,
+        "cumulative_rub": -2932600
+       },
+       {
+        "year": 1,
+        "effect_rub": 88798900,
+        "net_rub": 88798900,
+        "cumulative_rub": 85866300
+       },
+       {
+        "year": 2,
+        "effect_rub": 88798900,
+        "net_rub": 88798900,
+        "cumulative_rub": 174665200
+       },
+       {
+        "year": 3,
+        "effect_rub": 88798900,
+        "net_rub": 88798900,
+        "cumulative_rub": 263464100
+       },
+       {
+        "year": 4,
+        "effect_rub": 88798900,
+        "net_rub": 88798900,
+        "cumulative_rub": 352263000
+       },
+       {
+        "year": 5,
+        "effect_rub": 88798900,
+        "net_rub": 88798900,
+        "cumulative_rub": 441061900
+       }
+      ]
      }
     },
     {
+     "variant_id": "923afa76-c857-53de-9fdf-77f5339bdfb5",
+     "variant_name": "Вариант 1",
      "param": "volume",
      "delta_pct": 20,
      "buy": {
       "kind": "buy",
-      "solution_id": null,
-      "fleet_size": null,
-      "capex_rub": null,
-      "opex_year_rub": null,
-      "annual_effect_rub": null,
-      "payback_years": null,
-      "roi_pct": null,
-      "tco_rub": null
+      "solution_id": "5760e938-9a43-45a7-b8e8-f4f2e6383930",
+      "fleet_size": 3,
+      "capex_rub": 14935800,
+      "opex_year_rub": 111698610,
+      "annual_effect_rub": 89538510,
+      "payback_years": 0.1668,
+      "payback_band": "up_to_3",
+      "roi_pct": 2888.11,
+      "tco_rub": 574823850,
+      "accounting_effect_rub": 87638653,
+      "labor_cash_saved_rub": 93744000,
+      "variant_id": "923afa76-c857-53de-9fdf-77f5339bdfb5",
+      "variant_name": "Вариант 1",
+      "price_source": "catalog",
+      "discounted_payback_years": 0.1918,
+      "npv_rub": 284413577,
+      "cash_flow": [
+       {
+        "year": 0,
+        "effect_rub": 0,
+        "net_rub": -14935800,
+        "cumulative_rub": -14935800
+       },
+       {
+        "year": 1,
+        "effect_rub": 89538510,
+        "net_rub": 89538510,
+        "cumulative_rub": 74602710
+       },
+       {
+        "year": 2,
+        "effect_rub": 89538510,
+        "net_rub": 89538510,
+        "cumulative_rub": 164141220
+       },
+       {
+        "year": 3,
+        "effect_rub": 89538510,
+        "net_rub": 89538510,
+        "cumulative_rub": 253679730
+       },
+       {
+        "year": 4,
+        "effect_rub": 89538510,
+        "battery_rub": 1395000,
+        "net_rub": 88143510,
+        "cumulative_rub": 341823240
+       },
+       {
+        "year": 5,
+        "effect_rub": 89538510,
+        "net_rub": 89538510,
+        "cumulative_rub": 431361750
+       }
+      ]
      },
      "raas": {
       "kind": "raas",
-      "solution_id": null,
-      "fleet_size": null,
-      "capex_rub": null,
-      "opex_year_rub": null,
-      "annual_effect_rub": null,
-      "payback_years": null,
-      "roi_pct": null,
-      "tco_rub": null
+      "solution_id": "5760e938-9a43-45a7-b8e8-f4f2e6383930",
+      "fleet_size": 3,
+      "capex_rub": 4398900,
+      "opex_year_rub": 113504610,
+      "annual_effect_rub": 87732510,
+      "payback_years": 0.0501,
+      "payback_band": "up_to_3",
+      "roi_pct": 9872.1,
+      "tco_rub": 571921950,
+      "accounting_effect_rub": 87201081,
+      "labor_cash_saved_rub": 93744000,
+      "variant_id": "923afa76-c857-53de-9fdf-77f5339bdfb5",
+      "variant_name": "Вариант 1",
+      "tariff": "fixed",
+      "price_source": "catalog",
+      "discounted_payback_years": 0.0577,
+      "npv_rub": 289694081,
+      "cash_flow": [
+       {
+        "year": 0,
+        "effect_rub": 0,
+        "net_rub": -4398900,
+        "cumulative_rub": -4398900
+       },
+       {
+        "year": 1,
+        "effect_rub": 87732510,
+        "net_rub": 87732510,
+        "cumulative_rub": 83333610
+       },
+       {
+        "year": 2,
+        "effect_rub": 87732510,
+        "net_rub": 87732510,
+        "cumulative_rub": 171066120
+       },
+       {
+        "year": 3,
+        "effect_rub": 87732510,
+        "net_rub": 87732510,
+        "cumulative_rub": 258798630
+       },
+       {
+        "year": 4,
+        "effect_rub": 87732510,
+        "net_rub": 87732510,
+        "cumulative_rub": 346531140
+       },
+       {
+        "year": 5,
+        "effect_rub": 87732510,
+        "net_rub": 87732510,
+        "cumulative_rub": 434263650
+       }
+      ]
      }
     },
     {
+     "variant_id": "923afa76-c857-53de-9fdf-77f5339bdfb5",
+     "variant_name": "Вариант 1",
      "param": "labor",
      "delta_pct": -20,
      "buy": {
       "kind": "buy",
-      "solution_id": null,
-      "fleet_size": null,
-      "capex_rub": null,
-      "opex_year_rub": null,
-      "annual_effect_rub": null,
-      "payback_years": null,
-      "roi_pct": null,
-      "tco_rub": null
+      "solution_id": "5760e938-9a43-45a7-b8e8-f4f2e6383930",
+      "fleet_size": 2,
+      "capex_rub": 9957200,
+      "opex_year_rub": 89173132,
+      "annual_effect_rub": 112063988,
+      "payback_years": 0.0889,
+      "payback_band": "up_to_3",
+      "roi_pct": 5517.94,
+      "tco_rub": 456752860,
+      "accounting_effect_rub": 110797417,
+      "labor_cash_saved_rub": 74995200,
+      "variant_id": "923afa76-c857-53de-9fdf-77f5339bdfb5",
+      "variant_name": "Вариант 1",
+      "price_source": "catalog",
+      "discounted_payback_years": 0.1022,
+      "npv_rub": 365166938,
+      "cash_flow": [
+       {
+        "year": 0,
+        "effect_rub": 0,
+        "net_rub": -9957200,
+        "cumulative_rub": -9957200
+       },
+       {
+        "year": 1,
+        "effect_rub": 112063988,
+        "net_rub": 112063988,
+        "cumulative_rub": 102106788
+       },
+       {
+        "year": 2,
+        "effect_rub": 112063988,
+        "net_rub": 112063988,
+        "cumulative_rub": 214170776
+       },
+       {
+        "year": 3,
+        "effect_rub": 112063988,
+        "net_rub": 112063988,
+        "cumulative_rub": 326234764
+       },
+       {
+        "year": 4,
+        "effect_rub": 112063988,
+        "battery_rub": 930000,
+        "net_rub": 111133988,
+        "cumulative_rub": 437368752
+       },
+       {
+        "year": 5,
+        "effect_rub": 112063988,
+        "net_rub": 112063988,
+        "cumulative_rub": 549432740
+       }
+      ]
      },
      "raas": {
       "kind": "raas",
-      "solution_id": null,
-      "fleet_size": null,
-      "capex_rub": null,
-      "opex_year_rub": null,
-      "annual_effect_rub": null,
-      "payback_years": null,
-      "roi_pct": null,
-      "tco_rub": null
+      "solution_id": "5760e938-9a43-45a7-b8e8-f4f2e6383930",
+      "fleet_size": 2,
+      "capex_rub": 2932600,
+      "opex_year_rub": 90377132,
+      "annual_effect_rub": 110859988,
+      "payback_years": 0.0265,
+      "payback_band": "up_to_3",
+      "roi_pct": 18801.31,
+      "tco_rub": 454818260,
+      "accounting_effect_rub": 110505702,
+      "labor_cash_saved_rub": 74995200,
+      "variant_id": "923afa76-c857-53de-9fdf-77f5339bdfb5",
+      "variant_name": "Вариант 1",
+      "tariff": "fixed",
+      "price_source": "catalog",
+      "discounted_payback_years": 0.0304,
+      "npv_rub": 368687274,
+      "cash_flow": [
+       {
+        "year": 0,
+        "effect_rub": 0,
+        "net_rub": -2932600,
+        "cumulative_rub": -2932600
+       },
+       {
+        "year": 1,
+        "effect_rub": 110859988,
+        "net_rub": 110859988,
+        "cumulative_rub": 107927388
+       },
+       {
+        "year": 2,
+        "effect_rub": 110859988,
+        "net_rub": 110859988,
+        "cumulative_rub": 218787376
+       },
+       {
+        "year": 3,
+        "effect_rub": 110859988,
+        "net_rub": 110859988,
+        "cumulative_rub": 329647364
+       },
+       {
+        "year": 4,
+        "effect_rub": 110859988,
+        "net_rub": 110859988,
+        "cumulative_rub": 440507352
+       },
+       {
+        "year": 5,
+        "effect_rub": 110859988,
+        "net_rub": 110859988,
+        "cumulative_rub": 551367340
+       }
+      ]
      }
     },
     {
+     "variant_id": "923afa76-c857-53de-9fdf-77f5339bdfb5",
+     "variant_name": "Вариант 1",
      "param": "labor",
      "delta_pct": 20,
      "buy": {
       "kind": "buy",
-      "solution_id": null,
-      "fleet_size": null,
-      "capex_rub": null,
-      "opex_year_rub": null,
-      "annual_effect_rub": null,
-      "payback_years": null,
-      "roi_pct": null,
-      "tco_rub": null
+      "solution_id": "5760e938-9a43-45a7-b8e8-f4f2e6383930",
+      "fleet_size": 2,
+      "capex_rub": 9957200,
+      "opex_year_rub": 133295308,
+      "annual_effect_rub": 67941812,
+      "payback_years": 0.1466,
+      "payback_band": "up_to_3",
+      "roi_pct": 3302.35,
+      "tco_rub": 677363740,
+      "accounting_effect_rub": 66675241,
+      "labor_cash_saved_rub": 112492800,
+      "variant_id": "923afa76-c857-53de-9fdf-77f5339bdfb5",
+      "variant_name": "Вариант 1",
+      "price_source": "catalog",
+      "discounted_payback_years": 0.1685,
+      "npv_rub": 217262561,
+      "cash_flow": [
+       {
+        "year": 0,
+        "effect_rub": 0,
+        "net_rub": -9957200,
+        "cumulative_rub": -9957200
+       },
+       {
+        "year": 1,
+        "effect_rub": 67941812,
+        "net_rub": 67941812,
+        "cumulative_rub": 57984612
+       },
+       {
+        "year": 2,
+        "effect_rub": 67941812,
+        "net_rub": 67941812,
+        "cumulative_rub": 125926424
+       },
+       {
+        "year": 3,
+        "effect_rub": 67941812,
+        "net_rub": 67941812,
+        "cumulative_rub": 193868236
+       },
+       {
+        "year": 4,
+        "effect_rub": 67941812,
+        "battery_rub": 930000,
+        "net_rub": 67011812,
+        "cumulative_rub": 260880048
+       },
+       {
+        "year": 5,
+        "effect_rub": 67941812,
+        "net_rub": 67941812,
+        "cumulative_rub": 328821860
+       }
+      ]
      },
      "raas": {
       "kind": "raas",
-      "solution_id": null,
-      "fleet_size": null,
-      "capex_rub": null,
-      "opex_year_rub": null,
-      "annual_effect_rub": null,
-      "payback_years": null,
-      "roi_pct": null,
-      "tco_rub": null
+      "solution_id": "5760e938-9a43-45a7-b8e8-f4f2e6383930",
+      "fleet_size": 2,
+      "capex_rub": 2932600,
+      "opex_year_rub": 134499308,
+      "annual_effect_rub": 66737812,
+      "payback_years": 0.0439,
+      "payback_band": "up_to_3",
+      "roi_pct": 11278.61,
+      "tco_rub": 675429140,
+      "accounting_effect_rub": 66383526,
+      "labor_cash_saved_rub": 112492800,
+      "variant_id": "923afa76-c857-53de-9fdf-77f5339bdfb5",
+      "variant_name": "Вариант 1",
+      "tariff": "fixed",
+      "price_source": "catalog",
+      "discounted_payback_years": 0.0505,
+      "npv_rub": 220782897,
+      "cash_flow": [
+       {
+        "year": 0,
+        "effect_rub": 0,
+        "net_rub": -2932600,
+        "cumulative_rub": -2932600
+       },
+       {
+        "year": 1,
+        "effect_rub": 66737812,
+        "net_rub": 66737812,
+        "cumulative_rub": 63805212
+       },
+       {
+        "year": 2,
+        "effect_rub": 66737812,
+        "net_rub": 66737812,
+        "cumulative_rub": 130543024
+       },
+       {
+        "year": 3,
+        "effect_rub": 66737812,
+        "net_rub": 66737812,
+        "cumulative_rub": 197280836
+       },
+       {
+        "year": 4,
+        "effect_rub": 66737812,
+        "net_rub": 66737812,
+        "cumulative_rub": 264018648
+       },
+       {
+        "year": 5,
+        "effect_rub": 66737812,
+        "net_rub": 66737812,
+        "cumulative_rub": 330756460
+       }
+      ]
      }
     }
    ],
    "shared": {
     "fleet_size": 2,
+    "chargers": 1,
     "throughput": 64.6154,
     "peak_ops": 6818.1818,
     "unit": "строк/ч",
@@ -11726,7 +12825,7 @@
     {
      "id": "vat_price",
      "level": "info",
-     "text": "Цена по каталогу с НДС, если набор допущений не включает вычет НДС."
+     "text": "Цена по каталогу с НДС, если набор допущений не включает вычет НДС. Доставка 3% оборудования добавлена отдельной статьёй CAPEX покупки."
     },
     {
      "id": "remaining_staff",
@@ -11757,6 +12856,7 @@
     {
      "variant_id": "923afa76-c857-53de-9fdf-77f5339bdfb5",
      "name": "Вариант 1",
+     "chargers": 1,
      "fleet": [
       {
        "solution_id": "5760e938-9a43-45a7-b8e8-f4f2e6383930",
@@ -11819,57 +12919,57 @@
        "kind": "buy",
        "solution_id": "5760e938-9a43-45a7-b8e8-f4f2e6383930",
        "fleet_size": 2,
-       "capex_rub": 9752600,
-       "opex_year_rub": 108397900,
-       "annual_effect_rub": 92839220,
-       "payback_years": 0.105,
+       "capex_rub": 9957200,
+       "opex_year_rub": 111234220,
+       "annual_effect_rub": 90002900,
+       "payback_years": 0.1106,
        "payback_band": "up_to_3",
-       "roi_pct": 4650.18,
-       "tco_rub": 552672100,
-       "accounting_effect_rub": 91599220,
+       "roi_pct": 4410.15,
+       "tco_rub": 567058300,
+       "accounting_effect_rub": 88736329,
        "labor_cash_saved_rub": 93744000,
        "variant_id": "923afa76-c857-53de-9fdf-77f5339bdfb5",
        "variant_name": "Вариант 1",
        "price_source": "catalog",
-       "discounted_payback_years": 0.1208,
-       "npv_rub": 300927134,
+       "discounted_payback_years": 0.1272,
+       "npv_rub": 291214750,
        "cash_flow": [
         {
          "year": 0,
          "effect_rub": 0,
-         "net_rub": -9752600,
-         "cumulative_rub": -9752600
+         "net_rub": -9957200,
+         "cumulative_rub": -9957200
         },
         {
          "year": 1,
-         "effect_rub": 92839220,
-         "net_rub": 92839220,
-         "cumulative_rub": 83086620
+         "effect_rub": 90002900,
+         "net_rub": 90002900,
+         "cumulative_rub": 80045700
         },
         {
          "year": 2,
-         "effect_rub": 92839220,
-         "net_rub": 92839220,
-         "cumulative_rub": 175925840
+         "effect_rub": 90002900,
+         "net_rub": 90002900,
+         "cumulative_rub": 170048600
         },
         {
          "year": 3,
-         "effect_rub": 92839220,
-         "net_rub": 92839220,
-         "cumulative_rub": 268765060
+         "effect_rub": 90002900,
+         "net_rub": 90002900,
+         "cumulative_rub": 260051500
         },
         {
          "year": 4,
-         "effect_rub": 92839220,
+         "effect_rub": 90002900,
          "battery_rub": 930000,
-         "net_rub": 91909220,
-         "cumulative_rub": 360674280
+         "net_rub": 89072900,
+         "cumulative_rub": 349124400
         },
         {
          "year": 5,
-         "effect_rub": 92839220,
-         "net_rub": 92839220,
-         "cumulative_rub": 453513500
+         "effect_rub": 90002900,
+         "net_rub": 90002900,
+         "cumulative_rub": 439127300
         }
        ]
       },
@@ -11878,20 +12978,20 @@
        "solution_id": "5760e938-9a43-45a7-b8e8-f4f2e6383930",
        "fleet_size": 2,
        "capex_rub": 2932600,
-       "opex_year_rub": 109601900,
-       "annual_effect_rub": 91635220,
-       "payback_years": 0.032,
+       "opex_year_rub": 112438220,
+       "annual_effect_rub": 88798900,
+       "payback_years": 0.033,
        "payback_band": "up_to_3",
-       "roi_pct": 15523.55,
-       "tco_rub": 550942100,
-       "accounting_effect_rub": 91280934,
+       "roi_pct": 15039.96,
+       "tco_rub": 565123700,
+       "accounting_effect_rub": 88444614,
        "labor_cash_saved_rub": 93744000,
        "variant_id": "923afa76-c857-53de-9fdf-77f5339bdfb5",
        "variant_name": "Вариант 1",
        "tariff": "fixed",
        "price_source": "catalog",
-       "discounted_payback_years": 0.0368,
-       "npv_rub": 304242870,
+       "discounted_payback_years": 0.038,
+       "npv_rub": 294735085,
        "cash_flow": [
         {
          "year": 0,
@@ -11901,33 +13001,33 @@
         },
         {
          "year": 1,
-         "effect_rub": 91635220,
-         "net_rub": 91635220,
-         "cumulative_rub": 88702620
+         "effect_rub": 88798900,
+         "net_rub": 88798900,
+         "cumulative_rub": 85866300
         },
         {
          "year": 2,
-         "effect_rub": 91635220,
-         "net_rub": 91635220,
-         "cumulative_rub": 180337840
+         "effect_rub": 88798900,
+         "net_rub": 88798900,
+         "cumulative_rub": 174665200
         },
         {
          "year": 3,
-         "effect_rub": 91635220,
-         "net_rub": 91635220,
-         "cumulative_rub": 271973060
+         "effect_rub": 88798900,
+         "net_rub": 88798900,
+         "cumulative_rub": 263464100
         },
         {
          "year": 4,
-         "effect_rub": 91635220,
-         "net_rub": 91635220,
-         "cumulative_rub": 363608280
+         "effect_rub": 88798900,
+         "net_rub": 88798900,
+         "cumulative_rub": 352263000
         },
         {
          "year": 5,
-         "effect_rub": 91635220,
-         "net_rub": 91635220,
-         "cumulative_rub": 455243500
+         "effect_rub": 88798900,
+         "net_rub": 88798900,
+         "cumulative_rub": 441061900
         }
        ]
       }
@@ -12002,7 +13102,35 @@
     "prices_include_vat": true,
     "vat_recoverable": false,
     "labor_cash_share": 1,
-    "discount_rate": 0.15
+    "discount_rate": 0.15,
+    "utilization": {
+     "value": 0.8,
+     "set": false
+    },
+    "availability": {
+     "value": 0.9,
+     "set": false
+    },
+    "reserve": {
+     "value": 0.15,
+     "set": false
+    },
+    "service_share": {
+     "value": 0.08,
+     "set": false
+    },
+    "delivery_share": {
+     "value": 0.03,
+     "set": false
+    },
+    "comm_rub_per_robot_year": {
+     "value": 12000,
+     "set": false
+    },
+    "technician_wage_month_rub": {
+     "value": 90000,
+     "set": false
+    }
    }
   }
  },
@@ -12012,6 +13140,35 @@
   "request": {
    "catalog": {
     "content_sha256": "",
+    "norms": {
+     "availability": 0,
+     "utilization": 0,
+     "reserve": 0,
+     "robots_per_charger": 0,
+     "infra_frac": 0,
+     "software_frac": 0,
+     "integration_yes_frac": 0,
+     "integration_no_frac": 0,
+     "commissioning_frac": 0,
+     "training_frac": 0,
+     "contingency_frac": 0,
+     "delivery_frac": 0,
+     "energy_kw": 0,
+     "energy_rub_per_kwh": 0,
+     "license_rub_per_robot": 0,
+     "consumable_rub_per_robot": 0,
+     "comm_rub_per_robot_year": 0,
+     "robots_per_technician": 0,
+     "technician_wage_month_rub": 0,
+     "default_service_frac": 0,
+     "default_lifetime_years": 0,
+     "battery_frac": 0,
+     "battery_years": 0,
+     "raas_monthly_frac": 0,
+     "raas_mix_fixed_share": 0,
+     "vat_rate": 0,
+     "discount_rate": 0
+    },
     "candidates": null,
     "robots": null
    },
@@ -12021,12 +13178,19 @@
    "collections": {
     "assumption_sets": {
      "5be1f870-7e0b-5acf-b645-d70c65f051d1": {
+      "availability": null,
+      "comm_rub_per_robot_year": null,
+      "delivery_share": null,
       "discount_rate": 0.15,
       "id": "5be1f870-7e0b-5acf-b645-d70c65f051d1",
       "labor_cash_share": 1,
       "name": "Базовый",
       "order": "a0",
       "prices_include_vat": true,
+      "reserve": null,
+      "service_share": null,
+      "technician_wage_month_rub": null,
+      "utilization": null,
       "vat_rate": 0.22,
       "vat_recoverable": false
      }
@@ -13252,6 +14416,35 @@
   "request": {
    "catalog": {
     "content_sha256": "reference",
+    "norms": {
+     "availability": 0,
+     "utilization": 0,
+     "reserve": 0,
+     "robots_per_charger": 0,
+     "infra_frac": 0,
+     "software_frac": 0,
+     "integration_yes_frac": 0,
+     "integration_no_frac": 0,
+     "commissioning_frac": 0,
+     "training_frac": 0,
+     "contingency_frac": 0,
+     "delivery_frac": 0,
+     "energy_kw": 0,
+     "energy_rub_per_kwh": 0,
+     "license_rub_per_robot": 0,
+     "consumable_rub_per_robot": 0,
+     "comm_rub_per_robot_year": 0,
+     "robots_per_technician": 0,
+     "technician_wage_month_rub": 0,
+     "default_service_frac": 0,
+     "default_lifetime_years": 0,
+     "battery_frac": 0,
+     "battery_years": 0,
+     "raas_monthly_frac": 0,
+     "raas_mix_fixed_share": 0,
+     "vat_rate": 0,
+     "discount_rate": 0
+    },
     "candidates": [
      {
       "ID": "5760e938-9a43-45a7-b8e8-f4f2e6383930",
@@ -13367,12 +14560,19 @@
    "collections": {
     "assumption_sets": {
      "5be1f870-7e0b-5acf-b645-d70c65f051d1": {
+      "availability": null,
+      "comm_rub_per_robot_year": null,
+      "delivery_share": null,
       "discount_rate": 0.15,
       "id": "5be1f870-7e0b-5acf-b645-d70c65f051d1",
       "labor_cash_share": 1,
       "name": "Базовый",
       "order": "a0",
       "prices_include_vat": true,
+      "reserve": null,
+      "service_share": null,
+      "technician_wage_month_rub": null,
+      "utilization": null,
       "vat_rate": 0.22,
       "vat_recoverable": false
      }
@@ -15296,6 +16496,35 @@
   "request": {
    "catalog": {
     "content_sha256": "",
+    "norms": {
+     "availability": 0,
+     "utilization": 0,
+     "reserve": 0,
+     "robots_per_charger": 0,
+     "infra_frac": 0,
+     "software_frac": 0,
+     "integration_yes_frac": 0,
+     "integration_no_frac": 0,
+     "commissioning_frac": 0,
+     "training_frac": 0,
+     "contingency_frac": 0,
+     "delivery_frac": 0,
+     "energy_kw": 0,
+     "energy_rub_per_kwh": 0,
+     "license_rub_per_robot": 0,
+     "consumable_rub_per_robot": 0,
+     "comm_rub_per_robot_year": 0,
+     "robots_per_technician": 0,
+     "technician_wage_month_rub": 0,
+     "default_service_frac": 0,
+     "default_lifetime_years": 0,
+     "battery_frac": 0,
+     "battery_years": 0,
+     "raas_monthly_frac": 0,
+     "raas_mix_fixed_share": 0,
+     "vat_rate": 0,
+     "discount_rate": 0
+    },
     "candidates": null,
     "robots": null
    },
@@ -15305,12 +16534,19 @@
    "collections": {
     "assumption_sets": {
      "5be1f870-7e0b-5acf-b645-d70c65f051d1": {
+      "availability": null,
+      "comm_rub_per_robot_year": null,
+      "delivery_share": null,
       "discount_rate": 0.15,
       "id": "5be1f870-7e0b-5acf-b645-d70c65f051d1",
       "labor_cash_share": 1,
       "name": "Базовый",
       "order": "a0",
       "prices_include_vat": true,
+      "reserve": null,
+      "service_share": null,
+      "technician_wage_month_rub": null,
+      "utilization": null,
       "vat_rate": 0.22,
       "vat_recoverable": false
      }

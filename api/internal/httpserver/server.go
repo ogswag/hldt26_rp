@@ -99,6 +99,7 @@ func newServer(cfg config.Config, log *slog.Logger, q *db.Queries, sims *simjobs
 	r.Get("/api/solutions/{solutionId}/image", s.solutionImage)
 	r.Get("/api/engine/*", s.engineFiles)
 	r.Get("/api/catalog/bundle", s.catalogBundle)
+	r.Get("/api/norms", s.getNorms)
 	r.Get("/api/catalog/dictionaries", s.catalogDictionaries)
 	r.Get("/api/object-types", s.listObjectTypes)
 	r.Get("/api/object-types/{type}/schema", s.getObjectSchema)
@@ -184,6 +185,8 @@ func newServer(cfg config.Config, log *slog.Logger, q *db.Queries, sims *simjobs
 	r.Get("/api/admin/invitations", s.adminListInvitations)
 	r.Delete("/api/admin/invitations/{inviteId}", s.adminRevokeInvitation)
 	r.Get("/api/admin/audit", s.listAuditEvents)
+	r.Get("/api/admin/norms", s.adminGetNorms)
+	r.Put("/api/admin/norms", s.adminPutNorms)
 	return s, root
 }
 

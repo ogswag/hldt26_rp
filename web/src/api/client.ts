@@ -170,8 +170,48 @@ export type ParamsMap = Record<string, ParamValue>
 // the API and go straight into the engine.
 export type EngineCatalog = {
   content_sha256: string
+  norms_sha256?: string
+  norms?: CalcNorms
   candidates: unknown[]
   robots: unknown[]
+}
+
+export type CalcNorms = {
+  availability: number
+  utilization: number
+  reserve: number
+  robots_per_charger: number
+  infra_frac: number
+  software_frac: number
+  integration_yes_frac: number
+  integration_no_frac: number
+  commissioning_frac: number
+  training_frac: number
+  contingency_frac: number
+  delivery_frac: number
+  energy_kw: number
+  energy_rub_per_kwh: number
+  license_rub_per_robot: number
+  consumable_rub_per_robot: number
+  comm_rub_per_robot_year: number
+  robots_per_technician: number
+  technician_wage_month_rub: number
+  default_service_frac: number
+  default_lifetime_years: number
+  battery_frac: number
+  battery_years: number
+  raas_monthly_frac: number
+  raas_mix_fixed_share: number
+  vat_rate: number
+  discount_rate: number
+}
+
+export function fetchNorms(): Promise<CalcNorms> {
+  return request<CalcNorms>('/api/norms')
+}
+
+export function putAdminNorms(body: CalcNorms): Promise<CalcNorms> {
+  return request<CalcNorms>('/api/admin/norms', { method: 'PUT', body: JSON.stringify(body) })
 }
 
 export function fetchCatalogBundle(): Promise<EngineCatalog> {

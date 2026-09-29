@@ -643,3 +643,45 @@ function RunDetails({
     </div>
   )
 }
+
+function FleetSearchTable({
+  search,
+  onTake,
+}: {
+  search: NonNullable<import('../api/client').SimulationSummary['fleet_search']>
+  onTake?: (lineKey: string, n: number) => void
+}) {
+  return (
+    <>
+      <h2>Подбор флота</h2>
+      {search.stopped ? <p><Reflow>{search.stopped}.</Reflow></p> : null}
+      <div className="table-wrap">
+        <table className="num-table">
+          <thead>
+            <tr>
+              <th>Роботов</th>
+              <th>Выполнено</th>
+              <th>Нарушения SLA</th>
+            </tr>
+          </thead>
+          <tbody>
+            {search.rows.map((row) => (
+              <tr key={row.quantity}>
+                <td>{formatNum(row.quantity, 0)}</td>
+                <td>{pct(row.coverage)}</td>
+                <td>{row.sla_ok ? 'в допуске' : 'выше допуска'}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+      {onTake && search.best > 0 ? (
+        <p>
+          <button type="button" className="btn btn-text" onClick={() => onTake(search.line_key, search.best)}>
+            Взять {formatNum(search.best, 0)} в вариант
+          </button>
+        </p>
+      ) : null}
+    </>
+  )
+}

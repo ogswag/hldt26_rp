@@ -1232,3 +1232,15 @@ WHERE id = $1 AND accepted_at IS NULL AND revoked_at IS NULL;
 SELECT id, email, project_id, project_role, invited_by, accepted_at, revoked_at
 FROM invitations
 WHERE id = $1;
+
+-- name: GetCalcNorms :one
+SELECT values, updated_at, updated_by
+FROM calc_norms
+WHERE id = 1;
+
+-- name: UpsertCalcNorms :one
+INSERT INTO calc_norms (id, values, updated_at, updated_by)
+VALUES (1, sqlc.arg(values)::jsonb, now(), sqlc.narg(updated_by))
+ON CONFLICT (id) DO UPDATE
+SET values = excluded.values, updated_at = excluded.updated_at, updated_by = excluded.updated_by
+RETURNING values, updated_at, updated_by;

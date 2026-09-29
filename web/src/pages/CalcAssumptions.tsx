@@ -1,6 +1,9 @@
 import { useMemo, useState } from "react";
 
+import { useQuery } from "@tanstack/react-query";
+
 import type { AssumptionSet, AssumptionView, CalculateResult, EconOverrides, NormValue, SharedCost } from "../api/client";
+import { fetchNorms } from "../api/client";
 import { formatNum, formatRub, overrideFieldLabel, pickedPrice } from "../econ/view";
 import { numberText } from "../ui/numberText";
 import {
@@ -318,6 +321,7 @@ function ProjectEconEditors({
   const sets = useStoreSelector(store, selectSets);
   const ready = useStoreSelector(store, () => store.ready);
   const [error, setError] = useState("");
+  const normsQ = useQuery({ queryKey: ["norms"], queryFn: fetchNorms });
 
   // run sends one edit as one transaction and records it for ctrl+Z. A recalculation follows, because these
   // numbers go straight into the economics; so the fields here save on Enter and on leaving the field.
@@ -342,11 +346,11 @@ function ProjectEconEditors({
         id,
         name: `Набор ${sets.length + 1}`,
         is_active: false,
-        vat_rate: 0.22,
+        vat_rate: normsQ.data?.vat_rate ?? 0.22,
         prices_include_vat: true,
         vat_recoverable: false,
         labor_cash_share: 1,
-        discount_rate: defaultDiscountRate,
+        discount_rate: normsQ.data?.discount_rate ?? defaultDiscountRate,
         sort_order: sets.length,
       }),
     );

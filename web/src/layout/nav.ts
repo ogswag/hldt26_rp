@@ -30,6 +30,7 @@ export function calcSubtabsOf(demo: boolean): Subtab[] {
 
 export const adminSubtabs: Subtab[] = [
   { id: 'catalog', label: 'Каталог' },
+  { id: 'norms', label: 'Нормативы' },
   { id: 'invitations', label: 'Приглашения' },
   { id: 'audit', label: 'Журнал' },
 ]

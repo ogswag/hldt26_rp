@@ -33,6 +33,7 @@ sql:
       - "migrations/0030_solution_specs_turn_radius.up.sql"
       - "migrations/0031_solutions_field_sources.up.sql"
       - "migrations/0032_assumption_sets_norm_overrides.up.sql"
+      - "migrations/0033_calc_norms_admin_defaults.up.sql"
     gen:
       go:
         package: "db"

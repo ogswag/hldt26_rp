@@ -33,6 +33,9 @@ type Norms struct {
 
 	RaasMonthlyFrac   float64 `json:"raas_monthly_frac"`
 	RaasMixFixedShare float64 `json:"raas_mix_fixed_share"`
+
+	VATRate      float64 `json:"vat_rate"`
+	DiscountRate float64 `json:"discount_rate"`
 }
 
 // DefaultNorms are the values the team fixed for the model.
@@ -66,6 +69,9 @@ func DefaultNorms() Norms {
 
 		RaasMonthlyFrac:   RaasMonthlyFrac,
 		RaasMixFixedShare: RaasMixFixedShare,
+
+		VATRate:      DefaultVATRate,
+		DiscountRate: DefaultDiscountRate,
 	}
 }
 

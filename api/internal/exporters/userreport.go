@@ -212,7 +212,7 @@ func fleetText(v econ.VariantResult) string {
 		if text == "" {
 			return line
 		}
-		return text + ". " + line
+		return text + "; " + line
 	}
 	return text
 }

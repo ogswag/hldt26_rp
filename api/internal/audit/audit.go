@@ -35,6 +35,7 @@ const (
 	ActionSolutionDuplicate = "solution.duplicate"
 	ActionSolutionImage     = "solution.image"
 	ActionCatalogImport     = "catalog.import"
+	ActionNormsUpdate       = "norms.update"
 
 	TargetUser    = "user"
 	TargetProject = "project"
@@ -43,6 +44,7 @@ const (
 
 	TargetSolution      = "solution"
 	TargetCatalogImport = "catalog_import"
+	TargetNorms         = "norms"
 )
 
 // Event is one recorded action. Meta carries identifiers and catalog field changes only: no tokens, no numbers

@@ -163,6 +163,39 @@ paths:
                 $ref: "#/components/schemas/CatalogBundle"
         "304":
           description: Not modified
+  /api/norms:
+    get:
+      summary: Current calculation norms
+      responses:
+        "200":
+          description: Norms the model uses when an assumption set leaves a field empty
+  /api/admin/norms:
+    get:
+      summary: Current calculation norms (admin)
+      security:
+        - sessionCookie: []
+      responses:
+        "200":
+          description: Norms
+        "403":
+          description: Not an admin
+    put:
+      summary: Replace calculation norms (admin)
+      security:
+        - sessionCookie: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+      responses:
+        "200":
+          description: Saved
+        "400":
+          description: Out of range
+        "403":
+          description: Not an admin
   /api/catalog/dictionaries:
     get:
       summary: Warehouse task and capability codes

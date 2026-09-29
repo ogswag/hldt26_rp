@@ -152,6 +152,7 @@ type Output struct {
 	Items                []Item   `json:"items"`
 	MatchVersion         string   `json:"match_version"`
 	CatalogContentSHA256 string   `json:"catalog_content_sha256,omitempty"`
+	NormsSHA256          string   `json:"norms_sha256,omitempty"`
 	TaskCodes            []string `json:"task_codes,omitempty"`
 	// Best is the robot the calculation suggests and BestWhy says why, both filled by econ.Rank.
 	Best    string   `json:"best,omitempty"`

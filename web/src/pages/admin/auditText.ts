@@ -9,6 +9,7 @@ export const auditSections: { value: string; label: string; actions: string[] }[
     actions: ['solution.create', 'solution.update', 'solution.archive', 'solution.restore', 'solution.duplicate', 'solution.image'],
   },
   { value: 'catalog_import', label: 'Загрузки каталога', actions: ['catalog.import'] },
+  { value: 'norms', label: 'Нормативы', actions: ['norms.update'] },
   { value: 'invitation', label: 'Приглашения', actions: ['invite.create', 'invite.revoke', 'invite.accept'] },
   {
     value: 'project',
@@ -27,6 +28,7 @@ export const actionLabels: Record<string, string> = {
   'solution.duplicate': 'Решение скопировано',
   'solution.image': 'Фото решения',
   'catalog.import': 'Таблица загружена',
+  'norms.update': 'Нормативы изменены',
   'invite.create': 'Приглашение отправлено',
   'invite.revoke': 'Приглашение отозвано',
   'invite.accept': 'Приглашение принято',

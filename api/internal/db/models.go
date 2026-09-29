@@ -43,6 +43,13 @@ type AuditEvent struct {
 	Meta        json.RawMessage    `json:"meta"`
 }
 
+type CalcNorm struct {
+	ID        int16              `json:"id"`
+	Values    json.RawMessage    `json:"values"`
+	UpdatedAt pgtype.Timestamptz `json:"updated_at"`
+	UpdatedBy *uuid.UUID         `json:"updated_by"`
+}
+
 type CalculationResult struct {
 	RunID     uuid.UUID          `json:"run_id"`
 	Summary   json.RawMessage    `json:"summary"`

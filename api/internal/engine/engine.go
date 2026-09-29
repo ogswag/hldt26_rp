@@ -21,11 +21,13 @@ import (
 
 // CatalogFormat changes when the bundle gains fields, so a browser holding an older bundle of the same content
 // takes the new one.
-const CatalogFormat = "2"
+const CatalogFormat = "3"
 
 // Catalog is what matching picks from and what economics prices. ContentSHA256 names its content.
 type Catalog struct {
 	ContentSHA256 string               `json:"content_sha256"`
+	NormsSHA256   string               `json:"norms_sha256,omitempty"`
+	Norms         econ.Norms           `json:"norms,omitempty"`
 	Candidates    []matching.Candidate `json:"candidates"`
 	Robots        []econ.Robot         `json:"robots"`
 }
@@ -77,6 +79,7 @@ func Match(cat Catalog, objectType string, params json.RawMessage, includeIDs, t
 
 func stamp(out *matching.Output, cat Catalog) {
 	out.CatalogContentSHA256 = cat.ContentSHA256
+	out.NormsSHA256 = cat.NormsSHA256
 }
 
 // Calculate matches, prices and verifies with the simulation. The robot it returns is the one the simulation
@@ -107,6 +110,7 @@ func Calculate(cat Catalog, req Request) (econ.Result, *econ.Robot, error) {
 		Match:       out,
 		Processes:   processes,
 		Assumptions: assumptions,
+		Norms:       cat.Norms,
 	}, robots)
 	if req.HasDraft && draftHasFleet(req.Draft) {
 		return calculateDraft(cat, req, out)
@@ -139,6 +143,7 @@ func calculateFromMatch(cat Catalog, req Request, out matching.Output, processes
 		Match:       out,
 		Processes:   processes,
 		Assumptions: assumptions,
+		Norms:       cat.Norms,
 	})
 	if err != nil {
 		return econ.Result{}, nil, err
@@ -161,6 +166,7 @@ func calculateDraft(cat Catalog, req Request, out matching.Output) (econ.Result,
 		Variants:    toVariantSpecs(d.Variants),
 		SharedCosts: toSharedSpecs(d.SharedCosts),
 		Assumptions: toAssumptionValues(projects.ActiveAssumptionSet(d.AssumptionSets)),
+		Norms:       cat.Norms,
 	})
 	if err != nil {
 		return econ.Result{}, nil, err

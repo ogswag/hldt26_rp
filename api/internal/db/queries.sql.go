@@ -1239,6 +1239,25 @@ func (q *Queries) FinishSimulationJob(ctx context.Context, arg FinishSimulationJ
 	return i, err
 }
 
+const getCalcNorms = `-- name: GetCalcNorms :one
+SELECT values, updated_at, updated_by
+FROM calc_norms
+WHERE id = 1
+`
+
+type GetCalcNormsRow struct {
+	Values    json.RawMessage    `json:"values"`
+	UpdatedAt pgtype.Timestamptz `json:"updated_at"`
+	UpdatedBy *uuid.UUID         `json:"updated_by"`
+}
+
+func (q *Queries) GetCalcNorms(ctx context.Context) (GetCalcNormsRow, error) {
+	row := q.db.QueryRow(ctx, getCalcNorms)
+	var i GetCalcNormsRow
+	err := row.Scan(&i.Values, &i.UpdatedAt, &i.UpdatedBy)
+	return i, err
+}
+
 const getCalculationRun = `-- name: GetCalculationRun :one
 SELECT r.id, r.project_id, r.project_version_id, r.input_hash,
     COALESCE(r.draft_hash, r.input_hash)::text AS draft_hash, r.match_version, r.econ_version,
@@ -4930,6 +4949,32 @@ func (q *Queries) TrashProject(ctx context.Context, arg TrashProjectParams) (pgt
 	var deleted_at pgtype.Timestamptz
 	err := row.Scan(&deleted_at)
 	return deleted_at, err
+}
+
+const upsertCalcNorms = `-- name: UpsertCalcNorms :one
+INSERT INTO calc_norms (id, values, updated_at, updated_by)
+VALUES (1, $1::jsonb, now(), $2)
+ON CONFLICT (id) DO UPDATE
+SET values = excluded.values, updated_at = excluded.updated_at, updated_by = excluded.updated_by
+RETURNING values, updated_at, updated_by
+`
+
+type UpsertCalcNormsParams struct {
+	Values    json.RawMessage `json:"values"`
+	UpdatedBy *uuid.UUID      `json:"updated_by"`
+}
+
+type UpsertCalcNormsRow struct {
+	Values    json.RawMessage    `json:"values"`
+	UpdatedAt pgtype.Timestamptz `json:"updated_at"`
+	UpdatedBy *uuid.UUID         `json:"updated_by"`
+}
+
+func (q *Queries) UpsertCalcNorms(ctx context.Context, arg UpsertCalcNormsParams) (UpsertCalcNormsRow, error) {
+	row := q.db.QueryRow(ctx, upsertCalcNorms, arg.Values, arg.UpdatedBy)
+	var i UpsertCalcNormsRow
+	err := row.Scan(&i.Values, &i.UpdatedAt, &i.UpdatedBy)
+	return i, err
 }
 
 const upsertProjectDraft = `-- name: UpsertProjectDraft :one

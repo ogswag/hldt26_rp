@@ -24,6 +24,7 @@ import { pageMoved } from './offline/serviceWorker'
 import { AdminAudit } from './pages/admin/AdminAudit'
 import { AdminCatalog } from './pages/admin/AdminCatalog'
 import { AdminInvitations } from './pages/admin/AdminInvitations'
+import { AdminNorms } from './pages/admin/AdminNorms'
 import { AdminLayout } from './pages/admin/AdminLayout'
 import { Calc } from './pages/Calc'
 import { Export } from './pages/Export'
@@ -124,6 +125,7 @@ function adminRoutes() {
     <Route path="admin" element={<AdminLayout />}>
       <Route index element={<Navigate to="catalog" replace />} />
       <Route path="catalog" element={<AdminCatalog />} />
+      <Route path="norms" element={<AdminNorms />} />
       <Route path="invitations" element={<AdminInvitations />} />
       <Route path="audit" element={<AdminAudit />} />
       <Route path="*" element={<NotFound />} />

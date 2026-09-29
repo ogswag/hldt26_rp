@@ -475,3 +475,47 @@ func asInput(err error, ie **InputError) bool {
 	*ie = x
 	return true
 }
+
+func TestSensitivityRunsForEveryVariantWithFleet(t *testing.T) {
+	r := h1500()
+	got, err := Calculate(Input{
+		ObjectType: objects.Warehouse,
+		Params:     warehouseParams(t),
+		Robots:     []Robot{r},
+		Processes:  warehouseProcessSpecs(),
+		Variants: []VariantSpec{
+			{ID: "a", Name: "Первый", Fleet: []FleetSpec{{SolutionID: r.ID, Quantity: 4, TaskCodes: []string{"inbound"}}}, Financing: []FinancingSpec{{Kind: "buy"}, {Kind: "raas", Tariff: "fixed"}}},
+			{ID: "b", Name: "Второй", Fleet: []FleetSpec{{SolutionID: r.ID, Quantity: 6, TaskCodes: []string{"inbound"}}}, Financing: []FinancingSpec{{Kind: "buy"}, {Kind: "raas", Tariff: "fixed"}}},
+		},
+	})
+	if err != nil {
+		t.Fatal(err)
+	}
+	if len(got.Sensitivity) != 12 {
+		t.Fatalf("rows %d, want 12", len(got.Sensitivity))
+	}
+	var volumeUp *SensitivityRow
+	for i, row := range got.Sensitivity {
+		if row.VariantID == "" || row.VariantName == "" {
+			t.Fatalf("row %d missing variant", i)
+		}
+		if row.Buy.Kind != "buy" {
+			t.Fatalf("row %d buy %q", i, row.Buy.Kind)
+		}
+		if row.Param == "volume" && row.DeltaPct == 20 && row.VariantID == "a" {
+			volumeUp = &got.Sensitivity[i]
+		}
+	}
+	if volumeUp == nil || volumeUp.Buy.FleetSize == nil || *volumeUp.Buy.FleetSize != 5 {
+		t.Fatalf("volume +20 fleet %+v", volumeUp)
+	}
+	found := false
+	for _, a := range got.Assumptions {
+		if strings.Contains(a, "сдвиг объёма меняет и флот") {
+			found = true
+		}
+	}
+	if !found {
+		t.Fatal("missing volume-fleet assumption")
+	}
+}

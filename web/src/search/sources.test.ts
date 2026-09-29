@@ -54,7 +54,7 @@ describe('navEntries', () => {
     const inProject = navEntries('/p/1', schema, false, false, () => open, true)
     expect(inProject.find((e) => e.id === 'page:admin:catalog')).toMatchObject({ to: '/p/1/admin/catalog', path: ['Админ'] })
     const home = navEntries('', null, false, false, () => open, true)
-    expect(home.map((e) => e.to)).toEqual(['/admin', '/admin/catalog', '/admin/invitations', '/admin/audit'])
+    expect(home.map((e) => e.to)).toEqual(['/admin', '/admin/catalog', '/admin/norms', '/admin/invitations', '/admin/audit'])
   })
 })
 
