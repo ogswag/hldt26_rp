@@ -1,9 +1,9 @@
 import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query'
+import { useRef } from 'react'
 
 import { fetchNorms, putAdminNorms, type CalcNorms } from '../../api/client'
 import { FieldRow } from '../../ui/FieldRow'
 import { NumberField } from '../../ui/NumberField'
-import { numberText } from '../../ui/numberText'
 import { Reflow } from '../../ui/Reflow'
 import { UnitField } from '../../ui/UnitField'
 
@@ -13,51 +13,51 @@ const groups: { title: string; rows: { key: Key; label: string; unit: string; sh
   {
     title: 'Подбор флота',
     rows: [
-      { key: 'utilization', label: 'Загрузка', unit: '%', share: true, help: 'Доля времени, когда робот занят работой. Источник: середина диапазона AMR 70-85% легенды датасета.' },
-      { key: 'availability', label: 'Доступность', unit: '%', share: true, help: 'Доля времени, когда робот доступен, включая зарядку.' },
-      { key: 'reserve', label: 'Резерв', unit: '%', share: true, help: 'Запас роботов сверх расчётного числа.' },
-      { key: 'robots_per_charger', label: 'Роботов на зарядку', unit: 'шт', help: 'Если у робота нет времени работы и зарядки, одна станция на столько роботов.' },
+      { key: 'utilization', label: 'Загрузка', unit: '%', share: true, help: 'Доля времени, когда робот занят работой. Источник: легенда датасета, AMR 70-85%.' },
+      { key: 'availability', label: 'Доступность', unit: '%', share: true, help: 'Доля времени, когда робот доступен, включая зарядку. Источник: допущение команды.' },
+      { key: 'reserve', label: 'Резерв', unit: '%', share: true, help: 'Запас роботов сверх расчётного числа. Источник: допущение команды.' },
+      { key: 'robots_per_charger', label: 'Роботов на зарядку', unit: 'шт', help: 'Если у робота нет времени работы и зарядки, одна станция на столько роботов. Источник: допущение команды.' },
     ],
   },
   {
     title: 'CAPEX',
     rows: [
-      { key: 'infra_frac', label: 'Инфраструктура', unit: '%', share: true, help: 'Доля цены оборудования на инфраструктуру площадки.' },
-      { key: 'software_frac', label: 'ПО', unit: '%', share: true, help: 'Доля цены оборудования на программное обеспечение.' },
-      { key: 'integration_yes_frac', label: 'Интеграция при WMS', unit: '%', share: true, help: 'Доля цены оборудования, если на объекте есть WMS или аналог.' },
-      { key: 'integration_no_frac', label: 'Интеграция без WMS', unit: '%', share: true, help: 'Доля цены оборудования, если WMS нет.' },
-      { key: 'commissioning_frac', label: 'ПНР', unit: '%', share: true, help: 'Пусконаладка, доля цены оборудования.' },
-      { key: 'training_frac', label: 'Обучение', unit: '%', share: true, help: 'Обучение персонала, доля цены оборудования.' },
-      { key: 'contingency_frac', label: 'Резерв CAPEX', unit: '%', share: true, help: 'Запас на непредвиденные статьи CAPEX.' },
-      { key: 'delivery_frac', label: 'Доставка', unit: '%', share: true, help: 'Доставка, доля цены оборудования. Только в покупке.' },
+      { key: 'infra_frac', label: 'Инфраструктура', unit: '%', share: true, help: 'Доля цены оборудования на инфраструктуру площадки. Источник: допущение команды.' },
+      { key: 'software_frac', label: 'ПО', unit: '%', share: true, help: 'Доля цены оборудования на программное обеспечение. Источник: допущение команды.' },
+      { key: 'integration_yes_frac', label: 'Интеграция при WMS', unit: '%', share: true, help: 'Доля цены оборудования, если на объекте есть WMS или аналог. Источник: допущение команды.' },
+      { key: 'integration_no_frac', label: 'Интеграция без WMS', unit: '%', share: true, help: 'Доля цены оборудования, если WMS нет. Источник: допущение команды.' },
+      { key: 'commissioning_frac', label: 'ПНР', unit: '%', share: true, help: 'Пусконаладка, доля цены оборудования. Источник: допущение команды.' },
+      { key: 'training_frac', label: 'Обучение', unit: '%', share: true, help: 'Обучение персонала, доля цены оборудования. Источник: допущение команды.' },
+      { key: 'contingency_frac', label: 'Резерв CAPEX', unit: '%', share: true, help: 'Запас на непредвиденные статьи CAPEX. Источник: допущение команды.' },
+      { key: 'delivery_frac', label: 'Доставка', unit: '%', share: true, help: 'Доставка, доля цены оборудования. Только в покупке. Источник: допущение команды.' },
     ],
   },
   {
     title: 'OPEX',
     rows: [
-      { key: 'energy_kw', label: 'Мощность на робота', unit: 'кВт', help: 'Расчётная мощность одного робота.' },
-      { key: 'energy_rub_per_kwh', label: 'Цена энергии', unit: '₽/кВт·ч', help: 'Цена киловатт-часа с НДС.' },
-      { key: 'license_rub_per_robot', label: 'Лицензии', unit: '₽', help: 'Лицензии на робота в год, с НДС.' },
-      { key: 'consumable_rub_per_robot', label: 'Расходники', unit: '₽', help: 'Расходники на робота в год, с НДС.' },
-      { key: 'comm_rub_per_robot_year', label: 'Связь', unit: '₽', help: 'Связь на робота в год, с НДС.' },
-      { key: 'robots_per_technician', label: 'Роботов на техника', unit: 'шт', help: 'Один техник на столько роботов в смену.' },
-      { key: 'technician_wage_month_rub', label: 'Зарплата техника', unit: '₽', help: 'Зарплата техника в месяц, без НДС, до начислений.' },
-      { key: 'default_service_frac', label: 'Сервис без ТТХ', unit: '%', share: true, help: 'Доля цены оборудования на сервис и ремонт, если у робота нет своей.' },
+      { key: 'energy_kw', label: 'Мощность на робота', unit: 'кВт', help: 'Расчётная мощность одного робота. Источник: допущение команды.' },
+      { key: 'energy_rub_per_kwh', label: 'Цена энергии', unit: '₽/кВт·ч', help: 'Цена киловатт-часа с НДС. Источник: допущение команды.' },
+      { key: 'license_rub_per_robot', label: 'Лицензии', unit: '₽', help: 'Лицензии на робота в год, с НДС. Источник: допущение команды.' },
+      { key: 'consumable_rub_per_robot', label: 'Расходники', unit: '₽', help: 'Расходники на робота в год, с НДС. Источник: допущение команды.' },
+      { key: 'comm_rub_per_robot_year', label: 'Связь', unit: '₽', help: 'Связь на робота в год, с НДС. Источник: допущение команды.' },
+      { key: 'robots_per_technician', label: 'Роботов на техника', unit: 'шт', help: 'Один техник на столько роботов в смену. Источник: допущение команды.' },
+      { key: 'technician_wage_month_rub', label: 'Зарплата техника', unit: '₽', help: 'Зарплата техника в месяц, без НДС, до начислений. Источник: допущение команды.' },
+      { key: 'default_service_frac', label: 'Сервис без ТТХ', unit: '%', share: true, help: 'Доля цены оборудования на сервис и ремонт, если у робота нет своей. Источник: допущение модели.' },
     ],
   },
   {
     title: 'Замены',
     rows: [
-      { key: 'default_lifetime_years', label: 'Срок службы', unit: 'лет', help: 'Срок службы робота без данных в ТТХ.' },
-      { key: 'battery_frac', label: 'Доля батареи', unit: '%', share: true, help: 'Цена замены батареи, доля цены робота.' },
-      { key: 'battery_years', label: 'Срок батареи', unit: 'лет', help: 'Через сколько лет меняют батарею.' },
+      { key: 'default_lifetime_years', label: 'Срок службы', unit: 'лет', help: 'Срок службы робота без данных в ТТХ. Источник: допущение модели.' },
+      { key: 'battery_frac', label: 'Доля батареи', unit: '%', share: true, help: 'Цена замены батареи, доля цены робота. Источник: допущение модели.' },
+      { key: 'battery_years', label: 'Срок батареи', unit: 'лет', help: 'Через сколько лет меняют батарею. Источник: допущение модели.' },
     ],
   },
   {
     title: 'RaaS',
     rows: [
-      { key: 'raas_monthly_frac', label: 'Плата в месяц', unit: '%', share: true, help: 'Фиксированный тариф: доля цены оборудования в месяц.' },
-      { key: 'raas_mix_fixed_share', label: 'Доля фиксированной части', unit: '%', share: true, help: 'Смешанный тариф: какая доля платы фиксированная.' },
+      { key: 'raas_monthly_frac', label: 'Плата в месяц', unit: '%', share: true, help: 'Фиксированный тариф: доля цены оборудования в месяц. Источник: допущение команды.' },
+      { key: 'raas_mix_fixed_share', label: 'Доля фиксированной части', unit: '%', share: true, help: 'Смешанный тариф: какая доля платы фиксированная. Источник: допущение команды.' },
     ],
   },
   {
@@ -84,13 +84,17 @@ export function AdminNorms() {
       void qc.invalidateQueries({ queryKey: ['catalog-bundle'] })
     },
   })
+  // The server takes the whole set of norms, so saves go one after another and each starts from what the last one stored.
+  const queue = useRef<Promise<unknown>>(Promise.resolve())
 
   function save(key: Key, share: boolean | undefined, typed: number) {
-    if (!q.data) {
-      return
-    }
-    const next = { ...q.data, [key]: share ? typed / 100 : typed }
-    mut.mutate(next)
+    const value = share ? Math.round(typed * 100) / 10000 : typed
+    queue.current = queue.current
+      .then(() => {
+        const stored = qc.getQueryData<CalcNorms>(['norms'])
+        return stored ? mut.mutateAsync({ ...stored, [key]: value }) : undefined
+      })
+      .catch(() => undefined)
   }
 
   if (q.isPending) {
@@ -132,12 +136,6 @@ export function AdminNorms() {
           </div>
         </section>
       ))}
-      <p className="field-hint">
-        <Reflow>
-          Пустое поле набора допущений берёт эти числа. Запуск записывает хеш нормативов рядом с хешем каталога. Сейчас{' '}
-          {numberText(n.vat_rate * 100)}% НДС и {numberText(n.discount_rate * 100)}% ставка дисконтирования для новых наборов.
-        </Reflow>
-      </p>
     </section>
   )
 }

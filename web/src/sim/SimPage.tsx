@@ -34,6 +34,7 @@ import { csvText, triggerDownload } from '../ui/download'
 import { UnitField } from '../ui/UnitField'
 
 import { exportFileName, runCsvRows } from './exportRun'
+import { findLine, lineKeyOf, withLineQuantity } from './fleetLine'
 import { pct, policyLabels } from './format'
 import { ReplayView } from './ReplayView'
 import { SimSummary } from './SimSummary'
@@ -197,16 +198,16 @@ export function SimPage({ source, ctx }: { source: SimSource; ctx: SimContext })
     )
   }
 
-  function takeN(v: SolutionVariant, lineKey: string, n: number) {
-    applyFleet(
-      v,
-      v.fleet.map((f, i) => ((f.id || `fleet-${i + 1}`) === lineKey ? { ...f, quantity: Math.max(1, n) } : f)),
-      `Взять ${n} в вариант`,
-    )
+  // A search names the variant and the fleet line it ran for; the size goes there, not into the variant the form shows.
+  function canTake(variantId: string, lineKey: string) {
+    return findLine(variants, variantId, lineKey) !== null
   }
 
-  function lineKeyOf(f: SolutionVariant['fleet'][number], i: number) {
-    return f.id || `fleet-${i + 1}`
+  function takeN(variantId: string, lineKey: string, n: number) {
+    const v = findLine(variants, variantId, lineKey)
+    if (v) {
+      applyFleet(v, withLineQuantity(v.fleet, lineKey, n), `Взять ${n} в вариант`)
+    }
   }
 
   return (
@@ -412,7 +413,8 @@ export function SimPage({ source, ctx }: { source: SimSource; ctx: SimContext })
           key={shownRun}
           source={source}
           runId={shownRun}
-          onTake={variant ? (key, n) => takeN(variant, key, n) : undefined}
+          canTake={canTake}
+          onTake={takeN}
         />
       ) : null}
     </section>
@@ -541,11 +543,13 @@ function History({
 function RunDetails({
   source,
   runId,
+  canTake,
   onTake,
 }: {
   source: SimSource
   runId: string
-  onTake?: (lineKey: string, n: number) => void
+  canTake: (variantId: string, lineKey: string) => boolean
+  onTake: (variantId: string, lineKey: string, n: number) => void
 }) {
   const qc = useQueryClient()
   const runQ = useQuery({ queryKey: ['simulation-run', ...source.key, runId], queryFn: () => source.run(runId) })
@@ -597,7 +601,10 @@ function RunDetails({
       ) : null}
       <SimSummary summary={summary} />
       {summary.fleet_search ? (
-        <FleetSearchTable search={summary.fleet_search} onTake={onTake} />
+        <FleetSearchTable
+          search={summary.fleet_search}
+          onTake={canTake(summary.variant_id, summary.fleet_search.line_key) ? (key, n) => onTake(summary.variant_id, key, n) : undefined}
+        />
       ) : null}
       {data.artifact && source.local ? (
         <p className="field-hint">
@@ -654,7 +661,14 @@ function FleetSearchTable({
   return (
     <>
       <h2>Подбор флота</h2>
-      {search.stopped ? <p><Reflow>{search.stopped}.</Reflow></p> : null}
+      {search.stopped ? (
+        <p>
+          <Reflow>
+            {`${search.stopped.charAt(0).toUpperCase()}${search.stopped.slice(1)}.`}
+            {search.best > 0 ? '' : ' Размер не предложен. Проверьте карту и спрос процессов, затем запустите подбор снова.'}
+          </Reflow>
+        </p>
+      ) : null}
       <div className="table-wrap">
         <table className="num-table">
           <thead>

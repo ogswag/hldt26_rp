@@ -60,23 +60,13 @@ func SearchFleet(ctx context.Context, robots Robots, objectType string, d projec
 		return row, pass, nil
 	}
 	best, stopped, rows, err := searchSizes(q0, limit, deadline, time.Now, probe)
-	out := FleetSearch{LineKey: cfg.LineKey, Rows: rows, Best: best, Stopped: stopped}
 	if err != nil && err != errSearchTimeout {
-		return nil, sim.Result{}, nil, nil, out, err
+		return nil, sim.Result{}, nil, nil, FleetSearch{LineKey: cfg.LineKey, Rows: rows, Best: best, Stopped: stopped}, err
 	}
-	if best < 1 {
-		best = q0
-		if len(rows) > 0 {
-			best = rows[len(rows)-1].Quantity
-		}
-		out.Best = best
-		if out.Stopped == "" {
-			out.Stopped = "ни один размер не прошёл"
-		}
-	}
+	runQ, out := closingRun(cfg.LineKey, q0, best, rows, stopped)
 	jc := cfg
 	jc.Mode = ""
-	jc.FleetQuantities = map[string]int{cfg.LineKey: best}
+	jc.FleetQuantities = map[string]int{cfg.LineKey: runQ}
 	built, err := Build(robots, objectType, d, jc)
 	if err != nil {
 		return nil, sim.Result{}, nil, nil, out, err
@@ -86,6 +76,23 @@ func SearchFleet(ctx context.Context, robots Robots, objectType string, d projec
 		return nil, sim.Result{}, nil, nil, out, err
 	}
 	return built, res, reps, journal, out, nil
+}
+
+// closingRun picks the size of the run that ends a search and builds the table the page shows. When no size passed,
+// the run takes the last size tried so its bottleneck shows, and Best stays 0: the page offers no size.
+func closingRun(lineKey string, q0, best int, rows []FleetSearchRow, stopped string) (int, FleetSearch) {
+	out := FleetSearch{LineKey: lineKey, Rows: rows, Best: best, Stopped: stopped}
+	if best >= 1 {
+		return best, out
+	}
+	size := q0
+	if len(rows) > 0 {
+		size = rows[len(rows)-1].Quantity
+	}
+	if out.Stopped == "" {
+		out.Stopped = "ни один размер не прошёл"
+	}
+	return size, out
 }
 
 // LineQuantity is the current count of the fleet line named by key.

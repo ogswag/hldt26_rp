@@ -59,16 +59,22 @@ func (s *Server) adminPutNorms(w http.ResponseWriter, r *http.Request) {
 }
 
 func normsRangeError(n econ.Norms) string {
-	share := func(v float64) bool { return v >= 0 && v <= 1 && !math.IsNaN(v) }
-	pos := func(v float64) bool { return v > 0 && !math.IsNaN(v) && !math.IsInf(v, 0) }
-	nonneg := func(v float64) bool { return v >= 0 && !math.IsNaN(v) && !math.IsInf(v, 0) }
+	finite := func(v float64) bool { return !math.IsNaN(v) && !math.IsInf(v, 0) }
+	share := func(v float64) bool { return finite(v) && v >= 0 && v <= 1 }
+	// NOTE: availability and utilization divide the throughput in the fleet size, so zero is refused like the
+	// assumption set refuses it.
+	rate := func(v float64) bool { return finite(v) && v >= 0.01 && v <= 1 }
+	pos := func(v float64) bool { return finite(v) && v > 0 }
+	nonneg := func(v float64) bool { return finite(v) && v >= 0 }
 	switch {
-	case !share(n.Availability) || !share(n.Utilization) || !share(n.Reserve):
-		return "Доступность, загрузка и резерв должны быть от 0 до 1."
+	case !rate(n.Availability) || !rate(n.Utilization):
+		return "Доступность и загрузка должны быть от 1% до 100%."
+	case !share(n.Reserve):
+		return "Резерв должен быть от 0% до 100%."
 	case !share(n.InfraFrac) || !share(n.SoftwareFrac) || !share(n.IntegrationYesFrac) || !share(n.IntegrationNoFrac):
-		return "Доли CAPEX должны быть от 0 до 1."
+		return "Доли CAPEX должны быть от 0% до 100%."
 	case !share(n.CommissioningFrac) || !share(n.TrainingFrac) || !share(n.ContingencyFrac) || !share(n.DeliveryFrac):
-		return "Доли CAPEX должны быть от 0 до 1."
+		return "Доли CAPEX должны быть от 0% до 100%."
 	case !pos(n.EnergyKW) || !nonneg(n.EnergyRubPerKWh):
 		return "Энергия: мощность больше 0, цена не меньше 0."
 	case !nonneg(n.LicensePerRobot) || !nonneg(n.ConsumablePerRobot) || !nonneg(n.CommRubPerRobotYear):
@@ -76,13 +82,13 @@ func normsRangeError(n econ.Norms) string {
 	case !pos(n.RobotsPerTechnician) || !nonneg(n.TechnicianWageMonthRub):
 		return "Число роботов на техника больше 0, зарплата не меньше 0."
 	case !share(n.DefaultServiceFrac) || !pos(n.DefaultLifetimeYears):
-		return "Доля сервиса от 0 до 1, срок службы больше 0."
+		return "Доля сервиса от 0% до 100%, срок службы больше 0."
 	case !share(n.BatteryFrac) || !pos(n.BatteryYears):
-		return "Доля батареи от 0 до 1, срок батареи больше 0."
+		return "Доля батареи от 0% до 100%, срок батареи больше 0."
 	case !share(n.RaasMonthlyFrac) || !share(n.RaasMixFixedShare):
-		return "Ставки RaaS должны быть от 0 до 1."
-	case !share(n.VATRate) || n.DiscountRate < 0.01 || n.DiscountRate > 1:
-		return "НДС от 0 до 1, ставка дисконтирования от 0,01 до 1."
+		return "Ставки RaaS должны быть от 0% до 100%."
+	case !share(n.VATRate) || !rate(n.DiscountRate):
+		return "НДС от 0% до 100%, ставка дисконтирования от 1% до 100%."
 	case !pos(n.RobotsPerCharger):
 		return "Число роботов на зарядку без ТТХ должно быть больше 0."
 	default:

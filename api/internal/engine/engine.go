@@ -204,7 +204,7 @@ func mapChargerRisks(res *econ.Result, req Request) {
 		}
 		text := fmt.Sprintf("%s %d %s, по ТТХ флота нужно %d. Добавьте зарядку на карту или проверьте время работы и зарядки роботов.",
 			lead, places, rutext.Plural(places, "зарядка", "зарядки", "зарядок"), v.Chargers)
-		res.Risks = append(res.Risks, econ.Risk{ID: "map_chargers", Level: "warning", Text: text})
+		res.Risks = append(res.Risks, econ.Risk{ID: "map_chargers:" + v.VariantID, Level: "warning", Text: text})
 	}
 }
 

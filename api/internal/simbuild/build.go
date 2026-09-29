@@ -78,6 +78,23 @@ func VariantHash(d projects.Draft, variantID string) (string, error) {
 	return projects.SimInputHash(d, variantID, sim.Version)
 }
 
+// withVariantFleet is the draft as it reads once the sizes of a fleet search are saved in the variant, so the run
+// of a search is current after "Взять N" and not before.
+func withVariantFleet(d projects.Draft, v projects.Variant, cfg JobConfig) projects.Draft {
+	if len(cfg.FleetQuantities) == 0 || v.ID == "" {
+		return d
+	}
+	variants := make([]projects.Variant, len(d.Variants))
+	copy(variants, d.Variants)
+	for i := range variants {
+		if variants[i].ID == v.ID {
+			variants[i].Fleet = v.Fleet
+		}
+	}
+	d.Variants = variants
+	return d
+}
+
 // AllWarnings joins builder and model warnings.
 func (b *Built) AllWarnings() []string {
 	return append(append([]string{}, b.Warnings...), b.Model.Warnings()...)
@@ -140,7 +157,7 @@ func Build(robots Robots, objectType string, d projects.Draft, cfg JobConfig) (*
 	if err != nil {
 		return nil, err
 	}
-	variantHash, err := VariantHash(d, variant.ID)
+	variantHash, err := VariantHash(withVariantFleet(d, variant, cfg), variant.ID)
 	if err != nil {
 		return nil, err
 	}

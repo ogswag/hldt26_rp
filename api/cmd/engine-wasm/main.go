@@ -21,7 +21,7 @@ import (
 )
 
 // Version is what the page checks against the server, so a stale build is never mistaken for a fresh one.
-const Version = "engine-wasm-7"
+const Version = "engine-wasm-8"
 
 type request struct {
 	Catalog    engine.Catalog  `json:"catalog"`
