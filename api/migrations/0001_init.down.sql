@@ -1,0 +1,5 @@
+DROP TABLE IF EXISTS scenarios;
+DROP TABLE IF EXISTS projects;
+DROP TABLE IF EXISTS solution_specs;
+DROP TABLE IF EXISTS solutions;
+DROP TABLE IF EXISTS users;

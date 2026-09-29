@@ -1,0 +1,325 @@
+/* Toast and dialogs */
+
+.toast-region {
+  position: fixed;
+  right: var(--page-pad-x);
+  bottom: var(--action-bar-bottom);
+  z-index: 40;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+  width: min(26rem, calc(100vw - 2rem));
+  pointer-events: none;
+}
+
+.toast {
+  position: relative;
+  overflow: hidden;
+  padding: var(--space-3) var(--space-4) var(--space-4);
+  border-radius: var(--radius-lg);
+  background: var(--bg-raised);
+  box-shadow: var(--shadow-float);
+  pointer-events: auto;
+  animation: toast-in 320ms var(--ease-spring);
+}
+
+.toast-message {
+  margin: 0;
+  font-size: var(--text-sm);
+}
+
+.toast-actions {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: var(--space-3);
+}
+
+.toast-timer {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  height: 3px;
+  background: var(--accent);
+  transform-origin: left;
+  animation-name: toast-countdown;
+  animation-timing-function: linear;
+  animation-fill-mode: forwards;
+}
+
+.toast:hover .toast-timer,
+.toast:focus-within .toast-timer {
+  animation-play-state: paused;
+}
+
+@keyframes toast-countdown {
+  from {
+    transform: scaleX(1);
+  }
+
+  to {
+    transform: scaleX(0);
+  }
+}
+
+/* NOTE: a notice has no countdown; a busy one carries a moving bar instead. */
+.notice-row {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--space-2);
+}
+
+.notice-row .toast-message {
+  flex: 1;
+  min-width: 0;
+}
+
+.notice-row .icon-button {
+  margin: calc(-1 * var(--space-1)) calc(-1 * var(--space-2)) 0 0;
+}
+
+.notice-bar {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  height: 3px;
+  overflow: hidden;
+}
+
+.notice-bar::before {
+  content: '';
+  position: absolute;
+  inset: 0 auto 0 0;
+  width: 30%;
+  background: var(--accent);
+  animation: notice-slide 1.2s ease-in-out infinite;
+}
+
+@keyframes notice-slide {
+  from {
+    transform: translateX(-100%);
+  }
+
+  to {
+    transform: translateX(340%);
+  }
+}
+
+@keyframes toast-in {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+}
+
+.dialog {
+  width: min(30rem, calc(100vw - 2rem));
+  padding: var(--space-6);
+  border: none;
+  border-radius: var(--radius-lg);
+  background: var(--bg-raised);
+  box-shadow: var(--shadow-float);
+  color: var(--text);
+}
+
+.dialog[open] {
+  animation: dialog-in 320ms var(--ease-spring);
+}
+
+@keyframes dialog-in {
+  from {
+    opacity: 0;
+    transform: translateY(8px) scale(0.98);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .dialog[open] {
+    animation: none;
+  }
+}
+
+.dialog::backdrop {
+  background: var(--backdrop);
+}
+
+.dialog h2 {
+  margin: 0 0 var(--space-3);
+  color: var(--text-strong);
+  font-size: var(--text-lg);
+}
+
+.dialog-body p {
+  margin: 0 0 var(--space-3);
+}
+
+.dialog-wide {
+  width: min(44rem, calc(100vw - 2rem));
+}
+
+.dialog-head {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  margin: 0 0 var(--space-2);
+}
+
+.dialog .dialog-head h2 {
+  flex: 1;
+  min-width: 0;
+  margin: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.dialog .field-rows {
+  container-type: inline-size;
+}
+
+/* NOTE: the foot reaches the dialog edges, a gray strip like the action bar on a page. */
+.dialog-foot {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: var(--space-3);
+  margin: var(--space-4) calc(-1 * var(--space-6)) calc(-1 * var(--space-6));
+  padding: var(--space-3) var(--space-6);
+  border-top: 1px solid var(--line);
+  background: var(--bg-muted);
+}
+
+.dialog-actions {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+  gap: var(--space-2);
+  margin-top: var(--space-4);
+}
+
+.app:has(.action-bar) .toast-region {
+  bottom: calc(var(--action-bar-bottom) + var(--action-bar-h));
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .toast,
+  .dialog[open] {
+    animation: none;
+  }
+
+  .notice-bar {
+    display: none;
+  }
+}
+
+/* Search results: the Select list look, each row with its path; the preview sits to the left of the list. */
+.search-list {
+  width: min(28rem, calc(100vw - 16px));
+  max-width: none;
+  max-height: 28rem;
+  font-size: var(--text-sm);
+}
+
+.search-option {
+  flex-direction: column;
+  align-items: stretch;
+  gap: 1px;
+}
+
+.search-option:hover:not(.is-active) {
+  background: var(--bg-hover-page);
+}
+
+.search-option-label {
+  overflow-wrap: anywhere;
+}
+
+.search-option.is-closed .search-option-label {
+  color: var(--icon);
+}
+
+.search-path {
+  overflow: hidden;
+  color: var(--text-muted);
+  font-size: var(--text-xs);
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.search-empty {
+  padding: 0.35rem 0.75rem;
+  color: var(--text-muted);
+}
+
+.search-preview {
+  inset: auto;
+  width: 20rem;
+  max-height: 24rem;
+  margin: 0;
+  padding: var(--space-3);
+  overflow: hidden;
+  border: none;
+  border-radius: var(--radius-lg);
+  background: var(--bg-raised);
+  box-shadow: var(--shadow-float);
+  color: var(--text);
+  font-size: var(--text-sm);
+  line-height: 1.4;
+  pointer-events: none;
+}
+
+.search-preview p {
+  margin: 0 0 var(--space-2);
+}
+
+.search-preview-path {
+  color: var(--text-muted);
+  font-size: var(--text-xs);
+}
+
+.search-preview-heading {
+  color: var(--accent-text);
+  font-weight: 600;
+}
+
+.search-preview-title {
+  color: var(--text-strong);
+  font-weight: 600;
+}
+
+.search-preview-rows {
+  margin: 0;
+}
+
+.search-preview-row {
+  display: flex;
+  justify-content: space-between;
+  gap: var(--space-3);
+  padding: var(--space-1) var(--space-2);
+  border-bottom: 1px solid var(--line);
+}
+
+.search-preview-row dt {
+  min-width: 0;
+  overflow-wrap: anywhere;
+}
+
+.search-preview-row dd {
+  margin: 0;
+  color: var(--text-muted);
+  font-variant-numeric: tabular-nums;
+  text-align: right;
+}
+
+.search-preview-row.is-target {
+  background: var(--highlight);
+}
+
+.search-map {
+  display: block;
+  width: 100%;
+  height: 9rem;
+  margin-bottom: var(--space-2);
+  border-radius: var(--radius-md);
+}

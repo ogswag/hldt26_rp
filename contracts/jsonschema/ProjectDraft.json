@@ -1,0 +1,500 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://moscow-hackathon.local/schemas/ProjectDraft.json",
+  "title": "ProjectDraft",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "object_type",
+    "params",
+    "processes",
+    "variants",
+    "match_selected_ids"
+  ],
+  "properties": {
+    "schema_version": {
+      "type": "string",
+      "const": "draft-v1"
+    },
+    "object_type": {
+      "type": "string",
+      "enum": [
+        "warehouse",
+        "airport",
+        "hospital"
+      ]
+    },
+    "params": {
+      "type": "object"
+    },
+    "processes": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/Process"
+      }
+    },
+    "variants": {
+      "type": "array",
+      "maxItems": 6,
+      "items": {
+        "$ref": "#/$defs/Variant"
+      }
+    },
+    "map": {
+      "oneOf": [
+        {
+          "type": "null"
+        },
+        {
+          "$ref": "MapDocument.json"
+        }
+      ]
+    },
+    "match_selected_ids": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "format": "uuid"
+      }
+    },
+    "econ_overrides": {
+      "type": "object"
+    },
+    "reviewed_tabs": {
+      "type": "array",
+      "maxItems": 20,
+      "items": {
+        "type": "string",
+        "pattern": "^[a-z_]{1,32}$"
+      }
+    },
+    "shared_costs": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/SharedCost"
+      }
+    },
+    "assumption_sets": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/AssumptionSet"
+      }
+    },
+    "active_assumption_set_id": {
+      "type": "string",
+      "format": "uuid"
+    }
+  },
+  "$defs": {
+    "Process": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "code",
+        "name",
+        "task_type",
+        "is_baseline",
+        "demand",
+        "sla",
+        "sort_order"
+      ],
+      "properties": {
+        "id": {
+          "type": "string",
+          "format": "uuid"
+        },
+        "code": {
+          "type": "string",
+          "minLength": 1
+        },
+        "name": {
+          "type": "string",
+          "minLength": 1
+        },
+        "task_type": {
+          "type": "string",
+          "enum": [
+            "pallet_inbound",
+            "pallet_putaway",
+            "pallet_outbound",
+            "piece_pick",
+            "pallet_move",
+            "cleaning"
+          ]
+        },
+        "is_baseline": {
+          "type": "boolean"
+        },
+        "demand": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "units_per_day": {
+              "type": "number",
+              "minimum": 0,
+              "maximum": 10000000
+            },
+            "unit": {
+              "type": "string"
+            },
+            "units_per_job": {
+              "type": "number",
+              "minimum": 0,
+              "maximum": 10000,
+              "description": "Units carried by one robot job. 0 means the default: 40 for piece_pick, 1 otherwise."
+            }
+          }
+        },
+        "sla": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "max_wait_min": {
+              "type": "number",
+              "minimum": 0
+            },
+            "max_cycle_min": {
+              "type": "number",
+              "minimum": 0
+            },
+            "priority": {
+              "type": "integer",
+              "minimum": 0,
+              "maximum": 9,
+              "description": "Higher is more urgent. Used by the sla_priority dispatch policy."
+            }
+          }
+        },
+        "point_ids": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "description": "Reserved. sim-v2 reads pickup and drop points from MapDocument.layers.flows."
+        },
+        "durations": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "load_s": {
+              "type": "number",
+              "minimum": 0
+            },
+            "unload_s": {
+              "type": "number",
+              "minimum": 0
+            },
+            "travel_s": {
+              "type": "number",
+              "minimum": 0
+            }
+          }
+        },
+        "baseline_staff": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "headcount": {
+              "type": "number",
+              "minimum": 0
+            },
+            "role": {
+              "type": "string"
+            }
+          }
+        },
+        "sort_order": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "order": {
+          "type": "string",
+          "description": "Fractional order key. sort_order is its rank."
+        }
+      }
+    },
+    "Variant": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "name",
+        "status",
+        "fleet",
+        "financing",
+        "sort_order"
+      ],
+      "properties": {
+        "id": {
+          "type": "string",
+          "format": "uuid"
+        },
+        "name": {
+          "type": "string",
+          "minLength": 1
+        },
+        "status": {
+          "type": "string",
+          "enum": [
+            "draft",
+            "ready"
+          ]
+        },
+        "notes": {
+          "type": "string"
+        },
+        "sort_order": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "fleet": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/FleetItem"
+          }
+        },
+        "financing": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/Financing"
+          }
+        },
+        "order": {
+          "type": "string",
+          "description": "Fractional order key. sort_order is its rank."
+        }
+      }
+    },
+    "FleetItem": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "quantity"
+      ],
+      "properties": {
+        "id": {
+          "type": "string",
+          "format": "uuid"
+        },
+        "solution_id": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "format": "uuid"
+        },
+        "quantity": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "task_codes": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "price_override_rub": {
+          "type": [
+            "number",
+            "null"
+          ],
+          "minimum": 0
+        },
+        "price_override_reason": {
+          "type": "string"
+        },
+        "sort_order": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "order": {
+          "type": "string",
+          "description": "Fractional order key. sort_order is its rank."
+        }
+      }
+    },
+    "Financing": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "kind"
+      ],
+      "properties": {
+        "id": {
+          "type": "string",
+          "format": "uuid"
+        },
+        "kind": {
+          "type": "string",
+          "enum": [
+            "buy",
+            "raas"
+          ]
+        },
+        "tariff": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "enum": [
+            "fixed",
+            "variable",
+            "mixed",
+            null
+          ]
+        },
+        "assumptions": {
+          "type": "object"
+        }
+      }
+    },
+    "SharedCost": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "code",
+        "label",
+        "bucket",
+        "rub"
+      ],
+      "properties": {
+        "id": {
+          "type": "string",
+          "format": "uuid"
+        },
+        "code": {
+          "type": "string",
+          "minLength": 1
+        },
+        "label": {
+          "type": "string",
+          "minLength": 1
+        },
+        "bucket": {
+          "type": "string",
+          "enum": [
+            "capex",
+            "opex"
+          ]
+        },
+        "rub": {
+          "type": "number",
+          "minimum": 0
+        },
+        "sort_order": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "order": {
+          "type": "string",
+          "description": "Fractional order key. sort_order is its rank."
+        }
+      }
+    },
+    "AssumptionSet": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "name"
+      ],
+      "properties": {
+        "id": {
+          "type": "string",
+          "format": "uuid"
+        },
+        "name": {
+          "type": "string",
+          "minLength": 1
+        },
+        "is_active": {
+          "type": "boolean"
+        },
+        "vat_rate": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 1
+        },
+        "prices_include_vat": {
+          "type": "boolean"
+        },
+        "vat_recoverable": {
+          "type": "boolean"
+        },
+        "labor_cash_share": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 1
+        },
+        "discount_rate": {
+          "type": "number",
+          "minimum": 0.01,
+          "maximum": 1
+        },
+        "utilization": {
+          "type": [
+            "number",
+            "null"
+          ],
+          "minimum": 0.01,
+          "maximum": 1
+        },
+        "availability": {
+          "type": [
+            "number",
+            "null"
+          ],
+          "minimum": 0.01,
+          "maximum": 1
+        },
+        "reserve": {
+          "type": [
+            "number",
+            "null"
+          ],
+          "minimum": 0,
+          "maximum": 1
+        },
+        "service_share": {
+          "type": [
+            "number",
+            "null"
+          ],
+          "minimum": 0,
+          "maximum": 1
+        },
+        "delivery_share": {
+          "type": [
+            "number",
+            "null"
+          ],
+          "minimum": 0,
+          "maximum": 1
+        },
+        "comm_rub_per_robot_year": {
+          "type": [
+            "number",
+            "null"
+          ],
+          "minimum": 0,
+          "maximum": 10000000
+        },
+        "technician_wage_month_rub": {
+          "type": [
+            "number",
+            "null"
+          ],
+          "minimum": 0,
+          "maximum": 10000000
+        },
+        "sort_order": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "order": {
+          "type": "string",
+          "description": "Fractional order key. sort_order is its rank."
+        }
+      }
+    }
+  }
+}

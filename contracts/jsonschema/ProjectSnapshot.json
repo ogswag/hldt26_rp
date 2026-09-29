@@ -1,0 +1,61 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://moscow-hackathon.local/schemas/ProjectSnapshot.json",
+  "title": "ProjectSnapshot",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "project_id",
+    "version_no",
+    "name",
+    "object_type",
+    "draft",
+    "input_hash",
+    "match_version",
+    "econ_version",
+    "sim_version",
+    "confidence_level"
+  ],
+  "properties": {
+    "schema_version": {
+      "type": "string",
+      "const": "snapshot-v1"
+    },
+    "project_id": {
+      "type": "string",
+      "format": "uuid"
+    },
+    "version_no": {
+      "type": "integer",
+      "minimum": 1
+    },
+    "name": {
+      "type": "string"
+    },
+    "object_type": {
+      "type": "string",
+      "enum": ["warehouse", "airport", "hospital"]
+    },
+    "draft": {
+      "$ref": "ProjectDraft.json"
+    },
+    "input_hash": {
+      "type": "string",
+      "pattern": "^[a-f0-9]{64}$"
+    },
+    "match_version": {
+      "type": "string"
+    },
+    "econ_version": {
+      "type": "string"
+    },
+    "sim_version": {
+      "type": "string"
+    },
+    "confidence_level": {
+      "type": "string",
+      "enum": ["preliminary", "configured", "calibrated", "validated"]
+    }
+  }
+}

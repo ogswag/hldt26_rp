@@ -1,0 +1,380 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://moscow-hackathon.local/schemas/MapDocument.json",
+  "title": "MapDocument",
+  "description": "Semantic map. Feature coordinates are page pixels; meters = px * calibration.meters_per_px. The source plan file is not part of the document.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "profile",
+    "units",
+    "calibration",
+    "layers"
+  ],
+  "properties": {
+    "schema_version": {
+      "type": "string",
+      "const": "map-v1"
+    },
+    "profile": {
+      "type": "string",
+      "enum": [
+        "indoor",
+        "airspace",
+        "field"
+      ],
+      "description": "Only indoor is accepted until the airspace and field stages."
+    },
+    "units": {
+      "type": "string",
+      "enum": [
+        "m"
+      ]
+    },
+    "page": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "width_px": {
+          "type": "number",
+          "minimum": 0
+        },
+        "height_px": {
+          "type": "number",
+          "minimum": 0
+        },
+        "source_kind": {
+          "type": "string",
+          "enum": [
+            "png",
+            "jpeg",
+            "pdf",
+            "none"
+          ]
+        }
+      }
+    },
+    "calibration": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "meters_per_px"
+      ],
+      "properties": {
+        "meters_per_px": {
+          "type": "number",
+          "exclusiveMinimum": 0
+        },
+        "segment": {
+          "$ref": "#/$defs/Segment",
+          "description": "Reference segment. meters_per_px must equal length_m / pixel length within 0.5%."
+        },
+        "check": {
+          "$ref": "#/$defs/Segment",
+          "description": "Control measurement. Deviation over 2% is a warning, over 5% an error."
+        }
+      }
+    },
+    "layers": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "zones",
+        "obstacles",
+        "points",
+        "resources",
+        "edges"
+      ],
+      "properties": {
+        "zones": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/PolygonFeature"
+          },
+          "description": "kind workspace bounds the work area and acts as walls in width checks."
+        },
+        "obstacles": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/PolygonFeature"
+          }
+        },
+        "points": {
+          "type": "array",
+          "maxItems": 1000,
+          "items": {
+            "$ref": "#/$defs/PointFeature"
+          }
+        },
+        "resources": {
+          "type": "array",
+          "maxItems": 100,
+          "items": {
+            "$ref": "#/$defs/ResourceFeature"
+          }
+        },
+        "edges": {
+          "type": "array",
+          "maxItems": 3000,
+          "items": {
+            "$ref": "#/$defs/EdgeFeature"
+          }
+        },
+        "flows": {
+          "type": "array",
+          "maxItems": 50,
+          "items": {
+            "$ref": "#/$defs/Flow"
+          }
+        }
+      }
+    },
+    "errors": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "Written by the server on save."
+    },
+    "warnings": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "Written by the server on save."
+    }
+  },
+  "$defs": {
+    "Id": {
+      "type": "string",
+      "pattern": "^[A-Za-z0-9._-]{1,64}$"
+    },
+    "Segment": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "x1",
+        "y1",
+        "x2",
+        "y2",
+        "length_m"
+      ],
+      "properties": {
+        "x1": {
+          "type": "number"
+        },
+        "y1": {
+          "type": "number"
+        },
+        "x2": {
+          "type": "number"
+        },
+        "y2": {
+          "type": "number"
+        },
+        "length_m": {
+          "type": "number",
+          "exclusiveMinimum": 0
+        }
+      }
+    },
+    "PolygonFeature": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "id",
+        "kind",
+        "ring"
+      ],
+      "properties": {
+        "id": {
+          "$ref": "#/$defs/Id"
+        },
+        "kind": {
+          "type": "string",
+          "description": "workspace, storage, dock_area, pick, charge for zones; rack, wall, column, other for obstacles."
+        },
+        "name": {
+          "type": "string",
+          "maxLength": 120
+        },
+        "ring": {
+          "type": "array",
+          "minItems": 3,
+          "maxItems": 200,
+          "items": {
+            "$ref": "#/$defs/Point"
+          }
+        }
+      }
+    },
+    "PointFeature": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "id",
+        "kind",
+        "x",
+        "y"
+      ],
+      "properties": {
+        "id": {
+          "$ref": "#/$defs/Id"
+        },
+        "kind": {
+          "type": "string",
+          "enum": [
+            "task",
+            "dock",
+            "charger",
+            "gate",
+            "other"
+          ]
+        },
+        "name": {
+          "type": "string",
+          "maxLength": 120
+        },
+        "x": {
+          "type": "number"
+        },
+        "y": {
+          "type": "number"
+        },
+        "process_code": {
+          "type": "string",
+          "description": "Informational label. Flows define which process uses the point."
+        }
+      }
+    },
+    "ResourceFeature": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "id",
+        "kind",
+        "capacity"
+      ],
+      "properties": {
+        "id": {
+          "$ref": "#/$defs/Id"
+        },
+        "kind": {
+          "type": "string",
+          "enum": [
+            "dock",
+            "narrow_aisle",
+            "charger"
+          ]
+        },
+        "name": {
+          "type": "string",
+          "maxLength": 120
+        },
+        "capacity": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 100
+        },
+        "point_id": {
+          "type": "string",
+          "description": "Legacy single point, merged with point_ids."
+        },
+        "point_ids": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "description": "dock points for dock, charger points for charger."
+        },
+        "edge_ids": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "description": "Edges of a narrow_aisle. A robot holds the resource while it is on these edges."
+        }
+      }
+    },
+    "EdgeFeature": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "id",
+        "from",
+        "to"
+      ],
+      "properties": {
+        "id": {
+          "$ref": "#/$defs/Id"
+        },
+        "from": {
+          "type": "string"
+        },
+        "to": {
+          "type": "string"
+        },
+        "bidirectional": {
+          "type": "boolean",
+          "default": true
+        },
+        "width_m": {
+          "type": "number",
+          "exclusiveMinimum": 0,
+          "maximum": 100,
+          "description": "Declared width. The server caps it by the free corridor measured against obstacles and workspace walls."
+        }
+      }
+    },
+    "Flow": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "process_code",
+        "pickup_point_ids",
+        "drop_point_ids"
+      ],
+      "properties": {
+        "id": {
+          "$ref": "#/$defs/Id",
+          "description": "Stable id for operations. The server adds it when it writes the map."
+        },
+        "process_code": {
+          "type": "string",
+          "minLength": 1
+        },
+        "pickup_point_ids": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "string"
+          }
+        },
+        "drop_point_ids": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "Point": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "x",
+        "y"
+      ],
+      "properties": {
+        "x": {
+          "type": "number"
+        },
+        "y": {
+          "type": "number"
+        }
+      }
+    }
+  }
+}

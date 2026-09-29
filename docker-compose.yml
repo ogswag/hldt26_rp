@@ -1,0 +1,59 @@
+services:
+  db:
+    image: postgres:18
+    environment:
+      POSTGRES_USER: app
+      POSTGRES_PASSWORD: app
+      POSTGRES_DB: app
+    volumes:
+      - postgres_data:/var/lib/postgresql
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U app -d app"]
+      interval: 5s
+      timeout: 5s
+      retries: 10
+
+  api:
+    build:
+      context: .
+      dockerfile: api/Dockerfile
+    environment:
+      DATABASE_URL: postgres://app:app@db:5432/app?sslmode=disable
+      API_PORT: "8080"
+      PUBLIC_ORIGIN: ${PUBLIC_ORIGIN:-http://localhost}
+      COOKIE_SECURE: ${COOKIE_SECURE:-false}
+      SESSION_IDLE_HOURS: "168"
+      SESSION_MAX_DAYS: "30"
+      CATALOG_CSV: /data/catalog.csv
+      CATALOG_SPECS: /data/seeds/robot_specs.json
+      PGPOOL_MAX_CONNS: "10"
+      BCRYPT_COST: "10"
+      DEMO_USER_EMAIL: user@demo.local
+      DEMO_USER_PASSWORD: demo-user
+      DEMO_ADMIN_EMAIL: admin@demo.local
+      DEMO_ADMIN_PASSWORD: demo-admin
+      SIM_WORKERS: "2"
+      SIM_JOB_TIMEOUT_MIN: "10"
+      SIM_MAX_ACTIVE_PER_USER: "3"
+      SIM_LOG_RETENTION_DAYS: "90"
+      TRASH_RETENTION_DAYS: "30"
+      APP_ENV: ${APP_ENV:-local}
+      MAIL_MODE: ${MAIL_MODE:-capture}
+      MAIL_FROM: ${MAIL_FROM:-no-reply@localhost}
+      REGISTRATION_MODE: ${REGISTRATION_MODE:-open}
+    ports:
+      - "${API_HOST_PORT:-8080}:8080"
+    depends_on:
+      db:
+        condition: service_healthy
+
+  web:
+    build:
+      context: ./web
+    ports:
+      - "${WEB_PORT:-80}:80"
+    depends_on:
+      - api
+
+volumes:
+  postgres_data:

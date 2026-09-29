@@ -1,0 +1,1508 @@
+{
+ "version": "b35f21f07026",
+ "collections": {
+  "assumption_sets": {
+   "83d5fb9a-a6a9-51a3-bead-064589bb21dd": {
+    "discount_rate": 0.15,
+    "id": "83d5fb9a-a6a9-51a3-bead-064589bb21dd",
+    "labor_cash_share": 1,
+    "name": "Базовый",
+    "order": "a0",
+    "prices_include_vat": true,
+    "vat_rate": 0.22,
+    "vat_recoverable": false
+   }
+  },
+  "financing": {
+   "1b9f5210-b450-5a89-b97d-bea07f48ada5": {
+    "assumptions": {},
+    "id": "1b9f5210-b450-5a89-b97d-bea07f48ada5",
+    "kind": "raas",
+    "tariff": "fixed",
+    "variant_id": "a633bb79-646b-5329-ad3c-5457a9ac7f86"
+   },
+   "3ced99da-edc0-5a88-aeab-c0fe645a13f2": {
+    "assumptions": {},
+    "id": "3ced99da-edc0-5a88-aeab-c0fe645a13f2",
+    "kind": "buy",
+    "tariff": null,
+    "variant_id": "c746b08e-d5ef-59e3-9209-0f6e5e5a1721"
+   },
+   "4f2e1869-9719-5b4b-adf1-170192462446": {
+    "assumptions": {},
+    "id": "4f2e1869-9719-5b4b-adf1-170192462446",
+    "kind": "buy",
+    "tariff": null,
+    "variant_id": "a633bb79-646b-5329-ad3c-5457a9ac7f86"
+   },
+   "998c1d2e-df6e-5593-a946-753399e41382": {
+    "assumptions": {},
+    "id": "998c1d2e-df6e-5593-a946-753399e41382",
+    "kind": "raas",
+    "tariff": "fixed",
+    "variant_id": "c746b08e-d5ef-59e3-9209-0f6e5e5a1721"
+   },
+   "c586235b-c0df-540d-99c8-7c52e719b6a4": {
+    "assumptions": {},
+    "id": "c586235b-c0df-540d-99c8-7c52e719b6a4",
+    "kind": "buy",
+    "tariff": null,
+    "variant_id": "b645312d-28aa-54c1-a97b-dd14947886e9"
+   },
+   "ce30d6e7-dd5e-5ca2-9305-ef76f33fd6cc": {
+    "assumptions": {},
+    "id": "ce30d6e7-dd5e-5ca2-9305-ef76f33fd6cc",
+    "kind": "raas",
+    "tariff": "fixed",
+    "variant_id": "b645312d-28aa-54c1-a97b-dd14947886e9"
+   }
+  },
+  "fleet_items": {
+   "69c8a940-5129-541e-b06b-cb9e9fc52f07": {
+    "id": "69c8a940-5129-541e-b06b-cb9e9fc52f07",
+    "order": "a0",
+    "price_override_reason": "",
+    "price_override_rub": null,
+    "quantity": 6,
+    "solution_id": "5760e938-9a43-45a7-b8e8-f4f2e6383930",
+    "task_codes": [
+     "inbound"
+    ],
+    "variant_id": "c746b08e-d5ef-59e3-9209-0f6e5e5a1721"
+   },
+   "7b17bd9b-5b0c-5170-b06e-c85c04dc8fe5": {
+    "id": "7b17bd9b-5b0c-5170-b06e-c85c04dc8fe5",
+    "order": "a0",
+    "price_override_reason": "",
+    "price_override_rub": null,
+    "quantity": 24,
+    "solution_id": "3f2aaa1b-2237-4d7b-b215-1ac5ec789ed5",
+    "task_codes": [
+     "piece_pick"
+    ],
+    "variant_id": "a633bb79-646b-5329-ad3c-5457a9ac7f86"
+   },
+   "c2207b92-15d0-523d-b80a-e856228972d2": {
+    "id": "c2207b92-15d0-523d-b80a-e856228972d2",
+    "order": "a0",
+    "price_override_reason": "",
+    "price_override_rub": null,
+    "quantity": 22,
+    "solution_id": "f7634ef8-0034-4c5b-b2f0-e44a14f05a76",
+    "task_codes": [
+     "putaway",
+     "outbound"
+    ],
+    "variant_id": "b645312d-28aa-54c1-a97b-dd14947886e9"
+   },
+   "d8a10797-bae7-5c8b-9220-abdfb39baf77": {
+    "id": "d8a10797-bae7-5c8b-9220-abdfb39baf77",
+    "order": "a1",
+    "price_override_reason": "",
+    "price_override_rub": null,
+    "quantity": 6,
+    "solution_id": "5760e938-9a43-45a7-b8e8-f4f2e6383930",
+    "task_codes": [
+     "inbound"
+    ],
+    "variant_id": "a633bb79-646b-5329-ad3c-5457a9ac7f86"
+   },
+   "edfaaaf9-ace6-540a-a254-1b009f7eb5d6": {
+    "id": "edfaaaf9-ace6-540a-a254-1b009f7eb5d6",
+    "order": "a1",
+    "price_override_reason": "",
+    "price_override_rub": null,
+    "quantity": 10,
+    "solution_id": "f7634ef8-0034-4c5b-b2f0-e44a14f05a76",
+    "task_codes": [
+     "putaway"
+    ],
+    "variant_id": "c746b08e-d5ef-59e3-9209-0f6e5e5a1721"
+   }
+  },
+  "map": {
+   "map": {
+    "check": {
+     "length_m": 52,
+     "x1": 0,
+     "x2": 0,
+     "y1": 0,
+     "y2": 520
+    },
+    "id": "map",
+    "meters_per_px": 0.1,
+    "page": {
+     "height_px": 520,
+     "source_kind": "none",
+     "width_px": 840
+    },
+    "profile": "indoor",
+    "segment": {
+     "length_m": 84,
+     "x1": 0,
+     "x2": 840,
+     "y1": 0,
+     "y2": 0
+    }
+   }
+  },
+  "map_edges": {
+   "e-a12": {
+    "bidirectional": null,
+    "from": "A1",
+    "id": "e-a12",
+    "to": "A2",
+    "width_m": 3.5
+   },
+   "e-a23": {
+    "bidirectional": null,
+    "from": "A2",
+    "id": "e-a23",
+    "to": "A3",
+    "width_m": 3.5
+   },
+   "e-a34": {
+    "bidirectional": null,
+    "from": "A3",
+    "id": "e-a34",
+    "to": "A4",
+    "width_m": 3.5
+   },
+   "e-a4m": {
+    "bidirectional": null,
+    "from": "A4",
+    "id": "e-a4m",
+    "to": "M1",
+    "width_m": 3.5
+   },
+   "e-b1": {
+    "bidirectional": null,
+    "from": "B1",
+    "id": "e-b1",
+    "to": "L1",
+    "width_m": 5
+   },
+   "e-b2": {
+    "bidirectional": null,
+    "from": "B2",
+    "id": "e-b2",
+    "to": "L2",
+    "width_m": 5
+   },
+   "e-by1": {
+    "bidirectional": null,
+    "from": "M1",
+    "id": "e-by1",
+    "to": "Y1",
+    "width_m": 4
+   },
+   "e-by2": {
+    "bidirectional": null,
+    "from": "Y1",
+    "id": "e-by2",
+    "to": "Y2",
+    "width_m": 4
+   },
+   "e-by3": {
+    "bidirectional": null,
+    "from": "Y2",
+    "id": "e-by3",
+    "to": "M2",
+    "width_m": 4
+   },
+   "e-c1": {
+    "bidirectional": null,
+    "from": "K1",
+    "id": "e-c1",
+    "to": "C1",
+    "width_m": 4
+   },
+   "e-c2": {
+    "bidirectional": null,
+    "from": "K1",
+    "id": "e-c2",
+    "to": "C2",
+    "width_m": 4
+   },
+   "e-d1": {
+    "bidirectional": null,
+    "from": "D1",
+    "id": "e-d1",
+    "to": "B1",
+    "width_m": 5
+   },
+   "e-d2": {
+    "bidirectional": null,
+    "from": "D2",
+    "id": "e-d2",
+    "to": "B2",
+    "width_m": 5
+   },
+   "e-d3": {
+    "bidirectional": null,
+    "from": "D3",
+    "id": "e-d3",
+    "to": "O1",
+    "width_m": 5
+   },
+   "e-d4": {
+    "bidirectional": null,
+    "from": "D4",
+    "id": "e-d4",
+    "to": "O2",
+    "width_m": 5
+   },
+   "e-k1": {
+    "bidirectional": null,
+    "from": "U1",
+    "id": "e-k1",
+    "to": "K1",
+    "width_m": 4
+   },
+   "e-l12": {
+    "bidirectional": null,
+    "from": "L1",
+    "id": "e-l12",
+    "to": "L2",
+    "width_m": 3.5
+   },
+   "e-l2m": {
+    "bidirectional": null,
+    "from": "L2",
+    "id": "e-l2m",
+    "to": "M0",
+    "width_m": 3.5
+   },
+   "e-l34": {
+    "bidirectional": null,
+    "from": "L3",
+    "id": "e-l34",
+    "to": "L4",
+    "width_m": 3.5
+   },
+   "e-ma1": {
+    "bidirectional": null,
+    "from": "M0",
+    "id": "e-ma1",
+    "to": "A1",
+    "width_m": 3.5
+   },
+   "e-ml3": {
+    "bidirectional": null,
+    "from": "M0",
+    "id": "e-ml3",
+    "to": "L3",
+    "width_m": 3.5
+   },
+   "e-mn1": {
+    "bidirectional": null,
+    "from": "M1",
+    "id": "e-mn1",
+    "to": "N1",
+    "width_m": 3.5
+   },
+   "e-n2m": {
+    "bidirectional": null,
+    "from": "N2",
+    "id": "e-n2m",
+    "to": "M2",
+    "width_m": 3.5
+   },
+   "e-narrow": {
+    "bidirectional": null,
+    "from": "N1",
+    "id": "e-narrow",
+    "to": "N2",
+    "width_m": 2
+   },
+   "e-o1": {
+    "bidirectional": null,
+    "from": "O1",
+    "id": "e-o1",
+    "to": "L3",
+    "width_m": 5
+   },
+   "e-o2": {
+    "bidirectional": null,
+    "from": "O2",
+    "id": "e-o2",
+    "to": "L4",
+    "width_m": 5
+   },
+   "e-p1": {
+    "bidirectional": null,
+    "from": "M2",
+    "id": "e-p1",
+    "to": "P1",
+    "width_m": 4
+   },
+   "e-p2": {
+    "bidirectional": null,
+    "from": "M2",
+    "id": "e-p2",
+    "to": "P2",
+    "width_m": 4
+   },
+   "e-s1": {
+    "bidirectional": null,
+    "from": "A1",
+    "id": "e-s1",
+    "to": "S1",
+    "width_m": 2.8
+   },
+   "e-s2": {
+    "bidirectional": null,
+    "from": "A2",
+    "id": "e-s2",
+    "to": "S2",
+    "width_m": 2.8
+   },
+   "e-s3": {
+    "bidirectional": null,
+    "from": "A3",
+    "id": "e-s3",
+    "to": "S3",
+    "width_m": 2.8
+   },
+   "e-s4": {
+    "bidirectional": null,
+    "from": "A4",
+    "id": "e-s4",
+    "to": "S4",
+    "width_m": 2.8
+   },
+   "e-s5": {
+    "bidirectional": null,
+    "from": "A1",
+    "id": "e-s5",
+    "to": "S5",
+    "width_m": 2.8
+   },
+   "e-s6": {
+    "bidirectional": null,
+    "from": "A2",
+    "id": "e-s6",
+    "to": "S6",
+    "width_m": 2.8
+   },
+   "e-s7": {
+    "bidirectional": null,
+    "from": "A3",
+    "id": "e-s7",
+    "to": "S7",
+    "width_m": 2.8
+   },
+   "e-s8": {
+    "bidirectional": null,
+    "from": "A4",
+    "id": "e-s8",
+    "to": "S8",
+    "width_m": 2.8
+   },
+   "e-u1": {
+    "bidirectional": null,
+    "from": "M1",
+    "id": "e-u1",
+    "to": "U1",
+    "width_m": 4
+   }
+  },
+  "map_flows": {
+   "04aae2bc-c28a-5e38-b8c6-29f0e219ce06": {
+    "drop_point_ids": [
+     "S1",
+     "S2",
+     "S3",
+     "S4",
+     "S5",
+     "S6",
+     "S7",
+     "S8"
+    ],
+    "id": "04aae2bc-c28a-5e38-b8c6-29f0e219ce06",
+    "pickup_point_ids": [
+     "B1",
+     "B2"
+    ],
+    "process_code": "putaway"
+   },
+   "04edddd8-56e2-5fb1-998c-f404f9c05982": {
+    "drop_point_ids": [
+     "P1",
+     "P2"
+    ],
+    "id": "04edddd8-56e2-5fb1-998c-f404f9c05982",
+    "pickup_point_ids": [
+     "S1",
+     "S2",
+     "S3",
+     "S4",
+     "S5",
+     "S6",
+     "S7",
+     "S8"
+    ],
+    "process_code": "piece_pick"
+   },
+   "7a1ce42e-4f43-50d3-902d-76cc64008d50": {
+    "drop_point_ids": [
+     "B1",
+     "B2"
+    ],
+    "id": "7a1ce42e-4f43-50d3-902d-76cc64008d50",
+    "pickup_point_ids": [
+     "D1",
+     "D2"
+    ],
+    "process_code": "inbound"
+   },
+   "ac37fd34-9eac-56b0-aaf5-6d2524db8b60": {
+    "drop_point_ids": [
+     "D3",
+     "D4"
+    ],
+    "id": "ac37fd34-9eac-56b0-aaf5-6d2524db8b60",
+    "pickup_point_ids": [
+     "S1",
+     "S2",
+     "S3",
+     "S4",
+     "S5",
+     "S6",
+     "S7",
+     "S8"
+    ],
+    "process_code": "outbound"
+   }
+  },
+  "map_obstacles": {
+   "rack-l1": {
+    "id": "rack-l1",
+    "kind": "rack",
+    "name": "Стеллаж Н1",
+    "order": "a1",
+    "ring": [
+     {
+      "x": 220,
+      "y": 280
+     },
+     {
+      "x": 244,
+      "y": 280
+     },
+     {
+      "x": 244,
+      "y": 480
+     },
+     {
+      "x": 220,
+      "y": 480
+     }
+    ]
+   },
+   "rack-l2": {
+    "id": "rack-l2",
+    "kind": "rack",
+    "name": "Стеллаж Н2",
+    "order": "a3",
+    "ring": [
+     {
+      "x": 274,
+      "y": 280
+     },
+     {
+      "x": 298,
+      "y": 280
+     },
+     {
+      "x": 298,
+      "y": 480
+     },
+     {
+      "x": 274,
+      "y": 480
+     }
+    ]
+   },
+   "rack-l3": {
+    "id": "rack-l3",
+    "kind": "rack",
+    "name": "Стеллаж Н3",
+    "order": "a5",
+    "ring": [
+     {
+      "x": 328,
+      "y": 280
+     },
+     {
+      "x": 351.99999999999994,
+      "y": 280
+     },
+     {
+      "x": 351.99999999999994,
+      "y": 480
+     },
+     {
+      "x": 328,
+      "y": 480
+     }
+    ]
+   },
+   "rack-l4": {
+    "id": "rack-l4",
+    "kind": "rack",
+    "name": "Стеллаж Н4",
+    "order": "a7",
+    "ring": [
+     {
+      "x": 382,
+      "y": 280
+     },
+     {
+      "x": 406,
+      "y": 280
+     },
+     {
+      "x": 406,
+      "y": 480
+     },
+     {
+      "x": 382,
+      "y": 480
+     }
+    ]
+   },
+   "rack-l5": {
+    "id": "rack-l5",
+    "kind": "rack",
+    "name": "Стеллаж Н5",
+    "order": "a9",
+    "ring": [
+     {
+      "x": 436,
+      "y": 280
+     },
+     {
+      "x": 460,
+      "y": 280
+     },
+     {
+      "x": 460,
+      "y": 480
+     },
+     {
+      "x": 436,
+      "y": 480
+     }
+    ]
+   },
+   "rack-u1": {
+    "id": "rack-u1",
+    "kind": "rack",
+    "name": "Стеллаж В1",
+    "order": "a0",
+    "ring": [
+     {
+      "x": 220,
+      "y": 40
+     },
+     {
+      "x": 244,
+      "y": 40
+     },
+     {
+      "x": 244,
+      "y": 240
+     },
+     {
+      "x": 220,
+      "y": 240
+     }
+    ]
+   },
+   "rack-u2": {
+    "id": "rack-u2",
+    "kind": "rack",
+    "name": "Стеллаж В2",
+    "order": "a2",
+    "ring": [
+     {
+      "x": 274,
+      "y": 40
+     },
+     {
+      "x": 298,
+      "y": 40
+     },
+     {
+      "x": 298,
+      "y": 240
+     },
+     {
+      "x": 274,
+      "y": 240
+     }
+    ]
+   },
+   "rack-u3": {
+    "id": "rack-u3",
+    "kind": "rack",
+    "name": "Стеллаж В3",
+    "order": "a4",
+    "ring": [
+     {
+      "x": 328,
+      "y": 40
+     },
+     {
+      "x": 351.99999999999994,
+      "y": 40
+     },
+     {
+      "x": 351.99999999999994,
+      "y": 240
+     },
+     {
+      "x": 328,
+      "y": 240
+     }
+    ]
+   },
+   "rack-u4": {
+    "id": "rack-u4",
+    "kind": "rack",
+    "name": "Стеллаж В4",
+    "order": "a6",
+    "ring": [
+     {
+      "x": 382,
+      "y": 40
+     },
+     {
+      "x": 406,
+      "y": 40
+     },
+     {
+      "x": 406,
+      "y": 240
+     },
+     {
+      "x": 382,
+      "y": 240
+     }
+    ]
+   },
+   "rack-u5": {
+    "id": "rack-u5",
+    "kind": "rack",
+    "name": "Стеллаж В5",
+    "order": "a8",
+    "ring": [
+     {
+      "x": 436,
+      "y": 40
+     },
+     {
+      "x": 460,
+      "y": 40
+     },
+     {
+      "x": 460,
+      "y": 240
+     },
+     {
+      "x": 436,
+      "y": 240
+     }
+    ]
+   },
+   "wall-n1": {
+    "id": "wall-n1",
+    "kind": "wall",
+    "name": "Стена прохода",
+    "order": "aA",
+    "ring": [
+     {
+      "x": 560,
+      "y": 200
+     },
+     {
+      "x": 680,
+      "y": 200
+     },
+     {
+      "x": 680,
+      "y": 250
+     },
+     {
+      "x": 560,
+      "y": 250
+     }
+    ]
+   },
+   "wall-n2": {
+    "id": "wall-n2",
+    "kind": "wall",
+    "name": "Стена прохода",
+    "order": "aB",
+    "ring": [
+     {
+      "x": 560,
+      "y": 270
+     },
+     {
+      "x": 680,
+      "y": 270
+     },
+     {
+      "x": 680,
+      "y": 320
+     },
+     {
+      "x": 560,
+      "y": 320
+     }
+    ]
+   }
+  },
+  "map_points": {
+   "A1": {
+    "id": "A1",
+    "kind": "other",
+    "name": "",
+    "pos": {
+     "x": 259,
+     "y": 260
+    },
+    "process_code": null
+   },
+   "A2": {
+    "id": "A2",
+    "kind": "other",
+    "name": "",
+    "pos": {
+     "x": 313,
+     "y": 260
+    },
+    "process_code": null
+   },
+   "A3": {
+    "id": "A3",
+    "kind": "other",
+    "name": "",
+    "pos": {
+     "x": 367,
+     "y": 260
+    },
+    "process_code": null
+   },
+   "A4": {
+    "id": "A4",
+    "kind": "other",
+    "name": "",
+    "pos": {
+     "x": 421,
+     "y": 260
+    },
+    "process_code": null
+   },
+   "B1": {
+    "id": "B1",
+    "kind": "task",
+    "name": "Буфер приёмки 1",
+    "pos": {
+     "x": 80,
+     "y": 120
+    },
+    "process_code": null
+   },
+   "B2": {
+    "id": "B2",
+    "kind": "task",
+    "name": "Буфер приёмки 2",
+    "pos": {
+     "x": 80,
+     "y": 180
+    },
+    "process_code": null
+   },
+   "C1": {
+    "id": "C1",
+    "kind": "charger",
+    "name": "Зарядка 1",
+    "pos": {
+     "x": 600,
+     "y": 50
+    },
+    "process_code": null
+   },
+   "C2": {
+    "id": "C2",
+    "kind": "charger",
+    "name": "Зарядка 2",
+    "pos": {
+     "x": 640,
+     "y": 50
+    },
+    "process_code": null
+   },
+   "D1": {
+    "id": "D1",
+    "kind": "dock",
+    "name": "Ворота 1",
+    "pos": {
+     "x": 30,
+     "y": 120
+    },
+    "process_code": null
+   },
+   "D2": {
+    "id": "D2",
+    "kind": "dock",
+    "name": "Ворота 2",
+    "pos": {
+     "x": 30,
+     "y": 180
+    },
+    "process_code": null
+   },
+   "D3": {
+    "id": "D3",
+    "kind": "dock",
+    "name": "Ворота 3",
+    "pos": {
+     "x": 30,
+     "y": 360
+    },
+    "process_code": null
+   },
+   "D4": {
+    "id": "D4",
+    "kind": "dock",
+    "name": "Ворота 4",
+    "pos": {
+     "x": 30,
+     "y": 420
+    },
+    "process_code": null
+   },
+   "K1": {
+    "id": "K1",
+    "kind": "other",
+    "name": "",
+    "pos": {
+     "x": 620,
+     "y": 100
+    },
+    "process_code": null
+   },
+   "L1": {
+    "id": "L1",
+    "kind": "other",
+    "name": "",
+    "pos": {
+     "x": 140,
+     "y": 120
+    },
+    "process_code": null
+   },
+   "L2": {
+    "id": "L2",
+    "kind": "other",
+    "name": "",
+    "pos": {
+     "x": 140,
+     "y": 180
+    },
+    "process_code": null
+   },
+   "L3": {
+    "id": "L3",
+    "kind": "other",
+    "name": "",
+    "pos": {
+     "x": 140,
+     "y": 360
+    },
+    "process_code": null
+   },
+   "L4": {
+    "id": "L4",
+    "kind": "other",
+    "name": "",
+    "pos": {
+     "x": 140,
+     "y": 420
+    },
+    "process_code": null
+   },
+   "M0": {
+    "id": "M0",
+    "kind": "other",
+    "name": "",
+    "pos": {
+     "x": 140,
+     "y": 260
+    },
+    "process_code": null
+   },
+   "M1": {
+    "id": "M1",
+    "kind": "other",
+    "name": "",
+    "pos": {
+     "x": 500,
+     "y": 260
+    },
+    "process_code": null
+   },
+   "M2": {
+    "id": "M2",
+    "kind": "other",
+    "name": "",
+    "pos": {
+     "x": 720,
+     "y": 260
+    },
+    "process_code": null
+   },
+   "N1": {
+    "id": "N1",
+    "kind": "other",
+    "name": "Вход в узкий проход",
+    "pos": {
+     "x": 560,
+     "y": 260
+    },
+    "process_code": null
+   },
+   "N2": {
+    "id": "N2",
+    "kind": "other",
+    "name": "Выход из узкого прохода",
+    "pos": {
+     "x": 680,
+     "y": 260
+    },
+    "process_code": null
+   },
+   "O1": {
+    "id": "O1",
+    "kind": "gate",
+    "name": "Отгрузка 1",
+    "pos": {
+     "x": 80,
+     "y": 360
+    },
+    "process_code": null
+   },
+   "O2": {
+    "id": "O2",
+    "kind": "gate",
+    "name": "Отгрузка 2",
+    "pos": {
+     "x": 80,
+     "y": 420
+    },
+    "process_code": null
+   },
+   "P1": {
+    "id": "P1",
+    "kind": "task",
+    "name": "Станция отбора 1",
+    "pos": {
+     "x": 760,
+     "y": 200
+    },
+    "process_code": null
+   },
+   "P2": {
+    "id": "P2",
+    "kind": "task",
+    "name": "Станция отбора 2",
+    "pos": {
+     "x": 760,
+     "y": 320
+    },
+    "process_code": null
+   },
+   "S1": {
+    "id": "S1",
+    "kind": "task",
+    "name": "Ячейки В1",
+    "pos": {
+     "x": 259,
+     "y": 140
+    },
+    "process_code": null
+   },
+   "S2": {
+    "id": "S2",
+    "kind": "task",
+    "name": "Ячейки В2",
+    "pos": {
+     "x": 313,
+     "y": 140
+    },
+    "process_code": null
+   },
+   "S3": {
+    "id": "S3",
+    "kind": "task",
+    "name": "Ячейки В3",
+    "pos": {
+     "x": 367,
+     "y": 140
+    },
+    "process_code": null
+   },
+   "S4": {
+    "id": "S4",
+    "kind": "task",
+    "name": "Ячейки В4",
+    "pos": {
+     "x": 421,
+     "y": 140
+    },
+    "process_code": null
+   },
+   "S5": {
+    "id": "S5",
+    "kind": "task",
+    "name": "Ячейки Н1",
+    "pos": {
+     "x": 259,
+     "y": 380
+    },
+    "process_code": null
+   },
+   "S6": {
+    "id": "S6",
+    "kind": "task",
+    "name": "Ячейки Н2",
+    "pos": {
+     "x": 313,
+     "y": 380
+    },
+    "process_code": null
+   },
+   "S7": {
+    "id": "S7",
+    "kind": "task",
+    "name": "Ячейки Н3",
+    "pos": {
+     "x": 367,
+     "y": 380
+    },
+    "process_code": null
+   },
+   "S8": {
+    "id": "S8",
+    "kind": "task",
+    "name": "Ячейки Н4",
+    "pos": {
+     "x": 421,
+     "y": 380
+    },
+    "process_code": null
+   },
+   "U1": {
+    "id": "U1",
+    "kind": "other",
+    "name": "",
+    "pos": {
+     "x": 500,
+     "y": 100
+    },
+    "process_code": null
+   },
+   "Y1": {
+    "id": "Y1",
+    "kind": "other",
+    "name": "",
+    "pos": {
+     "x": 500,
+     "y": 500
+    },
+    "process_code": null
+   },
+   "Y2": {
+    "id": "Y2",
+    "kind": "other",
+    "name": "",
+    "pos": {
+     "x": 720,
+     "y": 500
+    },
+    "process_code": null
+   }
+  },
+  "map_resources": {
+   "res-charge": {
+    "capacity": 2,
+    "edge_ids": [],
+    "id": "res-charge",
+    "kind": "charger",
+    "name": "Зарядная станция",
+    "point_id": null,
+    "point_ids": [
+     "C1",
+     "C2"
+    ]
+   },
+   "res-docks": {
+    "capacity": 2,
+    "edge_ids": [],
+    "id": "res-docks",
+    "kind": "dock",
+    "name": "Доки",
+    "point_id": null,
+    "point_ids": [
+     "D1",
+     "D2",
+     "D3",
+     "D4"
+    ]
+   },
+   "res-narrow": {
+    "capacity": 1,
+    "edge_ids": [
+     "e-narrow"
+    ],
+    "id": "res-narrow",
+    "kind": "narrow_aisle",
+    "name": "Узкий проход",
+    "point_id": null,
+    "point_ids": []
+   }
+  },
+  "map_zones": {
+   "zone-charge": {
+    "id": "zone-charge",
+    "kind": "charge",
+    "name": "Зарядка",
+    "order": "a4",
+    "ring": [
+     {
+      "x": 560,
+      "y": 10
+     },
+     {
+      "x": 680,
+      "y": 10
+     },
+     {
+      "x": 680,
+      "y": 90
+     },
+     {
+      "x": 560,
+      "y": 90
+     }
+    ]
+   },
+   "zone-docks": {
+    "id": "zone-docks",
+    "kind": "dock_area",
+    "name": "Доки",
+    "order": "a1",
+    "ring": [
+     {
+      "x": 5,
+      "y": 80
+     },
+     {
+      "x": 60,
+      "y": 80
+     },
+     {
+      "x": 60,
+      "y": 460
+     },
+     {
+      "x": 5,
+      "y": 460
+     }
+    ]
+   },
+   "zone-pick": {
+    "id": "zone-pick",
+    "kind": "pick",
+    "name": "Отбор",
+    "order": "a3",
+    "ring": [
+     {
+      "x": 700,
+      "y": 140
+     },
+     {
+      "x": 835,
+      "y": 140
+     },
+     {
+      "x": 835,
+      "y": 380
+     },
+     {
+      "x": 700,
+      "y": 380
+     }
+    ]
+   },
+   "zone-storage": {
+    "id": "zone-storage",
+    "kind": "storage",
+    "name": "Хранение",
+    "order": "a2",
+    "ring": [
+     {
+      "x": 200,
+      "y": 20
+     },
+     {
+      "x": 480,
+      "y": 20
+     },
+     {
+      "x": 480,
+      "y": 500
+     },
+     {
+      "x": 200,
+      "y": 500
+     }
+    ]
+   },
+   "zone-work": {
+    "id": "zone-work",
+    "kind": "workspace",
+    "name": "Рабочая область",
+    "order": "a0",
+    "ring": [
+     {
+      "x": 0,
+      "y": 0
+     },
+     {
+      "x": 840,
+      "y": 0
+     },
+     {
+      "x": 840,
+      "y": 520
+     },
+     {
+      "x": 0,
+      "y": 520
+     }
+    ]
+   }
+  },
+  "processes": {
+   "775c3466-8617-5afa-bd92-fb31068ed773": {
+    "baseline_staff": {
+     "headcount": 6,
+     "role": "погрузчик"
+    },
+    "code": "putaway",
+    "demand": {
+     "unit": "поддон",
+     "units_per_day": 500
+    },
+    "durations": {
+     "load_s": 60,
+     "travel_s": 240,
+     "unload_s": 60
+    },
+    "id": "775c3466-8617-5afa-bd92-fb31068ed773",
+    "is_baseline": true,
+    "name": "Размещение",
+    "order": "a1",
+    "point_ids": [],
+    "sla": {
+     "max_cycle_min": 40,
+     "max_wait_min": 20
+    },
+    "task_type": "pallet_putaway"
+   },
+   "9a2bead3-4b34-5e40-bfca-9fbec77766ec": {
+    "baseline_staff": {
+     "headcount": 10,
+     "role": "отгрузка"
+    },
+    "code": "outbound",
+    "demand": {
+     "unit": "поддон",
+     "units_per_day": 500
+    },
+    "durations": {
+     "load_s": 60,
+     "travel_s": 180,
+     "unload_s": 90
+    },
+    "id": "9a2bead3-4b34-5e40-bfca-9fbec77766ec",
+    "is_baseline": true,
+    "name": "Отгрузка",
+    "order": "a3",
+    "point_ids": [],
+    "sla": {
+     "max_cycle_min": 40,
+     "max_wait_min": 25
+    },
+    "task_type": "pallet_outbound"
+   },
+   "9bd3d70b-665d-5960-9fcf-fef885b240bf": {
+    "baseline_staff": {
+     "headcount": 100,
+     "role": "отборщик"
+    },
+    "code": "piece_pick",
+    "demand": {
+     "unit": "строка",
+     "units_per_day": 50000
+    },
+    "durations": {
+     "load_s": 20,
+     "travel_s": 90,
+     "unload_s": 15
+    },
+    "id": "9bd3d70b-665d-5960-9fcf-fef885b240bf",
+    "is_baseline": true,
+    "name": "Мелкоштучный отбор",
+    "order": "a2",
+    "point_ids": [],
+    "sla": {
+     "max_cycle_min": 25,
+     "max_wait_min": 15
+    },
+    "task_type": "piece_pick"
+   },
+   "f23c9d27-35cd-5b81-b84b-48e31fc10537": {
+    "baseline_staff": {
+     "headcount": 8,
+     "role": "приёмка"
+    },
+    "code": "inbound",
+    "demand": {
+     "unit": "поддон",
+     "units_per_day": 500
+    },
+    "durations": {
+     "load_s": 90,
+     "travel_s": 180,
+     "unload_s": 60
+    },
+    "id": "f23c9d27-35cd-5b81-b84b-48e31fc10537",
+    "is_baseline": true,
+    "name": "Приёмка",
+    "order": "a0",
+    "point_ids": [],
+    "sla": {
+     "max_cycle_min": 45,
+     "max_wait_min": 30
+    },
+    "task_type": "pallet_inbound"
+   }
+  },
+  "project": {
+   "project": {
+    "active_assumption_set_id": "83d5fb9a-a6a9-51a3-bead-064589bb21dd",
+    "econ_overrides": {},
+    "id": "project",
+    "match_selected_ids": [],
+    "name": "Демо Склад",
+    "object_type": "warehouse",
+    "params": {
+     "aisle_main_m": 3.5,
+     "aisle_working_m": 2.8,
+     "area_active_m2": 10000,
+     "area_total_m2": 20000,
+     "capex_budget_mln_rub": 80,
+     "ceiling_height_m": 10,
+     "conveyor_length_m": 350,
+     "door_width_m": 3,
+     "erp_system": "1С:ERP",
+     "floor_flatness_mm_per_2m": 3,
+     "floor_load_kg_m2": 5000,
+     "floor_type": "Промышленный бетон",
+     "floors": 1,
+     "has_wms": true,
+     "inbound_pallets_per_day": 500,
+     "lift_capacity_kg": null,
+     "outbound_pallets_per_day": 500,
+     "oversized_share_pct": 5,
+     "pallet_mass_kg": 800,
+     "pallet_size_mm": {
+      "height": 1600,
+      "length": 1200,
+      "width": 800
+     },
+     "pallet_slots": 20000,
+     "payback_horizon_years": 5,
+     "payroll_tax_factor": 1.302,
+     "peak_load_factor": 1.5,
+     "pick_lines_per_day": 50000,
+     "pick_path_m_per_line": 25,
+     "pick_units_per_day": 75000,
+     "picker_lines_per_hour": 150,
+     "piece_pick_share_pct": 30,
+     "power_kw": 500,
+     "rack_type": "Фронтальные паллетные",
+     "shift_hours": 11,
+     "shift_window": {
+      "end": "22:00",
+      "start": "08:00"
+     },
+     "shifts_per_day": 2,
+     "sku_a_class_share_pct": 20,
+     "sku_active": 2000,
+     "staff_forklift": 25,
+     "staff_pack": 20,
+     "staff_pickers": 100,
+     "staff_total": 180,
+     "task_mix": [
+      "inbound",
+      "putaway",
+      "piece_pick",
+      "outbound"
+     ],
+     "time_loss_pct": 25,
+     "unit_mass_kg": 1.8,
+     "unit_size_mm": {
+      "height": 150,
+      "length": 300,
+      "width": 200
+     },
+     "wage_forklift_month_rub": 120000,
+     "wage_picker_month_rub": 100000,
+     "workdays_per_year": 365
+    },
+    "reviewed_tabs": []
+   }
+  },
+  "shared_costs": {},
+  "variants": {
+   "a633bb79-646b-5329-ad3c-5457a9ac7f86": {
+    "id": "a633bb79-646b-5329-ad3c-5457a9ac7f86",
+    "name": "AMR комплектация",
+    "notes": "",
+    "order": "a1",
+    "status": "draft"
+   },
+   "b645312d-28aa-54c1-a97b-dd14947886e9": {
+    "id": "b645312d-28aa-54c1-a97b-dd14947886e9",
+    "name": "Паллетный штабелёр",
+    "notes": "",
+    "order": "a2",
+    "status": "draft"
+   },
+   "c746b08e-d5ef-59e3-9209-0f6e5e5a1721": {
+    "id": "c746b08e-d5ef-59e3-9209-0f6e5e5a1721",
+    "name": "Смешанный флот",
+    "notes": "",
+    "order": "a0",
+    "status": "draft"
+   }
+  }
+ }
+}

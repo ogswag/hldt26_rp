@@ -1,0 +1,922 @@
+{
+  "warehouse": [
+    {
+      "id": "area_total_m2",
+      "label": "Общая площадь склада",
+      "unit": "м2",
+      "type": "number"
+    },
+    {
+      "id": "area_active_m2",
+      "label": "Площадь активной (роботизируемой) зоны",
+      "unit": "м2",
+      "type": "number"
+    },
+    {
+      "id": "ceiling_height_m",
+      "label": "Высота потолков в зоне хранения",
+      "unit": "м",
+      "type": "number"
+    },
+    {
+      "id": "floors",
+      "label": "Количество этажей (мезонинов)",
+      "unit": "шт",
+      "type": "integer"
+    },
+    {
+      "id": "aisle_main_m",
+      "label": "Ширина главных проездов",
+      "unit": "м",
+      "type": "number"
+    },
+    {
+      "id": "aisle_working_m",
+      "label": "Ширина рабочих проходов между стеллажами",
+      "unit": "м",
+      "type": "number"
+    },
+    {
+      "id": "floor_type",
+      "label": "Тип напольного покрытия",
+      "unit": "-",
+      "type": "string"
+    },
+    {
+      "id": "floor_flatness_mm_per_2m",
+      "label": "Ровность пола (отклонение)",
+      "unit": "мм/2м",
+      "type": "number"
+    },
+    {
+      "id": "shifts_per_day",
+      "label": "Количество рабочих смен в сутки",
+      "unit": "смен",
+      "type": "integer"
+    },
+    {
+      "id": "workdays_per_year",
+      "label": "Рабочих дней в году",
+      "unit": "дн",
+      "type": "integer"
+    },
+    {
+      "id": "shift_hours",
+      "label": "Продолжительность смены",
+      "unit": "ч",
+      "type": "number"
+    },
+    {
+      "id": "peak_load_factor",
+      "label": "Пиковый коэффициент нагрузки",
+      "unit": "-",
+      "type": "number"
+    },
+    {
+      "id": "inbound_pallets_per_day",
+      "label": "Объем приемки",
+      "unit": "поддон/сут",
+      "type": "number",
+      "aliases": [
+        "Объем приемки (поддоны/сутки)"
+      ]
+    },
+    {
+      "id": "outbound_pallets_per_day",
+      "label": "Объем отгрузки",
+      "unit": "поддон/сут",
+      "type": "number",
+      "aliases": [
+        "Объем отгрузки (поддоны/сутки)"
+      ]
+    },
+    {
+      "id": "pick_lines_per_day",
+      "label": "Объем отбора по строкам",
+      "unit": "строк/сут",
+      "type": "number",
+      "aliases": [
+        "Объем отбора (строк/сутки, всего)"
+      ]
+    },
+    {
+      "id": "pick_units_per_day",
+      "label": "Объем отбора по штукам",
+      "unit": "шт/сут",
+      "type": "number",
+      "aliases": [
+        "Объем отбора (штук/сутки, всего)"
+      ]
+    },
+    {
+      "id": "piece_pick_share_pct",
+      "label": "Доля мелкоштучного отбора (piece-pick)",
+      "unit": "%",
+      "type": "number"
+    },
+    {
+      "id": "sku_active",
+      "label": "Активный ассортимент",
+      "unit": "SKU",
+      "type": "number",
+      "aliases": [
+        "Количество SKU (активных)"
+      ]
+    },
+    {
+      "id": "sku_a_class_share_pct",
+      "label": "Доля SKU с быстрым оборотом (A-класс)",
+      "unit": "%",
+      "type": "number"
+    },
+    {
+      "id": "staff_total",
+      "label": "Общая численность персонала склада",
+      "unit": "чел",
+      "type": "number"
+    },
+    {
+      "id": "staff_pickers",
+      "label": "Из них: отборщики (комплектовщики)",
+      "unit": "чел",
+      "type": "number"
+    },
+    {
+      "id": "staff_forklift",
+      "label": "Из них: операторы погрузчиков",
+      "unit": "чел",
+      "type": "number"
+    },
+    {
+      "id": "staff_pack",
+      "label": "Из них: операторы упаковочных линий",
+      "unit": "чел",
+      "type": "number"
+    },
+    {
+      "id": "wage_picker_month_rub",
+      "label": "Средняя з/п отборщика (gross)",
+      "unit": "руб/мес",
+      "type": "number"
+    },
+    {
+      "id": "wage_forklift_month_rub",
+      "label": "Средняя з/п оператора погрузчика (gross)",
+      "unit": "руб/мес",
+      "type": "number"
+    },
+    {
+      "id": "payroll_tax_factor",
+      "label": "Коэффициент начислений на ФОТ (страховые взносы)",
+      "unit": "-",
+      "type": "number"
+    },
+    {
+      "id": "picker_lines_per_hour",
+      "label": "Средняя выработка отборщика",
+      "unit": "строк/ч чел",
+      "type": "number",
+      "aliases": [
+        "Средняя выработка отборщика (строк/ч)"
+      ]
+    },
+    {
+      "id": "time_loss_pct",
+      "label": "Коэффициент потерь рабочего времени (отпуск, болезнь, текучесть)",
+      "unit": "%",
+      "type": "number"
+    },
+    {
+      "id": "pick_path_m_per_line",
+      "label": "Средняя длина маршрута отборщика на 1 строку",
+      "unit": "м",
+      "type": "number"
+    },
+    {
+      "id": "conveyor_length_m",
+      "label": "Протяженность конвейерной/транспортной системы",
+      "unit": "м",
+      "type": "number"
+    },
+    {
+      "id": "rack_type",
+      "label": "Тип стеллажной системы",
+      "unit": "-",
+      "type": "string"
+    },
+    {
+      "id": "pallet_slots",
+      "label": "Количество паллетомест",
+      "unit": "м/п",
+      "type": "number"
+    },
+    {
+      "id": "pallet_mass_kg",
+      "label": "Средняя масса грузовой единицы (паллет)",
+      "unit": "кг",
+      "type": "number"
+    },
+    {
+      "id": "unit_mass_kg",
+      "label": "Средняя масса штучной единицы (SKU)",
+      "unit": "кг",
+      "type": "number"
+    },
+    {
+      "id": "pallet_size_mm",
+      "label": "Средние габариты паллеты",
+      "unit": "мм",
+      "type": "dimensions",
+      "aliases": ["Средние габариты паллеты (ДxШxВ)"]
+    },
+    {
+      "id": "unit_size_mm",
+      "label": "Средние габариты штучной единицы",
+      "unit": "мм",
+      "type": "dimensions",
+      "aliases": ["Средние габариты штучной единицы (ДxШxВ)"]
+    },
+    {
+      "id": "oversized_share_pct",
+      "label": "Доля негабаритных/нестандартных грузов",
+      "unit": "%",
+      "type": "number"
+    },
+    {
+      "id": "power_kw",
+      "label": "Мощность электроснабжения (доступная)",
+      "unit": "кВт",
+      "type": "number"
+    },
+    {
+      "id": "has_wms",
+      "label": "Наличие WMS",
+      "unit": "-",
+      "type": "string"
+    },
+    {
+      "id": "erp_system",
+      "label": "Наличие ERP/1С",
+      "unit": "-",
+      "type": "string"
+    },
+    {
+      "id": "capex_budget_mln_rub",
+      "label": "Планируемый бюджет на роботизацию (CAPEX)",
+      "unit": "млн руб",
+      "type": "number"
+    },
+    {
+      "id": "payback_horizon_years",
+      "label": "Горизонт расчета окупаемости",
+      "unit": "лет",
+      "type": "number"
+    }
+  ],
+  "airport": [
+    {
+      "id": "terminal_area_m2",
+      "label": "Суммарная площадь терминалов",
+      "unit": "м2",
+      "type": "number",
+      "aliases": [
+        "Суммарная площадь терминала (ов)"
+      ]
+    },
+    {
+      "id": "apron_area_m2",
+      "label": "Площадь перрона и технических зон",
+      "unit": "м2",
+      "type": "number"
+    },
+    {
+      "id": "terminals",
+      "label": "Количество терминалов",
+      "unit": "шт",
+      "type": "integer"
+    },
+    {
+      "id": "gates",
+      "label": "Количество выходов на посадку (гейтов)",
+      "unit": "шт",
+      "type": "integer"
+    },
+    {
+      "id": "runways",
+      "label": "Количество взлетно-посадочных полос",
+      "unit": "шт",
+      "type": "integer"
+    },
+    {
+      "id": "passengers_mln_per_year",
+      "label": "Пассажиропоток",
+      "unit": "млн пасс./год",
+      "type": "number",
+      "aliases": [
+        "Пассажиропоток (млн пассажиров/год)"
+      ]
+    },
+    {
+      "id": "passengers_per_day",
+      "label": "Среднесуточное количество пассажиров",
+      "unit": "пасс./сут",
+      "type": "number"
+    },
+    {
+      "id": "passengers_peak_per_hour",
+      "label": "Пиковое количество пассажиров (PHF)",
+      "unit": "пасс./ч",
+      "type": "number",
+      "aliases": [
+        "Пиковое количество пассажиров в час (PHF)"
+      ]
+    },
+    {
+      "id": "transfer_share_pct",
+      "label": "Доля трансферных пассажиров",
+      "unit": "%",
+      "type": "number"
+    },
+    {
+      "id": "checkin_desks",
+      "label": "Количество стоек регистрации",
+      "unit": "шт",
+      "type": "integer"
+    },
+    {
+      "id": "flights_per_day",
+      "label": "Среднесуточное количество рейсов (взлет+посадка)",
+      "unit": "рейсов/сут",
+      "type": "number"
+    },
+    {
+      "id": "flights_peak_per_hour",
+      "label": "Пиковое количество рейсов",
+      "unit": "рейсов/ч",
+      "type": "number",
+      "aliases": [
+        "Пиковое количество рейсов в час"
+      ]
+    },
+    {
+      "id": "tat_min",
+      "label": "Среднее время оборота воздушного судна (TAT)",
+      "unit": "мин",
+      "type": "number"
+    },
+    {
+      "id": "ramp_ops_per_flight",
+      "label": "Среднее количество операций наземного обслуживания на 1 рейс",
+      "unit": "операций",
+      "type": "number"
+    },
+    {
+      "id": "baggage_units_per_day",
+      "label": "Объем перемещения багажа",
+      "unit": "ед/сут",
+      "type": "number",
+      "aliases": [
+        "Объем перемещения багажа (единиц/сутки)"
+      ]
+    },
+    {
+      "id": "baggage_mass_kg",
+      "label": "Средняя масса единицы багажа",
+      "unit": "кг",
+      "type": "number"
+    },
+    {
+      "id": "baggage_carousels",
+      "label": "Количество стоек выдачи багажа (каруселей)",
+      "unit": "шт",
+      "type": "integer"
+    },
+    {
+      "id": "catering_portions_per_day",
+      "label": "Объем бортового питания",
+      "unit": "порций/сут",
+      "type": "number",
+      "aliases": [
+        "Объем бортового питания (порций/сутки)"
+      ]
+    },
+    {
+      "id": "fueling_flights_per_day",
+      "label": "Объем заправки воздушных судов",
+      "unit": "рейсов/сут",
+      "type": "number",
+      "aliases": [
+        "Объем заправки воздушных судов (рейсов/сут)"
+      ]
+    },
+    {
+      "id": "internal_trolley_trips_per_day",
+      "label": "Суточное количество рейсов внутренних грузовых тележек (внутри терминала)",
+      "unit": "рейсов/сут",
+      "type": "number"
+    },
+    {
+      "id": "cleaning_machines",
+      "label": "Количество уборочных машин (терминал)",
+      "unit": "шт",
+      "type": "integer"
+    },
+    {
+      "id": "cleaning_area_m2",
+      "label": "Площадь, убираемая роботизированной уборкой",
+      "unit": "м2",
+      "type": "number"
+    },
+    {
+      "id": "waste_containers_per_day",
+      "label": "Суточный объем вывоза мусора",
+      "unit": "конт./сут",
+      "type": "number",
+      "aliases": [
+        "Суточный объем вывоза мусора (контейнеров)"
+      ]
+    },
+    {
+      "id": "staff_ramp",
+      "label": "Численность персонала наземного обслуживания (рамп)",
+      "unit": "чел",
+      "type": "number"
+    },
+    {
+      "id": "staff_terminal",
+      "label": "Численность персонала внутри терминала (логистика, уборка)",
+      "unit": "чел",
+      "type": "number"
+    },
+    {
+      "id": "wage_ramp_month_rub",
+      "label": "Средняя з/п сотрудника наземного обслуживания (gross)",
+      "unit": "руб/мес",
+      "type": "number"
+    },
+    {
+      "id": "wage_cleaner_month_rub",
+      "label": "Средняя з/п уборщика терминала (gross)",
+      "unit": "руб/мес",
+      "type": "number"
+    },
+    {
+      "id": "payroll_tax_factor",
+      "label": "Коэффициент начислений на ФОТ",
+      "unit": "-",
+      "type": "number"
+    },
+    {
+      "id": "turnover_terminal_pct",
+      "label": "Годовая текучесть (персонал терминала)",
+      "unit": "%",
+      "type": "number"
+    },
+    {
+      "id": "security_zones",
+      "label": "Зонирование (количество режимных зон)",
+      "unit": "шт",
+      "type": "integer"
+    },
+    {
+      "id": "access_control",
+      "label": "Наличие системы контроля доступа (СКУД)",
+      "unit": "-",
+      "type": "string"
+    },
+    {
+      "id": "airside_cert",
+      "label": "Требования по сертификации оборудования для airside",
+      "unit": "-",
+      "type": "string"
+    },
+    {
+      "id": "noise_limit_dba",
+      "label": "Ограничения по уровню шума (зона)",
+      "unit": "дБА",
+      "type": "number"
+    },
+    {
+      "id": "apron_temp_c",
+      "label": "Температура в неотапливаемых зонах (перрон, зима)",
+      "unit": "C",
+      "type": "number"
+    },
+    {
+      "id": "has_fids_aodb",
+      "label": "Наличие FIDS/AODB системы",
+      "unit": "-",
+      "type": "string"
+    },
+    {
+      "id": "has_bms",
+      "label": "Наличие BMS (системы управления зданием)",
+      "unit": "-",
+      "type": "string"
+    },
+    {
+      "id": "power_kw",
+      "label": "Доступная мощность для зарядной инфраструктуры",
+      "unit": "кВт",
+      "type": "number"
+    },
+    {
+      "id": "capex_budget_mln_rub",
+      "label": "Планируемый бюджет на роботизацию (CAPEX)",
+      "unit": "млн руб",
+      "type": "number"
+    },
+    {
+      "id": "payback_horizon_years",
+      "label": "Горизонт расчета окупаемости",
+      "unit": "лет",
+      "type": "number"
+    }
+  ],
+  "hospital": [
+    {
+      "id": "facility_type",
+      "label": "Тип медицинского учреждения",
+      "unit": "-",
+      "type": "string"
+    },
+    {
+      "id": "area_total_m2",
+      "label": "Общая площадь зданий",
+      "unit": "м2",
+      "type": "number",
+      "aliases": [
+        "Общая площадь здания(й)"
+      ]
+    },
+    {
+      "id": "floors",
+      "label": "Количество этажей (основной корпус)",
+      "unit": "шт",
+      "type": "integer"
+    },
+    {
+      "id": "elevators",
+      "label": "Количество лифтов (грузовых/медицинских)",
+      "unit": "шт",
+      "type": "integer"
+    },
+    {
+      "id": "beds",
+      "label": "Коечный фонд стационара",
+      "unit": "коек",
+      "type": "number",
+      "aliases": [
+        "Количество коек (стационар)"
+      ]
+    },
+    {
+      "id": "occupancy_pct",
+      "label": "Коечный фонд в эксплуатации (средняя занятость)",
+      "unit": "%",
+      "type": "number"
+    },
+    {
+      "id": "operating_rooms",
+      "label": "Количество операционных",
+      "unit": "шт",
+      "type": "integer"
+    },
+    {
+      "id": "outpatient_visits_per_day",
+      "label": "Амбулаторный поток",
+      "unit": "посещений/сут",
+      "type": "number",
+      "aliases": [
+        "Количество амбулаторных посещений в сутки"
+      ]
+    },
+    {
+      "id": "inpatient_mode",
+      "label": "Режим работы стационара",
+      "unit": "-",
+      "type": "string"
+    },
+    {
+      "id": "outpatient_mode",
+      "label": "Режим работы амбулатории",
+      "unit": "-",
+      "type": "string"
+    },
+    {
+      "id": "care_shifts_per_day",
+      "label": "Количество смен медперсонала (уход за пациентами)",
+      "unit": "смен/сут",
+      "type": "integer"
+    },
+    {
+      "id": "logistics_peak_hours",
+      "label": "Пиковое время логистической нагрузки",
+      "unit": "-",
+      "type": "string"
+    },
+    {
+      "id": "meals_per_day",
+      "label": "Кратность кормления",
+      "unit": "раз/сут",
+      "type": "integer",
+      "aliases": [
+        "Количество кормлений в сутки"
+      ]
+    },
+    {
+      "id": "meal_portions_per_day",
+      "label": "Общий объем питания",
+      "unit": "порций/сут",
+      "type": "number",
+      "aliases": [
+        "Общее количество порций питания в сутки"
+      ]
+    },
+    {
+      "id": "kitchen_to_ward_m",
+      "label": "Среднее расстояние от пищеблока до отделения",
+      "unit": "м",
+      "type": "number"
+    },
+    {
+      "id": "meal_drop_points",
+      "label": "Количество точек раздачи питания (отделений)",
+      "unit": "шт",
+      "type": "integer"
+    },
+    {
+      "id": "meal_cart_mass_kg",
+      "label": "Средняя масса тележки с питанием (брутто)",
+      "unit": "кг",
+      "type": "number"
+    },
+    {
+      "id": "meal_delivery_sla_min",
+      "label": "Норматив доставки питания от пищеблока до отделения",
+      "unit": "мин",
+      "type": "number",
+      "aliases": [
+        "Норматив доставки питания (мин от пищеблока до отделения)"
+      ]
+    },
+    {
+      "id": "dirty_linen_kg_per_day",
+      "label": "Объем грязного белья",
+      "unit": "кг/сут",
+      "type": "number",
+      "aliases": [
+        "Объем грязного белья (кг/сутки)"
+      ]
+    },
+    {
+      "id": "clean_linen_kg_per_day",
+      "label": "Объем чистого белья на раздачу",
+      "unit": "кг/сут",
+      "type": "number",
+      "aliases": [
+        "Объем чистого белья на раздачу (кг/сутки)"
+      ]
+    },
+    {
+      "id": "linen_points",
+      "label": "Количество точек сбора/выдачи белья",
+      "unit": "шт",
+      "type": "integer"
+    },
+    {
+      "id": "linen_changes_per_day",
+      "label": "Средняя частота смены белья",
+      "unit": "раз/сут",
+      "type": "number",
+      "aliases": [
+        "Периодичность смены белья (раз в сутки, в среднем)"
+      ]
+    },
+    {
+      "id": "linen_container_kg",
+      "label": "Средняя масса контейнера с бельем",
+      "unit": "кг",
+      "type": "number"
+    },
+    {
+      "id": "med_sku",
+      "label": "Номенклатура медикаментов в обращении",
+      "unit": "наименований",
+      "type": "number",
+      "aliases": [
+        "Количество наименований медикаментов в обращении"
+      ]
+    },
+    {
+      "id": "med_orders_per_day",
+      "label": "Объем выдачи медикаментов",
+      "unit": "заявок/сут",
+      "type": "number",
+      "aliases": [
+        "Объем выдачи медикаментов (заявок/сутки)"
+      ]
+    },
+    {
+      "id": "pharmacy_points",
+      "label": "Количество аптечных точек выдачи (аптека, аптечные склады)",
+      "unit": "шт",
+      "type": "integer"
+    },
+    {
+      "id": "med_drop_points",
+      "label": "Количество точек доставки (отделений + ОР + реанимация)",
+      "unit": "шт",
+      "type": "integer"
+    },
+    {
+      "id": "pharmacy_pick_min",
+      "label": "Среднее время комплектации 1 заявки в аптеке",
+      "unit": "мин",
+      "type": "number"
+    },
+    {
+      "id": "stat_share_pct",
+      "label": "Доля срочных (STAT) доставок медикаментов",
+      "unit": "%",
+      "type": "number"
+    },
+    {
+      "id": "consumable_trips_per_day",
+      "label": "Объем доставки расходных материалов",
+      "unit": "рейсов/сут",
+      "type": "number",
+      "aliases": [
+        "Объем доставки расходных материалов (рейсов/сутки)"
+      ]
+    },
+    {
+      "id": "lab_samples_per_day",
+      "label": "Объем биоматериала",
+      "unit": "проб/сут",
+      "type": "number",
+      "aliases": [
+        "Количество биоматериалов (проб) в сутки"
+      ]
+    },
+    {
+      "id": "labs",
+      "label": "Количество клинико-диагностических лабораторий (КДЛ)",
+      "unit": "шт",
+      "type": "integer"
+    },
+    {
+      "id": "sample_sla_min",
+      "label": "Среднее время доставки пробы (норматив)",
+      "unit": "мин",
+      "type": "number"
+    },
+    {
+      "id": "lab_result_trips_per_day",
+      "label": "Объем выдачи результатов анализов",
+      "unit": "рейсов/сут",
+      "type": "number",
+      "aliases": [
+        "Объем выдачи результатов анализов (рейсов/сутки)"
+      ]
+    },
+    {
+      "id": "waste_class_a_kg_per_day",
+      "label": "Объем медицинских отходов класса А (ненасыщенные)",
+      "unit": "кг/сут",
+      "type": "number"
+    },
+    {
+      "id": "waste_class_b_kg_per_day",
+      "label": "Объем медицинских отходов класса Б (инфицированные)",
+      "unit": "кг/сут",
+      "type": "number"
+    },
+    {
+      "id": "waste_points",
+      "label": "Количество точек сбора отходов",
+      "unit": "шт",
+      "type": "integer"
+    },
+    {
+      "id": "waste_trips_per_day",
+      "label": "Периодичность вывоза отходов из отделений",
+      "unit": "раз/сут",
+      "type": "integer"
+    },
+    {
+      "id": "staff_porters",
+      "label": "Численность санитаров и транспортировщиков",
+      "unit": "чел",
+      "type": "number"
+    },
+    {
+      "id": "staff_kitchen",
+      "label": "Численность сотрудников пищеблока (раздача)",
+      "unit": "чел",
+      "type": "number"
+    },
+    {
+      "id": "staff_laundry",
+      "label": "Численность сотрудников прачечной (транспорт белья)",
+      "unit": "чел",
+      "type": "number"
+    },
+    {
+      "id": "wage_porter_month_rub",
+      "label": "Средняя з/п санитара/транспортировщика (gross)",
+      "unit": "руб/мес",
+      "type": "number"
+    },
+    {
+      "id": "wage_kitchen_month_rub",
+      "label": "Средняя з/п сотрудника пищеблока (gross)",
+      "unit": "руб/мес",
+      "type": "number"
+    },
+    {
+      "id": "payroll_tax_factor",
+      "label": "Коэффициент начислений на ФОТ",
+      "unit": "-",
+      "type": "number"
+    },
+    {
+      "id": "turnover_nonmedical_pct",
+      "label": "Годовая текучесть (немедицинский персонал)",
+      "unit": "%",
+      "type": "number"
+    },
+    {
+      "id": "disinfection_rule",
+      "label": "Обеззараживание робота между рейсами",
+      "unit": "-",
+      "type": "string"
+    },
+    {
+      "id": "ward_noise_dba",
+      "label": "Требования к уровню шума в палатах (ночное время)",
+      "unit": "дБА",
+      "type": "number"
+    },
+    {
+      "id": "has_access_control",
+      "label": "Наличие СКУД (контроль доступа по зонам)",
+      "unit": "-",
+      "type": "string"
+    },
+    {
+      "id": "robot_surface",
+      "label": "Требования к материалу поверхностей робота",
+      "unit": "-",
+      "type": "string"
+    },
+    {
+      "id": "has_mis",
+      "label": "Наличие МИС (медицинская информационная система)",
+      "unit": "-",
+      "type": "string"
+    },
+    {
+      "id": "has_lis",
+      "label": "Наличие ЛИС (лабораторная информационная система)",
+      "unit": "-",
+      "type": "string"
+    },
+    {
+      "id": "elevator_bms",
+      "label": "Наличие системы управления лифтами (BMS)",
+      "unit": "-",
+      "type": "string"
+    },
+    {
+      "id": "corridor_width_m",
+      "label": "Ширина коридоров (основных)",
+      "unit": "м",
+      "type": "number"
+    },
+    {
+      "id": "has_ramps",
+      "label": "Наличие пандусов/подъемников (для межэтажного AMR без лифта)",
+      "unit": "-",
+      "type": "string"
+    },
+    {
+      "id": "power_kw",
+      "label": "Доступная мощность для зарядной инфраструктуры",
+      "unit": "кВт",
+      "type": "number"
+    },
+    {
+      "id": "capex_budget_mln_rub",
+      "label": "Планируемый бюджет на роботизацию (CAPEX)",
+      "unit": "млн руб",
+      "type": "number"
+    },
+    {
+      "id": "payback_horizon_years",
+      "label": "Горизонт расчета окупаемости",
+      "unit": "лет",
+      "type": "number"
+    }
+  ]
+}

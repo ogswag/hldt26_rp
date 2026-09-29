@@ -1,0 +1,11 @@
+node_modules
+dist
+.DS_Store
+**/.DS_Store
+*.log
+.git
+test-results
+playwright-report
+e2e
+public/demo
+public/engine

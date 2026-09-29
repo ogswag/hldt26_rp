@@ -1,0 +1,30 @@
+{
+  "before": {
+    "assumption_sets": {
+      "00000000-0000-4000-8000-000000000601": {"discount_rate":0.15,"id":"00000000-0000-4000-8000-000000000601","labor_cash_share":1,"name":"Базовый","order":"a0","prices_include_vat":true,"vat_rate":0.22,"vat_recoverable":false},
+      "00000000-0000-4000-8000-000000000602": {"discount_rate":0.2,"id":"00000000-0000-4000-8000-000000000602","labor_cash_share":0.5,"name":"Пессимистичный","order":"a1","prices_include_vat":true,"vat_rate":0.22,"vat_recoverable":false}
+    },
+    "project": {
+      "project": {"active_assumption_set_id":"00000000-0000-4000-8000-000000000601","econ_overrides":null,"id":"project","match_selected_ids":[],"name":"Склад","object_type":"warehouse","params":{"area_m2":5000,"power_kw":null,"shifts":2},"reviewed_tabs":[]}
+    }
+  },
+  "txs": [
+    {"tx_id": "tx-1", "label": "action 1", "ops": [
+      {"op":"set","coll":"project","id":"project","path":"active_assumption_set_id","value":"00000000-0000-4000-8000-000000000602"}
+    ]}
+  ],
+  "after": {
+    "assumption_sets": {
+      "00000000-0000-4000-8000-000000000601": {"discount_rate":0.15,"id":"00000000-0000-4000-8000-000000000601","labor_cash_share":1,"name":"Базовый","order":"a0","prices_include_vat":true,"vat_rate":0.22,"vat_recoverable":false},
+      "00000000-0000-4000-8000-000000000602": {"discount_rate":0.2,"id":"00000000-0000-4000-8000-000000000602","labor_cash_share":0.5,"name":"Пессимистичный","order":"a1","prices_include_vat":true,"vat_rate":0.22,"vat_recoverable":false}
+    },
+    "project": {
+      "project": {"active_assumption_set_id":"00000000-0000-4000-8000-000000000602","econ_overrides":null,"id":"project","match_selected_ids":[],"name":"Склад","object_type":"warehouse","params":{"area_m2":5000,"power_kw":null,"shifts":2},"reviewed_tabs":[]}
+    }
+  },
+  "outcomes": [
+    {"tx_id":"tx-1","status":"applied", "changes": [
+      {"coll":"project","id":"project","kind":"update","before":{"active_assumption_set_id":"00000000-0000-4000-8000-000000000601","econ_overrides":null,"id":"project","match_selected_ids":[],"name":"Склад","object_type":"warehouse","params":{"area_m2":5000,"power_kw":null,"shifts":2},"reviewed_tabs":[]},"after":{"active_assumption_set_id":"00000000-0000-4000-8000-000000000602","econ_overrides":null,"id":"project","match_selected_ids":[],"name":"Склад","object_type":"warehouse","params":{"area_m2":5000,"power_kw":null,"shifts":2},"reviewed_tabs":[]}}
+    ]}
+  ]
+}

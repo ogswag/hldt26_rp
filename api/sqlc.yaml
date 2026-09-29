@@ -1,0 +1,57 @@
+version: "2"
+sql:
+  - engine: "postgresql"
+    queries: "internal/db/queries.sql"
+    schema:
+      - "migrations/0001_init.up.sql"
+      - "migrations/0002_projects_results.up.sql"
+      - "migrations/0003_projects_user_id_list.up.sql"
+      - "migrations/0004_project_integrity_snapshots_runs.up.sql"
+      - "migrations/0005_shared_costs_assumption_sets.up.sql"
+      - "migrations/0006_catalog_revision_snapshot_and_warehouse_codes.up.sql"
+      - "migrations/0007_frozen_catalog_revision_guards.up.sql"
+      - "migrations/0008_simulation_queue_indexes_replications_artifacts.up.sql"
+      - "migrations/0009_calculation_runs_confidence_level.up.sql"
+      - "migrations/0010_project_members.up.sql"
+      - "migrations/0011_order_keys.up.sql"
+      - "migrations/0012_sessions.up.sql"
+      - "migrations/0013_project_operations.up.sql"
+      - "migrations/0014_project_events.up.sql"
+      - "migrations/0015_audit_events.up.sql"
+      - "migrations/0016_project_trash.up.sql"
+      - "migrations/0017_email_tokens_outbox.up.sql"
+      - "migrations/0018_invitations.up.sql"
+      - "migrations/0021_calculation_runs_draft_hash.up.sql"
+      - "migrations/0022_live_catalog.up.sql"
+      - "migrations/0023_drop_unused_dictionaries.up.sql"
+      - "migrations/0024_solutions_family.up.sql"
+      - "migrations/0025_solutions_archived_at.up.sql"
+      - "migrations/0026_solution_images.up.sql"
+      - "migrations/0027_catalog_exports_imports.up.sql"
+      - "migrations/0028_solutions_edited_at.up.sql"
+      - "migrations/0029_assumption_sets_discount_rate_vat22.up.sql"
+      - "migrations/0030_solution_specs_turn_radius.up.sql"
+      - "migrations/0031_solutions_field_sources.up.sql"
+      - "migrations/0032_assumption_sets_norm_overrides.up.sql"
+    gen:
+      go:
+        package: "db"
+        out: "internal/db"
+        sql_package: "pgx/v5"
+        emit_json_tags: true
+        emit_pointers_for_null_types: true
+        overrides:
+          - db_type: "uuid"
+            go_type:
+              import: "github.com/google/uuid"
+              type: "UUID"
+          - db_type: "uuid"
+            nullable: true
+            go_type:
+              import: "github.com/google/uuid"
+              type: "UUID"
+              pointer: true
+          - db_type: "jsonb"
+            go_type:
+              import: "encoding/json"
+              type: "RawMessage"

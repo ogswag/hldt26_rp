@@ -1,0 +1,184 @@
+{
+  "version": 1,
+  "collections": {
+    "project": {
+      "kind": "singleton",
+      "fields": {
+        "name": {"type": "string", "min_length": 1, "max_length": 200},
+        "object_type": {"type": "enum", "values": ["warehouse", "airport", "hospital"]},
+        "params": {"type": "params"},
+        "match_selected_ids": {"type": "object", "validator": "solution_ids"},
+        "reviewed_tabs": {"type": "object", "validator": "tab_ids"},
+        "econ_overrides": {"type": "object", "validator": "econ_overrides", "nullable": true},
+        "active_assumption_set_id": {"type": "ref", "to": "assumption_sets", "on_delete": "set_null", "nullable": true}
+      }
+    },
+    "processes": {
+      "kind": "list",
+      "ordered": true,
+      "max_items": 50,
+      "unique": [["code"]],
+      "fields": {
+        "code": {"type": "string", "min_length": 1, "max_length": 64, "required": true, "immutable": true},
+        "name": {"type": "string", "min_length": 1, "max_length": 200, "required": true},
+        "task_type": {
+          "type": "enum",
+          "values": ["pallet_inbound", "pallet_putaway", "pallet_outbound", "piece_pick", "pallet_move", "cleaning"],
+          "required": true
+        },
+        "is_baseline": {"type": "bool"},
+        "demand": {"type": "object", "validator": "process_demand", "required": true},
+        "sla": {"type": "object", "validator": "process_sla", "required": true},
+        "point_ids": {"type": "ref_list", "to": "map_points", "on_delete": "remove", "max_length": 200},
+        "durations": {"type": "object", "validator": "process_durations", "required": true},
+        "baseline_staff": {"type": "object", "validator": "process_staff", "required": true}
+      }
+    },
+    "variants": {
+      "kind": "list",
+      "ordered": true,
+      "max_items": 6,
+      "fields": {
+        "name": {"type": "string", "min_length": 1, "max_length": 200, "required": true},
+        "status": {"type": "enum", "values": ["draft", "ready"], "required": true},
+        "notes": {"type": "string", "max_length": 5000}
+      }
+    },
+    "fleet_items": {
+      "kind": "list",
+      "ordered": true,
+      "max_items": 120,
+      "fields": {
+        "variant_id": {"type": "ref", "to": "variants", "on_delete": "cascade", "required": true, "immutable": true},
+        "solution_id": {"type": "external_ref", "to": "catalog_solutions", "nullable": true},
+        "quantity": {"type": "int", "min": 1, "max": 1000, "required": true},
+        "price_override_rub": {"type": "number", "min": 0, "max": 1000000000000, "nullable": true},
+        "price_override_reason": {"type": "string", "max_length": 500},
+        "task_codes": {"type": "ref_list", "to": "processes", "key": "code", "on_delete": "remove", "max_length": 50}
+      },
+      "requires": [{"if_set": "price_override_rub", "then_nonempty": "price_override_reason"}]
+    },
+    "financing": {
+      "kind": "list",
+      "max_items": 60,
+      "unique": [["variant_id", "kind", "tariff"]],
+      "fields": {
+        "variant_id": {"type": "ref", "to": "variants", "on_delete": "cascade", "required": true, "immutable": true},
+        "kind": {"type": "enum", "values": ["buy", "raas"], "required": true, "immutable": true},
+        "tariff": {"type": "enum", "values": ["fixed", "variable", "mixed"], "nullable": true},
+        "assumptions": {"type": "object", "validator": "financing_assumptions", "required": true}
+      }
+    },
+    "shared_costs": {
+      "kind": "list",
+      "ordered": true,
+      "max_items": 100,
+      "unique": [["code"]],
+      "fields": {
+        "code": {"type": "string", "min_length": 1, "max_length": 64, "required": true},
+        "label": {"type": "string", "min_length": 1, "max_length": 200, "required": true},
+        "bucket": {"type": "enum", "values": ["capex", "opex"], "required": true},
+        "rub": {"type": "number", "min": 0, "max": 1000000000000, "required": true}
+      }
+    },
+    "assumption_sets": {
+      "kind": "list",
+      "ordered": true,
+      "max_items": 20,
+      "fields": {
+        "name": {"type": "string", "min_length": 1, "max_length": 200, "required": true},
+        "vat_rate": {"type": "number", "min": 0, "max": 1, "required": true},
+        "prices_include_vat": {"type": "bool"},
+        "vat_recoverable": {"type": "bool"},
+        "labor_cash_share": {"type": "number", "min": 0, "max": 1, "required": true},
+        "discount_rate": {"type": "number", "min": 0.01, "max": 1, "nullable": true},
+        "utilization": {"type": "number", "min": 0.01, "max": 1, "nullable": true},
+        "availability": {"type": "number", "min": 0.01, "max": 1, "nullable": true},
+        "reserve": {"type": "number", "min": 0, "max": 1, "nullable": true},
+        "service_share": {"type": "number", "min": 0, "max": 1, "nullable": true},
+        "delivery_share": {"type": "number", "min": 0, "max": 1, "nullable": true},
+        "comm_rub_per_robot_year": {"type": "number", "min": 0, "max": 10000000, "nullable": true},
+        "technician_wage_month_rub": {"type": "number", "min": 0, "max": 10000000, "nullable": true}
+      }
+    },
+    "map": {
+      "kind": "singleton",
+      "fields": {
+        "page": {"type": "object", "validator": "map_page", "nullable": true},
+        "profile": {"type": "enum", "values": ["indoor", "airspace", "field"]},
+        "meters_per_px": {"type": "number", "min": 0.000001, "max": 1000},
+        "segment": {"type": "object", "validator": "map_segment", "nullable": true},
+        "check": {"type": "object", "validator": "map_segment", "nullable": true}
+      }
+    },
+    "map_points": {
+      "kind": "list",
+      "legacy_ids": true,
+      "max_items": 1000,
+      "fields": {
+        "kind": {"type": "enum", "values": ["task", "dock", "charger", "gate", "other"], "required": true},
+        "name": {"type": "string", "max_length": 120},
+        "pos": {"type": "point", "required": true},
+        "process_code": {"type": "ref", "to": "processes", "key": "code", "on_delete": "set_null", "nullable": true}
+      }
+    },
+    "map_edges": {
+      "kind": "list",
+      "legacy_ids": true,
+      "max_items": 3000,
+      "unique": [["from", "to"]],
+      "fields": {
+        "from": {"type": "ref", "to": "map_points", "on_delete": "cascade", "required": true, "immutable": true},
+        "to": {"type": "ref", "to": "map_points", "on_delete": "cascade", "required": true, "immutable": true},
+        "bidirectional": {"type": "bool", "nullable": true},
+        "width_m": {"type": "number", "min": 0.01, "max": 100, "nullable": true}
+      }
+    },
+    "map_zones": {
+      "kind": "list",
+      "legacy_ids": true,
+      "ordered": true,
+      "max_items": 250,
+      "fields": {
+        "kind": {"type": "enum", "values": ["workspace", "storage", "dock_area", "pick", "charge", "other"], "required": true},
+        "name": {"type": "string", "max_length": 120},
+        "ring": {"type": "points", "min_length": 3, "max_length": 200, "required": true}
+      }
+    },
+    "map_obstacles": {
+      "kind": "list",
+      "legacy_ids": true,
+      "ordered": true,
+      "max_items": 250,
+      "fields": {
+        "kind": {"type": "enum", "values": ["rack", "wall", "column", "other"], "required": true},
+        "name": {"type": "string", "max_length": 120},
+        "ring": {"type": "points", "min_length": 3, "max_length": 200, "required": true}
+      }
+    },
+    "map_resources": {
+      "kind": "list",
+      "legacy_ids": true,
+      "max_items": 100,
+      "fields": {
+        "kind": {"type": "enum", "values": ["dock", "narrow_aisle", "charger"], "required": true},
+        "name": {"type": "string", "max_length": 120},
+        "capacity": {"type": "int", "min": 1, "max": 100, "required": true},
+        "point_id": {"type": "ref", "to": "map_points", "on_delete": "set_null", "nullable": true},
+        "point_ids": {"type": "ref_list", "to": "map_points", "on_delete": "remove", "max_length": 200},
+        "edge_ids": {"type": "ref_list", "to": "map_edges", "on_delete": "remove", "max_length": 500}
+      }
+    },
+    "map_flows": {
+      "kind": "list",
+      "legacy_ids": true,
+      "max_items": 50,
+      "unique": [["process_code"]],
+      "fields": {
+        "process_code": {"type": "ref", "to": "processes", "key": "code", "on_delete": "cascade", "required": true, "immutable": true},
+        "pickup_point_ids": {"type": "ref_list", "to": "map_points", "on_delete": "remove", "max_length": 200},
+        "drop_point_ids": {"type": "ref_list", "to": "map_points", "on_delete": "remove", "max_length": 200}
+      }
+    }
+  }
+}

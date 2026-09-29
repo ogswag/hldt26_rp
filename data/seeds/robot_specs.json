@@ -1,0 +1,1231 @@
+{
+  "sourced_at": "2026-09-15T00:00:00Z",
+  "robots": [
+    {
+      "id": "5760e938-9a43-45a7-b8e8-f4f2e6383930",
+      "name": "Ronavi H1500",
+      "in_catalog": true,
+      "object_types": ["warehouse", "airport"],
+      "source_url": "https://ronavi-robotics.ru/catalogue/h1500",
+      "confidence": "vendor",
+      "specs": {
+        "payload_kg": 1500,
+        "mass_kg": 250,
+        "length_mm": 1044,
+        "width_mm": 654,
+        "height_mm": 380,
+        "speed_mps": 1.5,
+        "endurance_h": 6,
+        "charge_min": 18,
+        "nav_type": "QR-метки и SLAM",
+        "pos_accuracy_mm": 3,
+        "temp_min_c": 5,
+        "temp_max_c": 25,
+        "min_aisle_mm": 750
+      },
+      "gaps": {
+        "lifetime_years": "not in docx; econ later needs an assumed lifetime",
+        "service_pct_year": "not in docx; econ later needs an assumed service %"
+      },
+      "sourced_at": "2026-09-28",
+      "notes": "Vendor page states a minimum passage width of 750 mm and that the robot changes direction without turning its body. Other values kept from seed."
+    },
+    {
+      "id": "3f2aaa1b-2237-4d7b-b215-1ac5ec789ed5",
+      "name": "Ronavi SR",
+      "in_catalog": true,
+      "object_types": ["warehouse"],
+      "source_url": "https://ronavi-robotics.ru/catalogue/sr",
+      "confidence": "vendor",
+      "specs": {
+        "payload_kg": 50,
+        "speed_mps": 3,
+        "mass_kg": 80,
+        "min_aisle_mm": 690,
+        "endurance_h": 16,
+        "nav_type": "QR-метки"
+      },
+      "gaps": {
+        "other": "no TTX in docx; matching: needs_review",
+        "length_mm": "the vendor lists 590x810x870 mm without axis names; see notes",
+        "width_mm": "axis order of the vendor dimensions is unclear; see notes",
+        "height_mm": "axis order of the vendor dimensions is unclear; see notes",
+        "turn_radius_mm": "not stated on the vendor page",
+        "charge_min": "not stated on the vendor page"
+      },
+      "sourced_at": "2026-09-29",
+      "notes": "Vendor page ronavi-robotics.ru/catalogue/sr read on 2026-09-29: mass 80 kg, payload 50 kg, 3 m/s, minimum passage 690 mm, runtime up to 16 h measured from 80 to 20 percent charge, QR marks. The page gives the dimensions as 590x810x870 mm without naming the axes. The minimum passage of 690 mm fits a width of 590 mm plus 100 mm, which is not the second figure, so the order is not certain and length, width and height are left out until a page names them."
+    },
+    {
+      "id": "6f3da854-41da-4363-8496-5487f37c845a",
+      "name": "Ronavi H2000",
+      "in_catalog": true,
+      "object_types": ["warehouse"],
+      "source_url": "https://ronavi-robotics.ru/catalogue/h2000",
+      "confidence": "vendor",
+      "specs": {
+        "payload_kg": 2000,
+        "length_mm": 1540,
+        "width_mm": 990,
+        "height_mm": 250,
+        "speed_mps": 1,
+        "nav_type": "SLAM и QR-метки",
+        "mass_kg": 320,
+        "min_aisle_mm": 1190,
+        "endurance_h": 10
+      },
+      "gaps": {
+        "other": "no TTX in docx; matching: needs_review",
+        "turn_radius_mm": "not stated on the vendor page",
+        "charge_min": "not stated on the vendor page"
+      },
+      "sourced_at": "2026-09-29",
+      "notes": "Vendor page ronavi-robotics.ru/catalogue/h2000 read on 2026-09-29: dimensions, mass, payload, minimum passage 1190 mm, runtime up to 10 h measured from 80 to 20 percent charge. The page does not name the axes of 'Габариты'; read as length, width, height, which fits the minimum passage (width 990 mm plus 200 mm)."
+    },
+    {
+      "id": "dcfd9975-81eb-49b5-a422-827a720ba582",
+      "name": "Ronavi M",
+      "in_catalog": true,
+      "object_types": ["warehouse"],
+      "source_url": "https://ronavi-robotics.ru/catalogue/m",
+      "confidence": "vendor",
+      "specs": {
+        "payload_kg": 1200,
+        "pos_accuracy_mm": 20,
+        "nav_type": "лидарный SLAM или сетка QR-меток",
+        "length_mm": 960,
+        "width_mm": 660,
+        "height_mm": 335,
+        "mass_kg": 200,
+        "speed_mps": 2.5,
+        "min_aisle_mm": 760,
+        "endurance_h": 8
+      },
+      "gaps": {
+        "other": "no TTX in docx; matching: needs_review",
+        "turn_radius_mm": "not stated on the vendor page",
+        "charge_min": "not stated on the vendor page"
+      },
+      "sourced_at": "2026-09-29",
+      "notes": "Vendor page ronavi-robotics.ru/catalogue/m read on 2026-09-29: dimensions 960x660x335 mm (the page prints '960x660xx335'), mass 200 kg, payload 1200 kg, 2.5 m/s, minimum passage 760 mm, runtime up to 8 h measured from 80 to 20 percent charge. The page does not name the axes; read as length, width, height, which fits the minimum passage (width 660 mm plus 100 mm). pos_accuracy_mm is the docking accuracy to a rack (+-20 mm) stated on the vendor page. Vendor lists M configurations of 300 to 1200 kg; Stellmart M500 is a 500 kg variant, not used."
+    },
+    {
+      "id": "4d347e47-38f9-415b-aae1-7a6d3759a75c",
+      "name": "Ronavi RCM",
+      "in_catalog": true,
+      "object_types": ["warehouse"],
+      "source_url": "https://ronavi-robotics.ru/catalogue",
+      "confidence": "assumed",
+      "specs": {
+        "payload_kg": 350
+      },
+      "field_notes": {
+        "payload_kg": "Взято из названия в каталоге (до 350 кг), оценка."
+      },
+      "gaps": {
+        "payload_kg": "from catalog name (up to 350 kg), assumed",
+        "other": "no TTX in docx; matching: needs_review"
+      }
+    },
+    {
+      "id": "f7634ef8-0034-4c5b-b2f0-e44a14f05a76",
+      "name": "DMR Carrier P",
+      "in_catalog": true,
+      "object_types": ["warehouse", "airport"],
+      "source_url": "https://tnvst.ru/catalog/fmr-roboty/avtonomnyy-mobilnyy-robot-dikom-dmr-carrier-p/",
+      "confidence": "vendor",
+      "specs": {
+        "payload_kg": 1500,
+        "length_mm": 1000,
+        "width_mm": 1975,
+        "height_mm": 2050,
+        "speed_mps": 1.5,
+        "endurance_h": 10,
+        "nav_type": "лидарный SLAM"
+      },
+      "gaps": {
+        "mass_kg": "not stated",
+        "min_aisle_mm": "not stated",
+        "temp_min_c": "not in docx; matching: needs_review",
+        "temp_max_c": "not in docx; matching: needs_review",
+        "lifetime_years": "not in docx",
+        "service_pct_year": "not in docx",
+        "charge_min": "not stated",
+        "pos_accuracy_mm": "not stated"
+      },
+      "subtype": "Робот-штабелёр",
+      "sourced_at": "2026-09-28",
+      "notes": "KIIT page calls it an autonomous robot stacker (FMR) for 1,5 t pallets, lift height 1600 mm, SLAM without infrastructure, for distribution, sorting centres and production warehouses. Seed length_mm 1000 and width_mm 1975 look swapped for a forklift-type robot; not changed. Vendor page dikom-a.ru/mobilnye-roboty/DMR-CarrierP/ not readable."
+    },
+    {
+      "id": "446c5207-a099-45e0-b615-afd60de08589",
+      "name": "MARK 2 SE",
+      "in_catalog": true,
+      "object_types": ["warehouse", "airport", "hospital"],
+      "source_url": "https://r2b.company/mark2se",
+      "confidence": "vendor",
+      "specs": {
+        "length_mm": 860,
+        "width_mm": 610,
+        "height_mm": 980,
+        "speed_mps": 1.11,
+        "endurance_h": 3,
+        "charge_min": 120,
+        "nav_type": "лидар и камеры"
+      },
+      "field_notes": {
+        "speed_mps": "В документе до 3-4 км/ч, записано 1,11 м/с (4 км/ч)."
+      },
+      "gaps": {
+        "payload_kg": "cleaner, no payload in docx; matching: needs_review",
+        "mass_kg": "docx range 130-200 kg, not stored",
+        "speed_mps": "docx up to 3-4 km/h, stored 1.11 m/s (4 km/h)",
+        "min_aisle_mm": "not in docx; matching: needs_review",
+        "temp_min_c": "not in docx; matching: needs_review",
+        "temp_max_c": "not in docx; matching: needs_review"
+      }
+    },
+    {
+      "id": "eff2586c-892d-4e44-a407-1ec7f06c8f76",
+      "name": "Pallet Shuttle",
+      "in_catalog": true,
+      "object_types": ["warehouse"],
+      "source_url": "https://www.stelkon.ru/catalog/palletnye-stellazhi/pallet/",
+      "confidence": "vendor",
+      "specs": {
+        "payload_kg": 1500,
+        "length_mm": 1200,
+        "width_mm": 800,
+        "height_mm": 200,
+        "speed_mps": 0.75,
+        "endurance_h": 8,
+        "charge_min": 60,
+        "temp_max_c": 40
+      },
+      "field_notes": {
+        "speed_mps": "В документе 0,75-1,0 м/с с грузом и без, записано 0,75.",
+        "endurance_h": "В документе 8-10 ч и больше, записано 8."
+      },
+      "gaps": {
+        "speed_mps": "docx 0.75-1.0 m/s with/without load, stored 0.75",
+        "endurance_h": "docx 8-10+ h, stored 8",
+        "min_aisle_mm": "channel racks, not an aisle robot; matching: needs_review",
+        "temp_min_c": "vendor site gives both -25 C (spec list) and 'freezer chambers down to -35 C'",
+        "mass_kg": "not stated"
+      },
+      "sourced_at": "2026-09-28",
+      "notes": "Vendor spec list: up to 1 500 kg, working speed 0.8 m/s, -25..+40 C, battery 120 Ah, charge 60 min, Vulkollan wheels. Seed speed 0.75 m/s differs from the 0.8 m/s in the current text; seed kept. The shuttle is the Swedish BT Radioshuttle resold by Stelkon."
+    },
+    {
+      "id": "89ffd69f-f07b-4bf2-8023-1fd765a2b6ff",
+      "name": "AMR 100",
+      "in_catalog": true,
+      "object_types": ["warehouse"],
+      "source_url": "https://xn--l1aeahg.xn--p1ai/amr-100/",
+      "confidence": "assumed",
+      "specs": {
+        "payload_kg": 100,
+        "length_mm": 470,
+        "width_mm": 450,
+        "height_mm": 300,
+        "speed_mps": 0.8,
+        "endurance_h": 18,
+        "nav_type": "QR-метки или SLAM"
+      },
+      "field_notes": {
+        "payload_kg": "Взято из названия в каталоге (до 100 кг), оценка."
+      },
+      "gaps": {
+        "payload_kg": "from catalog name (up to 100 kg), assumed",
+        "other": "no TTX in docx; matching: needs_review",
+        "mass_kg": "not stated",
+        "charge_min": "not stated",
+        "pos_accuracy_mm": "not stated"
+      },
+      "sourced_at": "2026-09-28",
+      "notes": "Moscow industry portal page on MOROS states 47x45x30 cm (taken as LxWxH), up to 90 kg, 0,8 m/s, up to 18 h without recharge, map built from QR marks or SLAM. The 90 kg there contradicts the seed payload_kg 100; seed kept. Vendor page xn--l1aeahg.xn--p1ai/amr-100/ is not readable (blocked, search shows no specs)."
+    },
+    {
+      "id": "2ffc706d-fe43-4c2b-baad-a624a95ad3ce",
+      "name": "RoboCV stacker",
+      "in_catalog": true,
+      "object_types": ["warehouse"],
+      "source_url": "https://robocv.ru/",
+      "confidence": "assumed",
+      "specs": {},
+      "gaps": {
+        "other": "no TTX in docx; matching: needs_review"
+      }
+    },
+    {
+      "id": "b4a9ef38-b68a-4c0f-8512-9bc9a718c4e1",
+      "name": "RoboCV tug",
+      "in_catalog": true,
+      "object_types": ["warehouse"],
+      "source_url": "https://robocv.ru/",
+      "confidence": "assumed",
+      "specs": {},
+      "gaps": {
+        "other": "no TTX in docx; matching: needs_review"
+      }
+    },
+    {
+      "id": "ecd7d582-b342-449a-b43b-66288d159a32",
+      "name": "MULE",
+      "in_catalog": true,
+      "object_types": ["warehouse"],
+      "confidence": "assumed",
+      "specs": {},
+      "gaps": {
+        "other": "no TTX in docx and no vendor URL in organizer list; matching: needs_review"
+      }
+    },
+    {
+      "id": "28a5afa8-0473-4f80-99a9-b2922b76810f",
+      "name": "Cognitive Pilot tug",
+      "in_catalog": true,
+      "object_types": ["airport"],
+      "source_url": "https://cognitivepilot.com/",
+      "confidence": "vendor",
+      "specs": {
+        "payload_kg": 3000,
+        "length_mm": 2300,
+        "width_mm": 1400,
+        "height_mm": 1500,
+        "speed_mps": 6.94,
+        "endurance_h": 24,
+        "nav_type": "камеры, лидар и радар"
+      },
+      "field_notes": {
+        "speed_mps": "В документе от 5 до 20-25 км/ч, записано 6,94 м/с (25 км/ч)."
+      },
+      "gaps": {
+        "mass_kg": "docx range 1000-1500 kg, not stored",
+        "speed_mps": "docx 5 to 20-25 km/h, stored 6.94 m/s (25 km/h)",
+        "min_aisle_mm": "not in docx; matching: needs_review",
+        "temp_min_c": "year-round apron, no numbers; matching: needs_review",
+        "temp_max_c": "year-round apron, no numbers; matching: needs_review"
+      }
+    },
+    {
+      "id": "cf9643b1-7a04-429c-9ac2-33060c9f42dd",
+      "name": "EVOCARGO N1",
+      "in_catalog": true,
+      "object_types": ["airport"],
+      "source_url": "https://evocargo.com/",
+      "confidence": "vendor",
+      "specs": {
+        "payload_kg": 2000,
+        "length_mm": 5000,
+        "width_mm": 1800,
+        "height_mm": 2200,
+        "speed_mps": 6.94,
+        "charge_min": 30,
+        "nav_type": "камеры и лидар, автономность L4-L5",
+        "temp_min_c": -40,
+        "temp_max_c": 50
+      },
+      "field_notes": {
+        "speed_mps": "В документе 20-25 км/ч, записано 6,94 м/с (25 км/ч)."
+      },
+      "gaps": {
+        "endurance_h": "docx 150-200 km, not hours; not stored",
+        "speed_mps": "docx 20-25 km/h, stored 6.94 m/s (25 km/h)",
+        "min_aisle_mm": "not in docx; matching: needs_review"
+      }
+    },
+    {
+      "id": "66d8e7ad-cdcd-4287-afb0-e2afa9ef5217",
+      "name": "Ronavi SD",
+      "in_catalog": true,
+      "object_types": ["hospital"],
+      "source_url": "https://ronavi-robotics.ru/catalogue/sd",
+      "confidence": "vendor",
+      "specs": {
+        "payload_kg": 10,
+        "mass_kg": 20,
+        "length_mm": 420,
+        "width_mm": 400,
+        "height_mm": 200,
+        "speed_mps": 2.5,
+        "endurance_h": 10,
+        "nav_type": "QR-метки",
+        "pos_accuracy_mm": 3,
+        "min_aisle_mm": 500
+      },
+      "gaps": {
+        "temp_min_c": "not in docx; matching: needs_review",
+        "temp_max_c": "not in docx; matching: needs_review",
+        "charge_min": "not in docx",
+        "turn_radius_mm": "not stated on the vendor page"
+      },
+      "notes": "Vendor page ronavi-robotics.ru/catalogue/sd read on 2026-09-29: minimum passage 500 mm (the earlier value 700 mm is not on it), runtime up to 10 h measured from 80 to 20 percent charge. The vendor news page ronavi-robotics.ru/media/tpost/v02ho2te91-novii-ultrakompaktnii-robot-sortirovschi says up to 5 h autonomous work, which contradicts the runtime on the product page; the product page is kept.",
+      "sourced_at": "2026-09-29"
+    },
+    {
+      "id": "8f3c1e20-6d4a-4b91-9c2e-7b0a11d4e8f2",
+      "name": "PuduBot 2",
+      "in_catalog": false,
+      "object_types": ["hospital"],
+      "source_url": "https://www.pudurobotics.com/en/products/pudubot2",
+      "confidence": "vendor",
+      "solution": {
+        "name": "PuduBot 2",
+        "vendor": "Pudu Robotics",
+        "kind": "brs",
+        "subtype": "AMR",
+        "scenario": "Внутрибольничная доставка"
+      },
+      "specs": {
+        "payload_kg": 10,
+        "mass_kg": 39,
+        "length_mm": 580,
+        "width_mm": 535,
+        "height_mm": 1290,
+        "speed_mps": 1.2,
+        "endurance_h": 12,
+        "charge_min": 240,
+        "nav_type": "VSLAM и лидарный SLAM",
+        "min_aisle_mm": 800
+      },
+      "field_notes": {
+        "payload_kg": "В документе 10 кг на полку.",
+        "speed_mps": "В документе 0,5-1,2 м/с, записано 1,2.",
+        "min_aisle_mm": "В документе 80 см."
+      },
+      "gaps": {
+        "payload_kg": "docx 10 kg per shelf",
+        "speed_mps": "docx 0.5-1.2 m/s, stored 1.2",
+        "min_aisle_mm": "docx 80 cm",
+        "price_rub": "not in catalog_export_v4",
+        "temp_min_c": "not in docx; matching: needs_review",
+        "temp_max_c": "not in docx; matching: needs_review"
+      }
+    },
+    {
+      "id": "5a5b3599-bd64-4330-9bbb-4f8ce7d780b9",
+      "name": "Клинботикс 600",
+      "in_catalog": true,
+      "object_types": ["hospital"],
+      "confidence": "assumed",
+      "specs": {},
+      "gaps": {
+        "other": "Sklif case in catalog text, no TTX in docx; matching: needs_review"
+      }
+    },
+    {
+      "id": "e8960183-1828-4fdb-8c39-91f5a3523a96",
+      "name": "РУБИ-С-03",
+      "in_catalog": true,
+      "object_types": ["warehouse", "hospital"],
+      "confidence": "assumed",
+      "specs": {},
+      "gaps": {
+        "other": "no TTX in docx; matching: needs_review"
+      }
+    },
+    {
+      "id": "9b20417a-0ac7-4786-985b-f3459a15075d",
+      "name": "Unit",
+      "in_catalog": true,
+      "object_types": ["warehouse", "airport"],
+      "confidence": "assumed",
+      "specs": {},
+      "gaps": {
+        "other": "catalog text mentions airports and warehouses, no TTX in docx; matching: needs_review"
+      }
+    },
+    {
+      "id": "5ec66969-8fcc-47b3-b517-a9c29372fffe",
+      "name": "AMR 800",
+      "in_catalog": true,
+      "object_types": ["warehouse"],
+      "source_url": "https://xn--l1aeahg.xn--p1ai/amr-800/",
+      "sourced_at": "2026-09-29",
+      "confidence": "vendor",
+      "specs": {
+        "payload_kg": 800,
+        "speed_mps": 2,
+        "endurance_h": 14,
+        "nav_type": "QR-метки или SLAM",
+        "length_mm": 940,
+        "width_mm": 640,
+        "height_mm": 230,
+        "mass_kg": 150,
+        "pos_accuracy_mm": 10,
+        "temp_min_c": 5,
+        "temp_max_c": 40
+      },
+      "gaps": {
+        "charge_min": "the page names charging by dock station or by hand from 1-phase 220 V 10 A and gives no charging time",
+        "min_aisle_mm": "not stated on the vendor page",
+        "turn_radius_mm": "not stated on the vendor page"
+      },
+      "notes": "Vendor page (MOROS, AMR 800) read on 2026-09-29: dimensions 940x640x230 mm (length, width, height), mass 150 kg, payload 800 kg, 2 m/s (the industry portal prommoscow.info/factories/mobile-robots-moros gave 2.5 m/s, the vendor page is used), accuracy +-10 mm, QR marks and SLAM, runtime 24 h at average load and 14 h at maximum load, operating temperature +5 to +40 C.",
+      "field_notes": {
+        "endurance_h": "Производитель называет 24 часа при средних нагрузках и 14 часов при максимальных. Взято значение при максимальной нагрузке."
+      }
+    },
+    {
+      "id": "7d5a76d2-7bf3-4a40-b6f7-64590d4d9273",
+      "name": "AMR1500",
+      "in_catalog": true,
+      "object_types": ["warehouse"],
+      "source_url": "https://xn--l1aeahg.xn--p1ai/amr-1500/",
+      "sourced_at": "2026-09-29",
+      "confidence": "vendor",
+      "specs": {
+        "payload_kg": 1500,
+        "pos_accuracy_mm": 10,
+        "nav_type": "лидар, QR-метки и энкодеры",
+        "length_mm": 1080,
+        "width_mm": 640,
+        "height_mm": 230,
+        "mass_kg": 185,
+        "speed_mps": 1.5,
+        "endurance_h": 10,
+        "temp_min_c": 5,
+        "temp_max_c": 40
+      },
+      "gaps": {
+        "min_aisle_mm": "not stated on the vendor page",
+        "turn_radius_mm": "not stated on the vendor page",
+        "charge_min": "not stated on the vendor page"
+      },
+      "notes": "Vendor page (MOROS, AMR 1500) read on 2026-09-29: dimensions 1080x640x230 mm (length, width, height), mass 185 kg, payload up to 1500 kg, 1.5 m/s, accuracy +-10 mm, QR marks and SLAM, runtime 20 h at average load and 10 h at maximum load, operating temperature +5 to +40 C.",
+      "field_notes": {
+        "endurance_h": "Производитель называет 20 часов при средних нагрузках и 10 часов при максимальных. Взято значение при максимальной нагрузке."
+      }
+    },
+    {
+      "id": "cccd0c0d-8ae7-435d-a171-45f5d82886e6",
+      "name": "DMR 1200",
+      "in_catalog": true,
+      "object_types": ["warehouse"],
+      "source_url": "https://www.kiit.ru/product/avtonomnyy-mobilnyy-robot-amr-dikom-dmr-1200/",
+      "sourced_at": "2026-09-28",
+      "confidence": "vendor",
+      "description": "Автономный мобильный робот ДиКом для перевозки тяжёлых грузов до 1 200 кг: стеллажей, тележек и поддонов на складах, производственных участках и в логистических центрах. Ориентируется по SLAM, работает до 8 часов на одном заряде. Внесён в реестр российского оборудования.",
+      "specs": {
+        "payload_kg": 1200,
+        "length_mm": 1115,
+        "width_mm": 845,
+        "height_mm": 255,
+        "speed_mps": 2,
+        "endurance_h": 8,
+        "charge_min": 120,
+        "nav_type": "SLAM",
+        "pos_accuracy_mm": 5
+      },
+      "gaps": {
+        "mass_kg": "not stated",
+        "min_aisle_mm": "not stated",
+        "temp_min_c": "not stated"
+      },
+      "notes": "Values from the KIIT distributor page (official ДиКом representative). Charge time is 2 h from 10 to 80 %. Accuracy +-5 mm / +-0,5 deg. Vendor site dikom-a.ru has no indexed spec text for this model."
+    },
+    {
+      "id": "be814758-3616-4b94-befa-9848be2ac604",
+      "name": "DMR 600",
+      "in_catalog": true,
+      "object_types": ["warehouse"],
+      "source_url": "https://www.kiit.ru/product/avtonomnyy-mobilnyy-robot-amr-dikom-dmr-600/",
+      "sourced_at": "2026-09-28",
+      "confidence": "vendor",
+      "description": "Автономный мобильный робот ДиКом для перевозки небольших и средних грузов до 600 кг на стеллажах и тележках: на складах, в цехах и логистических центрах. Груз берёт подъёмно-поворотной платформой, ориентируется по лидару и QR-меткам, работает до 8 часов на одном заряде.",
+      "specs": {
+        "payload_kg": 600,
+        "length_mm": 960,
+        "width_mm": 650,
+        "height_mm": 250,
+        "speed_mps": 2,
+        "endurance_h": 8,
+        "charge_min": 120,
+        "nav_type": "лидарный SLAM и QR-метки",
+        "pos_accuracy_mm": 5
+      },
+      "gaps": {
+        "mass_kg": "not stated",
+        "min_aisle_mm": "not stated"
+      },
+      "notes": "KIIT distributor page lists dimensions as 250x960x650 mm without axis labels in the search text; read as height 250, length 960, width 650 (the lifting platform is 850x600 mm, lift 60 mm). Charge 2 h from 10 to 80 %. Accuracy +-5 mm / +-0,5 deg."
+    },
+    {
+      "id": "a83abbfd-78ee-43dc-9111-f51db4938001",
+      "name": "DMR 300 Carrier B",
+      "in_catalog": true,
+      "object_types": ["warehouse"],
+      "source_url": "https://dikom-a.ru/mobilnye-roboty/melkie-gruzy/",
+      "sourced_at": "2026-09-28",
+      "confidence": "vendor",
+      "specs": {},
+      "gaps": {
+        "payload_kg": "not stated",
+        "speed_mps": "not stated",
+        "endurance_h": "not stated"
+      },
+      "notes": "Vendor page: the DMR 300 configuration carries and loads/unloads two plastic KLT boxes 600x400x300 mm and is used in warehouses and production, linked with automated storage and cobots. No numeric specs found on vendor or KIIT pages."
+    },
+    {
+      "id": "5b43b013-3a2e-42ca-9013-33d0a9c39b05",
+      "name": "DMP 15000",
+      "in_catalog": true,
+      "object_types": ["warehouse"],
+      "source_url": "https://www.kiit.ru/katalog/pogruzochnaya-tekhnika/spetstekhnika/avtomaticheskie-transportnye-sistemy-agv/",
+      "sourced_at": "2026-09-28",
+      "confidence": "vendor",
+      "subtype": "Самоходная транспортная платформа",
+      "specs": {
+        "payload_kg": 15000,
+        "nav_type": "SLAM"
+      },
+      "gaps": {
+        "pos_accuracy_mm": "+-1 mm is stated for the DMP line on kiit.ru/product/samokhodnaya-transportnaya-platforma-agv-dikom-dmp/, not for the 15000 variant",
+        "height_mm": "600 mm platform height is stated for the DMP line, not for this variant",
+        "speed_mps": "not stated"
+      },
+      "notes": "KIIT listing gives DMP 15000 as 15000 kg, 250 mm (lift height per the DMP page), SLAM. DMP line: up to 50 t, moves forward, sideways and diagonally without turning, for warehouses and production sites."
+    },
+    {
+      "id": "3f2a1265-3c35-4823-9d20-1978c86e424b",
+      "name": "TAGARKA 35t",
+      "in_catalog": true,
+      "object_types": [],
+      "source_url": "https://semargl.pro/equipment/",
+      "sourced_at": "2026-09-28",
+      "confidence": "vendor",
+      "subtype": "Автономная грузовая платформа",
+      "description": "Колёсная грузовая платформа «Семаргл» для перевозки грузов внутри цеха и между цехами. Электропривод с обратной связью на всех ведущих колёсах, плоский настил под груз. Оператор ведёт её с пульта на расстоянии до 30 м, по заказу она ездит автономно. Длинномерный груз везут две платформы в паре.",
+      "specs": {
+        "payload_kg": 35000
+      },
+      "gaps": {
+        "mass_kg": "not stated",
+        "length_mm": "not stated",
+        "speed_mps": "not stated (pult regulates speed, no number)",
+        "endurance_h": "not stated"
+      },
+      "notes": "Vendor lists TAGARKA 2t, 6t and 35t; payload 35 000 kg is the 35t model. Description facts from the vendor page https://semargl.pro/services/avtomatizirovannye-podemno-transportnye-sistemy/avtonomnaya-gruzovaya-platforma/ (remote pult range up to 30 m, optional AGV mode, paired platforms). semargl.pro is blocked for WebFetch; values taken from search snippets of the vendor site."
+    },
+    {
+      "id": "0265d700-534e-417e-8fde-47de88fc3ebb",
+      "name": "САДКО",
+      "in_catalog": true,
+      "object_types": [],
+      "source_url": "https://www.uecrus.com/press/v-odk-star-sozdayut-robota-dlya-transportirovki-detaley-i-instrumenta/",
+      "sourced_at": "2026-09-28",
+      "confidence": "vendor",
+      "description": "САДКО (самоходный автономный доставщик комплектующих и оборудования) разрабатывают на пермском заводе ОДК-СТАР для перевозки деталей и инструмента по цехам. Полный привод с независимым управлением колёсами, датчики против столкновений. Едет по карте сам или с пульта. Везёт до 100 кг, до 1,5 м/с.",
+      "specs": {
+        "payload_kg": 100,
+        "speed_mps": 1.5,
+        "nav_type": "по карте сам или с пульта"
+      },
+      "gaps": {
+        "mass_kg": "not stated",
+        "length_mm": "not stated",
+        "endurance_h": "not stated",
+        "charge_min": "not stated"
+      },
+      "notes": "Press release of the parent corporation ODK (UEC, Rostec), April 2026. Robot is in development and planned for four routes in the main production building; serial rollout depends on tests. Same numbers on rostec.ru and habr.com."
+    },
+    {
+      "id": "937da5de-b4a1-4a88-ac6d-a97206bdbe98",
+      "name": "Робот-паук",
+      "in_catalog": true,
+      "object_types": [],
+      "source_url": "https://www.aemtech.ru/news/atommash-zapustil-v-ekspluatatsiyu-robota-dlya-proverki-svarnykh-shvov-atomnykh-reaktorov/",
+      "sourced_at": "2026-09-28",
+      "confidence": "vendor",
+      "description": "Комплекс завода «Атоммаш» («Росатом») для ультразвукового контроля сварных швов реакторов и парогенераторов АЭС. Несёт ультразвуковой преобразователь нового поколения, работает на поверхностях сложной формы и в труднодоступных зонах. Проверяет швы толщиной до 30 см втрое быстрее ручного контроля.",
+      "specs": {},
+      "gaps": {
+        "mass_kg": "not stated",
+        "speed_mps": "not stated",
+        "length_mm": "not stated"
+      },
+      "notes": "Only a press release exists (aemtech.ru, rosatommd.ru). Atommash is a branch of AO AEM-tekhnologii, not an OOO as the catalog says. The robot inspects welds in reactor manufacturing; the catalog scenario (infrastructure monitoring) is broader than what the source describes. No numeric specs published."
+    },
+    {
+      "id": "0073d0bb-54cd-40f0-897b-75b22d3e9f8c",
+      "name": "Легат патрол",
+      "in_catalog": true,
+      "object_types": [],
+      "source_url": "https://droneshub.group/na-forume-bas-vpervye-predstavyat-avtonomnyj-rover-dlya-himicheskogo-kontrolya-kachestva-vozduha/",
+      "sourced_at": "2026-09-28",
+      "confidence": "vendor",
+      "specs": {
+        "payload_kg": 150,
+        "endurance_h": 8,
+        "nav_type": "по маршруту сам или с пульта"
+      },
+      "gaps": {
+        "mass_kg": "not stated",
+        "length_mm": "not stated",
+        "speed_mps": "not stated",
+        "temp_min_c": "not stated (only 'any weather' wording)"
+      },
+      "notes": "Vendor news (Aug 2025, Forum BAS): up to 150 kg payload, all-wheel drive, high moisture protection, batteries for up to 8 h, route following or remote control; built to order of NPO Pribor GANK. Distributor rootstore.ru lists a 'LEGAT' patrol rover with 300 kg payload; not used because the vendor page says 150 kg. droneshub.group is blocked for WebFetch; values from search snippets of the vendor page, same numbers in mskagency.ru and afisha.ru."
+    },
+    {
+      "id": "f381872e-d6aa-43b6-be2a-ba36cc9eb90a",
+      "name": "Колесный робот",
+      "in_catalog": true,
+      "object_types": [],
+      "source_url": "https://agrobit.ru/wheel-robots/",
+      "sourced_at": "2026-09-28",
+      "confidence": "vendor",
+      "description": "Автономный колёсный робот «Агробит» для корпусов с птицей. Распознаёт и сам собирает павшую птицу и напольное яйцо, активизирует цыплят, записывает параметры микроклимата в каждой точке корпуса. Делает 4 или 5 обходов в день, после них и на ночь уезжает на станцию автозарядки.",
+      "specs": {},
+      "gaps": {
+        "mass_kg": "not stated on the wheeled-robot page",
+        "endurance_h": "not stated on the wheeled-robot page",
+        "speed_mps": "not stated",
+        "length_mm": "not stated"
+      },
+      "notes": "The vendor page for the related Agrobot system (https://agrobit.ru/agrobot/: control server plus a wheeled robot for disinfection and inspection in poultry houses) gives 45 kg base mass, 110 kg full mass, 3 h runtime and 3 h charge. Not used: it is not certain the Agrobot robot is the same model as this wheeled robot. agrobit.ru is blocked for WebFetch; facts from search snippets of the vendor pages."
+    },
+    {
+      "id": "441fadd3-016a-43f9-a331-f6e757c04ce9",
+      "name": "DH:CARGO UNIT",
+      "in_catalog": true,
+      "object_types": ["warehouse"],
+      "source_url": "https://rootstore.ru/catalog/katalog/avtomatizatsiya-i-monitoring/robototekhnika/rovery/kolesnye-rovery/rover-cargo-unit-vsepogodnaya-robotizirovannaya-platforma-vezdekhod-dlya-perevozki-gruzov-do-150-kg-/",
+      "sourced_at": "2026-09-28",
+      "confidence": "vendor",
+      "specs": {
+        "payload_kg": 150,
+        "nav_type": "GPS и ГЛОНАСС, пульт по Wi-Fi или LTE"
+      },
+      "gaps": {
+        "speed_mps": "sources disagree: 15 km/h (www1.ru news on the Skolkovo show) vs 20 km/h in one distributor snippet",
+        "endurance_h": "sources disagree: up to 8 h and 40 km range (distributor) vs 24 h on one charge (www1.ru news)",
+        "mass_kg": "not stated",
+        "length_mm": "not stated"
+      },
+      "notes": "Distributor pages (rootstore.ru, shop.nag.ru) title: all-weather robotic platform for cargo up to 150 kg, open body; 4x4 chassis with independent BLDC drives, IP44, GPS/GLONASS, Wi-Fi and LTE; use at industrial, construction and warehouse sites and in logistics centres. Vendor pages droneshub.group/droneshub.ru are blocked. www1.ru describes 'Карго Юнит' with closed separate compartments, 15 km/h and 24 h, which may be a different body version, so speed and endurance are left out."
+    },
+    {
+      "id": "6c0df6e9-ea39-40d2-93af-7aec13d629c7",
+      "name": "Геоскан 401",
+      "in_catalog": true,
+      "object_types": [],
+      "source_url": "https://www.geoscan.ru/en/products/geoscan401",
+      "sourced_at": "2026-09-28",
+      "confidence": "vendor",
+      "subtype": "Мультиротор",
+      "description": "Квадрокоптер группы компаний «Геоскан» для аэрофотосъёмки, 3D-моделирования и мониторинга. Взлетает вертикально с площадки 5 на 5 м и может зависать над точкой. Максимальная взлётная масса 9,5 кг, скорость до 50 км/ч, полёт до 60 минут. Нагрузка сменная: камера, лидар, гамма-спектрометр.",
+      "specs": {
+        "mass_kg": 9.5,
+        "speed_mps": 13.89,
+        "endurance_h": 1
+      },
+      "gaps": {
+        "payload_kg": "not stated on the vendor page",
+        "length_mm": "not stated",
+        "temp_min_c": "vendor only says down to -40 C for the Arctic option"
+      },
+      "notes": "mass_kg is the maximum take-off mass (9,5 kg). Vendor pages say up to 60 min; one vendor page summary gave up to 45 min depending on payload, kept 60 min. Distributors quote -20..+40 C (standard) and -40..+40 C (Arctic option); not confirmed on the vendor page, left out."
+    },
+    {
+      "id": "f1c8478c-86c2-4381-96db-08e0ae889b41",
+      "name": "Геоскан 701",
+      "in_catalog": true,
+      "object_types": [],
+      "source_url": "https://www.geoscan.ru/en/blog/noviy-samolet-geoscan-701-s-dvs-sovershil-perviy-rabochiy-polet",
+      "sourced_at": "2026-09-28",
+      "confidence": "vendor",
+      "subtype": "Самолёт",
+      "specs": {
+        "mass_kg": 19,
+        "width_mm": 3300,
+        "endurance_h": 10
+      },
+      "gaps": {
+        "speed_mps": "not stated for the base 701 on a vendor page",
+        "payload_kg": "not stated"
+      },
+      "notes": "Vendor blog on the first flight: fully fuelled plane with payload weighs 19 kg (take-off mass), wingspan 330 cm (width_mm is the wingspan). Up to 10 h of flight also on the product page geoscan.ru/en/products/geoscan701. ICE engine, catapult launch, parachute landing."
+    },
+    {
+      "id": "3d8ff7d4-19fb-4a21-bc4a-15fb13ad3393",
+      "name": "Геоскан 201",
+      "in_catalog": true,
+      "object_types": [],
+      "source_url": "https://www.geoscan.ru/ru/blog/geoscan-201-nash-samyy-populyarnyy-bespilotnik-dlya-afs",
+      "sourced_at": "2026-09-28",
+      "confidence": "vendor",
+      "specs": {
+        "endurance_h": 3
+      },
+      "gaps": {
+        "mass_kg": "one search summary gave 12 kg without a page, distributors give 8,5 kg for 201 Termo; left out",
+        "speed_mps": "64-130 km/h is stated for the 201 Video version, not the base model"
+      },
+      "notes": "Vendor blog: up to 3 h in the air, up to 100 km from the launch point, up to 4200 ha at 10 cm/px per flight."
+    },
+    {
+      "id": "19283c8d-abfd-41a4-a4dd-846392728ea9",
+      "name": "Геоскан 201 Агро",
+      "in_catalog": true,
+      "object_types": [],
+      "source_url": "https://idronex.ru/%D0%93%D0%B5%D0%BE%D1%81%D0%BA%D0%B0%D0%BD-201-%D0%91%D0%9F%D0%9B%D0%90-%D0%90%D0%B3%D1%80%D0%BE",
+      "sourced_at": "2026-09-28",
+      "confidence": "vendor",
+      "subtype": "Самолёт",
+      "description": "Исполнение беспилотного самолёта «Геоскан 201» для сельского хозяйства. Несёт две камеры: RGB для ортофотопланов, карт высот и 3D-моделей и модифицированную ИК-камеру для карт NDVI. Летает до 3 часов в автоматическом режиме, за вылет обследует более 2 000 га.",
+      "specs": {
+        "endurance_h": 3
+      },
+      "gaps": {
+        "mass_kg": "not stated",
+        "temp_min_c": "distributors quote -20 C and -40 C for the Arctic option; not tied to one page"
+      },
+      "notes": "Distributor iDronex page. Vendor product page for the Agro version was not found; Geoscan now sells an Agrogeodesy version."
+    },
+    {
+      "id": "33fca97e-ef4f-459d-a773-ab58b7f84fd5",
+      "name": "Геоскан 401 Геодезия",
+      "in_catalog": true,
+      "object_types": [],
+      "source_url": "https://thedrone.ru/katalog/geoskan-401-geodezija/",
+      "sourced_at": "2026-09-28",
+      "confidence": "vendor",
+      "subtype": "Мультиротор",
+      "description": "Исполнение квадрокоптера «Геоскан 401» для инженерно-геодезических изысканий. На борту камера Sony RX1 и геодезический ГНСС-приёмник Topcon, по снимкам строят ортофотопланы и 3D-модели с точной привязкой. Взлетает с площадки 5 м, летает до 60 минут со скоростью до 50 км/ч.",
+      "specs": {
+        "speed_mps": 13.89,
+        "endurance_h": 1
+      },
+      "gaps": {
+        "mass_kg": "not stated",
+        "payload_kg": "not stated"
+      },
+      "notes": "Values from the TheDrone.ru distributor page; the vendor page geoscan.ru/en/products/geoscan401/geo did not show numbers in search results."
+    },
+    {
+      "id": "845b14b5-e469-4676-a3f3-39725fc6354e",
+      "name": "Геоскан 401 Лидар",
+      "in_catalog": true,
+      "object_types": [],
+      "source_url": "https://www.geo-spektr.ru/bespilotnye-letatelnye-apparaty/kvadrokoptery/geoscan/geoskan-401-lidar.html",
+      "sourced_at": "2026-09-28",
+      "confidence": "vendor",
+      "subtype": "Мультиротор",
+      "description": "Исполнение квадрокоптера «Геоскан 401» с лазерным сканером АГМ и камерой Sony для воздушного лазерного сканирования. Строит облако точек и модель рельефа даже под густым лесом. Полёт до 40 минут, скорость до 50 км/ч, за вылет снимает до 1,7 км².",
+      "specs": {
+        "speed_mps": 13.89,
+        "endurance_h": 0.67
+      },
+      "gaps": {
+        "mass_kg": "not stated",
+        "payload_kg": "not stated"
+      },
+      "notes": "Distributor Geo-Spektr page: up to 40 min with the lidar, up to 50 km/h, 1,7 sq km per flight. Scanner (AGM-MS1/MS3) is rated -20..+50 C, that is the scanner, not the aircraft, so left out."
+    },
+    {
+      "id": "c293732e-214e-4473-93fd-15db477db3af",
+      "name": "Геоскан Gemini",
+      "in_catalog": true,
+      "object_types": [],
+      "source_url": "https://download.geoscan.ru/site-files/gemini/Gemini_Specs_EN_RUS.pdf",
+      "sourced_at": "2026-09-28",
+      "confidence": "vendor",
+      "subtype": "Мультиротор",
+      "description": "Компактный квадрокоптер группы компаний «Геоскан» для аэрофотосъёмки и картографирования. Камера Sony UMC-R10C на 20,1 Мп и приёмник Topcon дают снимки с сантиметровой привязкой. За полёт снимает до 150 га при 3 см на пиксель, скорость до 15 м/с, работает от -15 до +40 °C.",
+      "specs": {
+        "length_mm": 638,
+        "width_mm": 505,
+        "height_mm": 224,
+        "speed_mps": 15,
+        "temp_min_c": -15,
+        "temp_max_c": 40
+      },
+      "gaps": {
+        "endurance_h": "flight time is in the vendor spec sheet but was not shown in search results",
+        "mass_kg": "only the 10 kg mass of the whole kit with equipment was found, not the aircraft"
+      },
+      "notes": "Vendor spec sheet (also product page geoscan.ru/en/products/gemini): outer dimensions 638 x 505 x 224 mm, max horizontal speed 15 m/s, vertical 5 m/s, -15..+40 C, wind up to 10 m/s, altitude up to 500 m AGL, control range up to 5 km. Values came from a search summary over these vendor pages; the page could not be opened directly."
+    },
+    {
+      "id": "cf43e50c-bdf6-4069-accb-e16b1d2c670e",
+      "name": "Геоскан 201 Термо",
+      "in_catalog": true,
+      "object_types": [],
+      "source_url": "https://neramsc.ru/catalog/kvadrokoptery/bas-samoletnogo-tipa/bas-geoskan-201-termo/",
+      "sourced_at": "2026-09-28",
+      "confidence": "vendor",
+      "subtype": "Самолёт",
+      "description": "Исполнение беспилотного самолёта «Геоскан 201» типа «летающее крыло» для съёмки в видимом и инфракрасном диапазонах. Тепловизор VLM640 и фотокамера позволяют вести наблюдение ночью и при плохой видимости. Взлётная масса 8,5 кг, полезная нагрузка 1,5 кг, полёт до 3 часов.",
+      "specs": {
+        "mass_kg": 8.5,
+        "payload_kg": 1.5,
+        "endurance_h": 3
+      },
+      "gaps": {
+        "speed_mps": "64-130 km/h appeared in a search summary but not tied to this page"
+      },
+      "notes": "Distributor NERA page: take-off mass 8,5 kg (mass_kg), payload 1,5 kg, up to 3 h, route up to 210 km, wind up to 12 m/s, altitude up to 4000 m."
+    },
+    {
+      "id": "3e262660-f12a-4eff-8c26-ccf36f923755",
+      "name": "Геоскан 701 Видео",
+      "in_catalog": true,
+      "object_types": [],
+      "source_url": "https://www.geoscan.ru/ru/blog/bas-geoskana-dlya-videomonitoringa",
+      "sourced_at": "2026-09-28",
+      "confidence": "vendor",
+      "specs": {
+        "speed_mps": 33.33,
+        "endurance_h": 10,
+        "temp_min_c": -20,
+        "temp_max_c": 40
+      },
+      "gaps": {
+        "mass_kg": "not stated",
+        "width_mm": "wingspan not stated for the Video version"
+      },
+      "notes": "Vendor blog on video monitoring UAS: flight speed 80-120 km/h (speed_mps is the upper value), up to 10 h, route up to 1000 km, up to 4000 m altitude, -20..+40 C. One broader search summary said up to 50 km/h for the Video version; that did not hold in the exact-phrase search on the vendor blog, kept 80-120 km/h."
+    },
+    {
+      "id": "018cc2dd-3dfe-4bd2-aac6-f54cbebd783e",
+      "name": "Морской скорпион",
+      "in_catalog": true,
+      "object_types": [],
+      "source_url": "https://sev.tv/news/93007.html",
+      "sourced_at": "2026-09-28",
+      "confidence": "vendor",
+      "description": "Беспилотный катамаран для сбора плавающего мусора: пластика, бумаги, древесины. Собран студентами Политехнического института СевГУ. Мусор заходит через шторку в сеть между поплавками, сеть снимают, не поднимая аппарат из воды. Два аккумулятора, два винта, управление с пульта на расстоянии до 500 м.",
+      "specs": {
+        "mass_kg": 60
+      },
+      "gaps": {
+        "length_mm": "page says only 'полутораметровое устройство' without naming the axis",
+        "speed_mps": "not stated",
+        "endurance_h": "not stated"
+      },
+      "notes": "Local TV report (sev.tv, 'Первый Севастопольский'): 'весит около 60 кг', remote range up to 500 m. sevastopolmedia.ru/news/1681651 adds a solar panel besides the two batteries. No SevSU page with specs found."
+    },
+    {
+      "id": "8ab1ea05-1c09-4f71-88a4-fffb0b725d6b",
+      "name": "Херсонес",
+      "in_catalog": true,
+      "object_types": [],
+      "source_url": "https://www.xn--92-bmce4b.xn--p1ai/products/tnpa-khersones/",
+      "sourced_at": "2026-09-28",
+      "confidence": "vendor",
+      "description": "Малогабаритный телеуправляемый подводный аппарат лаборатории робототехники СевГУ с Y-образной компоновкой движителей и трёхмерным техническим зрением. Осматривает подводные сооружения, измеряет объекты, с манипулятором перемещает и поднимает их. Рабочая глубина до 200 м, наибольшая 300 м.",
+      "specs": {
+        "mass_kg": 20,
+        "length_mm": 764,
+        "width_mm": 816,
+        "height_mm": 312,
+        "speed_mps": 1.5
+      },
+      "gaps": {
+        "endurance_h": "battery given as 12 000 mAh (220 Wh), no hours stated",
+        "temp_min_c": "not stated"
+      },
+      "notes": "Product page on the НОЦ «МореАгроБиоТех» site (ноц92.рф): mass 20 kg, 764*816*312 mm (read as L*W*H), working depth 200 m, max 300 m, speed 1-1,5 m/s horizontal/vertical; speed_mps is the upper value. stv92.ru/news/news-5000 says 'до 20 кг', pre-series sample prepared for serial production."
+    },
+    {
+      "id": "45487628-a2c6-421f-9ea4-761b6c3be240",
+      "name": "МК",
+      "in_catalog": true,
+      "object_types": [],
+      "source_url": "https://stv92.ru/news/news-10667/",
+      "sourced_at": "2026-09-28",
+      "confidence": "vendor",
+      "description": "Многофункциональная надводная платформа СевГУ, показанная на ПМЭФ-2025 в линейке морских беспилотников университета вместе с «Барабулькой», «Калканом», «Сарганом» и «Херсонесом». Аппараты линейки предназначены для научных исследований, поисково-спасательных работ и экологического мониторинга.",
+      "specs": {},
+      "gaps": {
+        "length_mm": "not stated",
+        "payload_kg": "not stated",
+        "speed_mps": "not stated"
+      },
+      "notes": "Named on the page only as 'многофункциональная платформа «МК»'; no specs found."
+    },
+    {
+      "id": "60023f03-3a54-4d12-a1d7-6a00f8a353be",
+      "name": "БЭК-Р",
+      "in_catalog": true,
+      "object_types": [],
+      "source_url": "https://robocorp.ru/products/bezkipazhnyj-kater-bek",
+      "sourced_at": "2026-09-28",
+      "confidence": "vendor",
+      "description": "Пятиметровый безэкипажный катер компании «РобоКорп», построенный на стартап-верфи «ИТ-Гараж», основанной СевГУ и ИТ-парком. Патрулирует акваторию, ведёт экологический мониторинг, перевозит груз до 350 кг. Работает с пульта или сам идёт по заданному маршруту; конструкция модульная, мотор подвесной.",
+      "specs": {
+        "payload_kg": 350,
+        "length_mm": 5000
+      },
+      "gaps": {
+        "speed_mps": "not stated",
+        "mass_kg": "not stated",
+        "width_mm": "not stated",
+        "endurance_h": "not stated"
+      },
+      "notes": "Builder's product page (RoboCorp, SevSU partner in НОЦ «МореАгроБиоТех»): 5 m boat, load up to 350 kg, hybrid control, modular. stv92.ru/news/news-11999 (sea trials, governor's report) also gives 5 m and a 115 hp outboard motor; press calls it a catamaran."
+    },
+    {
+      "id": "3416f6ec-ccf2-457f-b076-fa9d09648e33",
+      "name": "Сивуч",
+      "in_catalog": true,
+      "object_types": [],
+      "source_url": "https://www.tadviser.ru/index.php/%D0%9F%D1%80%D0%BE%D0%B4%D1%83%D0%BA%D1%82:%D0%A1%D0%B8%D0%B2%D1%83%D1%87_(%D0%B1%D0%B5%D0%B7%D1%8D%D0%BA%D0%B8%D0%BF%D0%B0%D0%B6%D0%BD%D1%8B%D0%B9_%D0%BA%D0%B0%D1%82%D0%B5%D1%80)",
+      "sourced_at": "2026-09-28",
+      "confidence": "vendor",
+      "subtype": "Безэкипажный катер",
+      "specs": {
+        "payload_kg": 750,
+        "mass_kg": 230
+      },
+      "gaps": {
+        "length_mm": "not stated",
+        "speed_mps": "not stated",
+        "endurance_h": "not stated"
+      },
+      "notes": "TAdviser product page: catamaran built at the Korsakov youth centre «Техносфера» (Sakhalin) for hydrography, load capacity 750 kg, own weight 230 kg, remote-control range 5-15 km (matches the catalog text). portnews.ru/news/319773: presented 9 Oct 2021, satellite telemetry, Korsakov-Kholmsk autonomous run. A search summary also gave '600 kg, 800 km, 50 km/h', but that text is from another boat's article (tehnoomsk.ru), not used."
+    },
+    {
+      "id": "75877a99-cc68-454a-b77f-12f2641337cc",
+      "name": "Сарган",
+      "in_catalog": true,
+      "object_types": [],
+      "source_url": "https://donetskmedia.ru/20250618-sevastopol-predstavil-3-obrazca-novejshih-morskih-drona-na-pmjef-2025.media",
+      "sourced_at": "2026-09-28",
+      "confidence": "vendor",
+      "description": "Экспериментальная модульная надводная платформа СевГУ и НОЦ «МореАгроБиоТех» для отработки беспилотных катеров следующего поколения. Назначение: морские исследования, охрана побережья и акваторий, сопровождение судов, поисково-спасательные работы, экологический мониторинг.",
+      "specs": {},
+      "gaps": {
+        "length_mm": "not stated in any public source found",
+        "speed_mps": "not stated",
+        "payload_kg": "not stated",
+        "endurance_h": "not stated"
+      },
+      "notes": "No numeric specs published. Start date (November 2022) and the protection/convoy tasks come from sevastopol.su/news/sevastopol-pokazal-perspektivnye-nadvodnyy-i-vozdushnyy-drony. A follow-up project «Сарган-М» (stv92.ru/news/news-5282) won the ERA fund accelerator in 2024."
+    },
+    {
+      "id": "34590532-dff0-4178-a9ca-6782e4db1701",
+      "name": "Калкан",
+      "in_catalog": true,
+      "object_types": [],
+      "source_url": "https://donetskmedia.ru/20250618-sevastopol-predstavil-3-obrazca-novejshih-morskih-drona-na-pmjef-2025.media",
+      "sourced_at": "2026-09-28",
+      "confidence": "vendor",
+      "subtype": "Безэкипажный катер",
+      "description": "Сверхмалый безэкипажный катер НОЦ «МореАгроБиоТех» и СевГУ, прежде всего исследовательский. Обследует морское дно, в том числе для построения трёхмерных карт, и помогает в поисково-спасательных работах; из-за малых размеров проходит в узкие места. Показан на ПМЭФ-2025.",
+      "specs": {},
+      "gaps": {
+        "length_mm": "not stated",
+        "mass_kg": "not stated",
+        "speed_mps": "not stated",
+        "endurance_h": "not stated"
+      },
+      "notes": "Only a purpose description is public. One search summary attached '5 m, 115 hp' to Калкан, but that text belongs to the БЭК-Р trials report, so it is not used."
+    },
+    {
+      "id": "3b6ed000-db61-40d2-a1fc-aed019e7007c",
+      "name": "Барабулька",
+      "in_catalog": true,
+      "object_types": [],
+      "source_url": "https://stv92.ru/news/news-10667/",
+      "sourced_at": "2026-09-28",
+      "confidence": "vendor",
+      "description": "Морской беспилотный аппарат СевГУ из линейки, показанной на ПМЭФ-2025 вместе с катерами «Калкан» и «Сарган», платформой «МК» и подводным аппаратом «Херсонес». Аппараты линейки предназначены для научных исследований, поисково-спасательных работ и экологического мониторинга.",
+      "specs": {},
+      "gaps": {
+        "length_mm": "not stated",
+        "payload_kg": "not stated",
+        "speed_mps": "not stated"
+      },
+      "notes": "No specs or own description published; the page lists it only as part of the SevSU marine drone line at SPIEF 2025 (also ria.ru/20250620/pmef-2024259261.html)."
+    },
+    {
+      "id": "1a694805-4d3a-42ff-80b9-5f68525e76b5",
+      "name": "Оркан",
+      "in_catalog": true,
+      "object_types": [],
+      "source_url": "https://www.tadviser.ru/index.php/%D0%9F%D1%80%D0%BE%D0%B4%D1%83%D0%BA%D1%82:%D0%9E%D1%80%D0%BA%D0%B0%D0%BD_(%D0%B1%D0%B5%D0%B7%D1%8D%D0%BA%D0%B8%D0%BF%D0%B0%D0%B6%D0%BD%D1%8B%D0%B9_%D0%BA%D0%B0%D1%82%D0%B5%D1%80)",
+      "sourced_at": "2026-09-28",
+      "confidence": "vendor",
+      "subtype": "Безэкипажный катер",
+      "specs": {
+        "length_mm": 5300,
+        "speed_mps": 20.58
+      },
+      "gaps": {
+        "payload_kg": "400 kg is stated only for the newer «Оркан-2», not for «Оркан»",
+        "width_mm": "1,7 m appeared in one search summary but could not be tied to a page",
+        "mass_kg": "not stated"
+      },
+      "notes": "TAdviser page on the Оркан line: length 5,3 m, up to 40 knots (about 74,1 km/h, converted to 20,58 m/s), range at least 500 km, sea state up to 3 (as presented by Rosoboronexport in June 2024). Vendor page seaproject.ru/orkan (blocked for fetch; search snippet): jet-driven high-speed catamaran with a VAZ petrol engine, base for hydrography, rescue and monitoring payloads. «Оркан-2» (Sept 2026): 400 kg, 600 km, a separate boat."
+    },
+    {
+      "id": "3cae8286-ea39-4329-b7fd-6444cf2f6f91",
+      "name": "Бриз",
+      "in_catalog": true,
+      "object_types": [],
+      "source_url": "https://seaproject.ru/breeze",
+      "sourced_at": "2026-09-28",
+      "confidence": "vendor",
+      "subtype": "Безэкипажный катер",
+      "specs": {},
+      "gaps": {
+        "payload_kg": "catalog text says up to 500 kg; no public page found that states it",
+        "length_mm": "not stated",
+        "speed_mps": "not stated"
+      },
+      "notes": "Vendor page (search snippet): unmanned boat on a YaMZ diesel engine; first run of 280 km. In July 2025 it went Arkhangelsk-Solovki in about 21 h, 95% of the way in automatic mode, delivering 150 kg of equipment (TAdviser, paluba.media/news/197367); 150 kg is a delivered load, not a rated payload."
+    },
+    {
+      "id": "0ece582a-084c-4a8b-99f4-576f0e01b7c8",
+      "name": "SmartCube",
+      "in_catalog": true,
+      "object_types": [],
+      "source_url": "https://arobosys.ru/robot",
+      "sourced_at": "2026-09-28",
+      "confidence": "vendor",
+      "specs": {
+        "speed_mps": 2.1
+      },
+      "gaps": {
+        "payload_kg": "robot and bin payload not stated in search-visible text",
+        "mass_kg": "not stated",
+        "endurance_h": "not stated",
+        "charge_min": "not stated"
+      },
+      "notes": "Vendor robot page gives maximum travel speed 2.1 m/s; the site was not fetchable, value taken from search snippets of arobosys.ru/robot. Shafts up to 14 m high (vendor site). Robot height is modular, chosen by bin height."
+    },
+    {
+      "id": "1615bcc8-7168-48b2-b2d3-99a9b89f54c0",
+      "name": "R-Cafe 1.3",
+      "in_catalog": true,
+      "object_types": [],
+      "source_url": "https://cobotech.ru/rozum-cafe",
+      "sourced_at": "2026-09-28",
+      "confidence": "vendor",
+      "description": "Роботизированная кофейня: напитки готовит шестиосевой коллаборативный робот на профессиональной кофемашине, повторяя действия бариста. Работает круглосуточно, до 450 чашек в сутки, эспрессо готовится около 90 секунд. Через прозрачные панели видно приготовление.",
+      "specs": {},
+      "gaps": {
+        "length_mm": "no page ties dimensions to version 1.3",
+        "mass_kg": "no page ties mass to version 1.3"
+      },
+      "notes": "R-Cafe is the Russian name of Rozum Cafe (Rozum Robotics / Robopro, PULSE arm). Integrator page cobotech.ru (IndusTech). prorobotov.org lists Rozum Cafe as 2.5 x 2 x 2 m, 900 kg, plus 1 m clearance on three sides; not recorded because no page confirms these for version 1.3. Throughput differs by source: 450 cups/day (cobotech), about 50 per hour (other resellers)."
+    },
+    {
+      "id": "50005fcd-0788-4d5a-b133-bdb2f8ee0863",
+      "name": "Rededucation PRO",
+      "in_catalog": true,
+      "object_types": [],
+      "source_url": "https://technored.ru/catalog/uchebnye_roboty/robotizirovannyj-kompleks-rededucation-pro.html",
+      "sourced_at": "2026-09-28",
+      "confidence": "vendor",
+      "specs": {
+        "payload_kg": 5
+      },
+      "gaps": {
+        "mass_kg": "cell mass not stated",
+        "length_mm": "cell dimensions not stated"
+      },
+      "notes": "payload_kg is the rated payload of the REDS C5 cobot installed in the cell, as named on the vendor page. The cell is in the Minpromtorg register of Russian industrial products. Vendor site not fetchable; values from search snippets."
+    },
+    {
+      "id": "e11fd28e-58be-448d-b32d-236e4de8d6d8",
+      "name": "D.Operator P",
+      "in_catalog": true,
+      "object_types": [],
+      "source_url": "https://www.kiit.ru/katalog/avtomatizirovannye-sklady/roboty/",
+      "sourced_at": "2026-09-28",
+      "confidence": "vendor",
+      "specs": {
+        "payload_kg": 20
+      },
+      "gaps": {
+        "mass_kg": "not stated",
+        "length_mm": "not stated"
+      },
+      "notes": "KIIT (official DiKom dealer) listing: collaborative robot cell, payload 20 kg, reach 1 700 mm, price from 9 400 000 rub. Vendor page dikom-a.ru/rabochie-mesta/D-OPERATOR-P/ gives no numbers in search snippets. Sibling D.Operator B is 10 kg / 1 300 mm."
+    },
+    {
+      "id": "fbd349c2-88c1-412f-95c2-96a8383217ed",
+      "name": "Аркус",
+      "in_catalog": true,
+      "object_types": [],
+      "source_url": "https://www.hse.ru/news/development/1144440463.html",
+      "sourced_at": "2026-09-28",
+      "confidence": "vendor",
+      "description": "Антропоморфный робот-курьер Института робототехнических систем НИУ ВШЭ и группы «ЭФКО». Сам передвигается по городу, передаёт заказы в постамат или клиенту. Имеет 23 степени свободы, лидар и RGB-D-камеру. Испытания на улицах Москвы запланированы на 2026 год.",
+      "specs": {},
+      "gaps": {
+        "payload_kg": "not stated in any public source",
+        "mass_kg": "not stated",
+        "height_mm": "not stated",
+        "speed_mps": "not stated",
+        "endurance_h": "not stated"
+      },
+      "notes": "Prototype shown in April 2026 at the HSE robotics festival. No numeric specs published; 23 DoF and sensor list come from press coverage (techinsider.ru, 3dnews.ru), not from the HSE page itself."
+    },
+    {
+      "id": "fade5829-1946-4cf6-a0e6-8f8381d64312",
+      "name": "Promobot V.4",
+      "in_catalog": true,
+      "object_types": [],
+      "source_url": "https://promo-bot.ru/blog/chto-umeyut-roboty-ekskursovody-i-zamenyat-li-oni-lyudej/",
+      "sourced_at": "2026-09-28",
+      "confidence": "vendor",
+      "specs": {
+        "speed_mps": 1.39,
+        "endurance_h": 10
+      },
+      "gaps": {
+        "height_mm": "vendor gives an adjustable range 147-157 cm, not one value",
+        "mass_kg": "vendor FAQ/manual only says 'over 120 kg'",
+        "charge_min": "not stated",
+        "temp_min_c": "not stated"
+      },
+      "notes": "Vendor blog: height 147-157 cm, up to 10 h on battery, 5 km/h. Speed differs across sources: distributors give 3 km/h, 1 m/s or 5 cm/s; kept the vendor value. Distributor pages give 160 x 60 x 60 cm, not confirmed on the vendor site. Returns to the charging station on its own."
+    },
+    {
+      "id": "a9c720bc-e618-4dcc-90e1-990c5a3d1ae2",
+      "name": "Грин",
+      "in_catalog": true,
+      "object_types": [],
+      "source_url": "https://sber.ru/robocenter/green",
+      "sourced_at": "2026-09-28",
+      "confidence": "vendor",
+      "description": "Антропоморфный робот Центра робототехники Сбера на модели Green-VLA и GigaChat. Понимает голосовые команды, ориентируется в незнакомом помещении, берёт предметы, выполняет комплектовку и сортировку. Рост 180 см, масса 75 кг, 41 степень подвижности, 10 камер и лидаров.",
+      "specs": {
+        "mass_kg": 75,
+        "height_mm": 1800,
+        "speed_mps": 0.9
+      },
+      "gaps": {
+        "payload_kg": "not stated",
+        "endurance_h": "not stated as a spec",
+        "charge_min": "not stated"
+      },
+      "notes": "Shown in Nov 2025 (AI Journey). Habr reports it ran more than 10 h continuously at the event; that is a demo run, not a rated endurance, so endurance_h is left out."
+    },
+    {
+      "id": "c70f67e1-8f70-4dff-a4e2-584f0ebaefa1",
+      "name": "AIDOL",
+      "in_catalog": true,
+      "object_types": [],
+      "source_url": "https://aidoltech.ru/walking",
+      "sourced_at": "2026-09-28",
+      "confidence": "vendor",
+      "description": "Российский шагающий антропоморфный робот компании «Айдол». Ходит, держит равновесие на неровной поверхности, берёт предметы и ведёт диалог; все системы работают без интернета. Скорость до 6 км/ч, автономная работа до 6 часов. Есть также настольная версия.",
+      "specs": {
+        "speed_mps": 1.67,
+        "endurance_h": 6
+      },
+      "gaps": {
+        "mass_kg": "not stated",
+        "height_mm": "not stated",
+        "charge_min": "not stated",
+        "payload_kg": "the vendor states lifting up to 10 kg with a bent arm, not a carried load"
+      },
+      "notes": "Vendor page for the walking version. payload_kg 10 is stated as lifting up to 10 kg with a bent arm, which is an arm lift figure, not a carried load. Speed 6 km/h also in the vendor press release (aidoltech.ru/tpost/u4i3i1btf1-...)."
+    }
+  ]
+}

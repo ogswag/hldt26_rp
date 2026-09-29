@@ -1,0 +1,140 @@
+/* Task cards: variants, processes, projects. A white card with a hairline edge; details cards open in place. */
+
+.task-list {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+  margin: var(--space-4) 0;
+}
+
+.task-card {
+  min-width: 0;
+  border: 1px solid var(--line);
+  border-radius: var(--radius-md);
+  background: var(--bg-raised);
+}
+
+.task-card-head {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr) auto;
+  align-items: center;
+  gap: 2px var(--space-2);
+  padding: var(--space-2) var(--space-3);
+}
+
+.project-card .task-card-head {
+  grid-template-columns: minmax(0, 1fr) auto;
+}
+
+summary.task-card-head {
+  border-radius: calc(var(--radius-md) - 1px);
+  list-style: none;
+  cursor: pointer;
+  transition: background-color var(--dur-fast) ease;
+}
+
+summary.task-card-head::-webkit-details-marker {
+  display: none;
+}
+
+summary.task-card-head:hover {
+  background: var(--bg-hover-page);
+}
+
+summary.task-card-head:focus-visible {
+  outline-offset: -2px;
+}
+
+.task-card[open] > summary.task-card-head {
+  border-bottom: 1px solid var(--line);
+  border-radius: calc(var(--radius-md) - 1px) calc(var(--radius-md) - 1px) 0 0;
+}
+
+.task-card-chevron {
+  display: inline-flex;
+  color: var(--icon);
+  transform: rotate(-90deg);
+  transition: transform var(--dur-base) var(--ease-out);
+}
+
+.task-card[open] .task-card-chevron {
+  transform: none;
+}
+
+.task-card-title {
+  min-width: 0;
+  color: var(--text-strong);
+  font-weight: 500;
+  overflow-wrap: break-word;
+}
+
+a.task-card-title {
+  text-decoration: none;
+}
+
+button.task-card-title {
+  padding: 0;
+  border: none;
+  background: none;
+  font: inherit;
+  font-weight: 500;
+  text-align: left;
+  cursor: pointer;
+}
+
+:is(a, button).task-card-title:hover {
+  text-decoration: underline;
+}
+
+.task-card-line {
+  display: block;
+}
+
+.task-card-summary {
+  grid-column: 2 / -1;
+  color: var(--text-body);
+  font-size: var(--text-sm);
+}
+
+.project-card .task-card-summary {
+  grid-column: 1 / -1;
+}
+
+.task-card-body {
+  padding: var(--space-4) var(--space-3) var(--space-2);
+}
+
+.task-card-body h2 {
+  margin: var(--space-6) 0 var(--space-2);
+  font-size: var(--text-md);
+}
+
+.project-cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(17rem, 1fr));
+  gap: var(--space-3);
+  margin: var(--space-4) 0;
+  padding: 0;
+  list-style: none;
+}
+
+.project-card {
+  display: flex;
+  flex-direction: column;
+}
+
+/* NOTE: text buttons have no fill at rest, so the row moves left by their padding to line their text up with
+   the card's. */
+.project-card-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-1);
+  margin-top: auto;
+  padding: 0 var(--space-3) var(--space-2) calc(var(--space-3) - 0.625rem);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .task-card-chevron {
+    transition: none;
+  }
+}

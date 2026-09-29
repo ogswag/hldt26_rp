@@ -1,0 +1,9 @@
+.git
+**/.DS_Store
+**/node_modules
+web/dist
+Датасет
+ТЗ
+.env
+*.md
+!README.md

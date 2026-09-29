@@ -1,0 +1,5273 @@
+openapi: 3.0.3
+info:
+  title: Robot selection API
+  version: 0.6.0
+paths:
+  /health:
+    get:
+      summary: Liveness
+      responses:
+        "200":
+          description: OK
+  /version:
+    get:
+      summary: API and model versions
+      responses:
+        "200":
+          description: OK
+  /api/solutions:
+    get:
+      summary: List catalog solutions
+      parameters:
+        - in: query
+          name: q
+          schema:
+            type: string
+        - in: query
+          name: kind
+          schema:
+            type: string
+        - in: query
+          name: subtype
+          schema:
+            type: string
+        - in: query
+          name: vendor
+          schema:
+            type: string
+        - in: query
+          name: object_type
+          schema:
+            type: string
+            enum: [warehouse, airport, hospital]
+        - in: query
+          name: min_payload_kg
+          schema:
+            type: number
+        - in: query
+          name: max_width_mm
+          schema:
+            type: number
+        - in: query
+          name: family
+          description: Comma list of robot groups; a robot with no group counts as other.
+          schema:
+            type: string
+            example: mobile,uav
+        - in: query
+          name: status
+          description: Comma list of status codes (operation, piloting, rnd).
+          schema:
+            type: string
+        - in: query
+          name: specs_complete
+          description: Only robots whose specs cover what matching needs.
+          schema:
+            type: boolean
+        - in: query
+          name: archived
+          description: include adds archived robots (admin only, 403 otherwise).
+          schema:
+            type: string
+            enum: [include]
+        - in: query
+          name: sort
+          schema:
+            type: string
+            enum: [name, price_rub, payload_kg]
+        - in: query
+          name: limit
+          schema:
+            type: integer
+            default: 50
+            maximum: 500
+        - in: query
+          name: offset
+          schema:
+            type: integer
+            default: 0
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                required: [items]
+                properties:
+                  items:
+                    type: array
+                    items:
+                      $ref: "#/components/schemas/Solution"
+                  total:
+                    type: integer
+                  limit:
+                    type: integer
+                  offset:
+                    type: integer
+  /api/solutions/{solutionId}:
+    get:
+      summary: One catalog solution
+      parameters:
+        - in: path
+          name: solutionId
+          required: true
+          schema:
+            type: string
+            format: uuid
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Solution"
+        "404":
+          description: Not found
+  /api/solutions/{solutionId}/image:
+    get:
+      summary: A robot's photo (public)
+      description: >-
+        JPEG, or PNG for a photo with transparency, at most 1 200 px on the longer side. The ETag is the photo's
+        sha256; a request with `v` equal to it is cached for a year.
+      parameters:
+        - $ref: "#/components/parameters/SolutionID"
+        - in: query
+          name: v
+          schema:
+            type: string
+      responses:
+        "200":
+          description: The photo
+          content:
+            image/jpeg: {}
+            image/png: {}
+        "304":
+          description: Not modified
+        "404":
+          description: The robot has no photo
+  /api/catalog/bundle:
+    get:
+      summary: The live catalog as the calculation engine takes it
+      description: The ETag is the catalog's content hash; a request with a matching If-None-Match gets 304.
+      responses:
+        "200":
+          description: Catalog bundle
+          headers:
+            ETag:
+              schema:
+                type: string
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/CatalogBundle"
+        "304":
+          description: Not modified
+  /api/catalog/dictionaries:
+    get:
+      summary: Warehouse task and capability codes
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  tasks:
+                    type: array
+                    items:
+                      $ref: "#/components/schemas/DictionaryEntry"
+                  capabilities:
+                    type: array
+                    items:
+                      $ref: "#/components/schemas/DictionaryEntry"
+                  rules:
+                    type: array
+                    items:
+                      $ref: "#/components/schemas/CapabilityTaskRule"
+                  fields:
+                    description: The catalog fields in file column order, for the admin editor and uploads.
+                    type: array
+                    items:
+                      $ref: "#/components/schemas/CatalogField"
+  /api/object-types:
+    get:
+      summary: List object types
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  items:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        type:
+                          type: string
+                          enum: [warehouse, airport, hospital]
+                        label:
+                          type: string
+  /api/object-types/{type}/schema:
+    get:
+      summary: Parameter schema for an object type
+      parameters:
+        - in: path
+          name: type
+          required: true
+          schema:
+            type: string
+            enum: [warehouse, airport, hospital]
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ObjectSchema"
+        "404":
+          description: Unknown object type
+  /api/guest/calculate:
+    post:
+      summary: Guest calculate (not persisted)
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required: [object_type, params]
+              properties:
+                object_type:
+                  type: string
+                  enum: [warehouse, airport, hospital]
+                params:
+                  type: object
+                  additionalProperties: true
+                seed:
+                  type: integer
+                  minimum: 0
+                include_ids:
+                  type: array
+                  items:
+                    type: string
+                    format: uuid
+                overrides:
+                  $ref: "#/components/schemas/EconOverrides"
+                schema_version:
+                  type: integer
+                  description: Operation schema version of collections. Required with collections, otherwise 409 schema_version.
+                collections:
+                  type: object
+                  additionalProperties: true
+                  description: |
+                    The project as operation collections, as in GET /api/projects/{id}/snapshot. When present it replaces
+                    params: the processes, variants with their fleets, financing, assumptions, shared costs and the
+                    what-if come from it. It is checked as an import is and used once; nothing is stored.
+      responses:
+        "200":
+          description: Structured result with econ, match, model econ-v3. Not persisted.
+        "400":
+          description: Validation error, or collections that do not pass the operation schema
+        "409":
+          description: Unsupported schema version (code schema_version)
+  /api/engine/{file}:
+    get:
+      summary: A file of the browser build of the calculation engine
+      description: >-
+        The deployment image carries the WebAssembly engine and its loader next to the API. The page fetches
+        them once and then matches, calculates and simulates in the browser when the server cannot be reached,
+        marking such results as preliminary. A local `go run` has no such directory and answers 404, and the
+        page keeps calculating on the server.
+      parameters:
+        - in: path
+          name: file
+          required: true
+          description: The file name alone; a path or ".." is refused.
+          schema:
+            type: string
+            example: engine.wasm
+      responses:
+        "200":
+          description: The file, with Cache-Control public, max-age=3600
+          content:
+            application/wasm:
+              schema:
+                type: string
+                format: binary
+            application/javascript:
+              schema:
+                type: string
+        "404":
+          description: No such file, or this deployment carries no browser engine
+  /api/guest/match:
+    post:
+      summary: Guest matching (not persisted)
+      parameters:
+        - $ref: "#/components/parameters/MatchView"
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required: [object_type, params]
+              properties:
+                object_type:
+                  type: string
+                  enum: [warehouse, airport, hospital]
+                params:
+                  type: object
+                  additionalProperties: true
+                include_ids:
+                  type: array
+                  items:
+                    type: string
+                    format: uuid
+                task_codes:
+                  type: array
+                  items:
+                    type: string
+                    enum: [pallet_inbound, pallet_putaway, pallet_outbound, pallet_move, piece_pick, cleaning]
+      responses:
+        "200":
+          description: Ranked catalog with hard, soft, missing_evidence and explanation chain
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/MatchOutput"
+        "400":
+          description: Validation error
+  /api/auth/register:
+    post:
+      summary: Register a user and start a session
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required: [email, password]
+              properties:
+                email:
+                  type: string
+                password:
+                  type: string
+                  minLength: 8
+                  maxLength: 72
+                invite_token:
+                  type: string
+                  description: Token from an invitation letter. Required when REGISTRATION_MODE is invite.
+      responses:
+        "200":
+          description: Session started; the cookie is in Set-Cookie
+          headers:
+            Set-Cookie:
+              schema:
+                type: string
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/AuthSession"
+        "400":
+          description: Invalid input
+        "403":
+          description: Cross-site request (code csrf), or registration is by invitation only (code invite_required)
+        "409":
+          description: Email already registered
+  /api/auth/login:
+    post:
+      summary: Log in and start a session
+      description: A session cookie already on the request is revoked and replaced.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required: [email, password]
+              properties:
+                email:
+                  type: string
+                password:
+                  type: string
+      responses:
+        "200":
+          description: Session started; the cookie is in Set-Cookie
+          headers:
+            Set-Cookie:
+              schema:
+                type: string
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/AuthSession"
+        "401":
+          description: Bad credentials (the same text for an unknown email)
+        "403":
+          description: Cross-site request (code csrf)
+  /api/auth/me:
+    get:
+      summary: Current user and the session's CSRF token
+      security:
+        - sessionCookie: []
+      responses:
+        "200":
+          description: User
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/AuthSession"
+        "401":
+          description: Not signed in, or the session expired (code session_expired)
+  /api/auth/logout:
+    post:
+      summary: Revoke the current session and clear the cookie
+      description: Succeeds without a session too.
+      security:
+        - sessionCookie: []
+      responses:
+        "204":
+          description: Logged out
+        "403":
+          description: Missing CSRF token (code csrf)
+  /api/auth/verify-email:
+    post:
+      summary: Confirm an email address with the token from its letter
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required: [token]
+              properties:
+                token:
+                  type: string
+      responses:
+        "200":
+          description: Confirmed
+        "400":
+          description: No token
+        "410":
+          description: The token is used or expired
+  /api/auth/verify-email/resend:
+    post:
+      summary: Send the confirmation letter again
+      security:
+        - sessionCookie: []
+      responses:
+        "200":
+          description: The address is already confirmed
+        "202":
+          description: Letter queued
+        "401":
+          description: Not signed in
+  /api/auth/password-reset/request:
+    post:
+      summary: Ask for a password link
+      description: Always answers the same way, so it never says which addresses exist.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required: [email]
+              properties:
+                email:
+                  type: string
+      responses:
+        "202":
+          description: Accepted
+  /api/auth/password-reset/confirm:
+    post:
+      summary: Set a new password with the token from the letter
+      description: Every session of that account ends, including the caller's.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required: [token, password]
+              properties:
+                token:
+                  type: string
+                password:
+                  type: string
+                  minLength: 8
+                  maxLength: 72
+      responses:
+        "200":
+          description: Password changed
+        "400":
+          description: Invalid input
+        "410":
+          description: The token is used or expired
+  /api/auth/invitations/inspect:
+    post:
+      summary: What an invitation token stands for, for the registration page
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required: [token]
+              properties:
+                token:
+                  type: string
+      responses:
+        "200":
+          description: The invitation, or why it cannot be used
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/InvitationCheck"
+        "400":
+          description: No token
+  /api/dev/outbox:
+    get:
+      summary: Letters queued for one address (only when APP_ENV is local)
+      parameters:
+        - name: to
+          in: query
+          required: true
+          schema:
+            type: string
+      responses:
+        "200":
+          description: Letters, newest first
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  items:
+                    type: array
+                    items:
+                      $ref: "#/components/schemas/OutboxLetter"
+        "404":
+          description: Not served outside a local run
+  /api/auth/sessions:
+    get:
+      summary: Active sessions of the current user, most recently used first
+      security:
+        - sessionCookie: []
+      responses:
+        "200":
+          description: Sessions
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/Session"
+        "401":
+          description: Not signed in
+  /api/auth/sessions/{sessionId}:
+    delete:
+      summary: Revoke one of the current user's sessions
+      security:
+        - sessionCookie: []
+      parameters:
+        - in: path
+          name: sessionId
+          required: true
+          schema:
+            type: string
+            format: uuid
+      responses:
+        "204":
+          description: Revoked; the cookie is cleared when it was the current session
+        "401":
+          description: Not signed in
+        "403":
+          description: Missing CSRF token (code csrf)
+        "404":
+          description: No such active session of this user
+  /api/auth/sessions/revoke-others:
+    post:
+      summary: Revoke every session of the current user except this one
+      security:
+        - sessionCookie: []
+      responses:
+        "200":
+          description: Number of revoked sessions
+          content:
+            application/json:
+              schema:
+                type: object
+                required: [revoked]
+                properties:
+                  revoked:
+                    type: integer
+        "401":
+          description: Not signed in
+        "403":
+          description: Missing CSRF token (code csrf)
+  /api/guest/export:
+    post:
+      summary: Guest PDF or XLSX (not persisted)
+      description: >-
+        Financial report for a decision maker, built from the request and stored nowhere. Same content as
+        POST /api/calculations/{runId}/export, without a run: no X-Run-Id header, the project is named "Не сохранён",
+        the file is named ocenka-warehouse.xlsx after the object type.
+      parameters:
+        - in: query
+          name: format
+          schema:
+            type: string
+            enum: [pdf, xlsx]
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required: [object_type, params]
+              properties:
+                object_type:
+                  type: string
+                  enum: [warehouse, airport, hospital]
+                params:
+                  type: object
+                  additionalProperties: true
+                seed:
+                  type: integer
+                  minimum: 0
+                include_ids:
+                  type: array
+                  items:
+                    type: string
+                    format: uuid
+                overrides:
+                  $ref: "#/components/schemas/EconOverrides"
+                schema_version:
+                  type: integer
+                  description: Operation schema version of collections. Required with collections, otherwise 409 schema_version.
+                collections:
+                  type: object
+                  additionalProperties: true
+                  description: |
+                    The project as operation collections, as in GET /api/projects/{id}/snapshot. When present it replaces
+                    params: the processes, variants with their fleets, financing, assumptions, shared costs and the
+                    what-if come from it. It is checked as an import is and used once; nothing is stored.
+      responses:
+        "200":
+          description: >-
+            PDF (up to two pages for a typical project) or XLSX with the sheets Итог, Варианты, Допущения и риски.
+            Money is numeric in XLSX and shown with the ruble sign.
+        "400":
+          description: Validation error, or collections that do not pass the operation schema
+        "409":
+          description: Unsupported schema version (code schema_version)
+  /api/projects:
+    get:
+      summary: List own projects and projects shared with the caller
+      security:
+        - sessionCookie: []
+      responses:
+        "200":
+          description: Items carry access (owner, editor or viewer)
+        "403":
+          description: Guest cannot list projects
+    post:
+      summary: Create a project (owner)
+      security:
+        - sessionCookie: []
+      responses:
+        "201":
+          description: Created
+        "400":
+          description: Invalid input
+        "403":
+          description: Guest cannot persist a project
+  /api/projects/trash:
+    get:
+      summary: Own projects in the trash, newest first
+      security:
+        - sessionCookie: []
+      responses:
+        "200":
+          description: Trash
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  items:
+                    type: array
+                    items:
+                      $ref: "#/components/schemas/TrashItem"
+        "401":
+          description: Not signed in
+  /api/projects/import:
+    post:
+      summary: Create a project from a snapshot of the browser store (user or admin)
+      description: >-
+        A guest works without an account and everything they enter stays in their browser. After they sign in,
+        "Сохранить в аккаунт" sends the snapshot here. The records arrive through the operation schema, exactly
+        as an edit would, and the project is created and filled in one database transaction: a snapshot the
+        schema refuses leaves nothing behind. Identifiers are renewed, so the same snapshot can be saved twice.
+        The body is at most 1 MB; name comes from the request, or from the snapshot's project record.
+      security:
+        - sessionCookie: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required: [schema_version, collections]
+              properties:
+                name:
+                  type: string
+                schema_version:
+                  type: integer
+                collections:
+                  type: object
+                  description: The collections of GET /api/projects/{id}/snapshot
+                  additionalProperties:
+                    type: object
+                    additionalProperties:
+                      type: object
+                      additionalProperties: true
+      responses:
+        "201":
+          description: The created project
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Project"
+        "400":
+          description: >-
+            The snapshot did not pass the schema (code is the rejection reason, details name the operation),
+            or its object type or parameters are invalid
+        "403":
+          description: Guest cannot save a project
+        "409":
+          description: Schema version mismatch (code schema_version)
+        "413":
+          description: Snapshot larger than 1 MB
+  /api/projects/{id}/restore:
+    post:
+      summary: Take own project out of the trash (owner)
+      security:
+        - sessionCookie: []
+      parameters:
+        - in: path
+          name: id
+          required: true
+          schema:
+            type: string
+            format: uuid
+      responses:
+        "200":
+          description: The restored project
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Project"
+        "404":
+          description: Not found, or not in the trash
+        "410":
+          description: Deleted longer ago than the retention
+  /api/projects/{id}/purge:
+    delete:
+      summary: Delete own project for good (owner)
+      security:
+        - sessionCookie: []
+      parameters:
+        - in: path
+          name: id
+          required: true
+          schema:
+            type: string
+            format: uuid
+      responses:
+        "204":
+          description: Deleted
+        "404":
+          description: Not found, or not in the trash
+  /api/projects/{id}:
+    get:
+      summary: Get own project
+      parameters:
+        - in: path
+          name: id
+          required: true
+          schema:
+            type: string
+            format: uuid
+      responses:
+        "200":
+          description: Project with draft, stale flag and last run pointer
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Project"
+        "403":
+          description: Guest cannot read a project
+        "404":
+          description: Not found
+    delete:
+      summary: Move own project to the trash (owner)
+      description: Queued and running simulation jobs are canceled and the project streams close. The project is
+        kept for TRASH_RETENTION_DAYS (30 by default) and can be restored until then.
+      security:
+        - sessionCookie: []
+      parameters:
+        - in: path
+          name: id
+          required: true
+          schema:
+            type: string
+            format: uuid
+      responses:
+        "200":
+          description: In the trash
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/TrashedProject"
+        "403":
+          description: Guest cannot delete a project, or the caller is not the owner
+        "404":
+          description: Not found
+        "410":
+          description: Already in the trash (code project_deleted)
+  /api/projects/{id}/transactions:
+    post:
+      summary: Apply a batch of operation transactions (editor or owner)
+      description: >
+        Transactions apply in order, each whole or not at all, against the schema in
+        contracts/ops/project.schema.json (docs/adr/0003-operations-and-sync.md). An applied
+        transaction takes the next seq; a rejected one is stored with its reason and no seq.
+        A tx_id seen before returns its stored outcome, so resending a batch after a lost
+        response is safe. A malformed operation rejects its own transaction with
+        invalid_value, not the batch.
+      security:
+        - sessionCookie: []
+      parameters:
+        - $ref: "#/components/parameters/ProjectID"
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required: [client_id, schema_version, txs]
+              additionalProperties: false
+              properties:
+                client_id:
+                  type: string
+                  maxLength: 64
+                schema_version:
+                  type: integer
+                  description: Must equal the server schema version, otherwise 409 schema_version
+                txs:
+                  type: array
+                  maxItems: 200
+                  items:
+                    $ref: "#/components/schemas/OpTransaction"
+      responses:
+        "200":
+          description: One result per transaction, in request order, and the project's seq after the batch
+          content:
+            application/json:
+              schema:
+                type: object
+                required: [results, seq]
+                properties:
+                  results:
+                    type: array
+                    items:
+                      $ref: "#/components/schemas/OpResult"
+                  seq:
+                    type: integer
+                    format: int64
+        "400":
+          description: Invalid envelope (client_id, tx_id not lowercase UUID, more than 200 transactions)
+        "403":
+          description: Viewer (code forbidden), guest, or missing CSRF token (code csrf)
+        "404":
+          description: Project not found or no access
+        "409":
+          description: Unsupported schema version (code schema_version)
+        "413":
+          description: Body larger than 1 MB
+  /api/projects/{id}/snapshot:
+    get:
+      summary: Every record of the project as operation collections, with the seq they belong to
+      security:
+        - sessionCookie: []
+      parameters:
+        - $ref: "#/components/parameters/ProjectID"
+      responses:
+        "200":
+          description: Snapshot
+          content:
+            application/json:
+              schema:
+                type: object
+                required: [schema_version, seq, collections]
+                properties:
+                  schema_version:
+                    type: integer
+                  seq:
+                    type: integer
+                    format: int64
+                  collections:
+                    type: object
+                    description: Collection name to an object of records by id (contracts/ops/project.schema.json)
+                    additionalProperties:
+                      type: object
+                      additionalProperties:
+                        type: object
+                        additionalProperties: true
+        "404":
+          description: Project not found or no access
+  /api/projects/{id}/operations:
+    get:
+      summary: Accepted transactions after a seq, in order
+      description: >
+        reset true means the client takes a new snapshot instead: the range holds a write
+        made outside operations, part of it is older than the 30-day journal, or after is
+        past the project's seq. Items are then empty.
+      security:
+        - sessionCookie: []
+      parameters:
+        - $ref: "#/components/parameters/ProjectID"
+        - in: query
+          name: after
+          required: true
+          schema:
+            type: integer
+            format: int64
+            minimum: 0
+        - in: query
+          name: limit
+          schema:
+            type: integer
+            minimum: 1
+            maximum: 500
+            default: 500
+      responses:
+        "200":
+          description: Journal page
+          content:
+            application/json:
+              schema:
+                type: object
+                required: [items, seq, reset]
+                properties:
+                  items:
+                    type: array
+                    items:
+                      type: object
+                      required: [seq, tx_id, client_id, actor, actor_email, label, ops, created_at]
+                      properties:
+                        seq:
+                          type: integer
+                          format: int64
+                        tx_id:
+                          type: string
+                          format: uuid
+                        client_id:
+                          type: string
+                          description: '"server" for changes the server made itself (calculation, match)'
+                        actor:
+                          type: string
+                          format: uuid
+                          nullable: true
+                        actor_email:
+                          type: string
+                          nullable: true
+                          description: The actor's email; null when the server made the change or the account is gone
+                        label:
+                          type: string
+                        ops:
+                          type: array
+                          items:
+                            $ref: "#/components/schemas/Op"
+                        created_at:
+                          type: string
+                          format: date-time
+                  seq:
+                    type: integer
+                    format: int64
+                    description: The project's current seq
+                  reset:
+                    type: boolean
+        "400":
+          description: Invalid after or limit
+        "404":
+          description: Project not found or no access
+  /api/projects/{id}/events:
+    get:
+      summary: Live project events (Server-Sent Events)
+      description: >
+        text/event-stream. The first events are ops {seq} with the project's current seq and
+        presence {list}. Then: ops {seq} after each accepted transaction or journaled server
+        change (fetch /operations after your seq); presence {list}; runs {} when calculations
+        or simulation jobs change; access {role} when your role changes (role null means the
+        access is gone and the stream ends); deleted {} and the stream ends; reset {} after the
+        server lost notifications, so re-read /operations. A ": ping" comment every 20 s keeps
+        the connection open; the stream ends when the session is revoked. At most 20 open
+        streams per user (429).
+      security:
+        - sessionCookie: []
+      parameters:
+        - $ref: "#/components/parameters/ProjectID"
+      responses:
+        "200":
+          description: Event stream
+          content:
+            text/event-stream:
+              schema:
+                type: string
+        "404":
+          description: Project not found or no access
+        "429":
+          description: Too many open streams for this user
+        "503":
+          description: Live updates are not available
+  /api/projects/{id}/presence:
+    post:
+      summary: Report where this tab is in the project (any role)
+      description: >
+        Send every 15 s and on change. An entry expires 45 s after its last report; leave true
+        removes it at once (send it with fetch keepalive on page hide). Streams receive the
+        list at most every 250 ms.
+      security:
+        - sessionCookie: []
+      parameters:
+        - $ref: "#/components/parameters/ProjectID"
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required: [client_id]
+              additionalProperties: false
+              properties:
+                client_id:
+                  type: string
+                  maxLength: 64
+                route:
+                  type: string
+                  maxLength: 200
+                selection:
+                  type: object
+                  nullable: true
+                  required: [coll, id]
+                  additionalProperties: false
+                  properties:
+                    coll:
+                      type: string
+                    id:
+                      type: string
+                leave:
+                  type: boolean
+      responses:
+        "204":
+          description: Reported
+        "400":
+          description: Invalid body
+        "404":
+          description: Project not found or no access
+  /api/projects/{id}/copy:
+    post:
+      summary: Copy own project
+      security:
+        - sessionCookie: []
+      parameters:
+        - in: path
+          name: id
+          required: true
+          schema:
+            type: string
+            format: uuid
+      requestBody:
+        required: false
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+      responses:
+        "201":
+          description: Created
+        "403":
+          description: Guest cannot copy a project
+        "404":
+          description: Not found
+  /api/projects/{id}/export:
+    post:
+      summary: Report of the current calculation run
+      description: >-
+        Same financial report as POST /api/calculations/{runId}/export for projects.current_run_id. The report is built
+        from the run snapshot, not from the draft, and is refused while the draft differs from the run (code stale_result).
+      security:
+        - sessionCookie: []
+      parameters:
+        - in: path
+          name: id
+          required: true
+          schema:
+            type: string
+            format: uuid
+        - in: query
+          name: format
+          schema:
+            type: string
+            enum: [pdf, xlsx]
+      responses:
+        "200":
+          description: >-
+            PDF or XLSX report. Content-Disposition names the file after the object type and the project version number, for example raschet-warehouse-3.xlsx.
+          headers:
+            X-Run-Id:
+              description: Run the report was built from
+              schema:
+                type: string
+                format: uuid
+            X-Input-Hash:
+              description: input_hash of the run snapshot
+              schema:
+                type: string
+          content:
+            application/pdf:
+              schema:
+                type: string
+                format: binary
+            application/vnd.openxmlformats-officedocument.spreadsheetml.sheet:
+              schema:
+                type: string
+                format: binary
+        "400":
+          description: No calculation run yet
+        "403":
+          description: Guest cannot export a project
+        "404":
+          description: Not found
+        "409":
+          description: >-
+            Current draft is stale (code stale_result). Export a historical run by run id or recalculate.
+  /api/projects/{id}/processes:
+    get:
+      summary: List project processes
+      parameters:
+        - in: path
+          name: id
+          required: true
+          schema:
+            type: string
+            format: uuid
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                required: [items]
+                properties:
+                  items:
+                    type: array
+                    items:
+                      $ref: "#/components/schemas/Process"
+        "403":
+          description: Guest cannot read a project
+        "404":
+          description: Not found
+  /api/projects/{id}/variants:
+    get:
+      summary: List technical variants
+      parameters:
+        - in: path
+          name: id
+          required: true
+          schema:
+            type: string
+            format: uuid
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                required: [items]
+                properties:
+                  items:
+                    type: array
+                    items:
+                      $ref: "#/components/schemas/SolutionVariant"
+  /api/projects/{id}/shared-costs:
+    get:
+      summary: List shared infrastructure cost items
+      parameters:
+        - in: path
+          name: id
+          required: true
+          schema:
+            type: string
+            format: uuid
+      responses:
+        "200":
+          description: OK
+  /api/projects/{id}/assumption-sets:
+    get:
+      summary: List named assumption sets
+      parameters:
+        - in: path
+          name: id
+          required: true
+          schema:
+            type: string
+            format: uuid
+      responses:
+        "200":
+          description: OK
+  /api/projects/{id}/calculations:
+    get:
+      summary: List immutable calculation runs
+      parameters:
+        - in: path
+          name: id
+          required: true
+          schema:
+            type: string
+            format: uuid
+      responses:
+        "200":
+          description: Newest first
+          content:
+            application/json:
+              schema:
+                type: object
+                required: [items]
+                properties:
+                  items:
+                    type: array
+                    items:
+                      $ref: "#/components/schemas/CalculationRun"
+    post:
+      summary: Create a project version and calculation run from the current draft
+      parameters:
+        - in: path
+          name: id
+          required: true
+          schema:
+            type: string
+            format: uuid
+      requestBody:
+        required: false
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                seed:
+                  type: integer
+                  minimum: 0
+                include_ids:
+                  type: array
+                  items:
+                    type: string
+                    format: uuid
+                overrides:
+                  $ref: "#/components/schemas/EconOverrides"
+      responses:
+        "200":
+          description: Same payload as historical calculate plus run metadata
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/CalculationResponse"
+        "400":
+          description: Validation error
+  /api/calculations/{runId}:
+    get:
+      summary: Open a historical run
+      parameters:
+        - in: path
+          name: runId
+          required: true
+          schema:
+            type: string
+            format: uuid
+      responses:
+        "200":
+          description: Immutable stored result with its input hash
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/CalculationResponse"
+        "404":
+          description: Not found
+  /api/calculations/{runId}/export:
+    post:
+      summary: Report of one calculation run, also when the draft is stale
+      description: >-
+        Financial report for a decision maker. It compares the baseline and calculated variants, shows initial investment,
+        annual costs, annual cash effect, simple payback, costs for the horizon, decision-relevant assumptions and risks.
+        The highlighted variant is the non-baseline scenario with a positive annual effect and the shortest simple payback
+        within the horizon; equal paybacks and paybacks beyond the horizon highlight none, and the report says so.
+        XLSX sheets: Итог, Варианты, Допущения и риски. The immutable run snapshot remains stored in the system.
+      security:
+        - sessionCookie: []
+      parameters:
+        - in: path
+          name: runId
+          required: true
+          schema:
+            type: string
+            format: uuid
+        - in: query
+          name: format
+          schema:
+            type: string
+            enum: [pdf, xlsx]
+      responses:
+        "200":
+          description: >-
+            PDF or XLSX report. Content-Disposition names the file after the object type and the project version number, for example raschet-warehouse-3.xlsx.
+          headers:
+            X-Run-Id:
+              description: Run the report was built from
+              schema:
+                type: string
+                format: uuid
+            X-Input-Hash:
+              description: input_hash of the run snapshot
+              schema:
+                type: string
+          content:
+            application/pdf:
+              schema:
+                type: string
+                format: binary
+            application/vnd.openxmlformats-officedocument.spreadsheetml.sheet:
+              schema:
+                type: string
+                format: binary
+        "403":
+          description: Guest
+        "404":
+          description: Not found, not owned, or a simulation run
+  /api/projects/{id}/runs:
+    get:
+      summary: History of calculation and simulation runs, newest first
+      security:
+        - sessionCookie: []
+      parameters:
+        - in: path
+          name: id
+          required: true
+          schema:
+            type: string
+            format: uuid
+      responses:
+        "200":
+          description: Up to 100 runs
+          content:
+            application/json:
+              schema:
+                type: object
+                required: [items, input_hash]
+                properties:
+                  items:
+                    type: array
+                    items:
+                      $ref: "#/components/schemas/RunHistoryItem"
+                  input_hash:
+                    type: string
+                    description: Hash of the current draft
+                  current_run_id:
+                    type: string
+                    format: uuid
+                    nullable: true
+        "403":
+          description: Guest
+        "404":
+          description: Not found or not owned
+  /api/projects/{id}/versions:
+    get:
+      summary: List immutable project snapshots
+      parameters:
+        - in: path
+          name: id
+          required: true
+          schema:
+            type: string
+            format: uuid
+      responses:
+        "200":
+          description: OK
+  /api/projects/{id}/versions/{versionId}:
+    get:
+      summary: Get an immutable project snapshot
+      parameters:
+        - in: path
+          name: id
+          required: true
+          schema:
+            type: string
+            format: uuid
+        - in: path
+          name: versionId
+          required: true
+          schema:
+            type: string
+            format: uuid
+      responses:
+        "200":
+          description: ProjectSnapshot
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProjectSnapshot"
+        "404":
+          description: Not found
+  /api/projects/{id}/members:
+    get:
+      summary: List the owner and members with their roles (owner only)
+      security:
+        - sessionCookie: []
+      parameters:
+        - $ref: "#/components/parameters/ProjectID"
+      responses:
+        "200":
+          description: The owner first, then members by date added
+          content:
+            application/json:
+              schema:
+                type: object
+                required: [items]
+                properties:
+                  items:
+                    type: array
+                    items:
+                      $ref: "#/components/schemas/ProjectMember"
+        "403":
+          description: Guest, or the caller is not the owner (code forbidden)
+        "404":
+          description: Project not found or not shared with the caller
+    post:
+      summary: Grant an existing account editor or viewer access (owner only)
+      security:
+        - sessionCookie: []
+      parameters:
+        - $ref: "#/components/parameters/ProjectID"
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required: [email, role]
+              properties:
+                email:
+                  type: string
+                role:
+                  type: string
+                  enum: [editor, viewer]
+      responses:
+        "201":
+          description: Member added
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProjectMember"
+        "400":
+          description: Bad role or email, or the email belongs to the owner
+        "403":
+          description: Guest, or the caller is not the owner (code forbidden)
+        "404":
+          description: Project not found, or no account with this email (code user_not_found)
+        "409":
+          description: The account is already a member
+  /api/projects/{id}/members/{userId}:
+    put:
+      summary: Change a member role (owner only)
+      security:
+        - sessionCookie: []
+      parameters:
+        - $ref: "#/components/parameters/ProjectID"
+        - $ref: "#/components/parameters/UserID"
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required: [role]
+              properties:
+                role:
+                  type: string
+                  enum: [editor, viewer]
+      responses:
+        "204":
+          description: Role changed
+        "400":
+          description: Bad role
+        "403":
+          description: Guest, or the caller is not the owner (code forbidden)
+        "404":
+          description: Project or member not found
+    delete:
+      summary: Remove a member. The owner removes anyone; a member may remove only themselves.
+      security:
+        - sessionCookie: []
+      parameters:
+        - $ref: "#/components/parameters/ProjectID"
+        - $ref: "#/components/parameters/UserID"
+      responses:
+        "204":
+          description: Removed
+        "403":
+          description: Guest, or a member removing someone else (code forbidden)
+        "404":
+          description: Project or member not found
+  /api/projects/{id}/map/validate:
+    post:
+      summary: Check a map against project processes and every variant fleet without saving
+      security:
+        - sessionCookie: []
+      parameters:
+        - in: path
+          name: id
+          required: true
+          schema:
+            type: string
+            format: uuid
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/MapDocument"
+      responses:
+        "200":
+          description: Issues, effective edge widths and robot classes
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/MapCheck"
+        "400":
+          description: Body is not a map-v1 document
+        "403":
+          description: Guest
+        "404":
+          description: Not found
+  /api/projects/{id}/map/template:
+    get:
+      summary: Warehouse starter map with flows for the project processes and aisle widths from params
+      security:
+        - sessionCookie: []
+      parameters:
+        - in: path
+          name: id
+          required: true
+          schema:
+            type: string
+            format: uuid
+      responses:
+        "200":
+          description: Template map
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/MapDocument"
+        "400":
+          description: Object type has no template
+        "403":
+          description: Guest
+        "404":
+          description: Not found
+  /api/projects/{id}/sim-checks:
+    get:
+      summary: Compare each warehouse variant with its latest simulation
+      description: >-
+        For every variant that has a fleet, takes the latest sim-v2 run made for the current inputs of that
+        variant and compares what the fleet delivered with what the economics counts on. A variant whose only
+        runs are older is reported as stale, a variant nobody simulated has no run. The list is built when it is
+        read, so a run that ends after a calculation shows up without recalculating. Other object types are
+        checked during the calculation and return an empty list here.
+      security:
+        - sessionCookie: []
+      parameters:
+        - in: path
+          name: id
+          required: true
+          schema:
+            type: string
+            format: uuid
+      responses:
+        "200":
+          description: One check per variant with a fleet
+          content:
+            application/json:
+              schema:
+                type: object
+                required: [items]
+                properties:
+                  items:
+                    type: array
+                    items:
+                      $ref: "#/components/schemas/SimCheck"
+        "404":
+          description: Not found
+  /api/projects/{id}/simulations:
+    post:
+      summary: Enqueue a sim-v2 run for one variant
+      description: >-
+        The server validates the config, the map and the fleet, stores an immutable project version,
+        a calculation run of kind simulation and a job. The HTTP request does not wait for the run.
+        One active job per project; SIM_MAX_ACTIVE_PER_USER active jobs per user.
+      security:
+        - sessionCookie: []
+      parameters:
+        - in: path
+          name: id
+          required: true
+          schema:
+            type: string
+            format: uuid
+      requestBody:
+        required: false
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/SimulationRequest"
+      responses:
+        "202":
+          description: Job queued
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/SimulationCreateResponse"
+        "400":
+          description: >-
+            Invalid config, empty variant, unsupported object type or map errors.
+            Map errors use code map_invalid and carry issues.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+                  code:
+                    type: string
+                    enum: [map_invalid, validation_error]
+                  request_id:
+                    type: string
+                  issues:
+                    type: array
+                    items:
+                      $ref: "#/components/schemas/MapIssue"
+        "403":
+          description: Guest
+        "404":
+          description: Not found
+        "409":
+          description: The project already has an active simulation
+        "429":
+          description: Too many active simulations for the user
+        "503":
+          description: Worker pool is not running
+    get:
+      summary: Simulation history of a project, newest first (up to 50)
+      security:
+        - sessionCookie: []
+      parameters:
+        - in: path
+          name: id
+          required: true
+          schema:
+            type: string
+            format: uuid
+      responses:
+        "200":
+          description: Jobs with run hash, stale flag and a short result
+          content:
+            application/json:
+              schema:
+                type: object
+                required: [items, input_hash]
+                properties:
+                  input_hash:
+                    type: string
+                    description: Current draft hash
+                  items:
+                    type: array
+                    items:
+                      allOf:
+                        - $ref: "#/components/schemas/SimulationJob"
+                        - type: object
+                          properties:
+                            input_hash:
+                              type: string
+                            seed:
+                              type: integer
+                            sim_version:
+                              type: string
+                            project_version_id:
+                              type: string
+                              format: uuid
+                            stale_vs_draft:
+                              type: boolean
+                            brief:
+                              type: object
+                              description: verdict, verdict_text, kpi, fleet, variant_name and map_source of the result; null fields while running
+        "403":
+          description: Guest
+        "404":
+          description: Not found
+  /api/simulation-jobs/{jobId}:
+    get:
+      summary: Simulation job status. Workers update progress at least once a second.
+      security:
+        - sessionCookie: []
+      parameters:
+        - in: path
+          name: jobId
+          required: true
+          schema:
+            type: string
+            format: uuid
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/SimulationJob"
+        "403":
+          description: Guest
+        "404":
+          description: Not found or not owned
+    delete:
+      summary: Cancel a queued or running job
+      description: A queued job is canceled at once. A running job stops at the next heartbeat.
+      security:
+        - sessionCookie: []
+      parameters:
+        - in: path
+          name: jobId
+          required: true
+          schema:
+            type: string
+            format: uuid
+      responses:
+        "202":
+          description: Cancel accepted
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/SimulationJob"
+        "403":
+          description: Guest
+        "404":
+          description: Not found
+        "409":
+          description: Job already finished
+  /api/simulation-jobs/{jobId}/retry:
+    post:
+      summary: Requeue a failed or canceled job with the same snapshot and config
+      security:
+        - sessionCookie: []
+      parameters:
+        - in: path
+          name: jobId
+          required: true
+          schema:
+            type: string
+            format: uuid
+      responses:
+        "202":
+          description: Requeued
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/SimulationJob"
+        "403":
+          description: Guest
+        "404":
+          description: Not found
+        "409":
+          description: Job is not failed or canceled, or the project has an active job
+  /api/simulation-runs/{runId}:
+    get:
+      summary: Simulation run with aggregates, replications and journal metadata
+      security:
+        - sessionCookie: []
+      parameters:
+        - in: path
+          name: runId
+          required: true
+          schema:
+            type: string
+            format: uuid
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/SimulationRunResponse"
+        "403":
+          description: Guest
+        "404":
+          description: Not found or not owned
+  /api/simulation-runs/{runId}/events:
+    get:
+      summary: Compact journal of the representative replication
+      description: >-
+        Sent gzip-encoded when the client accepts gzip. Journals of unpinned runs are deleted after
+        SIM_LOG_RETENTION_DAYS (90 by default).
+      security:
+        - sessionCookie: []
+      parameters:
+        - in: path
+          name: runId
+          required: true
+          schema:
+            type: string
+            format: uuid
+      responses:
+        "200":
+          description: Journal
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/SimulationLog"
+        "403":
+          description: Guest
+        "404":
+          description: Not found, or the run has not finished
+        "410":
+          description: Journal removed by retention
+  /api/simulation-runs/{runId}/pin:
+    put:
+      summary: Pin or unpin the journal. A pinned journal is not deleted by retention.
+      security:
+        - sessionCookie: []
+      parameters:
+        - in: path
+          name: runId
+          required: true
+          schema:
+            type: string
+            format: uuid
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required: [pinned]
+              properties:
+                pinned:
+                  type: boolean
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  pinned:
+                    type: boolean
+                  expires_at:
+                    type: string
+                    format: date-time
+                    nullable: true
+        "404":
+          description: Run or journal not found
+  /api/simulation-runs/{runId}/export:
+    post:
+      summary: Report of one finished simulation run
+      description: >-
+        Operational simulation report with verdict, SLA, throughput, processes, bottlenecks and decision-relevant assumptions.
+        XLSX sheets: Итог, Процессы, Узкие места, Допущения и риски. The immutable run snapshot remains stored in the system.
+      security:
+        - sessionCookie: []
+      parameters:
+        - in: path
+          name: runId
+          required: true
+          schema:
+            type: string
+            format: uuid
+        - in: query
+          name: format
+          schema:
+            type: string
+            enum: [pdf, xlsx]
+      responses:
+        "200":
+          description: >-
+            PDF or XLSX report. Content-Disposition names the file after the object type and the project version number, for example raschet-warehouse-3.xlsx.
+          headers:
+            X-Run-Id:
+              description: Run the report was built from
+              schema:
+                type: string
+                format: uuid
+            X-Input-Hash:
+              description: input_hash of the run snapshot
+              schema:
+                type: string
+          content:
+            application/pdf:
+              schema:
+                type: string
+                format: binary
+            application/vnd.openxmlformats-officedocument.spreadsheetml.sheet:
+              schema:
+                type: string
+                format: binary
+        "403":
+          description: Guest
+        "404":
+          description: Not found or not owned
+        "409":
+          description: The run has not succeeded
+  /api/admin/solutions:
+    post:
+      summary: Create a catalog robot (admin)
+      security:
+        - sessionCookie: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/SolutionFields"
+      responses:
+        "201":
+          description: Created
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/SolutionUpdate"
+        "400":
+          description: A value failed its check; details name the field
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+        "403":
+          description: Admin only
+  /api/admin/solutions/{solutionId}:
+    patch:
+      summary: Change some fields of a robot (admin)
+      description: Fields left out keep their values; null clears a field. Saving the same values changes nothing.
+      security:
+        - sessionCookie: []
+      parameters:
+        - $ref: "#/components/parameters/SolutionID"
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/SolutionFields"
+      responses:
+        "200":
+          description: The robot as stored and the fields that changed
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/SolutionUpdate"
+        "400":
+          description: A value failed its check; details name the field
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+        "403":
+          description: Admin only
+        "404":
+          description: Not found
+    put:
+      summary: Replace the fields of the older full form (admin)
+      description: >-
+        Takes the older form's fields at the top level or under `specs`; a field left out is cleared.
+        Description, objects and group keep their values. New clients use PATCH.
+      security:
+        - sessionCookie: []
+      parameters:
+        - $ref: "#/components/parameters/SolutionID"
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Solution"
+        "400":
+          description: A value failed its check
+        "403":
+          description: Admin only
+        "404":
+          description: Not found
+    delete:
+      summary: Move a robot to the archive (admin)
+      description: >-
+        An archived robot leaves the lists and matching; fleets, variants and calculations that name it keep it.
+      security:
+        - sessionCookie: []
+      parameters:
+        - $ref: "#/components/parameters/SolutionID"
+      responses:
+        "204":
+          description: Archived
+        "403":
+          description: Admin only
+        "404":
+          description: Not found
+  /api/admin/solutions/{solutionId}/restore:
+    post:
+      summary: Bring a robot back from the archive (admin)
+      security:
+        - sessionCookie: []
+      parameters:
+        - $ref: "#/components/parameters/SolutionID"
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Solution"
+        "403":
+          description: Admin only
+        "404":
+          description: Not found
+  /api/admin/solutions/{solutionId}/duplicate:
+    post:
+      summary: Copy a robot with its photo; the copy is named «<name> (копия)» (admin)
+      security:
+        - sessionCookie: []
+      parameters:
+        - $ref: "#/components/parameters/SolutionID"
+      responses:
+        "201":
+          description: The copy
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Solution"
+        "403":
+          description: Admin only
+        "404":
+          description: Not found
+  /api/admin/solutions/{solutionId}/image:
+    put:
+      summary: Set a robot's photo (admin)
+      description: >-
+        The body is the image file: JPEG, PNG, WebP or GIF, at most 8 MB and 40 megapixels. It is scaled down to
+        1 200 px on the longer side and stored without metadata.
+      security:
+        - sessionCookie: []
+      parameters:
+        - $ref: "#/components/parameters/SolutionID"
+      requestBody:
+        required: true
+        content:
+          image/*:
+            schema:
+              type: string
+              format: binary
+      responses:
+        "200":
+          description: The robot with its new image_sha
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Solution"
+        "400":
+          description: Not an image, or too many pixels
+        "403":
+          description: Admin only
+        "404":
+          description: Not found
+        "413":
+          description: Larger than 8 MB
+    delete:
+      summary: Remove a robot's photo (admin)
+      security:
+        - sessionCookie: []
+      parameters:
+        - $ref: "#/components/parameters/SolutionID"
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Solution"
+        "403":
+          description: Admin only
+        "404":
+          description: Not found
+  /api/admin/invitations:
+    post:
+      summary: Invite an address, to the app or to one project (admin)
+      security:
+        - sessionCookie: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required: [email]
+              properties:
+                email:
+                  type: string
+                project_id:
+                  type: string
+                  format: uuid
+                project_role:
+                  type: string
+                  enum: [editor, viewer]
+      responses:
+        "201":
+          description: Invitation created and its letter queued
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Invitation"
+        "400":
+          description: Invalid input
+        "403":
+          description: Not an admin
+        "404":
+          description: Project not found
+    get:
+      summary: Invitations, newest first (admin)
+      security:
+        - sessionCookie: []
+      parameters:
+        - name: project_id
+          in: query
+          schema:
+            type: string
+            format: uuid
+        - name: limit
+          in: query
+          schema:
+            type: integer
+            minimum: 1
+            maximum: 200
+      responses:
+        "200":
+          description: Invitations
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  items:
+                    type: array
+                    items:
+                      $ref: "#/components/schemas/Invitation"
+        "403":
+          description: Not an admin
+  /api/admin/invitations/{inviteId}:
+    delete:
+      summary: Revoke an open invitation (admin)
+      security:
+        - sessionCookie: []
+      parameters:
+        - in: path
+          name: inviteId
+          required: true
+          schema:
+            type: string
+            format: uuid
+      responses:
+        "204":
+          description: Revoked
+        "403":
+          description: Not an admin
+        "404":
+          description: No open invitation with that id
+  /api/admin/audit:
+    get:
+      summary: Account, member, project and catalog actions, newest first (admin)
+      security:
+        - sessionCookie: []
+      parameters:
+        - name: target_type
+          in: query
+          schema:
+            type: string
+            enum: [user, project, invitation, session, solution, catalog_import]
+        - name: target_id
+          in: query
+          schema:
+            type: string
+        - name: action
+          in: query
+          description: Comma list of actions, for example solution.update,catalog.import.
+          schema:
+            type: string
+        - name: before
+          in: query
+          description: Id of the last event shown; the answer continues with older events.
+          schema:
+            type: integer
+            format: int64
+        - name: limit
+          in: query
+          schema:
+            type: integer
+            minimum: 1
+            maximum: 500
+      responses:
+        "200":
+          description: Events
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  items:
+                    type: array
+                    items:
+                      $ref: "#/components/schemas/AuditEvent"
+        "403":
+          description: Not an admin
+  /api/admin/catalog/export:
+    get:
+      summary: Download the active catalog (admin)
+      description: >-
+        One robot per row. The hidden «Выгрузка» column carries the export id; the export keeps the values it
+        wrote, so an upload of the edited file merges three ways.
+      security:
+        - sessionCookie: []
+      parameters:
+        - $ref: "#/components/parameters/FileFormat"
+      responses:
+        "200":
+          description: The file
+          content:
+            application/vnd.openxmlformats-officedocument.spreadsheetml.sheet: {}
+            text/csv: {}
+        "403":
+          description: Admin only
+  /api/admin/catalog/template:
+    get:
+      summary: Download an empty file to fill (admin)
+      description: >-
+        catalog: the catalog columns with a «Справка» sheet. robot: one robot as rows of «Поле | Значение | Единица
+        | Допустимые значения», with lists as dropdowns in XLSX.
+      security:
+        - sessionCookie: []
+      parameters:
+        - $ref: "#/components/parameters/FileFormat"
+        - in: query
+          name: layout
+          schema:
+            type: string
+            enum: [catalog, robot]
+            default: catalog
+      responses:
+        "200":
+          description: The file
+        "400":
+          description: Unknown layout or format
+        "403":
+          description: Admin only
+  /api/admin/catalog/imports:
+    post:
+      summary: Start an upload from a file the browser has read (admin)
+      description: >-
+        The browser sends every sheet as rows of text cells. The answer maps columns to fields by their headers
+        and previews the result. At most 20 sheets, 5 000 rows and 80 columns a sheet, 4 000 characters a cell and
+        10 MB of JSON. Drafts are kept for a day.
+      security:
+        - sessionCookie: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required: [mode, sheets]
+              properties:
+                file_name:
+                  type: string
+                mode:
+                  type: string
+                  enum: [robot, catalog]
+                sheets:
+                  type: array
+                  items:
+                    $ref: "#/components/schemas/ImportSheet"
+      responses:
+        "201":
+          description: The upload with its preview
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/CatalogImport"
+        "400":
+          description: Unreadable file, unknown mode or a sheet over the limits
+        "403":
+          description: Admin only
+        "413":
+          description: Larger than 10 MB
+  /api/admin/catalog/imports/{importId}:
+    parameters:
+      - $ref: "#/components/parameters/ImportID"
+    get:
+      summary: An upload with its preview, or its result and photo progress once applied (admin)
+      security:
+        - sessionCookie: []
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/CatalogImport"
+        "403":
+          description: Admin only
+        "404":
+          description: Not found or expired
+    patch:
+      summary: Choose the sheet and the column fields of a draft upload (admin)
+      security:
+        - sessionCookie: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required: [sheet]
+              properties:
+                sheet:
+                  type: integer
+                mapping:
+                  description: >-
+                    Field code by column index; columns left out are not loaded. Without it the sheet's headers are
+                    mapped anew. A mapping with no name column is kept, and the preview says so in mapping_error.
+                  type: object
+                  additionalProperties:
+                    type: string
+      responses:
+        "200":
+          description: A fresh preview
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/CatalogImport"
+        "400":
+          description: No such sheet, an unknown field or a field on two columns
+        "403":
+          description: Admin only
+        "404":
+          description: Not found or expired
+        "409":
+          description: Already applied
+    delete:
+      summary: Drop an upload (admin)
+      security:
+        - sessionCookie: []
+      responses:
+        "204":
+          description: Dropped
+        "403":
+          description: Admin only
+  /api/admin/catalog/imports/{importId}/apply:
+    post:
+      summary: Save the chosen rows and fields of an upload in one transaction (admin)
+      description: >-
+        Each row names the rev the preview showed. If a robot changed since, nothing is saved and the answer is
+        409 with code `catalog_changed`. Photo links are fetched afterwards; the upload's status stays `photos`
+        until they are done.
+      security:
+        - sessionCookie: []
+      parameters:
+        - $ref: "#/components/parameters/ImportID"
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                rows:
+                  type: array
+                  items:
+                    type: object
+                    required: [key, rev]
+                    properties:
+                      key:
+                        type: string
+                      rev:
+                        type: string
+                        description: Empty for a new robot.
+                fields:
+                  description: Field codes to take from the file; cases carries the organizer's uses.
+                  type: array
+                  items:
+                    type: string
+                picks:
+                  description: For conflicting fields, file or catalog by row key and field code; catalog by default.
+                  type: object
+                  additionalProperties:
+                    type: object
+                    additionalProperties:
+                      type: string
+                      enum: [file, catalog]
+                archive:
+                  description: Ids of robots missing from the file to move to the archive.
+                  type: array
+                  items:
+                    type: string
+                    format: uuid
+      responses:
+        "200":
+          description: The applied upload with its summary
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/CatalogImport"
+        "400":
+          description: A merged value failed its check
+        "403":
+          description: Admin only
+        "404":
+          description: Not found or expired
+        "409":
+          description: Already applied, or code catalog_changed when the catalog moved since the preview
+  /api/admin/catalog/imports/{importId}/errors:
+    get:
+      summary: The uploaded sheet with an «Ошибки» column (admin)
+      security:
+        - sessionCookie: []
+      parameters:
+        - $ref: "#/components/parameters/ImportID"
+        - $ref: "#/components/parameters/FileFormat"
+      responses:
+        "200":
+          description: The file
+        "403":
+          description: Admin only
+        "404":
+          description: Not found or expired
+  /api/projects/{id}/calculate:
+    post:
+      summary: Calculate econ, persist an immutable run (user or admin). Alias of POST /api/projects/{id}/calculations.
+      parameters:
+        - in: path
+          name: id
+          required: true
+          schema:
+            type: string
+            format: uuid
+      requestBody:
+        required: false
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                seed:
+                  type: integer
+                  minimum: 0
+                include_ids:
+                  type: array
+                  items:
+                    type: string
+                    format: uuid
+                overrides:
+                  $ref: "#/components/schemas/EconOverrides"
+      responses:
+        "200":
+          description: Structured result with econ, match, model econ-v3
+        "400":
+          description: Validation error
+        "403":
+          description: Guest cannot persist a calculation
+        "404":
+          description: Not found
+  /api/projects/{id}/match:
+    get:
+      summary: Match catalog to the project draft without saving (user or admin)
+      description: >-
+        Uses the draft params, the task types of project processes, the live catalog and the stored
+        selection as include_ids. Nothing is written.
+      parameters:
+        - in: path
+          name: id
+          required: true
+          schema:
+            type: string
+            format: uuid
+        - $ref: "#/components/parameters/MatchView"
+      responses:
+        "200":
+          description: Ranked catalog
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/MatchOutput"
+        "400":
+          description: Validation error
+        "403":
+          description: Guest has no projects
+        "404":
+          description: Not found
+components:
+  parameters:
+    SolutionID:
+      in: path
+      name: solutionId
+      required: true
+      schema:
+        type: string
+        format: uuid
+    ImportID:
+      in: path
+      name: importId
+      required: true
+      schema:
+        type: string
+        format: uuid
+    FileFormat:
+      in: query
+      name: format
+      schema:
+        type: string
+        enum: [xlsx, csv]
+        default: xlsx
+    ProjectID:
+      in: path
+      name: id
+      required: true
+      schema:
+        type: string
+        format: uuid
+    UserID:
+      in: path
+      name: userId
+      required: true
+      schema:
+        type: string
+        format: uuid
+    MatchView:
+      in: query
+      name: view
+      description: brief returns items with empty reasons, hard, soft, missing_evidence and explanation lists.
+      schema:
+        type: string
+        enum: [full, brief]
+        default: full
+  securitySchemes:
+    sessionCookie:
+      type: apiKey
+      in: cookie
+      name: __Host-session
+      description: >
+        HttpOnly session cookie set by login and register. With COOKIE_SECURE=false
+        (local only) the cookie is named `session`. POST, PUT, PATCH and DELETE under
+        /api/ with a session also need the `X-CSRF-Token` header equal to `csrf_token`
+        from login, register or /api/auth/me, and must come from the same origin
+        (`Sec-Fetch-Site: same-origin`, or `Origin` equal to PUBLIC_ORIGIN); otherwise
+        403 with code `csrf`. An expired or revoked cookie gives 401 with code
+        `session_expired` and clears the cookie.
+  schemas:
+    Error:
+      description: >-
+        Body of every error answer. Every answer, error or not, also carries the request id in the
+        `X-Request-Id` header. An address the API does not have gives 404 with code `not_found`; a known
+        address asked with another method gives 405 with code `method_not_allowed`. When the API is down,
+        the web proxy answers /api/ with 503 and code `api_unavailable` in the same shape.
+      type: object
+      required: [error]
+      properties:
+        error:
+          type: string
+          description: What happened and what to do, in Russian, for the user.
+        code:
+          type: string
+          example: not_found
+        request_id:
+          type: string
+          description: Names the request in the server log; error pages show it for server faults.
+    TrashedProject:
+      type: object
+      properties:
+        deleted_at:
+          type: string
+          format: date-time
+        purge_at:
+          type: string
+          format: date-time
+    TrashItem:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+        name:
+          type: string
+        object_type:
+          type: string
+        deleted_at:
+          type: string
+          format: date-time
+        purge_at:
+          type: string
+          format: date-time
+        created_at:
+          type: string
+          format: date-time
+    Invitation:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+        email:
+          type: string
+        project_id:
+          type: string
+          format: uuid
+          nullable: true
+        project_name:
+          type: string
+          nullable: true
+        project_role:
+          type: string
+          enum: [editor, viewer]
+          nullable: true
+        created_at:
+          type: string
+          format: date-time
+        expires_at:
+          type: string
+          format: date-time
+        accepted_at:
+          type: string
+          format: date-time
+          nullable: true
+        revoked_at:
+          type: string
+          format: date-time
+          nullable: true
+        invited_by:
+          type: string
+          nullable: true
+    InvitationCheck:
+      type: object
+      properties:
+        valid:
+          type: boolean
+        email:
+          type: string
+        project_name:
+          type: string
+        project_role:
+          type: string
+          enum: [editor, viewer]
+        reason:
+          type: string
+          description: Why the invitation cannot be used, in Russian
+    OutboxLetter:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+        to_email:
+          type: string
+        template:
+          type: string
+          enum: [verify_email, reset_password, invite]
+        payload:
+          type: object
+          additionalProperties:
+            type: string
+        status:
+          type: string
+          enum: [queued, sent, failed]
+        attempts:
+          type: integer
+        created_at:
+          type: string
+          format: date-time
+    AuditEvent:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+        at:
+          type: string
+          format: date-time
+        actor_email:
+          type: string
+          nullable: true
+          description: Masked, for example "a***@example.com"
+        action:
+          type: string
+        target_type:
+          type: string
+        target_id:
+          type: string
+          nullable: true
+        target_name:
+          type: string
+          nullable: true
+          description: Current name of the project or catalog robot the event is about; null once it is gone
+        meta:
+          type: object
+    CalculateResult:
+      type: object
+      required:
+        - model_version
+        - object_type
+        - seed
+        - scenarios
+        - match
+        - assumptions
+        - verification_flag
+      properties:
+        model_version:
+          type: string
+          example: econ-v3
+        object_type:
+          type: string
+        seed:
+          type: integer
+        scenarios:
+          type: array
+          items:
+            $ref: "#/components/schemas/ScenarioResult"
+        match:
+          $ref: "#/components/schemas/MatchOutput"
+        assumptions:
+          type: array
+          items:
+            type: string
+        verification_flag:
+          type: boolean
+        horizon_years:
+          type: number
+        solution_name:
+          type: string
+        risks:
+          type: array
+          items:
+            $ref: "#/components/schemas/EconRisk"
+        interpretation:
+          type: array
+          items:
+            type: string
+        formulas:
+          type: array
+          items:
+            type: object
+            properties:
+              id:
+                type: string
+              text:
+                type: string
+              unit:
+                type: string
+              mathml:
+                type: string
+                description: The same formula as MathML markup, for the web page.
+        units:
+          type: object
+          additionalProperties:
+            type: string
+        sources:
+          type: array
+          items:
+            type: string
+        breakdown:
+          type: array
+          items:
+            type: object
+            properties:
+              scenario:
+                type: string
+              bucket:
+                type: string
+              id:
+                type: string
+              label:
+                type: string
+              rub:
+                type: number
+              note:
+                type: string
+        overrides:
+          type: array
+          items:
+            type: object
+            properties:
+              field:
+                type: string
+              value:
+                type: number
+              computed:
+                type: number
+              flag:
+                type: boolean
+        sensitivity:
+          type: array
+          items:
+            type: object
+            properties:
+              variant_id:
+                type: string
+              variant_name:
+                type: string
+              param:
+                type: string
+              delta_pct:
+                type: number
+              buy:
+                $ref: "#/components/schemas/ScenarioResult"
+              raas:
+                $ref: "#/components/schemas/ScenarioResult"
+        shared:
+          type: object
+          properties:
+            fleet_size:
+              type: integer
+            chargers:
+              type: integer
+            throughput:
+              type: number
+            peak_ops:
+              type: number
+            unit:
+              type: string
+            work_kind:
+              type: string
+        sim:
+          $ref: "#/components/schemas/SimSummary"
+        variants:
+          type: array
+          maxItems: 6
+          items:
+            $ref: "#/components/schemas/VariantResult"
+        origins:
+          type: array
+          items:
+            $ref: "#/components/schemas/MetricOrigin"
+        assumption_set:
+          $ref: "#/components/schemas/AssumptionView"
+        sim_checks:
+          type: array
+          description: >-
+            Quick sim-v1 check of every variant with a fleet, for airports and hospitals. A warehouse gets its
+            checks from GET /api/projects/{id}/sim-checks instead.
+          items:
+            $ref: "#/components/schemas/SimCheck"
+    SimCheck:
+      type: object
+      required: [variant_id, variant_name, model, value, flag]
+      properties:
+        variant_id:
+          type: string
+        variant_name:
+          type: string
+        model:
+          type: string
+          enum: [map, quick]
+          description: map is a sim-v2 run on the project map, quick is the sim-v1 check without a map.
+        value:
+          type: number
+          description: Share of the expected throughput or jobs the simulated fleet delivered.
+        flag:
+          type: boolean
+          description: True when the simulation and the economics are more than 15% apart.
+        text:
+          type: string
+          description: The outcome in Russian, ready to show.
+        run_id:
+          type: string
+          format: uuid
+          description: The run the check reads. Empty when nobody simulated the variant.
+        stale:
+          type: boolean
+          description: The run was made for inputs the variant has since changed.
+    SimSummary:
+      type: object
+      properties:
+        throughput:
+          type: number
+        econ_throughput:
+          type: number
+        divergence:
+          type: number
+        delivered_ops_h:
+          type: number
+        queue_wait_s:
+          type: number
+        charge_share:
+          type: number
+        simulated_s:
+          type: number
+        bottleneck:
+          type: string
+        unit:
+          type: string
+        assumptions:
+          type: array
+          items:
+            type: string
+    ScenarioResult:
+      type: object
+      properties:
+        kind:
+          type: string
+          enum: [baseline, buy, raas]
+        solution_id:
+          type: string
+          format: uuid
+          nullable: true
+        fleet_size:
+          type: integer
+          nullable: true
+        capex_rub:
+          type: number
+          nullable: true
+        opex_year_rub:
+          type: number
+          nullable: true
+        annual_effect_rub:
+          type: number
+          nullable: true
+        payback_years:
+          type: number
+          nullable: true
+        payback_band:
+          type: string
+          enum: [up_to_3, from_3_to_5, over_5, none]
+        roi_pct:
+          type: number
+          nullable: true
+        tco_rub:
+          type: number
+          nullable: true
+        accounting_effect_rub:
+          type: number
+          nullable: true
+        discounted_payback_years:
+          type: number
+          nullable: true
+          description: Payback of the flows discounted at the discount rate of the assumption set.
+        npv_rub:
+          type: number
+          nullable: true
+          description: Net present value over the horizon at the discount rate of the assumption set, constant prices.
+        irr_pct:
+          type: number
+          nullable: true
+        cash_flow:
+          type: array
+          description: Cash flow against the baseline by year; year 0 is the investment.
+          items:
+            $ref: "#/components/schemas/FlowRow"
+        labor_cash_saved_rub:
+          type: number
+          nullable: true
+        variant_id:
+          type: string
+        variant_name:
+          type: string
+        tariff:
+          type: string
+          enum: [fixed, variable, mixed]
+        price_source:
+          type: string
+          enum: [catalog, project_override]
+    FlowRow:
+      type: object
+      required: [year, effect_rub, net_rub, cumulative_rub]
+      properties:
+        year:
+          type: integer
+          minimum: 0
+        effect_rub:
+          type: number
+        battery_rub:
+          type: number
+        replacement_rub:
+          type: number
+        net_rub:
+          type: number
+        cumulative_rub:
+          type: number
+    EconRisk:
+      type: object
+      required: [id, level, text]
+      properties:
+        id:
+          type: string
+        level:
+          type: string
+          enum: [info, warning, high]
+        text:
+          type: string
+    EconOverrides:
+      type: object
+      properties:
+        price_rub:
+          type: number
+        volume_factor:
+          type: number
+        labor_factor:
+          type: number
+        fleet_size:
+          type: integer
+        capex_rub:
+          type: number
+        opex_year_rub:
+          type: number
+    MatchWeights:
+      type: object
+      required: [fit, process_match, data_quality, price_band]
+      properties:
+        fit:
+          type: number
+        process_match:
+          type: number
+        data_quality:
+          type: number
+        price_band:
+          type: number
+    MatchStep:
+      type: object
+      required: [rule_id, kind, outcome, text]
+      properties:
+        rule_id:
+          type: string
+        kind:
+          type: string
+          enum: [hard, soft, missing_evidence]
+        outcome:
+          type: string
+          enum: [pass, fail, unknown]
+        task_code:
+          type: string
+        capability_code:
+          type: string
+        object_field:
+          type: string
+        object_value:
+          type: number
+          nullable: true
+        object_unit:
+          type: string
+        solution_field:
+          type: string
+        solution_value:
+          type: number
+          nullable: true
+        solution_unit:
+          type: string
+        source_url:
+          type: string
+          nullable: true
+        confidence:
+          type: string
+          nullable: true
+        text:
+          type: string
+    MatchItem:
+      type: object
+      required: [solution_id, status, reasons, score_parts, score, forced, hard, soft, missing_evidence, explanation]
+      properties:
+        solution_id:
+          type: string
+          format: uuid
+        name:
+          type: string
+        vendor:
+          type: string
+          nullable: true
+        kind:
+          type: string
+          nullable: true
+        subtype:
+          type: string
+          nullable: true
+        family:
+          type: string
+        price_rub:
+          type: number
+          nullable: true
+        status:
+          type: string
+          enum: [recommended, needs_review, excluded]
+        reasons:
+          type: array
+          items:
+            type: string
+        hard:
+          type: array
+          items:
+            $ref: "#/components/schemas/MatchStep"
+        soft:
+          type: array
+          items:
+            $ref: "#/components/schemas/MatchStep"
+        missing_evidence:
+          type: array
+          items:
+            $ref: "#/components/schemas/MatchStep"
+        explanation:
+          type: array
+          items:
+            $ref: "#/components/schemas/MatchStep"
+        score_parts:
+          $ref: "#/components/schemas/MatchWeights"
+        score:
+          type: number
+        forced:
+          type: boolean
+        estimate:
+          description: The robot's own buy case for the project. Only in a calculation, only for robots that are not excluded and have a price.
+          type: object
+          required: [fleet_size, capex_rub, payback_years]
+          properties:
+            fleet_size:
+              type: integer
+            capex_rub:
+              type: number
+            payback_years:
+              type: number
+              nullable: true
+              description: Empty when the robot does not pay back.
+            process_codes:
+              description: The project processes the robot takes over in this case; fleet_size is sized for their daily demand. Missing when it takes over none.
+              type: array
+              items:
+                type: string
+    MatchOutput:
+      type: object
+      required: [weights, selected_ids, items, match_version]
+      properties:
+        weights:
+          $ref: "#/components/schemas/MatchWeights"
+        selected_ids:
+          type: array
+          items:
+            type: string
+            format: uuid
+        items:
+          type: array
+          items:
+            $ref: "#/components/schemas/MatchItem"
+        match_version:
+          type: string
+        catalog_content_sha256:
+          type: string
+        task_codes:
+          type: array
+          items:
+            type: string
+        best:
+          description: The suggested robot. In a calculation, items of one status are ordered by payback, fastest first.
+          type: string
+          format: uuid
+        best_why:
+          description: Why the suggested robot leads, in Russian.
+          type: array
+          items:
+            type: string
+    FieldSource:
+      type: object
+      properties:
+        source_url:
+          type: string
+        confidence:
+          type: string
+        note:
+          type: string
+        sourced_at:
+          type: string
+          format: date
+    Solution:
+      type: object
+      required: [id, name, specs, data_quality]
+      properties:
+        id:
+          type: string
+          format: uuid
+        name:
+          type: string
+        vendor:
+          type: string
+          nullable: true
+        kind:
+          type: string
+          nullable: true
+        subtype:
+          type: string
+          nullable: true
+        status:
+          type: string
+          nullable: true
+        industry:
+          type: string
+          nullable: true
+        scenario:
+          type: string
+          nullable: true
+        price_rub:
+          type: number
+          nullable: true
+        source_url:
+          type: string
+          nullable: true
+        family:
+          description: Robot group from the organizer's «Тип» column.
+          type: string
+          nullable: true
+          enum: [mobile, uav, ground, marine, stationary, manipulator, humanoid, software, other, null]
+        description:
+          type: string
+          nullable: true
+        object_types:
+          type: array
+          items:
+            type: string
+            enum: [warehouse, airport, hospital]
+        modification:
+          description: Industry of the catalog row when the file repeats the robot's id, so rows of one robot differ; null otherwise.
+          type: string
+          nullable: true
+        field_sources:
+          description: Where single values come from, by field code. A value with no entry has the source of the card.
+          type: object
+          additionalProperties:
+            $ref: '#/components/schemas/FieldSource'
+        region:
+          type: string
+          nullable: true
+        ugt:
+          description: Technology readiness level, 1 to 9.
+          type: number
+          nullable: true
+        market:
+          type: number
+          nullable: true
+        archived_at:
+          type: string
+          format: date-time
+          nullable: true
+        image_sha:
+          description: sha256 of the photo; null when the robot has none.
+          type: string
+          nullable: true
+        specs:
+          type: object
+        data_quality:
+          type: object
+          properties:
+            status:
+              type: string
+              enum: [ok, needs_review]
+            missing:
+              type: array
+              items:
+                type: string
+            reasons:
+              type: array
+              items:
+                type: string
+    SolutionFields:
+      description: >-
+        Robot fields by code in stored units (see CatalogField): numbers as numbers, service_pct_year as a share,
+        lists as arrays of codes, sourced_at as YYYY-MM-DD. null clears a field.
+      type: object
+      properties:
+        name:
+          type: string
+        vendor:
+          type: string
+          nullable: true
+        family:
+          type: string
+          nullable: true
+        kind:
+          type: string
+          nullable: true
+          enum: [brs, bas, software, null]
+        subtype:
+          type: string
+          nullable: true
+        status:
+          type: string
+          nullable: true
+          enum: [operation, piloting, rnd, null]
+        description:
+          type: string
+          nullable: true
+        object_types:
+          type: array
+          nullable: true
+          items:
+            type: string
+        price_rub:
+          type: number
+          nullable: true
+        payload_kg:
+          type: number
+          nullable: true
+        service_pct_year:
+          type: number
+          nullable: true
+          minimum: 0
+          maximum: 1
+      additionalProperties:
+        nullable: true
+    FieldChange:
+      type: object
+      properties:
+        field:
+          type: string
+        before:
+          nullable: true
+        after:
+          nullable: true
+    SolutionUpdate:
+      type: object
+      required: [solution, changes]
+      properties:
+        solution:
+          $ref: "#/components/schemas/Solution"
+        changes:
+          type: array
+          items:
+            $ref: "#/components/schemas/FieldChange"
+    CatalogField:
+      type: object
+      required: [code, label, kind, group, editable]
+      properties:
+        code:
+          type: string
+        label:
+          type: string
+        unit:
+          type: string
+        kind:
+          type: string
+          enum: [id, text, number, choice, choices, url, date]
+        group:
+          type: string
+          enum: [about, offer, specs, file]
+        choices:
+          type: array
+          items:
+            type: object
+            properties:
+              code:
+                type: string
+              label:
+                type: string
+        min:
+          type: number
+        max:
+          type: number
+        integer:
+          type: boolean
+        percent:
+          description: Stored as a share, shown and written in files as percent.
+          type: boolean
+        max_len:
+          type: integer
+        required:
+          type: boolean
+        editable:
+          type: boolean
+    ImportSheet:
+      type: object
+      required: [name, rows]
+      properties:
+        name:
+          type: string
+        rows:
+          description: Rows of text cells; the first row is the header.
+          type: array
+          items:
+            type: array
+            items:
+              type: string
+    CatalogImport:
+      type: object
+      required: [id, mode, status, sheets, sheet, layout, columns]
+      properties:
+        id:
+          type: string
+          format: uuid
+        file_name:
+          type: string
+        mode:
+          type: string
+          enum: [robot, catalog]
+        status:
+          type: string
+          enum: [draft, photos, done]
+        sheets:
+          type: array
+          items:
+            type: string
+        sheet:
+          type: integer
+        layout:
+          description: table has a robot per row; form is the one-robot template with a field per row.
+          type: string
+          enum: [table, form]
+        hint:
+          description: Set when the file looks made for the other mode.
+          type: string
+        stamp:
+          description: The export the file came from, when it has a «Выгрузка» column.
+          type: object
+          nullable: true
+          properties:
+            export_id:
+              type: string
+            created_at:
+              type: string
+              format: date-time
+              nullable: true
+            found:
+              type: boolean
+        columns:
+          type: array
+          items:
+            type: object
+            properties:
+              index:
+                type: integer
+              header:
+                type: string
+              field:
+                type: string
+                nullable: true
+              samples:
+                type: array
+                items:
+                  type: string
+        mapping_error:
+          type: string
+        plan:
+          $ref: "#/components/schemas/ImportPlan"
+        summary:
+          $ref: "#/components/schemas/ImportSummary"
+    ImportPlan:
+      type: object
+      properties:
+        three_way:
+          type: boolean
+        rows:
+          type: array
+          items:
+            $ref: "#/components/schemas/ImportRow"
+        missing:
+          description: Active robots the file does not list (catalog mode with an id column).
+          type: array
+          items:
+            $ref: "#/components/schemas/RobotRef"
+        counts:
+          description: Rows by class, and missing.
+          type: object
+          additionalProperties:
+            type: integer
+    RobotRef:
+      type: object
+      properties:
+        id:
+          type: string
+        name:
+          type: string
+    ImportRow:
+      type: object
+      properties:
+        key:
+          type: string
+        line:
+          type: integer
+        class:
+          type: string
+          enum: [new, changed, conflict, unchanged, error]
+        id:
+          type: string
+        name:
+          type: string
+        rev:
+          type: string
+        archived:
+          type: boolean
+        duplicate_of:
+          $ref: "#/components/schemas/RobotRef"
+        photo:
+          type: string
+        fields:
+          type: array
+          items:
+            type: object
+            properties:
+              code:
+                type: string
+              base:
+                nullable: true
+              current:
+                nullable: true
+              file:
+                nullable: true
+              conflict:
+                type: boolean
+        errors:
+          type: array
+          items:
+            type: object
+            properties:
+              field:
+                type: string
+              message:
+                type: string
+    ImportSummary:
+      type: object
+      properties:
+        applied:
+          type: object
+          properties:
+            created:
+              type: array
+              items:
+                type: object
+            updated:
+              type: array
+              items:
+                type: object
+            archived:
+              type: array
+              items:
+                $ref: "#/components/schemas/RobotRef"
+            photos:
+              type: array
+              items:
+                type: object
+        photos_total:
+          type: integer
+        photos_done:
+          type: integer
+        photos_skipped:
+          description: Photo links over the limit of 200 an upload fetches.
+          type: integer
+        photos_interrupted:
+          description: The API restarted before every photo was fetched.
+          type: boolean
+        photo_errors:
+          type: array
+          items:
+            type: object
+            properties:
+              solution_id:
+                type: string
+              name:
+                type: string
+              url:
+                type: string
+              message:
+                type: string
+        applied_at:
+          type: string
+          format: date-time
+        unchanged:
+          type: integer
+    CatalogBundle:
+      type: object
+      required: [content_sha256, candidates, robots]
+      properties:
+        content_sha256:
+          type: string
+        candidates:
+          type: array
+          items:
+            type: object
+            additionalProperties: true
+        robots:
+          type: array
+          items:
+            type: object
+            additionalProperties: true
+    DictionaryEntry:
+      type: object
+      required: [kind, code, label]
+      properties:
+        kind:
+          type: string
+        code:
+          type: string
+        label:
+          type: string
+        object_type:
+          type: string
+    CapabilityTaskRule:
+      type: object
+      required: [capability_code, task_code, relation]
+      properties:
+        capability_code:
+          type: string
+        task_code:
+          type: string
+        relation:
+          type: string
+          enum: [required, compatible, incompatible]
+    ValidationError:
+      type: object
+      properties:
+        error:
+          type: string
+        code:
+          type: string
+          example: validation_error
+        request_id:
+          type: string
+        details:
+          type: array
+          items:
+            type: object
+            properties:
+              field:
+                type: string
+              message:
+                type: string
+    ObjectSchema:
+      type: object
+      required: [type, label, tabs, groups]
+      properties:
+        type:
+          type: string
+          enum: [warehouse, airport, hospital]
+        label:
+          type: string
+        tabs:
+          type: array
+          description: Pages of the object form, in order. Key tabs are reviewed before the first calculation.
+          items:
+            type: object
+            required: [id, label, key]
+            properties:
+              id:
+                type: string
+              label:
+                type: string
+              key:
+                type: boolean
+        groups:
+          type: array
+          items:
+            type: object
+            required: [id, label, tab, fields]
+            properties:
+              id:
+                type: string
+              label:
+                type: string
+              tab:
+                type: string
+                description: Id of the tab the group is shown on.
+              fields:
+                type: array
+                items:
+                  $ref: "#/components/schemas/SchemaField"
+    SchemaField:
+      type: object
+      required: [id, label, type, required]
+      properties:
+        id:
+          type: string
+        label:
+          type: string
+        short:
+          type: string
+          description: One-line label the form shows; absent when label already fits.
+        unit:
+          type: string
+        type:
+          type: string
+          enum: [number, integer, string, boolean, enum, multi_enum, time_range, dimensions]
+          description: dimensions values are {length, width, height} in the field unit; min and max bound each part.
+        required:
+          type: boolean
+        allow_unknown:
+          type: boolean
+        default:
+          nullable: true
+        min:
+          type: number
+        max:
+          type: number
+        note:
+          type: string
+        help:
+          type: string
+          description: Complete text for the field help popover. An empty string hides the help button.
+        options:
+          type: array
+          items:
+            type: object
+            required: [value, label]
+            properties:
+              value:
+                type: string
+              label:
+                type: string
+        aliases:
+          type: array
+          description: Earlier labels still accepted when a params file is matched by label.
+          items:
+            type: string
+    Project:
+      type: object
+      required:
+        - id
+        - name
+        - object_type
+        - params
+        - model_version
+        - input_hash
+        - stale
+      properties:
+        id:
+          type: string
+          format: uuid
+        name:
+          type: string
+        object_type:
+          type: string
+        params:
+          type: object
+        processes:
+          type: array
+          items:
+            $ref: "#/components/schemas/Process"
+        variants:
+          type: array
+          maxItems: 6
+          items:
+            $ref: "#/components/schemas/SolutionVariant"
+        shared_costs:
+          type: array
+          items:
+            $ref: "#/components/schemas/SharedCost"
+        assumption_sets:
+          type: array
+          items:
+            $ref: "#/components/schemas/AssumptionSet"
+        active_assumption_set_id:
+          type: string
+          format: uuid
+        match_selected_ids:
+          type: array
+          items:
+            type: string
+            format: uuid
+        econ_overrides:
+          type: object
+          nullable: true
+          allOf:
+            - $ref: "#/components/schemas/EconOverrides"
+        results:
+          type: object
+          nullable: true
+          description: Last run summary. Not the only source of truth. Ignore when stale is true for current export.
+        model_version:
+          type: string
+        calc_seed:
+          type: integer
+          nullable: true
+        created_at:
+          type: string
+          format: date-time
+          nullable: true
+        input_hash:
+          type: string
+        current_run_id:
+          type: string
+          format: uuid
+          nullable: true
+        stale:
+          type: boolean
+        access:
+          $ref: "#/components/schemas/ProjectAccess"
+        map:
+          type: object
+          nullable: true
+          allOf:
+            - $ref: "#/components/schemas/MapDocument"
+    ProjectAccess:
+      type: string
+      enum: [owner, editor, viewer]
+      description: >-
+        The caller's role. viewer reads the project, exports and opens runs. editor also changes the draft,
+        calculates, runs and cancels simulations and copies the project to their own account. owner also manages
+        members and deletes the project.
+    Op:
+      type: object
+      required: [op, coll]
+      additionalProperties: false
+      properties:
+        op:
+          type: string
+          enum: [insert, set, delete, move]
+        coll:
+          type: string
+          description: Collection name from the schema
+        id:
+          type: string
+          description: Record id; lowercase UUID for list records, the collection name for singletons
+        path:
+          type: string
+          description: set only; a field, or field.key for object and params fields
+        value:
+          description: insert (the record with order for ordered lists) or set (the new value)
+        order:
+          type: string
+          description: move only; the new fractional order key
+    OpTransaction:
+      type: object
+      required: [tx_id, ops]
+      additionalProperties: false
+      properties:
+        tx_id:
+          type: string
+          format: uuid
+          description: Lowercase UUID chosen by the client
+        label:
+          type: string
+          maxLength: 200
+        ops:
+          type: array
+          items:
+            $ref: "#/components/schemas/Op"
+    OpResult:
+      type: object
+      required: [tx_id, status]
+      properties:
+        tx_id:
+          type: string
+          format: uuid
+        status:
+          type: string
+          enum: [applied, rejected]
+        seq:
+          type: integer
+          format: int64
+          description: applied only
+        reason:
+          type: string
+          enum: [target_missing, ref_missing, unique, limit, invalid_value, immutable]
+        details:
+          type: object
+          properties:
+            op:
+              type: integer
+              description: Index of the failing operation
+            coll:
+              type: string
+            id:
+              type: string
+            field:
+              type: string
+    AuthSession:
+      type: object
+      required: [user, csrf_token]
+      properties:
+        user:
+          type: object
+          required: [id, email, role]
+          properties:
+            id:
+              type: string
+              format: uuid
+            email:
+              type: string
+            role:
+              type: string
+              enum: [user, admin]
+        csrf_token:
+          type: string
+          description: Send as X-CSRF-Token on POST, PUT, PATCH and DELETE.
+    Session:
+      type: object
+      required: [id, current, created_at, last_seen_at, expires_at, user_agent, ip_prefix]
+      properties:
+        id:
+          type: string
+          format: uuid
+        current:
+          type: boolean
+        created_at:
+          type: string
+          format: date-time
+        last_seen_at:
+          type: string
+          format: date-time
+          description: Updated at most every 5 minutes
+        expires_at:
+          type: string
+          format: date-time
+        user_agent:
+          type: string
+        ip_prefix:
+          type: string
+          description: /24 of IPv4 or /48 of IPv6
+    ProjectMember:
+      type: object
+      required: [user_id, email, role]
+      properties:
+        user_id:
+          type: string
+          format: uuid
+        email:
+          type: string
+        role:
+          $ref: "#/components/schemas/ProjectAccess"
+        created_at:
+          type: string
+          format: date-time
+          nullable: true
+    Process:
+      type: object
+      required: [code, name, task_type, is_baseline, sort_order]
+      properties:
+        id:
+          type: string
+          format: uuid
+        code:
+          type: string
+        name:
+          type: string
+        task_type:
+          type: string
+          enum:
+            - pallet_inbound
+            - pallet_putaway
+            - pallet_outbound
+            - piece_pick
+            - pallet_move
+            - cleaning
+        is_baseline:
+          type: boolean
+        demand:
+          type: object
+          properties:
+            units_per_day:
+              type: number
+              minimum: 0
+              maximum: 10000000
+            unit:
+              type: string
+            units_per_job:
+              type: number
+              minimum: 0
+              maximum: 10000
+              description: Units carried by one robot job. 0 means 40 for piece_pick and 1 otherwise.
+        sla:
+          type: object
+          properties:
+            max_wait_min:
+              type: number
+              minimum: 0
+              description: From job arrival to robot dispatch. Not greater than max_cycle_min.
+            max_cycle_min:
+              type: number
+              minimum: 0
+              description: From job arrival to unload end.
+            priority:
+              type: integer
+              minimum: 0
+              maximum: 9
+              description: Higher is more urgent. Used by the sla_priority dispatch policy.
+        point_ids:
+          type: array
+          description: Reserved. sim-v2 reads pickup and drop points from MapDocument.layers.flows.
+          items:
+            type: string
+        durations:
+          type: object
+          description: Station time per job. Robot handling and travel are added by sim-v2 from the robot profile and the map.
+          properties:
+            load_s:
+              type: number
+              minimum: 0
+            unload_s:
+              type: number
+              minimum: 0
+            travel_s:
+              type: number
+              minimum: 0
+              description: Not used by sim-v2, travel comes from the map.
+        baseline_staff:
+          type: object
+          properties:
+            headcount:
+              type: number
+              minimum: 0
+            role:
+              type: string
+        sort_order:
+          type: integer
+          minimum: 0
+    SolutionVariant:
+      type: object
+      required: [name, status, fleet, financing, sort_order]
+      properties:
+        id:
+          type: string
+          format: uuid
+        name:
+          type: string
+        status:
+          type: string
+          enum: [draft, ready]
+        notes:
+          type: string
+        sort_order:
+          type: integer
+          minimum: 0
+        fleet:
+          type: array
+          items:
+            $ref: "#/components/schemas/FleetItem"
+        financing:
+          type: array
+          items:
+            $ref: "#/components/schemas/FinancingScenario"
+    FleetItem:
+      type: object
+      required: [quantity]
+      properties:
+        id:
+          type: string
+          format: uuid
+        solution_id:
+          type: string
+          format: uuid
+          nullable: true
+        quantity:
+          type: integer
+          minimum: 1
+        task_codes:
+          type: array
+          items:
+            type: string
+        price_override_rub:
+          type: number
+          nullable: true
+          minimum: 0
+        price_override_reason:
+          type: string
+        sort_order:
+          type: integer
+          minimum: 0
+    FinancingScenario:
+      type: object
+      required: [kind]
+      properties:
+        id:
+          type: string
+          format: uuid
+        kind:
+          type: string
+          enum: [buy, raas]
+        tariff:
+          type: string
+          nullable: true
+          enum: [fixed, variable, mixed]
+        assumptions:
+          type: object
+    ProjectDraft:
+      type: object
+      description: Canonical mutable document. JSON Schema in contracts/jsonschema/ProjectDraft.json
+      required:
+        - schema_version
+        - object_type
+        - params
+        - processes
+        - variants
+        - match_selected_ids
+      properties:
+        schema_version:
+          type: string
+          enum: [draft-v1]
+        object_type:
+          type: string
+        params:
+          type: object
+        processes:
+          type: array
+          items:
+            $ref: "#/components/schemas/Process"
+        variants:
+          type: array
+          maxItems: 6
+          items:
+            $ref: "#/components/schemas/SolutionVariant"
+        map:
+          type: object
+          nullable: true
+          allOf:
+            - $ref: "#/components/schemas/MapDocument"
+        match_selected_ids:
+          type: array
+          items:
+            type: string
+            format: uuid
+        econ_overrides:
+          type: object
+        shared_costs:
+          type: array
+          items:
+            $ref: "#/components/schemas/SharedCost"
+        assumption_sets:
+          type: array
+          items:
+            $ref: "#/components/schemas/AssumptionSet"
+        active_assumption_set_id:
+          type: string
+          format: uuid
+        reviewed_tabs:
+          type: array
+          description: Object form tabs someone has opened. Steers which UI tabs are open; not part of the input hash.
+          items:
+            type: string
+            pattern: "^[a-z_]{1,32}$"
+    SharedCost:
+      type: object
+      required: [code, label, bucket, rub]
+      properties:
+        id:
+          type: string
+          format: uuid
+        code:
+          type: string
+        label:
+          type: string
+        bucket:
+          type: string
+          enum: [capex, opex]
+        rub:
+          type: number
+          minimum: 0
+        sort_order:
+          type: integer
+          minimum: 0
+    AssumptionSet:
+      type: object
+      required: [name]
+      properties:
+        id:
+          type: string
+          format: uuid
+        name:
+          type: string
+        is_active:
+          type: boolean
+        vat_rate:
+          type: number
+          minimum: 0
+          maximum: 1
+        prices_include_vat:
+          type: boolean
+        vat_recoverable:
+          type: boolean
+        labor_cash_share:
+          type: number
+          minimum: 0
+          maximum: 1
+        discount_rate:
+          type: number
+          minimum: 0.01
+          maximum: 1
+          description: Yearly discount rate of NPV, IRR and discounted payback, in constant prices. 0.15 when unset.
+        utilization:
+          type: number
+          nullable: true
+        availability:
+          type: number
+          nullable: true
+        reserve:
+          type: number
+          nullable: true
+        service_share:
+          type: number
+          nullable: true
+        delivery_share:
+          type: number
+          nullable: true
+        comm_rub_per_robot_year:
+          type: number
+          nullable: true
+        technician_wage_month_rub:
+          type: number
+          nullable: true
+        sort_order:
+          type: integer
+          minimum: 0
+    AssumptionView:
+      type: object
+      properties:
+        id:
+          type: string
+        name:
+          type: string
+        vat_rate:
+          type: number
+        prices_include_vat:
+          type: boolean
+        vat_recoverable:
+          type: boolean
+        labor_cash_share:
+          type: number
+        discount_rate:
+          type: number
+        utilization:
+          $ref: "#/components/schemas/NormValue"
+        availability:
+          $ref: "#/components/schemas/NormValue"
+        reserve:
+          $ref: "#/components/schemas/NormValue"
+        service_share:
+          $ref: "#/components/schemas/NormValue"
+        delivery_share:
+          $ref: "#/components/schemas/NormValue"
+        comm_rub_per_robot_year:
+          $ref: "#/components/schemas/NormValue"
+        technician_wage_month_rub:
+          $ref: "#/components/schemas/NormValue"
+    NormValue:
+      type: object
+      required: [value, set]
+      properties:
+        value:
+          type: number
+        set:
+          type: boolean
+    MetricOrigin:
+      type: object
+      required: [metric, source, note]
+      properties:
+        metric:
+          type: string
+        source:
+          type: string
+        ref:
+          type: string
+        note:
+          type: string
+    VariantResult:
+      type: object
+      required: [variant_id, name, fleet, scenarios]
+      properties:
+        variant_id:
+          type: string
+        name:
+          type: string
+        fleet:
+          type: array
+          items:
+            $ref: "#/components/schemas/FleetKPI"
+        chargers:
+          type: integer
+        shared_costs:
+          type: array
+          items:
+            $ref: "#/components/schemas/EconLine"
+        scenarios:
+          type: array
+          items:
+            $ref: "#/components/schemas/ScenarioResult"
+    FleetKPI:
+      type: object
+      properties:
+        solution_id:
+          type: string
+        name:
+          type: string
+        quantity:
+          type: integer
+        catalog_price_rub:
+          type: number
+          nullable: true
+        project_price_rub:
+          type: number
+          nullable: true
+        cash_price_rub:
+          type: number
+        lifetime_years:
+          type: number
+        lifetime_assumed:
+          type: boolean
+        price_source:
+          type: string
+          enum: [catalog, project_override]
+        price_override_reason:
+          type: string
+        work_kind:
+          type: string
+        task_codes:
+          type: array
+          items:
+            type: string
+    EconLine:
+      type: object
+      properties:
+        scenario:
+          type: string
+        bucket:
+          type: string
+        id:
+          type: string
+        label:
+          type: string
+        rub:
+          type: number
+        note:
+          type: string
+    ProjectSnapshot:
+      type: object
+      description: Immutable snapshot. JSON Schema in contracts/jsonschema/ProjectSnapshot.json
+      required:
+        - schema_version
+        - project_id
+        - version_no
+        - name
+        - object_type
+        - draft
+        - input_hash
+        - match_version
+        - econ_version
+        - sim_version
+        - confidence_level
+      properties:
+        schema_version:
+          type: string
+          enum: [snapshot-v1]
+        project_id:
+          type: string
+          format: uuid
+        version_no:
+          type: integer
+        name:
+          type: string
+        object_type:
+          type: string
+        draft:
+          $ref: "#/components/schemas/ProjectDraft"
+        input_hash:
+          type: string
+        match_version:
+          type: string
+        econ_version:
+          type: string
+        sim_version:
+          type: string
+        confidence_level:
+          type: string
+          enum: [preliminary, configured, calibrated, validated]
+    MapDocument:
+      type: object
+      description: >-
+        Semantic map (map-v1). JSON Schema in contracts/jsonschema/MapDocument.json.
+        Feature coordinates are page pixels; meters = px * calibration.meters_per_px.
+      required: [schema_version, profile, units, calibration, layers]
+      additionalProperties: false
+      properties:
+        schema_version:
+          type: string
+          enum: [map-v1]
+        profile:
+          type: string
+          enum: [indoor, airspace, field]
+          description: Only indoor is accepted until the airspace and field stages.
+        units:
+          type: string
+          enum: [m]
+        page:
+          type: object
+          properties:
+            width_px:
+              type: number
+            height_px:
+              type: number
+            source_kind:
+              type: string
+              enum: [png, jpeg, pdf, none]
+        calibration:
+          type: object
+          required: [meters_per_px]
+          properties:
+            meters_per_px:
+              type: number
+              exclusiveMinimum: true
+              minimum: 0
+            segment:
+              $ref: "#/components/schemas/MapSegment"
+            check:
+              $ref: "#/components/schemas/MapSegment"
+        layers:
+          type: object
+          required: [zones, obstacles, points, resources, edges]
+          properties:
+            zones:
+              type: array
+              items:
+                $ref: "#/components/schemas/MapPolygon"
+            obstacles:
+              type: array
+              items:
+                $ref: "#/components/schemas/MapPolygon"
+            points:
+              type: array
+              maxItems: 1000
+              items:
+                type: object
+                required: [id, kind, x, y]
+                properties:
+                  id:
+                    type: string
+                    pattern: "^[A-Za-z0-9._-]{1,64}$"
+                  kind:
+                    type: string
+                    enum: [task, dock, charger, gate, other]
+                  name:
+                    type: string
+                  x:
+                    type: number
+                  y:
+                    type: number
+                  process_code:
+                    type: string
+            resources:
+              type: array
+              items:
+                type: object
+                required: [id, kind, capacity]
+                properties:
+                  id:
+                    type: string
+                  kind:
+                    type: string
+                    enum: [dock, narrow_aisle, charger]
+                  name:
+                    type: string
+                  capacity:
+                    type: integer
+                    minimum: 1
+                    maximum: 100
+                  point_id:
+                    type: string
+                    description: Legacy single point, merged with point_ids
+                  point_ids:
+                    type: array
+                    description: Dock and charger points
+                    items:
+                      type: string
+                  edge_ids:
+                    type: array
+                    description: Edges of a narrow_aisle resource
+                    items:
+                      type: string
+            edges:
+              type: array
+              maxItems: 3000
+              items:
+                type: object
+                required: [id, from, to]
+                properties:
+                  id:
+                    type: string
+                  from:
+                    type: string
+                  to:
+                    type: string
+                  bidirectional:
+                    type: boolean
+                    default: true
+                  width_m:
+                    type: number
+                    description: Declared aisle width. The server caps it by the free corridor measured against obstacles.
+            flows:
+              type: array
+              description: Pickup and drop points of each project process
+              items:
+                type: object
+                required: [process_code, pickup_point_ids, drop_point_ids]
+                properties:
+                  process_code:
+                    type: string
+                  pickup_point_ids:
+                    type: array
+                    items:
+                      type: string
+                  drop_point_ids:
+                    type: array
+                    items:
+                      type: string
+        errors:
+          type: array
+          readOnly: true
+          items:
+            type: string
+        warnings:
+          type: array
+          readOnly: true
+          items:
+            type: string
+    MapSegment:
+      type: object
+      required: [x1, y1, x2, y2, length_m]
+      properties:
+        x1:
+          type: number
+        y1:
+          type: number
+        x2:
+          type: number
+        y2:
+          type: number
+        length_m:
+          type: number
+    MapPolygon:
+      type: object
+      required: [id, kind, ring]
+      properties:
+        id:
+          type: string
+        kind:
+          type: string
+          description: workspace walls are used for width checks; others are labels
+        name:
+          type: string
+        ring:
+          type: array
+          minItems: 3
+          maxItems: 200
+          items:
+            type: object
+            required: [x, y]
+            properties:
+              x:
+                type: number
+              y:
+                type: number
+    MapIssue:
+      type: object
+      required: [level, code, message]
+      properties:
+        level:
+          type: string
+          enum: [error, warning]
+        code:
+          type: string
+          description: Stable check code, for example calibration_check, edge_obstacle, flow_unreachable
+        message:
+          type: string
+        ref:
+          type: string
+          description: Id of the feature or process the issue points at
+    MapCheck:
+      type: object
+      required: [issues, edges, classes]
+      properties:
+        issues:
+          type: array
+          items:
+            $ref: "#/components/schemas/MapIssue"
+        edges:
+          type: array
+          items:
+            type: object
+            properties:
+              id:
+                type: string
+              length_m:
+                type: number
+              width_m:
+                type: number
+                description: Effective width used for routing
+              declared_width_m:
+                type: number
+              measured_width_m:
+                type: number
+              single_lane:
+                type: boolean
+              blocked_for:
+                type: array
+                items:
+                  type: string
+        classes:
+          type: array
+          items:
+            type: object
+            properties:
+              code:
+                type: string
+              label:
+                type: string
+              required_width_m:
+                type: number
+              two_lane_width_m:
+                type: number
+              default:
+                type: boolean
+                description: The class the check assumes when no variant has a fleet
+        scene:
+          type: object
+          description: Zones and obstacles in meters
+    SimulationRequest:
+      type: object
+      additionalProperties: false
+      properties:
+        variant_id:
+          type: string
+          format: uuid
+          description: Defaults to the first variant with robots. When no variant has robots, the run takes the robot and the count the last calculation suggested (match.best).
+        line_key:
+          type: string
+          description: When set, the job searches the smallest quantity of this fleet line that covers its processes.
+        mode:
+          type: string
+          enum: [stochastic, deterministic]
+          default: stochastic
+        replications:
+          type: integer
+          minimum: 2
+          maximum: 30
+          default: 30
+          description: Ignored in deterministic mode (always 1)
+        seed:
+          type: integer
+          minimum: 0
+          default: 0
+          description: Replication i uses seed + i
+        policy:
+          type: string
+          enum: [fifo, nearest, sla_priority]
+          default: fifo
+        horizon_h:
+          type: number
+          minimum: 0.25
+          maximum: 24
+          default: 8
+        schedule:
+          type: array
+          description: Arrival windows in hours from the horizon start. Default is the shift window from params.
+          items:
+            type: object
+            required: [start_h, end_h]
+            properties:
+              start_h:
+                type: number
+              end_h:
+                type: number
+        demand_profile:
+          type: array
+          description: One multiplier per horizon hour, 1 is the daily average. Default has two peaks up to peak_load_factor.
+          items:
+            type: number
+            minimum: 0
+            maximum: 5
+        sla_target_pct:
+          type: number
+          minimum: 0
+          maximum: 100
+          default: 5
+          description: SLA passes when the 90th percentile of the violation share is not above this value
+    SimulationCreateResponse:
+      type: object
+      required: [job, run_id, version_no, input_hash, preview]
+      properties:
+        job:
+          $ref: "#/components/schemas/SimulationJob"
+        run_id:
+          type: string
+          format: uuid
+        version_no:
+          type: integer
+        input_hash:
+          type: string
+        preview:
+          type: object
+          properties:
+            variant_id:
+              type: string
+            variant_name:
+              type: string
+            map_source:
+              type: string
+              enum: [project, template]
+            confidence_level:
+              type: string
+              enum: [preliminary, configured]
+            replications:
+              type: integer
+            expected_jobs:
+              type: object
+              additionalProperties:
+                type: number
+            warnings:
+              type: array
+              items:
+                type: string
+            map_issues:
+              type: array
+              items:
+                $ref: "#/components/schemas/MapIssue"
+    SimStat:
+      type: object
+      description: Metric across replications
+      properties:
+        median:
+          type: number
+        min:
+          type: number
+        max:
+          type: number
+        p10:
+          type: number
+        p90:
+          type: number
+    SimulationResult:
+      type: object
+      description: >-
+        Aggregate of all replications (sim-v2). Stored in calculation_results.summary.result.
+        Every KPI is a SimStat.
+      properties:
+        sim_version:
+          type: string
+        config:
+          $ref: "#/components/schemas/SimulationRequest"
+        replications:
+          type: integer
+        seeds:
+          type: array
+          items:
+            type: integer
+        horizon_s:
+          type: number
+        windows:
+          type: array
+          items:
+            type: object
+        demand_profile:
+          type: array
+          items:
+            type: number
+        sla_target_pct:
+          type: number
+        sla_ok:
+          type: boolean
+        verdict:
+          type: string
+          enum: [pass, fail]
+        verdict_text:
+          type: string
+        battery_modeled:
+          type: boolean
+        kpi:
+          type: object
+          additionalProperties:
+            $ref: "#/components/schemas/SimStat"
+        processes:
+          type: array
+          items:
+            type: object
+        resources:
+          type: array
+          items:
+            type: object
+        fleet:
+          type: array
+          items:
+            type: object
+        robots:
+          type: array
+          description: Per-robot metrics of the representative replication
+          items:
+            type: object
+        bottlenecks:
+          type: array
+          items:
+            type: object
+            properties:
+              kind:
+                type: string
+                enum: [fleet, dock, narrow_aisle, charger]
+              id:
+                type: string
+              name:
+                type: string
+              primary:
+                type: boolean
+              saturated:
+                type: boolean
+              wait_s:
+                type: number
+              fleet_share:
+                type: number
+              utilization:
+                type: number
+              queue_max:
+                type: number
+              text:
+                type: string
+        representative:
+          type: integer
+        representative_seed:
+          type: integer
+        warnings:
+          type: array
+          items:
+            type: string
+        assumptions:
+          type: array
+          items:
+            type: string
+    SimulationSummary:
+      type: object
+      properties:
+        schema_version:
+          type: string
+          enum: [sim-summary-v1]
+        run_id:
+          type: string
+        project_id:
+          type: string
+        version_no:
+          type: integer
+        input_hash:
+          type: string
+        catalog_content_sha256:
+          type: string
+        variant_id:
+          type: string
+        variant_name:
+          type: string
+        variant_hash:
+          type: string
+          description: >-
+            SHA-256 of what the run read for its variant: parameters, processes, map, the fleet of that variant
+            and the simulation version. The run is current while the variant still hashes the same.
+        map_source:
+          type: string
+          enum: [project, template]
+        map_warnings:
+          type: array
+          items:
+            type: string
+        confidence_level:
+          type: string
+          enum: [preliminary, configured]
+        finished_at:
+          type: string
+          format: date-time
+        duration_ms:
+          type: integer
+        result:
+          $ref: "#/components/schemas/SimulationResult"
+        econ_check:
+          type: object
+          properties:
+            expected_jobs:
+              type: number
+            completed:
+              type: number
+            coverage:
+              type: number
+            flag:
+              type: boolean
+            text:
+              type: string
+        snapshot:
+          type: object
+          properties:
+            match_version:
+              type: string
+            econ_version:
+              type: string
+            sim_version:
+              type: string
+    SimulationRunResponse:
+      type: object
+      required: [run, stale_vs_draft, replications]
+      properties:
+        run:
+          $ref: "#/components/schemas/CalculationRun"
+        job:
+          $ref: "#/components/schemas/SimulationJob"
+        stale_vs_draft:
+          type: boolean
+          description: >-
+            The inputs of the run's variant (parameters, processes, map, its fleet) or the sim version differ from
+            the current draft. Editing costs, financing or another variant does not make a run stale.
+        summary:
+          type: object
+          nullable: true
+          allOf:
+            - $ref: "#/components/schemas/SimulationSummary"
+        replications:
+          type: array
+          items:
+            type: object
+            properties:
+              idx:
+                type: integer
+              seed:
+                type: integer
+              status:
+                type: string
+              metrics:
+                type: object
+        artifact:
+          type: object
+          nullable: true
+          properties:
+            kind:
+              type: string
+            encoding:
+              type: string
+            size_bytes:
+              type: integer
+            raw_bytes:
+              type: integer
+            event_count:
+              type: integer
+            pinned:
+              type: boolean
+            expires_at:
+              type: string
+              format: date-time
+              nullable: true
+    SimulationLog:
+      type: object
+      description: Replay artifact (sim-log-v1). Positions are in meters.
+      required: [schema_version, event_schema, sim_version, seed, horizon_s, nodes, edges, robots, events, checkpoints]
+      properties:
+        schema_version:
+          type: string
+          enum: [sim-log-v1]
+        event_schema:
+          type: string
+          enum: [sim-event-v1]
+        sim_version:
+          type: string
+        replication:
+          type: integer
+        seed:
+          type: integer
+        horizon_s:
+          type: number
+        scene:
+          type: object
+        nodes:
+          type: array
+          items:
+            type: object
+        edges:
+          type: array
+          items:
+            type: object
+        resources:
+          type: array
+          items:
+            type: object
+        robots:
+          type: array
+          items:
+            type: object
+        processes:
+          type: array
+          items:
+            type: object
+        events:
+          type: array
+          maxItems: 400000
+          items:
+            $ref: "#/components/schemas/SimulationEvent"
+        checkpoints:
+          type: array
+          description: System state every 60 simulated seconds
+          items:
+            type: object
+        truncated:
+          type: boolean
+    SimulationEvent:
+      type: object
+      description: Compact sim journal row. JSON Schema in contracts/jsonschema/SimulationEvent.json
+      required: [seq, t_s, type]
+      properties:
+        seq:
+          type: integer
+        t_s:
+          type: number
+        type:
+          type: string
+          enum:
+            - job_arrival
+            - dispatch
+            - route_start
+            - route_end
+            - resource_acquire
+            - resource_release
+            - load
+            - unload
+            - charge_start
+            - charge_end
+            - sla_reached
+            - sla_violated
+        job_id:
+          type: string
+        robot_id:
+          type: string
+        process_code:
+          type: string
+        resource_id:
+          type: string
+        from_id:
+          type: string
+        to_id:
+          type: string
+        priority:
+          type: integer
+        payload:
+          type: object
+          properties:
+            path:
+              type: array
+              description: route_start node ids from from_id to to_id
+              items:
+                type: string
+            dist_m:
+              type: number
+            dur_s:
+              type: number
+            loaded:
+              type: boolean
+            battery:
+              type: number
+              minimum: 0
+              maximum: 1
+            wait_s:
+              type: number
+            cycle_s:
+              type: number
+            kind:
+              type: string
+              description: wait or cycle for sla_violated, resource kind for resource events
+            queue:
+              type: integer
+    ConfidenceLevel:
+      type: string
+      enum: [preliminary, configured, calibrated, validated]
+      description: >-
+        preliminary: catalog data and norms. configured: routes, demand and durations entered by the user.
+        calibrated: parameters estimated from logs or measurements. validated: forecast checked against the real process.
+    RunMeta:
+      type: object
+      required: [id, kind, status, project_id, project_version_id, version_no, input_hash, match_version, econ_version, sim_version, seed, confidence_level, is_current]
+      properties:
+        id:
+          type: string
+          format: uuid
+        kind:
+          type: string
+          enum: [calculation, simulation]
+        status:
+          type: string
+          enum: [queued, running, succeeded, failed, canceled]
+        project_id:
+          type: string
+          format: uuid
+        project_version_id:
+          type: string
+          format: uuid
+        version_no:
+          type: integer
+        input_hash:
+          type: string
+        match_version:
+          type: string
+        econ_version:
+          type: string
+        sim_version:
+          type: string
+        seed:
+          type: integer
+        confidence_level:
+          $ref: "#/components/schemas/ConfidenceLevel"
+        created_at:
+          type: string
+          format: date-time
+        is_current:
+          type: boolean
+          description: The run is projects.current_run_id
+    RunHistoryItem:
+      allOf:
+        - $ref: "#/components/schemas/RunMeta"
+        - type: object
+          required: [stale_vs_draft, brief]
+          properties:
+            job_id:
+              type: string
+              format: uuid
+              nullable: true
+            stale_vs_draft:
+              type: boolean
+            brief:
+              type: object
+              description: >-
+                calculation: solution_name, verification_flag, variant_names, best_payback_years.
+                simulation: variant_name, map_source, verdict, verdict_text, throughput_per_h, violation_rate.
+              additionalProperties: true
+    CalculationRun:
+      type: object
+      required: [id, project_id, project_version_id, input_hash, match_version, econ_version, sim_version, seed, status, stale_vs_draft]
+      properties:
+        id:
+          type: string
+          format: uuid
+        project_id:
+          type: string
+          format: uuid
+        project_version_id:
+          type: string
+          format: uuid
+        input_hash:
+          type: string
+        match_version:
+          type: string
+        econ_version:
+          type: string
+        sim_version:
+          type: string
+        seed:
+          type: integer
+        status:
+          type: string
+          enum: [queued, running, succeeded, failed, canceled]
+        created_at:
+          type: string
+          format: date-time
+        version_no:
+          type: integer
+        confidence_level:
+          $ref: "#/components/schemas/ConfidenceLevel"
+        is_current:
+          type: boolean
+        stale_vs_draft:
+          type: boolean
+    CalculationResponse:
+      allOf:
+        - $ref: "#/components/schemas/CalculateResult"
+        - type: object
+          required: [run_id, project_id, input_hash, stale_vs_draft]
+          properties:
+            run_id:
+              type: string
+              format: uuid
+            project_id:
+              type: string
+              format: uuid
+            input_hash:
+              type: string
+              pattern: "^[a-f0-9]{64}$"
+            project_name:
+              type: string
+            stale_vs_draft:
+              type: boolean
+            run:
+              $ref: "#/components/schemas/RunMeta"
+    SimulationJob:
+      type: object
+      required: [id, project_id, status, progress_pct, attempt, max_attempts, replications_total, replications_done]
+      properties:
+        id:
+          type: string
+          format: uuid
+        project_id:
+          type: string
+          format: uuid
+        run_id:
+          type: string
+          format: uuid
+          nullable: true
+        status:
+          type: string
+          enum: [queued, running, succeeded, failed, canceled]
+        progress_pct:
+          type: integer
+          minimum: 0
+          maximum: 100
+        attempt:
+          type: integer
+        max_attempts:
+          type: integer
+        error_text:
+          type: string
+          nullable: true
+        replications_total:
+          type: integer
+        replications_done:
+          type: integer
+        config:
+          type: object
+          properties:
+            variant_id:
+              type: string
+            sim:
+              $ref: "#/components/schemas/SimulationRequest"
+        created_at:
+          type: string
+          format: date-time
+        updated_at:
+          type: string
+          format: date-time
+        started_at:
+          type: string
+          format: date-time
+          nullable: true
+        finished_at:
+          type: string
+          format: date-time
+          nullable: true
+        canceled_at:
+          type: string
+          format: date-time
+          nullable: true

@@ -1,0 +1,12 @@
+[book]
+title = "Платформа подбора роботизированных решений"
+language = "ru"
+src = "."
+
+[build]
+build-dir = "book"
+
+[output.html]
+default-theme = "light"
+preferred-dark-theme = "navy"
+no-section-label = true

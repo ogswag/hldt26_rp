@@ -1,0 +1,50 @@
+{
+  "before": {
+    "financing": {
+      "00000000-0000-4000-8000-000000000401": {"assumptions":{},"id":"00000000-0000-4000-8000-000000000401","kind":"buy","tariff":null,"variant_id":"00000000-0000-4000-8000-000000000201"},
+      "00000000-0000-4000-8000-000000000402": {"assumptions":{},"id":"00000000-0000-4000-8000-000000000402","kind":"raas","tariff":"fixed","variant_id":"00000000-0000-4000-8000-000000000201"},
+      "00000000-0000-4000-8000-000000000403": {"assumptions":{},"id":"00000000-0000-4000-8000-000000000403","kind":"buy","tariff":null,"variant_id":"00000000-0000-4000-8000-000000000202"}
+    },
+    "fleet_items": {
+      "00000000-0000-4000-8000-000000000301": {"id":"00000000-0000-4000-8000-000000000301","order":"a0","price_override_reason":"","price_override_rub":null,"quantity":2,"solution_id":"00000000-0000-4000-8000-00000000e001","task_codes":["inbound"],"variant_id":"00000000-0000-4000-8000-000000000201"},
+      "00000000-0000-4000-8000-000000000302": {"id":"00000000-0000-4000-8000-000000000302","order":"a1","price_override_reason":"КП","price_override_rub":100,"quantity":1,"solution_id":"00000000-0000-4000-8000-00000000e002","task_codes":["inbound","pick"],"variant_id":"00000000-0000-4000-8000-000000000201"},
+      "00000000-0000-4000-8000-000000000303": {"id":"00000000-0000-4000-8000-000000000303","order":"a0","price_override_reason":"","price_override_rub":null,"quantity":3,"solution_id":null,"task_codes":[],"variant_id":"00000000-0000-4000-8000-000000000202"}
+    },
+    "processes": {
+      "00000000-0000-4000-8000-000000000101": {"baseline_staff":{"headcount":8},"code":"inbound","demand":{"unit":"поддон","units_per_day":1000},"durations":{"load_s":90},"id":"00000000-0000-4000-8000-000000000101","is_baseline":true,"name":"Приёмка","order":"a0","point_ids":["00000000-0000-4000-8000-000000000701"],"sla":{"max_wait_min":30},"task_type":"pallet_inbound"},
+      "00000000-0000-4000-8000-000000000102": {"baseline_staff":{},"code":"pick","demand":{},"durations":{},"id":"00000000-0000-4000-8000-000000000102","is_baseline":true,"name":"Отбор","order":"a1","point_ids":[],"sla":{},"task_type":"piece_pick"}
+    },
+    "variants": {
+      "00000000-0000-4000-8000-000000000201": {"id":"00000000-0000-4000-8000-000000000201","name":"AMR","notes":"","order":"a0","status":"draft"},
+      "00000000-0000-4000-8000-000000000202": {"id":"00000000-0000-4000-8000-000000000202","name":"Смешанный","notes":"две модели","order":"a1","status":"ready"}
+    }
+  },
+  "txs": [
+    {"tx_id": "tx-1", "label": "action 1", "ops": [
+      {"op":"set","coll":"variants","id":"00000000-0000-4000-8000-000000000201","path":"status","value":"done"}
+    ]}
+  ],
+  "after": {
+    "financing": {
+      "00000000-0000-4000-8000-000000000401": {"assumptions":{},"id":"00000000-0000-4000-8000-000000000401","kind":"buy","tariff":null,"variant_id":"00000000-0000-4000-8000-000000000201"},
+      "00000000-0000-4000-8000-000000000402": {"assumptions":{},"id":"00000000-0000-4000-8000-000000000402","kind":"raas","tariff":"fixed","variant_id":"00000000-0000-4000-8000-000000000201"},
+      "00000000-0000-4000-8000-000000000403": {"assumptions":{},"id":"00000000-0000-4000-8000-000000000403","kind":"buy","tariff":null,"variant_id":"00000000-0000-4000-8000-000000000202"}
+    },
+    "fleet_items": {
+      "00000000-0000-4000-8000-000000000301": {"id":"00000000-0000-4000-8000-000000000301","order":"a0","price_override_reason":"","price_override_rub":null,"quantity":2,"solution_id":"00000000-0000-4000-8000-00000000e001","task_codes":["inbound"],"variant_id":"00000000-0000-4000-8000-000000000201"},
+      "00000000-0000-4000-8000-000000000302": {"id":"00000000-0000-4000-8000-000000000302","order":"a1","price_override_reason":"КП","price_override_rub":100,"quantity":1,"solution_id":"00000000-0000-4000-8000-00000000e002","task_codes":["inbound","pick"],"variant_id":"00000000-0000-4000-8000-000000000201"},
+      "00000000-0000-4000-8000-000000000303": {"id":"00000000-0000-4000-8000-000000000303","order":"a0","price_override_reason":"","price_override_rub":null,"quantity":3,"solution_id":null,"task_codes":[],"variant_id":"00000000-0000-4000-8000-000000000202"}
+    },
+    "processes": {
+      "00000000-0000-4000-8000-000000000101": {"baseline_staff":{"headcount":8},"code":"inbound","demand":{"unit":"поддон","units_per_day":1000},"durations":{"load_s":90},"id":"00000000-0000-4000-8000-000000000101","is_baseline":true,"name":"Приёмка","order":"a0","point_ids":["00000000-0000-4000-8000-000000000701"],"sla":{"max_wait_min":30},"task_type":"pallet_inbound"},
+      "00000000-0000-4000-8000-000000000102": {"baseline_staff":{},"code":"pick","demand":{},"durations":{},"id":"00000000-0000-4000-8000-000000000102","is_baseline":true,"name":"Отбор","order":"a1","point_ids":[],"sla":{},"task_type":"piece_pick"}
+    },
+    "variants": {
+      "00000000-0000-4000-8000-000000000201": {"id":"00000000-0000-4000-8000-000000000201","name":"AMR","notes":"","order":"a0","status":"draft"},
+      "00000000-0000-4000-8000-000000000202": {"id":"00000000-0000-4000-8000-000000000202","name":"Смешанный","notes":"две модели","order":"a1","status":"ready"}
+    }
+  },
+  "outcomes": [
+    {"tx_id":"tx-1","status":"rejected","reason":"invalid_value","details":{"op":0,"coll":"variants","id":"00000000-0000-4000-8000-000000000201","field":"status"}}
+  ]
+}

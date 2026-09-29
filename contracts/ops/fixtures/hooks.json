@@ -1,0 +1,28 @@
+{
+  "params": {
+    "warehouse": {
+      "area_m2": {"type": "number", "min": 0},
+      "shifts": {"type": "int", "min": 1, "max": 3},
+      "power_kw": {"type": "number", "min": 0, "nullable": true},
+      "cold_store": {"type": "bool"}
+    },
+    "airport": {
+      "terminal_m2": {"type": "number", "min": 0}
+    }
+  },
+  "objects": {
+    "process_demand": {"units_per_day": "number", "unit": "string", "units_per_job": "number"},
+    "process_sla": {"max_wait_min": "number", "max_cycle_min": "number", "priority": "number"},
+    "process_durations": {"load_s": "number", "unload_s": "number", "travel_s": "number"},
+    "process_staff": {"headcount": "number", "role": "string"},
+    "financing_assumptions": {"*": "any"},
+    "econ_overrides": {"*": "any"},
+    "map_page": {"width_px": "number", "height_px": "number", "source_kind": "string"},
+    "map_segment": {"x1": "number", "y1": "number", "x2": "number", "y2": "number", "length_m": "number"},
+    "solution_ids": "string_list",
+    "tab_ids": "string_list"
+  },
+  "external": {
+    "catalog_solutions": ["00000000-0000-4000-8000-00000000e001", "00000000-0000-4000-8000-00000000e002"]
+  }
+}

@@ -1,0 +1,198 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://moscow-hackathon.local/schemas/SimulationLog.json",
+  "title": "SimulationLog",
+  "description": "Replay artifact of the representative replication. Coordinates are meters. Stored gzip-compressed.",
+  "type": "object",
+  "required": [
+    "schema_version",
+    "event_schema",
+    "sim_version",
+    "replication",
+    "seed",
+    "horizon_s",
+    "scene",
+    "nodes",
+    "edges",
+    "resources",
+    "robots",
+    "processes",
+    "events",
+    "checkpoints",
+    "truncated"
+  ],
+  "properties": {
+    "schema_version": {
+      "const": "sim-log-v1"
+    },
+    "event_schema": {
+      "const": "sim-event-v1"
+    },
+    "sim_version": {
+      "type": "string"
+    },
+    "replication": {
+      "type": "integer",
+      "minimum": 0
+    },
+    "seed": {
+      "type": "integer",
+      "minimum": 0
+    },
+    "horizon_s": {
+      "type": "number",
+      "exclusiveMinimum": 0
+    },
+    "scene": {
+      "type": "object",
+      "properties": {
+        "width_m": {
+          "type": "number"
+        },
+        "height_m": {
+          "type": "number"
+        },
+        "zones": {
+          "type": "array"
+        },
+        "obstacles": {
+          "type": "array"
+        }
+      }
+    },
+    "nodes": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "id",
+          "kind",
+          "x",
+          "y"
+        ]
+      }
+    },
+    "edges": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "id",
+          "from",
+          "to",
+          "length_m",
+          "width_m",
+          "two_way"
+        ]
+      }
+    },
+    "resources": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "id",
+          "kind",
+          "name",
+          "capacity"
+        ]
+      }
+    },
+    "robots": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "id",
+          "name",
+          "profile",
+          "width_m",
+          "length_m",
+          "start_id",
+          "battery"
+        ]
+      }
+    },
+    "processes": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "code",
+          "name",
+          "covered"
+        ]
+      }
+    },
+    "events": {
+      "type": "array",
+      "maxItems": 400000,
+      "items": {
+        "$ref": "SimulationEvent.json"
+      }
+    },
+    "checkpoints": {
+      "type": "array",
+      "description": "System state every 60 simulated seconds.",
+      "items": {
+        "type": "object",
+        "required": [
+          "t_s",
+          "queue",
+          "busy",
+          "idle",
+          "charging",
+          "completed",
+          "violated",
+          "processes",
+          "resources"
+        ],
+        "properties": {
+          "t_s": {
+            "type": "number"
+          },
+          "queue": {
+            "type": "integer"
+          },
+          "busy": {
+            "type": "integer"
+          },
+          "idle": {
+            "type": "integer"
+          },
+          "charging": {
+            "type": "integer"
+          },
+          "completed": {
+            "type": "integer"
+          },
+          "violated": {
+            "type": "integer"
+          },
+          "processes": {
+            "type": "array",
+            "items": {
+              "type": "integer"
+            },
+            "description": "Queue length per process in log.processes order."
+          },
+          "resources": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "required": [
+                "id",
+                "in_use",
+                "queue"
+              ]
+            }
+          }
+        }
+      }
+    },
+    "truncated": {
+      "type": "boolean",
+      "description": "True when the journal hit 400000 events and later events were dropped."
+    }
+  }
+}

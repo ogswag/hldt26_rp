@@ -1,0 +1,1308 @@
+/* Catalog: filters, tables, hover card, the robot overlay and the upload overlay. */
+
+.family-mark {
+  display: inline-flex;
+  flex: none;
+  color: var(--family-color, var(--icon));
+}
+
+/* Filters: search, one «Фильтры» button with its panel, and the sort. */
+
+.catalog-filters {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-3) var(--space-4);
+  align-items: end;
+  margin: 0 0 var(--space-4);
+}
+
+.catalog-filter-section > label:not(.check-row),
+.catalog-filter-range > label {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-1);
+  color: var(--text-muted);
+  font-size: var(--text-sm);
+}
+
+/* NOTE: the search is the one field named by a magnifier and «Поиск» inside it, as in the tab row; the box is
+   drawn on the label, as for a field with a unit. */
+.catalog-search {
+  display: flex;
+  flex: 0 1 22rem;
+  align-items: center;
+  gap: var(--space-2);
+  min-height: var(--control-h);
+  padding: 0 var(--space-2);
+  border: 1px solid var(--border-input);
+  border-radius: var(--radius-md);
+  background: var(--bg-input);
+  color: var(--icon);
+  cursor: text;
+}
+
+.catalog-search:hover:not(:focus-within) {
+  border-color: var(--border-input-hover);
+}
+
+.catalog-search:focus-within {
+  border-color: var(--focus);
+  outline: 1px solid var(--focus);
+  outline-offset: 0;
+}
+
+.catalog-search > svg {
+  flex: none;
+}
+
+.catalog-search > input {
+  flex: 1;
+  align-self: stretch;
+  min-width: 0;
+  min-height: 0;
+  padding: 0;
+  border: none;
+  background: transparent;
+  color: var(--text);
+}
+
+.catalog-search > input:focus-visible {
+  outline: none;
+}
+
+/* NOTE: «Фильтры» is a list button: it looks like a Select and opens the panel under it. */
+.catalog-filter-button {
+  min-width: 9rem;
+  color: var(--text);
+  font-weight: 500;
+}
+
+.select-prefix {
+  flex: none;
+  color: var(--text-muted);
+}
+
+.catalog-filter-popover .popover-panel {
+  max-width: min(24rem, calc(100vw - 2 * var(--space-4)));
+  max-height: min(40rem, calc(100vh - 10rem));
+  padding-bottom: 0;
+  overflow-y: auto;
+  overflow-x: clip;
+  overscroll-behavior: contain;
+}
+
+/* NOTE: the panel is sections under headings, each divided by a line: plain checkbox rows with the group mark and
+   the count, then the fields. */
+.catalog-filter-panel {
+  display: grid;
+  padding-bottom: var(--space-2);
+  width: min(22rem, calc(100vw - 4 * var(--space-4)));
+  min-width: 0;
+  max-width: 100%;
+}
+
+.catalog-filter-panel > .check-list,
+.catalog-filter-section {
+  display: grid;
+  gap: var(--space-2);
+  margin: 0;
+  padding: var(--space-3) 0;
+  border-bottom: 1px solid var(--line);
+}
+
+.catalog-filter-panel > :first-child {
+  padding-top: 0;
+}
+
+.catalog-filter-panel > :last-child {
+  border-bottom: none;
+  padding-bottom: 0;
+}
+
+.catalog-filter-panel .check-list-label {
+  color: var(--text-strong);
+  font-weight: 600;
+}
+
+.check-list.is-plain .check-list-box {
+  max-height: none;
+  padding: 0;
+  border: none;
+  background: none;
+}
+
+.check-list.is-plain .check-list-item {
+  margin: 0 calc(-1 * var(--space-2));
+  border-radius: var(--radius-md);
+}
+
+/* NOTE: a long list (the companies) scrolls in its own box under a find field; the box bleeds to the panel edge as
+   the plain rows do. */
+.check-list-find {
+  width: 100%;
+}
+
+.check-list.is-plain .check-list-box.is-scroll {
+  max-height: 13rem;
+  margin: 0 calc(-1 * var(--space-2));
+  overflow-y: auto;
+  overflow-x: clip;
+  overscroll-behavior: contain;
+}
+
+.check-list.is-plain .check-list-box.is-scroll .check-list-item {
+  margin: 0;
+}
+
+.check-list-none {
+  padding: 0 var(--space-2);
+}
+
+.catalog-filter-panel .select,
+.catalog-filter-panel .unit-field {
+  width: 100%;
+}
+
+.catalog-filter-section > .check-row {
+  margin: 0;
+}
+
+/* NOTE: the reset row stays on the bottom edge of the panel while the sections scroll under it. The panel has no
+   bottom padding of its own, since a sticky row stops at the padding. The row's top edge lies on the line of the
+   section above. */
+.catalog-filter-panel > .catalog-filter-foot {
+  position: sticky;
+  bottom: 0;
+  z-index: 2;
+  margin: -1px calc(-1 * var(--space-2)) calc(-1 * var(--space-2));
+  padding: var(--space-2);
+  border-top: 1px solid var(--line);
+  border-bottom: none;
+  background: var(--bg-raised);
+}
+
+.catalog-filter-range {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: var(--space-3);
+}
+
+.check-list-n {
+  margin-left: auto;
+  padding-left: var(--space-2);
+  color: var(--text-muted);
+  font-variant-numeric: tabular-nums;
+}
+
+/* NOTE: in the robot overlay the search and the list button each fill the list column. */
+.catalog-filters.is-compact {
+  display: grid;
+  gap: var(--space-2);
+  margin: 0;
+  padding: var(--space-3);
+  border-bottom: 1px solid var(--line);
+}
+
+.catalog-filters.is-compact .catalog-filter-popover,
+.catalog-filters.is-compact .catalog-filter-button {
+  width: 100%;
+}
+
+/* NOTE: two columns on a phone, search on its own row; one column of narrow boxes would run past the screen. */
+@media (max-width: 599.98px) {
+  .catalog-filters:not(.is-compact) {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: var(--space-3);
+  }
+
+  .catalog-filters:not(.is-compact) .catalog-search {
+    grid-column: 1 / -1;
+  }
+
+  .catalog-filters:not(.is-compact) .select {
+    width: 100%;
+    min-width: 0;
+  }
+
+  .catalog-filters:not(.is-compact) .catalog-filter-popover {
+    min-width: 0;
+  }
+}
+
+.catalog-pager {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-3);
+  margin: var(--space-3) 0 0;
+}
+
+.catalog-pager p {
+  margin: 0;
+  color: var(--text-muted);
+  font-size: var(--text-sm);
+}
+
+/* Tables: fixed columns, so a filter that hides rows never re-flows the rest. Every cell is one line; the name
+   takes what is left. */
+
+.catalog-table {
+  table-layout: fixed;
+  min-width: 52rem;
+}
+
+.catalog-table.is-admin {
+  min-width: 66rem;
+}
+
+.catalog-table .is-vendor {
+  width: 13rem;
+}
+
+.catalog-table .is-subtype {
+  width: 13rem;
+}
+
+.catalog-table .is-status {
+  width: 9rem;
+}
+
+.catalog-table .is-gaps {
+  width: 15rem;
+}
+
+.catalog-table .is-money {
+  width: 8.5rem;
+}
+
+.catalog-table td {
+  vertical-align: middle;
+}
+
+tr.is-openable {
+  cursor: pointer;
+}
+
+td.cut-cell,
+.cut-line {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+/* NOTE: a robot's name stays on one line and is cut with «...»; the hover card shows it whole. */
+.robot-name-cell {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  min-width: 0;
+}
+
+.robot-name-cell .tag {
+  flex: none;
+}
+
+.robot-modification {
+  flex: 0 1 auto;
+  min-width: 0;
+  overflow: hidden;
+  color: var(--text-muted);
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.hover-card-anchor {
+  display: inline-flex;
+  min-width: 0;
+}
+
+.robot-name {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  min-width: 0;
+  max-width: 100%;
+  padding: 0;
+  border: none;
+  border-radius: var(--radius-sm);
+  background: none;
+  color: var(--text);
+  font: inherit;
+  text-align: left;
+  cursor: pointer;
+}
+
+.robot-name-text {
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+/* Hover card: the full name over a 2 px rule, then ruled rows. Information only. */
+
+.hover-card {
+  position: fixed;
+  inset: auto;
+  width: 20rem;
+  max-width: calc(100vw - 16px);
+  margin: 0;
+  padding: var(--space-3) var(--space-4);
+  border: none;
+  border-radius: var(--radius-lg);
+  background: var(--bg-raised);
+  box-shadow: var(--shadow-float);
+  color: var(--text);
+  font-size: var(--text-sm);
+}
+
+.robot-card-title {
+  margin: 0 0 var(--space-1);
+  padding: 0 0 var(--space-2);
+  border-bottom: 2px solid var(--text);
+  color: var(--text-strong);
+  font-size: var(--text-md);
+  font-weight: 600;
+  text-wrap: balance;
+}
+
+.robot-card-rows,
+.robot-rows {
+  margin: 0;
+}
+
+.robot-card-rows > div,
+.robot-rows > div {
+  display: grid;
+  grid-template-columns: minmax(6rem, 40%) minmax(0, 1fr);
+  gap: var(--space-3);
+  border-bottom: 1px solid var(--line);
+}
+
+/* NOTE: in the hover card and the overlay's right column the value sits at the right end, like a spec sheet. */
+.robot-card-rows > div,
+.robot-side .robot-rows > div {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+}
+
+.robot-card-rows dt,
+.robot-side .robot-rows dt {
+  flex: none;
+  max-width: 55%;
+}
+
+.robot-card-rows dd,
+.robot-side .robot-rows dd {
+  font-variant-numeric: tabular-nums;
+  text-align: right;
+}
+
+.robot-rows dd .popover {
+  margin-left: var(--space-2);
+  vertical-align: middle;
+}
+
+.robot-card-type {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-1);
+}
+
+.robot-card-rows > div {
+  padding: 0.25rem 0;
+}
+
+.robot-card-rows > div:last-child {
+  border-bottom: none;
+}
+
+.robot-rows > div {
+  padding: 0.375rem 0;
+}
+
+.robot-card-rows dt,
+.robot-rows dt {
+  color: var(--text-muted);
+}
+
+.robot-card-rows dd,
+.robot-rows dd {
+  min-width: 0;
+  margin: 0;
+  overflow-wrap: anywhere;
+}
+
+.robot-rows {
+  font-size: var(--text-sm);
+}
+
+/* Robot overlay: a window-size dialog in three columns, list, picture, data; a key strip at the bottom. */
+
+.robot-overlay {
+  position: fixed;
+  inset: var(--space-6);
+  display: flex;
+  flex-direction: column;
+  width: auto;
+  max-width: none;
+  height: auto;
+  max-height: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  border: none;
+  border-radius: var(--radius-lg);
+  background: var(--bg-raised);
+  box-shadow: var(--shadow-float);
+  color: var(--text);
+}
+
+.robot-overlay:not([open]) {
+  display: none;
+}
+
+.robot-overlay[open] {
+  animation: dialog-in 320ms var(--ease-spring);
+}
+
+.robot-overlay::backdrop {
+  background: var(--backdrop);
+}
+
+.robot-overlay-body {
+  position: relative;
+  display: grid;
+  flex: 1;
+  grid-template-columns: minmax(15rem, 19rem) minmax(0, 1fr);
+  min-height: 0;
+}
+
+.robot-overlay-list {
+  display: flex;
+  flex-direction: column;
+  min-height: 0;
+  border-right: 1px solid var(--line);
+  background: var(--bg-raised);
+}
+
+.robot-list {
+  flex: 1;
+  min-height: 0;
+  margin: 0;
+  padding: 0;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  list-style: none;
+}
+
+.robot-list:focus-visible {
+  outline-offset: -2px;
+}
+
+.robot-list-item {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  min-height: var(--control-h);
+  padding: 0.35rem var(--space-3);
+  border-bottom: 1px solid var(--line);
+  font-size: var(--text-sm);
+  cursor: pointer;
+}
+
+.robot-list-item:hover {
+  background: var(--bg-hover-page);
+}
+
+/* NOTE: the selected row is inverted, as in the item menu; its group mark follows the text color. */
+.robot-list-item[aria-selected='true'] {
+  background: var(--text-strong);
+  color: var(--bg);
+}
+
+.robot-list-item[aria-selected='true'] .family-mark {
+  color: var(--bg);
+}
+
+.robot-list-name {
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.robot-list-empty {
+  margin: 0;
+  padding: var(--space-3);
+  font-size: var(--text-sm);
+}
+
+.robot-detail {
+  display: flex;
+  flex-direction: column;
+  min-height: 0;
+}
+
+/* NOTE: only the body scrolls. The tools row above it holds the close button, and below 900 px the «Список»
+   button at its left. */
+.robot-detail-tools {
+  display: flex;
+  flex: none;
+  align-items: flex-start;
+  justify-content: flex-end;
+  gap: var(--space-1);
+  height: var(--space-12);
+  padding: var(--space-3) var(--space-3) 0;
+}
+
+.robot-detail-body {
+  display: grid;
+  flex: 1;
+  grid-template-columns: minmax(0, 1.15fr) minmax(18rem, 1fr);
+  gap: var(--space-8);
+  align-content: start;
+  min-height: 0;
+  padding: 0 var(--space-8) var(--space-8);
+  overflow-y: auto;
+  overscroll-behavior: contain;
+}
+
+.robot-list-toggle {
+  display: none;
+}
+
+.robot-main,
+.robot-side {
+  min-width: 0;
+}
+
+.robot-main {
+  padding-right: var(--space-6);
+}
+
+/* NOTE: the title and the meta line stand over one thick rule, as in the item menu. */
+.robot-overlay .robot-title {
+  margin: 0;
+  color: var(--text-strong);
+  font-size: var(--text-xl);
+  font-weight: 600;
+  letter-spacing: -0.01em;
+}
+
+.robot-title-input {
+  width: 100%;
+  margin: 0 0 var(--space-3);
+  padding: 0 0 var(--space-2);
+  border: none;
+  border-bottom: 2px solid var(--text);
+  border-radius: 0;
+  background: transparent;
+  color: var(--text-strong);
+  font-size: var(--text-xl);
+  font-weight: 600;
+  letter-spacing: -0.01em;
+}
+
+.robot-search {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-1);
+  margin: 0;
+}
+
+.robot-meta {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: var(--space-1) var(--space-3);
+  align-items: center;
+  margin: var(--space-1) 0 0;
+  padding: 0 0 var(--space-2);
+  border-bottom: 2px solid var(--text);
+  color: var(--text-muted);
+  font-size: var(--text-sm);
+}
+
+.robot-meta p {
+  margin: 0;
+}
+
+.robot-meta-tags {
+  display: flex;
+  gap: var(--space-1);
+}
+
+/* NOTE: the picture stops at 16 rem, so the description shows without scrolling. */
+.robot-picture {
+  margin: var(--space-4) 0;
+}
+
+.robot-photo {
+  display: block;
+  width: 100%;
+  height: min(16rem, 40vh);
+  border-radius: var(--radius-lg);
+  background: var(--bg-muted);
+  object-fit: contain;
+}
+
+.robot-photo.is-empty {
+  display: grid;
+  place-content: center;
+  justify-items: center;
+  gap: var(--space-2);
+}
+
+.robot-photo-note {
+  color: var(--text-muted);
+  font-size: var(--text-sm);
+}
+
+.robot-picture.is-over .robot-photo {
+  outline: 2px solid var(--focus);
+  outline-offset: 2px;
+}
+
+.robot-picture-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-1);
+  margin: var(--space-2) 0 0;
+}
+
+.robot-description {
+  max-width: 72ch;
+  margin: 0;
+  padding: var(--space-3) 0 0;
+  border-top: 1px solid var(--line);
+}
+
+.robot-description-label {
+  display: block;
+  margin: var(--space-4) 0 var(--space-1);
+}
+
+.robot-main textarea {
+  width: 100%;
+  resize: vertical;
+}
+
+/* NOTE: the right column's headings are ink over a thick rule, not green: they head a status panel, not a page. */
+.robot-side > h3,
+.robot-side .param-section > h3 {
+  margin: var(--space-6) 0 0;
+  padding: 0 0 var(--space-1);
+  border-bottom: 2px solid var(--text);
+  color: var(--text-strong);
+  font-size: var(--text-md);
+}
+
+.robot-side > h3:first-child,
+.robot-side .param-section:first-child > h3 {
+  margin-top: 0;
+}
+
+.robot-fields {
+  min-width: 0;
+  margin: 0;
+  padding: 0;
+  border: none;
+}
+
+.robot-side .param-section {
+  margin: 0 0 var(--space-6);
+}
+
+/* NOTE: the admin overlay's rows read like the view: tighter than a page's rows, and with a mouse in the view's text
+   size. Touch keeps the 16 px fields, since iOS zooms into smaller ones. The quiet look itself is in forms.css. */
+.robot-side.is-quiet .field-row {
+  align-items: center;
+}
+
+.robot-side.is-quiet .field-row-head {
+  padding-block: 0.375rem;
+}
+
+.robot-side.is-quiet .field-row-control {
+  padding: 1px 0;
+}
+
+@media (pointer: fine) {
+  .robot-side.is-quiet .field-rows,
+  .robot-side.is-quiet .field-row-control > :is(input, .select, .unit-field),
+  .robot-side.is-quiet .field-row-control > .unit-field > input {
+    font-size: var(--text-sm);
+  }
+
+  .robot-side.is-quiet .field-row-control > :is(input, .unit-field) {
+    min-height: calc(var(--control-h) - var(--space-1));
+  }
+}
+
+.robot-overlay.is-admin .robot-main textarea {
+  width: calc(100% + 2 * var(--space-2));
+  min-height: 4lh;
+  margin-inline: calc(-1 * var(--space-2));
+  field-sizing: content;
+  resize: none;
+}
+
+.robot-overlay-error {
+  margin: 0;
+  padding: var(--space-2) var(--space-6);
+  border-top: 1px solid var(--line);
+}
+
+/* NOTE: the key strip is the dialog's own surface; each key is drawn in a box. The counter and the buttons sit at
+   its right end. */
+.robot-overlay-foot {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--space-2) var(--space-6);
+  padding: var(--space-2) var(--space-6);
+  border-top: 1px solid var(--line);
+  background: var(--bg-raised);
+}
+
+.robot-keys {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-1) var(--space-4);
+  margin: 0;
+  color: var(--text-muted);
+  font-size: var(--text-sm);
+}
+
+.robot-keys kbd {
+  display: inline-block;
+  min-width: 1.25rem;
+  margin-right: var(--space-1);
+  padding: 0 0.3rem;
+  border: 1px solid var(--border-input);
+  border-radius: var(--radius-sm);
+  color: var(--text);
+  font-size: var(--text-xs);
+  line-height: 1.25rem;
+  text-align: center;
+}
+
+.robot-count {
+  margin: 0 0 0 auto;
+  color: var(--text-muted);
+  font-size: var(--text-sm);
+  font-variant-numeric: tabular-nums;
+}
+
+.robot-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-1);
+}
+
+.robot-keys + .robot-actions {
+  margin-left: auto;
+}
+
+@media (pointer: coarse) {
+  .robot-keys {
+    display: none;
+  }
+}
+
+@media (max-width: 1199.98px) {
+  .robot-detail-body {
+    grid-template-columns: minmax(0, 1fr);
+    gap: var(--space-4);
+  }
+
+  .robot-main {
+    padding-right: 0;
+  }
+}
+
+/* NOTE: below 900 px the list folds behind «Список» and opens over the robot. */
+@media (max-width: 899.98px) {
+  .robot-overlay-body {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .robot-overlay:not(.import-overlay) .robot-overlay-list {
+    position: absolute;
+    inset: 0 auto 0 0;
+    z-index: 2;
+    display: none;
+    width: min(20rem, 85vw);
+    box-shadow: var(--shadow-float);
+  }
+
+  .robot-overlay-body.is-list-open .robot-overlay-list {
+    display: flex;
+  }
+
+  .robot-list-toggle {
+    display: inline-flex;
+    margin-right: auto;
+  }
+
+  .robot-detail-body {
+    padding: 0 var(--space-4) var(--space-6);
+  }
+}
+
+@media (max-width: 599.98px) {
+  .robot-overlay {
+    inset: 0;
+    border-radius: 0;
+  }
+
+  .robot-overlay-foot {
+    padding: var(--space-2) var(--space-4);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .robot-overlay[open] {
+    animation: none;
+  }
+}
+
+/* Upload overlay: the robot overlay's frame without the list. The steps run in a row along the top, so the preview
+   table gets the full width. */
+
+.import-head {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: end;
+  gap: var(--space-2) var(--space-6);
+  padding: var(--space-2) var(--space-3) 0 var(--space-6);
+  border-bottom: 1px solid var(--line);
+}
+
+.import-steps ol {
+  display: flex;
+  gap: var(--space-6);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.import-step {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  min-height: var(--control-h);
+  padding: 0 0 var(--space-1);
+  border: none;
+  border-bottom: 2px solid transparent;
+  border-radius: 0;
+  background: none;
+  color: var(--text);
+  font: inherit;
+  cursor: pointer;
+}
+
+.import-step:hover:not(:disabled, [aria-current]) {
+  border-bottom-color: var(--line);
+}
+
+.import-step[aria-current='step'] {
+  border-bottom-color: var(--text);
+  color: var(--text-strong);
+  font-weight: 600;
+  cursor: default;
+}
+
+.import-step:disabled:not([aria-current]) {
+  color: var(--icon);
+  cursor: default;
+}
+
+.import-step:focus-visible {
+  outline-offset: -2px;
+}
+
+.import-step-n {
+  font-variant-numeric: tabular-nums;
+}
+
+.import-file-name {
+  flex: 1 1 12rem;
+  margin: 0;
+  padding: 0 0 var(--space-2);
+  overflow: hidden;
+  color: var(--text-muted);
+  font-size: var(--text-sm);
+  text-align: right;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.import-head .robot-overlay-close {
+  align-self: center;
+  margin-left: auto;
+}
+
+.import-body {
+  flex: 1;
+  min-height: 0;
+  padding: var(--space-4) var(--space-6) var(--space-8);
+  overflow-y: auto;
+  overscroll-behavior: contain;
+}
+
+.import-busy {
+  color: var(--text-muted);
+}
+
+.import-drop {
+  max-width: 45rem;
+  padding: var(--space-8) var(--space-6);
+  border: 1px solid var(--border-input);
+  border-radius: var(--radius-lg);
+  background: var(--bg-muted);
+  text-align: center;
+  transition:
+    background-color var(--dur-fast) ease,
+    border-color var(--dur-fast) ease;
+}
+
+.import-drop p {
+  margin: 0;
+  color: var(--text);
+}
+
+.import-drop.is-over {
+  border-color: var(--accent);
+  background: var(--accent-tint);
+}
+
+.import-file {
+  margin: var(--space-2) 0 0;
+  color: var(--text-muted);
+  font-size: var(--text-sm);
+}
+
+.import-choice {
+  min-width: 0;
+  margin: var(--space-6) 0 var(--space-4);
+  padding: 0;
+  border: none;
+}
+
+.import-choice > legend {
+  margin: 0 0 var(--space-1);
+  padding: 0;
+  font-weight: 500;
+}
+
+.import-links {
+  max-width: 72ch;
+  font-size: var(--text-sm);
+}
+
+.import-hint {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--space-2) var(--space-3);
+}
+
+.import-hint p {
+  flex: 1 1 20rem;
+  margin: 0;
+}
+
+.import-tools {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--space-3) var(--space-6);
+  margin: 0 0 var(--space-4);
+}
+
+.import-counts {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2);
+  margin: 0;
+}
+
+.import-fields {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  font-size: var(--text-sm);
+}
+
+.import-fields .select {
+  min-width: 10rem;
+}
+
+.import-sheet {
+  max-width: 20rem;
+}
+
+.import-sheet .select {
+  width: 100%;
+}
+
+.import-columns,
+.import-rows {
+  table-layout: fixed;
+  min-width: 40rem;
+}
+
+.import-columns .is-column {
+  width: 16rem;
+}
+
+.import-columns .is-field {
+  width: 17rem;
+}
+
+.import-columns .select {
+  width: 100%;
+}
+
+.import-rows .is-check {
+  width: 2.5rem;
+}
+
+.import-rows .is-line {
+  width: 5.5rem;
+}
+
+.import-rows .is-name {
+  width: 18rem;
+}
+
+.import-rows td:first-child,
+.import-rows th:first-child {
+  vertical-align: middle;
+}
+
+.import-row-name {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  min-width: 0;
+}
+
+.import-row-name .tag {
+  flex: none;
+}
+
+.import-rows tbody tr.import-diff-row:hover > td {
+  background: none;
+}
+
+.import-diff {
+  margin: 0 0 var(--space-2);
+}
+
+.import-diff th,
+.import-diff td {
+  padding: 0.3rem var(--space-2);
+}
+
+.import-diff {
+  background: var(--bg-muted);
+}
+
+/* NOTE: the value that will be saved is marked with the accent tint; in a conflict the admin clicks the one to
+   keep. The radio behind each value is hidden, its focus shows on the cell. */
+.import-diff td.is-taken,
+.import-pick.is-picked label {
+  color: var(--accent-strong);
+  font-weight: 500;
+}
+
+.import-diff td.is-taken {
+  background: var(--accent-tint);
+}
+
+.import-diff td.import-pick {
+  padding: 0.125rem;
+}
+
+.import-pick label {
+  display: block;
+  padding: 0.175rem calc(var(--space-2) - 0.125rem);
+  border-radius: var(--radius-md);
+  cursor: pointer;
+}
+
+.import-pick label:hover {
+  background: var(--bg-hover);
+}
+
+.import-pick.is-picked label,
+.import-pick.is-picked label:hover {
+  background: var(--accent-tint);
+}
+
+.import-pick label:has(input:focus-visible) {
+  outline: 2px solid var(--focus);
+  outline-offset: -2px;
+}
+
+.import-robot-title {
+  margin: 0 0 var(--space-1);
+  font-size: var(--text-lg);
+}
+
+.import-robot-fields {
+  table-layout: auto;
+}
+
+.import-missing details {
+  margin: var(--space-2) 0 0;
+  font-size: var(--text-sm);
+}
+
+.import-missing summary {
+  color: var(--accent-text);
+  cursor: pointer;
+}
+
+.import-summary {
+  max-width: 45rem;
+  margin: 0 0 var(--space-4);
+}
+
+.import-photo-errors ul {
+  margin: 0 0 var(--space-4);
+  padding-left: 1.2rem;
+  font-size: var(--text-sm);
+}
+
+@media (max-width: 599.98px) {
+  .import-head {
+    padding-left: var(--space-4);
+  }
+
+  .import-steps {
+    order: 1;
+    width: 100%;
+    overflow-x: auto;
+  }
+
+  .import-steps ol {
+    gap: var(--space-4);
+  }
+
+  .import-step {
+    white-space: nowrap;
+  }
+
+  .import-file-name {
+    padding-top: var(--space-2);
+    text-align: left;
+  }
+
+  .import-body {
+    padding: var(--space-4);
+  }
+}
+
+/* Comparison: the robot overlay's frame without the list. One column per robot; the labels and the robots' names
+   stay in view while the table scrolls. */
+
+.compare-title {
+  flex: 1;
+  margin: 0;
+  padding-bottom: var(--space-2);
+  font-size: var(--text-lg);
+}
+
+.compare-body {
+  flex: 1;
+  min-height: 0;
+  padding: 0 var(--space-6) var(--space-6);
+  overflow: auto;
+  overscroll-behavior: contain;
+}
+
+.compare-table {
+  width: 100%;
+  table-layout: fixed;
+  border-collapse: separate;
+  border-spacing: 0;
+}
+
+.compare-table th,
+.compare-table td {
+  width: 13rem;
+  padding: 0.375rem var(--space-3) 0.375rem 0;
+  border-bottom: 1px solid var(--line);
+  vertical-align: top;
+  text-align: left;
+}
+
+.compare-table thead th {
+  position: sticky;
+  top: 0;
+  z-index: 2;
+  padding-top: var(--space-3);
+  background: var(--bg-raised);
+  color: var(--text-strong);
+  font-weight: 600;
+}
+
+.compare-table tbody th[scope='row'] {
+  position: sticky;
+  left: 0;
+  z-index: 1;
+  background: var(--bg-raised);
+  color: var(--text-muted);
+  font-weight: 400;
+}
+
+.compare-table thead th:first-child,
+.compare-table tbody th[scope='row'] {
+  width: 12rem;
+}
+
+.compare-table tr.compare-group th {
+  position: static;
+  padding-top: var(--space-6);
+  border-bottom: 2px solid var(--text);
+  color: var(--text-strong);
+  font-size: var(--text-md);
+  font-weight: 600;
+}
+
+.compare-robot {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--space-2);
+}
+
+.compare-robot-name {
+  flex: 1;
+  min-width: 0;
+  overflow-wrap: anywhere;
+}
+
+.compare-robot-name .robot-modification {
+  display: block;
+  font-weight: 400;
+}
+
+.compare-remove {
+  flex: none;
+}
+
+.compare-check {
+  margin: 0;
+}
+
+.catalog-table .is-check,
+.ranked-table .is-check {
+  width: 2.5rem;
+}

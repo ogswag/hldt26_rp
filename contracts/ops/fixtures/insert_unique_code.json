@@ -1,0 +1,22 @@
+{
+  "before": {
+    "processes": {
+      "00000000-0000-4000-8000-000000000101": {"baseline_staff":{"headcount":8},"code":"inbound","demand":{"unit":"поддон","units_per_day":1000},"durations":{"load_s":90},"id":"00000000-0000-4000-8000-000000000101","is_baseline":true,"name":"Приёмка","order":"a0","point_ids":["00000000-0000-4000-8000-000000000701"],"sla":{"max_wait_min":30},"task_type":"pallet_inbound"},
+      "00000000-0000-4000-8000-000000000102": {"baseline_staff":{},"code":"pick","demand":{},"durations":{},"id":"00000000-0000-4000-8000-000000000102","is_baseline":true,"name":"Отбор","order":"a1","point_ids":[],"sla":{},"task_type":"piece_pick"}
+    }
+  },
+  "txs": [
+    {"tx_id": "tx-1", "label": "action 1", "ops": [
+      {"op":"insert","coll":"processes","id":"00000000-0000-4000-8000-000000000f01","value":{"baseline_staff":{},"code":"pick","demand":{},"durations":{},"name":"x","order":"a5","sla":{},"task_type":"piece_pick"}}
+    ]}
+  ],
+  "after": {
+    "processes": {
+      "00000000-0000-4000-8000-000000000101": {"baseline_staff":{"headcount":8},"code":"inbound","demand":{"unit":"поддон","units_per_day":1000},"durations":{"load_s":90},"id":"00000000-0000-4000-8000-000000000101","is_baseline":true,"name":"Приёмка","order":"a0","point_ids":["00000000-0000-4000-8000-000000000701"],"sla":{"max_wait_min":30},"task_type":"pallet_inbound"},
+      "00000000-0000-4000-8000-000000000102": {"baseline_staff":{},"code":"pick","demand":{},"durations":{},"id":"00000000-0000-4000-8000-000000000102","is_baseline":true,"name":"Отбор","order":"a1","point_ids":[],"sla":{},"task_type":"piece_pick"}
+    }
+  },
+  "outcomes": [
+    {"tx_id":"tx-1","status":"rejected","reason":"unique","details":{"op":0,"coll":"processes","id":"00000000-0000-4000-8000-000000000f01","field":"code"}}
+  ]
+}

@@ -1,0 +1,27 @@
+{
+  "before": {
+    "shared_costs": {
+      "00000000-0000-4000-8000-000000000501": {"bucket":"capex","code":"infra","id":"00000000-0000-4000-8000-000000000501","label":"Инфраструктура","order":"a0","rub":500000}
+    }
+  },
+  "txs": [
+    {"tx_id": "tx-1", "label": "action 1", "ops": [
+      {"op":"insert","coll":"shared_costs","id":"00000000-0000-4000-8000-000000000f01","value":{"bucket":"opex","code":"it","label":"ИТ","order":"a1","rub":1}}
+    ]},
+    {"tx_id": "tx-2", "label": "action 2", "ops": [
+      {"op":"set","coll":"shared_costs","id":"00000000-0000-4000-8000-000000000f01","path":"code","value":"infra"}
+    ]}
+  ],
+  "after": {
+    "shared_costs": {
+      "00000000-0000-4000-8000-000000000501": {"bucket":"capex","code":"infra","id":"00000000-0000-4000-8000-000000000501","label":"Инфраструктура","order":"a0","rub":500000},
+      "00000000-0000-4000-8000-000000000f01": {"bucket":"opex","code":"it","id":"00000000-0000-4000-8000-000000000f01","label":"ИТ","order":"a1","rub":1}
+    }
+  },
+  "outcomes": [
+    {"tx_id":"tx-1","status":"applied", "changes": [
+      {"coll":"shared_costs","id":"00000000-0000-4000-8000-000000000f01","kind":"insert","after":{"bucket":"opex","code":"it","id":"00000000-0000-4000-8000-000000000f01","label":"ИТ","order":"a1","rub":1}}
+    ]},
+    {"tx_id":"tx-2","status":"rejected","reason":"unique","details":{"op":0,"coll":"shared_costs","id":"00000000-0000-4000-8000-000000000f01","field":"code"}}
+  ]
+}

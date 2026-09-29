@@ -1,0 +1,137 @@
+{
+  "id": "warehouse-reference-v1",
+  "name": "Эталонный склад FFC",
+  "object_type": "warehouse",
+  "catalog_revision_code": "catalog-v4-seed",
+  "solution": {
+    "id": "5760e938-9a43-45a7-b8e8-f4f2e6383930",
+    "name": "Ronavi H1500",
+    "family": "AMR"
+  },
+  "seed": 0,
+  "econ_version": "econ-v3",
+  "match_version": "match-v1",
+  "sim_version": "sim-v1",
+  "confidence_level": "preliminary",
+  "params": {
+    "area_total_m2": 20000,
+    "area_active_m2": 10000,
+    "ceiling_height_m": 10,
+    "floors": 1,
+    "aisle_main_m": 3.5,
+    "aisle_working_m": 2.8,
+    "floor_type": "Промышленный бетон",
+    "floor_flatness_mm_per_2m": 3,
+    "shifts_per_day": 2,
+    "workdays_per_year": 365,
+    "shift_hours": 11,
+    "shift_window": { "start": "08:00", "end": "22:00" },
+    "peak_load_factor": 1.5,
+    "inbound_pallets_per_day": 1000,
+    "outbound_pallets_per_day": 1000,
+    "pick_lines_per_day": 100000,
+    "pick_units_per_day": 150000,
+    "piece_pick_share_pct": 30,
+    "sku_active": 2000,
+    "sku_a_class_share_pct": 20,
+    "task_mix": ["inbound", "putaway", "piece_pick", "outbound"],
+    "staff_total": 180,
+    "staff_pickers": 100,
+    "staff_forklift": 25,
+    "staff_pack": 20,
+    "wage_picker_month_rub": 100000,
+    "wage_forklift_month_rub": 120000,
+    "payroll_tax_factor": 1.302,
+    "picker_lines_per_hour": 150,
+    "time_loss_pct": 25,
+    "pick_path_m_per_line": 25,
+    "conveyor_length_m": 350,
+    "rack_type": "Фронтальные паллетные",
+    "pallet_slots": 20000,
+    "pallet_mass_kg": 800,
+    "unit_mass_kg": 1.8,
+    "pallet_size_mm": {"length": 1200, "width": 800, "height": 1600},
+    "unit_size_mm": {"length": 300, "width": 200, "height": 150},
+    "oversized_share_pct": 5,
+    "power_kw": 500,
+    "has_wms": true,
+    "erp_system": "1С:ERP",
+    "capex_budget_mln_rub": 80,
+    "payback_horizon_years": 5
+  },
+  "processes": [
+    {
+      "code": "inbound",
+      "name": "Приёмка",
+      "task_type": "pallet_inbound",
+      "is_baseline": true,
+      "demand": { "units_per_day": 1000, "unit": "поддон" },
+      "sla": { "max_wait_min": 30, "max_cycle_min": 45 },
+      "baseline_staff": { "headcount": 8, "role": "приёмка" },
+      "sort_order": 0
+    },
+    {
+      "code": "putaway",
+      "name": "Размещение",
+      "task_type": "pallet_putaway",
+      "is_baseline": true,
+      "demand": { "units_per_day": 1000, "unit": "поддон" },
+      "sla": { "max_wait_min": 20, "max_cycle_min": 40 },
+      "baseline_staff": { "headcount": 6, "role": "погрузчик" },
+      "sort_order": 1
+    },
+    {
+      "code": "piece_pick",
+      "name": "Мелкоштучный отбор",
+      "task_type": "piece_pick",
+      "is_baseline": true,
+      "demand": { "units_per_day": 100000, "unit": "строка" },
+      "sla": { "max_wait_min": 15, "max_cycle_min": 25 },
+      "baseline_staff": { "headcount": 100, "role": "отборщик" },
+      "sort_order": 2
+    },
+    {
+      "code": "outbound",
+      "name": "Отгрузка",
+      "task_type": "pallet_outbound",
+      "is_baseline": true,
+      "demand": { "units_per_day": 1000, "unit": "поддон" },
+      "sla": { "max_wait_min": 25, "max_cycle_min": 40 },
+      "baseline_staff": { "headcount": 10, "role": "отгрузка" },
+      "sort_order": 3
+    }
+  ],
+  "variants": [
+    { "name": "AMR комплектация", "status": "draft", "mixed_fleet": false, "sort_order": 0 },
+    { "name": "Смешанный флот", "status": "draft", "mixed_fleet": true, "sort_order": 1 },
+    { "name": "Паллетный штабелёр", "status": "draft", "mixed_fleet": false, "sort_order": 2 }
+  ],
+  "expected": {
+    "work_kind": "pallet",
+    "fleet_size": 13,
+    "baseline": {
+      "capex_rub": 0,
+      "opex_year_rub": 46872000
+    },
+    "buy": {
+      "capex_rub": 56370600,
+      "opex_year_rub": 29994510,
+      "annual_effect_rub": 16877490,
+      "payback_years": 3.4941,
+      "discounted_payback_years": 5.3844,
+      "npv_rub": -2804917,
+      "irr_pct": 12.82,
+      "roi_pct": 40.36,
+      "accounting_effect_rub": 9707061,
+      "tco_rub": 211608150
+    },
+    "raas": {
+      "capex_rub": 16602300
+    },
+    "notes": [
+      "Числа совпадают с TestWarehouseH1500Golden при econ-v3 и seed 0.",
+      "NPV и IRR по ставке 15% в постоянных ценах, горизонт 5 лет, срок службы робота 7 лет принят допущением. Остаточная стоимость оборудования не учитывается.",
+      "Симуляция sim-v2 сверяется по каждому варианту отдельно, на странице Расчёт."
+    ]
+  }
+}
