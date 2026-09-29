@@ -10,3 +10,5 @@ build-dir = "book"
 default-theme = "light"
 preferred-dark-theme = "navy"
 no-section-label = true
+site-url = "/hldt26_rp/"
+git-repository-url = "https://github.com/ogswag/hldt26_rp"
